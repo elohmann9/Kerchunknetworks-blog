@@ -1,1 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Diagrams - Kerchunk Networks</title>
+    <meta name="description" content="Interactive network diagrams for fire department infrastructure, equipment layouts, and data flow visualizations">
+    
+    <style>
+        :root {
+            --fire-red: #b85450;
+            --fire-orange: #d79b00;
+            --fire-blue: #667eea;
+            --fire-dark: #2c3e50;
+            --fire-light: #f8f9fa;
+            --fire-gray: #6c757d;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--fire-dark);
+            background: var(--fire-light);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .page-header {
+            background: linear-gradient(135deg, var(--fire-red), var(--fire-orange));
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .page-header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        .nav-breadcrumb {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-breadcrumb a {
+            color: var(--fire-blue);
+            text-decoration: none;
+        }
+
+        .nav-breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        /* Diagram Grid */
+        .diagrams-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .diagram-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .diagram-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .diagram-header {
+            background: var(--fire-red);
+            color: white;
+            padding: 20px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .diagram-content {
+            padding: 25px;
+        }
+
+        .diagram-placeholder {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(45deg, #f8f9fa 25%, transparent 25%), 
+                        linear-gradient(-45deg, #f8f9fa 25%, transparent 25%), 
+                        linear-gradient(45deg, transparent 75%, #f8f9fa 75%), 
+                        linear-gradient(-45deg, transparent 75%, #f8f9fa 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+            border: 2px dashed var(--fire-gray);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            color: var(--fire-gray);
+            font-size: 0.9rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .diagram-image {
+            width: 100%;
+            height: 250px;
+            object-fit: contain;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+
+        .diagram-image:hover {
+            opacity: 0.9;
+        }
+
+        .diagram-description {
+            color: var(--fire-gray);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .diagram-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .btn-primary {
+            background: var(--fire-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5a6fd8;
+        }
+
+        .btn-secondary {
+            background: var(--fire-gray);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--fire-blue);
+            border: 1px solid var(--fire-blue);
+        }
+
+        .btn-outline:hover {
+            background: var(--fire-blue);
+            color: white;
+        }
+
+        /* Modal for full-size view */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 90%;
+            max-width: 1200px;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .modal-close:hover {
+            color: #bbb;
+        }
+
+        /* Featured diagram */
+        .featured-diagram {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .featured-diagram h2 {
+            color: var(--fire-red);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .featured-image {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            object-fit: contain;
+            border-radius: 10px;
+            border: 1px solid #dee2e6;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+
+        /* Quick reference */
+        .quick-reference {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .quick-reference h3 {
+            color: var(--fire-red);
+            margin-bottom: 15px;
+        }
+
+        .reference-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .reference-item {
+            background: var(--fire-light);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--fire-blue);
+        }
+
+        .reference-item strong {
+            color: var(--fire-dark);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* Upload instructions */
+        .upload-instructions {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .upload-instructions h3 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        .upload-instructions p {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .diagrams-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .diagram-actions {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="page-header">
+            <h1>Network Diagrams</h1>
+            <p class="subtitle">Visual network architecture and data flow documentation for fire department infrastructure</p>
+        </div>
+
+        <!-- Navigation -->
+        <div class="nav-breadcrumb">
+            <a href="../index.html">← Back to Kerchunk Networks</a> • 
+            <span>Documentation</span> • 
+            <strong>Network Diagrams</strong>
+        </div>
+
+        <!-- Upload Instructions -->
+        <div class="upload-instructions">
+            <h3>Adding Your draw.io Diagrams</h3>
+            <p><strong>To add your network diagrams:</strong></p>
+            <ol style="margin-left: 20px; color: #856404;">
+                <li>Export diagrams from draw.io as PNG (300 DPI recommended)</li>
+                <li>Upload to the /diagrams/ folder in your GitHub repository</li>
+                <li>Update the image sources below to match your filenames</li>
+                <li>Commit changes to make them live</li>
+            </ol>
+        </div>
+
+        <!-- Featured Diagram -->
+        <div class="featured-diagram">
+            <h2>Fire Engine Network Overview</h2>
+            <div class="diagram-placeholder featured-image" onclick="openModal('fire-engine-network.png')">
+                <div>
+                    <strong>Fire Engine Network Architecture</strong><br>
+                    Upload: fire-engine-network.png<br>
+                    Complete IBR1900 setup with GPS, cellular, and Starlink backup
+                </div>
+            </div>
+            <!-- Uncomment when you upload the actual image:
+            <img src="fire-engine-network.png" alt="Fire Engine Network Architecture" class="featured-image" onclick="openModal('fire-engine-network.png')">
+            -->
+            <p>Complete network architecture for fire engine communications showing IBR1900 router, cellular/Starlink connections, GPS services, and WiFi networks.</p>
+            <div class="diagram-actions">
+                <a href="../guides/ibr1900-setup.html" class="btn btn-primary">Setup Guide</a>
+                <button class="btn btn-secondary" onclick="printDiagram()">Print</button>
+            </div>
+        </div>
+
+        <!-- Quick Reference -->
+        <div class="quick-reference">
+            <h3>Network Quick Reference</h3>
+            <div class="reference-grid">
+                <div class="reference-item">
+                    <strong>Primary Router</strong>
+                    Cradlepoint IBR1900<br>
+                    IP: 192.168.10.1
+                </div>
+                <div class="reference-item">
+                    <strong>Cellular Connection</strong>
+                    eSIM (Telnyx)<br>
+                    Private IP: 10.0.0.123
+                </div>
+                <div class="reference-item">
+                    <strong>Backup Connection</strong>
+                    Starlink Satellite<br>
+                    Auto-failover enabled
+                </div>
+                <div class="reference-item">
+                    <strong>GPS Services</strong>
+                    Tablet Command: :12121<br>
+                    Versaterm: :12345
+                </div>
+                <div class="reference-item">
+                    <strong>WiFi Networks</strong>
+                    2.4GHz: Public-fc<br>
+                    5GHz: Public-fc5G
+                </div>
+                <div class="reference-item">
+                    <strong>Unit Identification</strong>
+                    Unit ID: 3311<br>
+                    Department: Fire Engine
+                </div>
+            </div>
+        </div>
+
+        <!-- Diagrams Grid -->
+        <div class="diagrams-grid">
+            <!-- Network Overview -->
+            <div class="diagram-card">
+                <div class="diagram-header">Complete Network Overview</div>
+                <div class="diagram-content">
+                    <div class="diagram-placeholder" onclick="openModal('network-overview.png')">
+                        <div>
+                            <strong>Complete Network Topology</strong><br>
+                            Upload: network-overview.png<br>
+                            Full fire department network infrastructure
+                        </div>
+                    </div>
+                    <!-- Uncomment when you upload:
+                    <img src="network-overview.png" alt="Complete Network Overview" class="diagram-image" onclick="openModal('network-overview.png')">
+                    -->
+                    <p class="diagram-description">
+                        Comprehensive view of fire department network infrastructure including all equipment, connections, and data flows.
+                    </p>
+                    <div class="diagram-actions">
+                        <button class="btn btn-primary" onclick="openModal('network-overview.png')">View Full Size</button>
+                        <a href="../guides/ibr1900-setup.html" class="btn btn-outline">Setup Guide</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GPS Data Flow -->
+            <div class="diagram-card">
+                <div class="diagram-header">GPS Data Flow</div>
+                <div class="diagram-content">
+                    <div class="diagram-placeholder" onclick="openModal('gps-data-flow.png')">
+                        <div>
+                            <strong>GPS Services Architecture</strong><br>
+                            Upload: gps-data-flow.png<br>
+                            Tablet Command and Versaterm AVL data paths
+                        </div>
+                    </div>
+                    <!-- Uncomment when you upload:
+                    <img src="gps-data-flow.png" alt="GPS Data Flow Diagram" class="diagram-image" onclick="openModal('gps-data-flow.png')">
+                    -->
+                    <p class="diagram-description">
+                        Detailed GPS data flow showing connections to Tablet Command and Versaterm AVL servers with update intervals and protocols.
+                    </p>
+                    <div class="diagram-actions">
+                        <button class="btn btn-primary" onclick="openModal('gps-data-flow.png')">View Full Size</button>
+                        <a href="../guides/gps-configuration.html" class="btn btn-outline">GPS Guide</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Station Network -->
+            <div class="diagram-card">
+                <div class="diagram-header">Fire Station Network</div>
+                <div class="diagram-content">
+                    <div class="diagram-placeholder" onclick="openModal('station-network.png')">
+                        <div>
+                            <strong>Fire Station Infrastructure</strong><br>
+                            Upload: station-network.png<br>
+                            Station-based networking equipment and connections
+                        </div>
+                    </div>
+                    <!-- Uncomment when you upload:
+                    <img src="station-network.png" alt="Fire Station Network" class="diagram-image" onclick="openModal('station-network.png')">
+                    -->
+                    <p class="diagram-description">
+                        Fire station network layout showing building infrastructure, equipment placement, and connectivity to mobile units.
+                    </p>
+                    <div class="diagram-actions">
+                        <button class="btn btn-primary" onclick="openModal('station-network.png')">View Full Size</button>
+                        <a href="../guides/troubleshooting.html" class="btn btn-outline">Troubleshooting</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Monitoring Architecture -->
+            <div class="diagram-card">
+                <div class="diagram-header">Monitoring System</div>
+                <div class="diagram-content">
+                    <div class="diagram-placeholder" onclick="openModal('monitoring-system.png')">
+                        <div>
+                            <strong>Network Monitoring</strong><br>
+                            Upload: monitoring-system.png<br>
+                            n8n, Home Assistant, and alert systems
+                        </div>
+                    </div>
+                    <!-- Uncomment when you upload:
+                    <img src="monitoring-system.png" alt="Monitoring System Architecture" class="diagram-image" onclick="openModal('monitoring-system.png')">
+                    -->
+                    <p class="diagram-description">
+                        Network monitoring infrastructure showing n8n workflows, Home Assistant dashboards, and alert routing systems.
+                    </p>
+                    <div class="diagram-actions">
+                        <button class="btn btn-primary" onclick="openModal('monitoring-system.png')">View Full Size</button>
+                        <a href="../guides/network-monitoring.html" class="btn btn-outline">Monitoring Guide</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Emergency Communications -->
+            <div class="diagram-card">
+                <div class="diagram-header">Emergency Communications</div>
+                <div class="diagram-content">
+                    <div class="diagram-placeholder" onclick="openModal('emergency-comms.png')">
+                        <div>
+                            <strong>Emergency Backup Systems</strong><br>
+                            Upload: emergency-comms.png<br>
+                            Failover paths and backup communication methods
+                        </div>
+                    </div>
+                    <!-- Uncomment when you upload:
+                    <img src="emergency-comms.png" alt="Emergency Communications" class="diagram-image" onclick="openModal('emergency-comms.png')">
+                    -->
+                    <p class="diagram-description">
+                        Emergency communication protocols showing backup systems, failover procedures, and alternate communication methods.
+                    </p>
+                    <div class="diagram-actions">
+                        <button class="btn btn-primary" onclick="openModal('emergency-comms.png')">View Full Size</button>
+                        <a href="../guides/emergency-contacts.html" class="btn btn-outline">Emergency Procedures</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Physical Layout -->
+            <div class="diagram-card">
+                <div class="diagram-header">Equipment Layout</div>
+                <div class="diagram-content">
+                    <div class="diagram-placeholder" onclick="openModal('equipment-layout.png')">
+                        <div>
+                            <strong>Physical Equipment Layout</strong><br>
+                            Upload: equipment-layout.png<br>
+                            Fire truck equipment mounting and cable routing
+                        </div>
+                    </div>
+                    <!-- Uncomment when you upload:
+                    <img src="equipment-layout.png" alt="Equipment Physical Layout" class="diagram-image" onclick="openModal('equipment-layout.png')">
+                    -->
+                    <p class="diagram-description">
+                        Physical layout of networking equipment in fire trucks showing mounting locations, cable routing, and antenna placement.
+                    </p>
+                    <div class="diagram-actions">
+                        <button class="btn btn-primary" onclick="openModal('equipment-layout.png')">View Full Size</button>
+                        <a href="../guides/ibr1900-setup.html" class="btn btn-outline">Installation Guide</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Navigation -->
+        <div style="text-align: center; padding: 30px; background: white; border-radius: 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+            <p style="margin-bottom: 20px; color: var(--fire-gray);">
+                <strong>Professional network documentation for fire department operations</strong>
+            </p>
+            <div style="display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;">
+                <a href="../index.html" class="btn btn-primary">← Back to Home</a>
+                <a href="../guides/ibr1900-setup.html" class="btn btn-outline">Setup Guides</a>
+                <a href="../guides/troubleshooting.html" class="btn btn-outline">Troubleshooting</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for full-size images -->
+    <div id="imageModal" class="modal">
+        <span class="modal-close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // Modal functionality
+        function openModal(imageSrc) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.style.display = 'block';
+            modalImg.src = imageSrc;
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside the image
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Print functionality
+        function printDiagram() {
+            window.print();
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Lazy loading for images (when you add real images)
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = document.querySelectorAll('.diagram-image');
+            
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            images.forEach(img => imageObserver.observe(img));
+        });
+    </script>
+</body>
+</html>
