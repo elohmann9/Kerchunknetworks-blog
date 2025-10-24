@@ -196,7 +196,7 @@
     <script>
         async function loadRouterData() {
             try {
-                const response = await fetch('http://api.kerchunknetworks.com/data/routers.json');
+                const response = await fetch('https://api.kerchunknetworks.com/data/routers.json');
                 
                 if (!response.ok) {
                     throw new Error('Failed to fetch router data');
