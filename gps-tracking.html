@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPS Vehicle Tracking - Kerchunk Networks</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        header {
+            background: #1a1a1a;
+            border-bottom: 2px solid #333;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: #00d4ff;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .main-content {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        #map {
+            flex: 1;
+            height: 100%;
+        }
+
+        .sidebar {
+            width: 350px;
+            background: #1a1a1a;
+            border-left: 2px solid #333;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .vehicle-card {
+            background: #0f0f0f;
+            border: 2px solid #333;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .vehicle-card:hover {
+            border-color: #00d4ff;
+            transform: translateX(-5px);
+        }
+
+        .vehicle-card.online {
+            border-left: 4px solid #00ff88;
+        }
+
+        .vehicle-card.offline {
+            border-left: 4px solid #ff4444;
+            opacity: 0.6;
+        }
+
+        .vehicle-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #00d4ff;
+        }
+
+        .vehicle-status {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .vehicle-status.online {
+            background: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+        }
+
+        .vehicle-status.offline {
+            background: rgba(255, 68, 68, 0.2);
+            color: #ff4444;
+        }
+
+        .vehicle-info {
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        .vehicle-info div {
+            margin-bottom: 5px;
+        }
+
+        .stats-bar {
+            background: #0f0f0f;
+            border-bottom: 1px solid #333;
+            padding: 15px 20px;
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .stat-label {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .stat-value {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .stat-value.online {
+            color: #00ff88;
+        }
+
+        .stat-value.offline {
+            color: #ff4444;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+
+        .error {
+            background: rgba(255, 68, 68, 0.1);
+            border: 1px solid #ff4444;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px;
+            color: #ff4444;
+        }
+
+        /* Custom Leaflet popup styling */
+        .leaflet-popup-content-wrapper {
+            background: #1a1a1a;
+            color: #fff;
+            border: 2px solid #00d4ff;
+            border-radius: 8px;
+        }
+
+        .leaflet-popup-content {
+            margin: 15px;
+        }
+
+        .leaflet-popup-tip {
+            background: #1a1a1a;
+        }
+
+        .popup-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #00d4ff;
+            margin-bottom: 10px;
+        }
+
+        .popup-info {
+            color: #ccc;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .back-link {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(26, 26, 26, 0.95);
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #00d4ff;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: #00d4ff;
+            color: #000;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: 40vh;
+                border-left: none;
+                border-top: 2px solid #333;
+            }
+
+            #map {
+                height: 60vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+
+        <header>
+            <h1>🛰️ GPS Vehicle Tracking</h1>
+            <p class="subtitle">Real-time location monitoring for Woodside Fire Protection District</p>
+        </header>
+
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-label">Vehicles Online:</span>
+                <span class="stat-value online" id="online-count">-</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Vehicles Offline:</span>
+                <span class="stat-value offline" id="offline-count">-</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Last Updated:</span>
+                <span class="stat-value" style="color: #00d4ff;" id="last-update">-</span>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div id="map"></div>
+
+            <div class="sidebar">
+                <h2 style="margin-bottom: 20px; color: #00d4ff;">Active Vehicles</h2>
+                <div id="vehicle-list">
+                    <div class="loading">Loading vehicle data...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        // Initialize map centered on Woodside, CA (update with your fire station coordinates)
+        const map = L.map('map').setView([37.4299, -122.2540], 12);
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 19
+        }).addTo(map);
+
+        // Store markers for easy access
+        const markers = {};
+
+        // Custom fire truck icon
+        const fireIcon = L.divIcon({
+            html: '🚒',
+            className: 'fire-truck-icon',
+            iconSize: [40, 40],
+            iconAnchor: [20, 20]
+        });
+
+        const offlineIcon = L.divIcon({
+            html: '🚒',
+            className: 'fire-truck-icon-offline',
+            iconSize: [40, 40],
+            iconAnchor: [20, 20]
+        });
+
+        // Add custom CSS for icons
+        const style = document.createElement('style');
+        style.textContent = `
+            .fire-truck-icon {
+                font-size: 30px;
+                text-align: center;
+                line-height: 40px;
+                filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+            }
+            .fire-truck-icon-offline {
+                font-size: 30px;
+                text-align: center;
+                line-height: 40px;
+                opacity: 0.4;
+                filter: grayscale(100%) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+            }
+        `;
+        document.head.appendChild(style);
+
+        async function loadVehicleData() {
+            try {
+                const response = await fetch('https://api.kerchunknetworks.com/data/routers.json');
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch vehicle data');
+                }
+
+                const data = await response.json();
+                displayVehicles(data);
+
+            } catch (error) {
+                document.getElementById('vehicle-list').innerHTML = `
+                    <div class="error">
+                        <strong>Error loading vehicle data:</strong> ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        function displayVehicles(data) {
+            const routers = data.routers;
+            const lastUpdate = new Date(data.last_update);
+
+            // Calculate stats
+            const online = routers.filter(r => r.state === 'online').length;
+            const offline = routers.filter(r => r.state === 'offline').length;
+
+            // Update stats
+            document.getElementById('online-count').textContent = online;
+            document.getElementById('offline-count').textContent = offline;
+            document.getElementById('last-update').textContent = lastUpdate.toLocaleTimeString();
+
+            // Clear existing markers
+            Object.values(markers).forEach(marker => marker.remove());
+
+            // Sort routers: online first
+            routers.sort((a, b) => {
+                if (a.state === 'online' && b.state !== 'online') return -1;
+                if (a.state !== 'online' && b.state === 'online') return 1;
+                return a.name.localeCompare(b.name);
+            });
+
+            // Add mock GPS data for demonstration
+            // TODO: Replace with actual GPS data from your API
+            const mockGPSData = {
+                'Unit 3311': { lat: 37.4299, lng: -122.2540, speed: 0 },
+                'Unit 3321': { lat: 37.4350, lng: -122.2600, speed: 35 },
+                'Unit 3331': { lat: 37.4250, lng: -122.2480, speed: 0 }
+            };
+
+            // Generate vehicle cards and markers
+            const vehicleHTML = routers.map(router => {
+                const gpsData = mockGPSData[router.name] || router.last_known_location;
+
+                // Add marker to map if GPS data exists
+                if (gpsData && gpsData.lat && gpsData.lng) {
+                    const marker = L.marker([gpsData.lat, gpsData.lng], {
+                        icon: router.state === 'online' ? fireIcon : offlineIcon
+                    }).addTo(map);
+
+                    const popupContent = `
+                        <div class="popup-title">${router.name}</div>
+                        <div class="popup-info">
+                            <strong>Status:</strong> ${router.state.toUpperCase()}<br>
+                            <strong>ID:</strong> ${router.id}<br>
+                            <strong>Speed:</strong> ${gpsData.speed || 0} mph<br>
+                            <strong>Location:</strong> ${gpsData.lat.toFixed(6)}, ${gpsData.lng.toFixed(6)}
+                        </div>
+                    `;
+
+                    marker.bindPopup(popupContent);
+                    markers[router.id] = marker;
+                }
+
+                return `
+                    <div class="vehicle-card ${router.state}" onclick="focusVehicle('${router.id}')">
+                        <div class="vehicle-name">${router.name}</div>
+                        <div class="vehicle-status ${router.state}">${router.state}</div>
+                        <div class="vehicle-info">
+                            <div><strong>ID:</strong> ${router.id}</div>
+                            ${gpsData ? `
+                                <div>📍 ${gpsData.lat.toFixed(4)}, ${gpsData.lng.toFixed(4)}</div>
+                                <div>🚗 Speed: ${gpsData.speed || 0} mph</div>
+                            ` : '<div>📍 No GPS data</div>'}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('vehicle-list').innerHTML = vehicleHTML;
+
+            // Fit map to show all markers
+            const bounds = Object.values(markers).map(m => m.getLatLng());
+            if (bounds.length > 0) {
+                map.fitBounds(bounds, { padding: [50, 50] });
+            }
+        }
+
+        function focusVehicle(routerId) {
+            const marker = markers[routerId];
+            if (marker) {
+                map.setView(marker.getLatLng(), 15);
+                marker.openPopup();
+            }
+        }
+
+        // Load data on page load
+        loadVehicleData();
+
+        // Refresh every 30 seconds
+        setInterval(loadVehicleData, 30 * 1000);
+    </script>
+</body>
+</html>

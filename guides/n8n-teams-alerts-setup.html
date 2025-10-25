@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>n8n Teams Alerts Setup - Kerchunk Networks</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #b85450 0%, #d79b00 100%);
+            color: #2c3e50;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #667eea;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            color: #b85450;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #b85450;
+            font-size: 1.8rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        h3 {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #6c757d;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .alert {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .alert.info {
+            background: #d1ecf1;
+            border-left-color: #17a2b8;
+        }
+
+        .alert.success {
+            background: #d4edda;
+            border-left-color: #28a745;
+        }
+
+        code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #e83e8c;
+        }
+
+        pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 0.9rem;
+        }
+
+        pre code {
+            background: none;
+            color: inherit;
+            padding: 0;
+        }
+
+        ol, ul {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        .step {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+
+        .step-number {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 15px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .workflow-json {
+            background: #f8f9fa;
+            border: 2px dashed #667eea;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .workflow-json h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Home</a>
+
+        <h1>🔔 n8n Teams Alerts Setup Guide</h1>
+        <p class="subtitle">Automated Microsoft Teams notifications when routers go offline</p>
+
+        <div class="alert info">
+            <strong>📋 What you'll learn:</strong> How to set up n8n to monitor your Cradlepoint routers and send Microsoft Teams notifications when they go offline or come back online.
+        </div>
+
+        <h2>Prerequisites</h2>
+        <ul>
+            <li>n8n installed (either on your Linode VM or using n8n cloud)</li>
+            <li>Microsoft Teams account with webhook permissions</li>
+            <li>Access to your router API (<code>https://api.kerchunknetworks.com/data/routers.json</code>)</li>
+        </ul>
+
+        <h2>Step 1: Install n8n on Your Linode VM</h2>
+
+        <div class="step">
+            <div class="step-number">Option A: Docker Installation (Recommended)</div>
+            <p>SSH into your Linode VM and run:</p>
+            <pre><code># Install Docker if not already installed
+curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+
+# Run n8n with Docker
+docker run -it --rm \\
+  --name n8n \\
+  -p 5678:5678 \\
+  -v ~/.n8n:/home/node/.n8n \\
+  n8nio/n8n</code></pre>
+            <p>Access n8n at: <code>http://your-linode-ip:5678</code></p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">Option B: Using n8n Cloud (Easier)</div>
+            <p>If you don't want to manage your own server:</p>
+            <ol>
+                <li>Go to <a href="https://n8n.cloud" target="_blank">n8n.cloud</a></li>
+                <li>Sign up for a free account (includes 5,000 workflow executions/month)</li>
+                <li>Create a new workflow</li>
+            </ol>
+        </div>
+
+        <h2>Step 2: Create Microsoft Teams Incoming Webhook</h2>
+
+        <div class="step">
+            <div class="step-number">Setting up Teams Webhook</div>
+            <ol>
+                <li>Open Microsoft Teams and go to the channel where you want alerts</li>
+                <li>Click the <strong>•••</strong> (three dots) next to the channel name</li>
+                <li>Select <strong>Connectors</strong> or <strong>Workflows</strong></li>
+                <li>Search for <strong>"Incoming Webhook"</strong></li>
+                <li>Click <strong>Add</strong> or <strong>Configure</strong></li>
+                <li>Give it a name: "Router Alerts"</li>
+                <li>Upload a custom icon (optional)</li>
+                <li>Click <strong>Create</strong></li>
+                <li><strong>Copy the webhook URL</strong> - you'll need this!</li>
+            </ol>
+            <div class="alert">
+                <strong>⚠️ Important:</strong> Keep your webhook URL secret! Anyone with this URL can post to your Teams channel.
+            </div>
+        </div>
+
+        <h2>Step 3: Create the n8n Workflow</h2>
+
+        <div class="step">
+            <div class="step-number">Building Your Monitoring Workflow</div>
+
+            <h3>1. Add a Schedule Trigger</h3>
+            <p>This will run your workflow every 5 minutes to check router status.</p>
+            <ol>
+                <li>In n8n, click the <strong>+</strong> button to add a node</li>
+                <li>Search for <strong>"Schedule Trigger"</strong></li>
+                <li>Set it to run every <strong>5 minutes</strong></li>
+            </ol>
+
+            <h3>2. Add HTTP Request Node</h3>
+            <p>This fetches your router data.</p>
+            <ol>
+                <li>Add a new node → <strong>HTTP Request</strong></li>
+                <li>Method: <strong>GET</strong></li>
+                <li>URL: <code>https://api.kerchunknetworks.com/data/routers.json</code></li>
+                <li>Click <strong>Execute Node</strong> to test</li>
+            </ol>
+
+            <h3>3. Add Function Node (Process Router Data)</h3>
+            <p>This checks if any routers changed state.</p>
+            <ol>
+                <li>Add a new node → <strong>Function</strong></li>
+                <li>Paste this code:</li>
+            </ol>
+            <pre><code>// Get current router data
+const currentRouters = $input.all()[0].json.routers;
+
+// Get previous state from workflow static data (persisted between runs)
+const previousState = $workflow.staticData.routerStates || {};
+
+// Initialize if first run
+if (Object.keys(previousState).length === 0) {
+  currentRouters.forEach(router => {
+    previousState[router.id] = router.state;
+  });
+  $workflow.staticData.routerStates = previousState;
+  return []; // Don't send alerts on first run
+}
+
+// Check for state changes
+const alerts = [];
+
+currentRouters.forEach(router => {
+  const previousRouterState = previousState[router.id];
+
+  if (previousRouterState !== router.state) {
+    alerts.push({
+      name: router.name,
+      id: router.id,
+      previousState: previousRouterState,
+      currentState: router.state,
+      timestamp: new Date().toISOString()
+    });
+
+    // Update state
+    previousState[router.id] = router.state;
+  }
+});
+
+// Save updated state
+$workflow.staticData.routerStates = previousState;
+
+// Return alerts (if any)
+return alerts.map(alert => ({ json: alert }));</code></pre>
+
+            <h3>4. Add Microsoft Teams Node</h3>
+            <ol>
+                <li>Add a new node → <strong>HTTP Request</strong> (we'll use webhook)</li>
+                <li>Method: <strong>POST</strong></li>
+                <li>URL: <strong>Your Teams Webhook URL from Step 2</strong></li>
+                <li>Headers: <code>Content-Type: application/json</code></li>
+                <li>Body → JSON:</li>
+            </ol>
+            <pre><code>{
+  "@type": "MessageCard",
+  "@context": "https://schema.org/extensions",
+  "summary": "Router Status Alert",
+  "themeColor": "{{$json.currentState === 'offline' ? 'FF0000' : '00FF00'}}",
+  "title": "🚨 Router Status Change",
+  "sections": [{
+    "activityTitle": "{{$json.name}}",
+    "activitySubtitle": "Status changed from {{$json.previousState}} to {{$json.currentState}}",
+    "facts": [
+      {
+        "name": "Router Name:",
+        "value": "{{$json.name}}"
+      },
+      {
+        "name": "Router ID:",
+        "value": "{{$json.id}}"
+      },
+      {
+        "name": "Previous State:",
+        "value": "{{$json.previousState}}"
+      },
+      {
+        "name": "Current State:",
+        "value": "{{$json.currentState}}"
+      },
+      {
+        "name": "Time:",
+        "value": "{{$json.timestamp}}"
+      }
+    ],
+    "markdown": true
+  }],
+  "potentialAction": [{
+    "@type": "OpenUri",
+    "name": "View Dashboard",
+    "targets": [{
+      "os": "default",
+      "uri": "https://kerchunknetworks.com/monitor.html"
+    }]
+  }]
+}</code></pre>
+        </div>
+
+        <h2>Step 4: Test Your Workflow</h2>
+
+        <div class="step">
+            <div class="step-number">Testing</div>
+            <ol>
+                <li>Click <strong>Execute Workflow</strong> in n8n</li>
+                <li>Check each node for errors (green = success)</li>
+                <li>On first run, no alerts should be sent (initializing state)</li>
+                <li>When a router goes offline/online, you should receive a Teams notification</li>
+            </ol>
+
+            <div class="alert success">
+                <strong>✅ Success!</strong> If you see a message in Teams, your workflow is working!
+            </div>
+        </div>
+
+        <h2>Step 5: Activate the Workflow</h2>
+
+        <div class="step">
+            <div class="step-number">Enable Automation</div>
+            <ol>
+                <li>Save your workflow (give it a name like "Router Status Monitor")</li>
+                <li>Toggle the <strong>Active</strong> switch in the top right</li>
+                <li>Your workflow will now run automatically every 5 minutes</li>
+            </ol>
+        </div>
+
+        <h2>Advanced Customization</h2>
+
+        <h3>Change Alert Frequency</h3>
+        <p>In the Schedule Trigger node, adjust the interval:</p>
+        <ul>
+            <li><strong>Every 1 minute</strong> - More responsive, more API calls</li>
+            <li><strong>Every 5 minutes</strong> - Good balance (recommended)</li>
+            <li><strong>Every 10 minutes</strong> - Less frequent checks</li>
+        </ul>
+
+        <h3>Add More Alert Types</h3>
+        <p>You can modify the Function node to alert on:</p>
+        <ul>
+            <li>Routers being offline for more than 10 minutes</li>
+            <li>Multiple routers going offline at once (possible network issue)</li>
+            <li>Specific routers (e.g., only alert for critical vehicles)</li>
+        </ul>
+
+        <h3>Send Daily Status Reports</h3>
+        <p>Create a second workflow with a daily schedule that sends a summary:</p>
+        <ul>
+            <li>Total uptime percentage</li>
+            <li>Number of incidents</li>
+            <li>Current router status</li>
+        </ul>
+
+        <h2>Troubleshooting</h2>
+
+        <div class="alert">
+            <strong>⚠️ Workflow not running?</strong>
+            <ul>
+                <li>Check that the workflow is <strong>Active</strong> (toggle in top right)</li>
+                <li>Verify your API URL is correct</li>
+                <li>Check n8n execution logs for errors</li>
+            </ul>
+        </div>
+
+        <div class="alert">
+            <strong>⚠️ Not receiving Teams notifications?</strong>
+            <ul>
+                <li>Verify the webhook URL is correct</li>
+                <li>Check that the webhook is still enabled in Teams</li>
+                <li>Test by executing the Teams node directly</li>
+            </ul>
+        </div>
+
+        <h2>Next Steps</h2>
+
+        <ul>
+            <li>Set up <a href="analytics-dashboard.html">Historical Analytics Dashboard</a></li>
+            <li>Configure <a href="gps-configuration.html">GPS Tracking</a></li>
+            <li>Explore <a href="troubleshooting.html">Advanced Troubleshooting</a></li>
+        </ul>
+
+        <hr style="margin: 40px 0; border: none; border-top: 2px solid #f0f0f0;">
+
+        <p style="color: #6c757d; text-align: center;">
+            <small>Need help? Contact IT at <a href="mailto:admin@kerchunknetworks.com">admin@kerchunknetworks.com</a></small>
+        </p>
+    </div>
+</body>
+</html>

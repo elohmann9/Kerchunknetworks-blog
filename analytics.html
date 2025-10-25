@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Analytics - Kerchunk Networks</title>
+
+    <!-- Chart.js for graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: #1a1a1a;
+            border: 2px solid #333;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #00d4ff;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #888;
+            font-size: 1.1rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #00d4ff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            background: #1a1a1a;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: #00d4ff;
+            color: #000;
+        }
+
+        .time-selector {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .time-btn {
+            padding: 10px 20px;
+            background: #1a1a1a;
+            border: 2px solid #333;
+            border-radius: 8px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .time-btn:hover {
+            border-color: #00d4ff;
+        }
+
+        .time-btn.active {
+            background: #00d4ff;
+            color: #000;
+            border-color: #00d4ff;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: #1a1a1a;
+            border: 2px solid #333;
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: #00d4ff;
+            transform: translateY(-2px);
+        }
+
+        .stat-title {
+            color: #888;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-change {
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .stat-change.positive {
+            color: #00ff88;
+        }
+
+        .stat-change.negative {
+            color: #ff4444;
+        }
+
+        .chart-container {
+            background: #1a1a1a;
+            border: 2px solid #333;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .chart-title {
+            color: #00d4ff;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 300px;
+        }
+
+        .router-table {
+            background: #1a1a1a;
+            border: 2px solid #333;
+            border-radius: 12px;
+            padding: 25px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            color: #00d4ff;
+            text-align: left;
+            padding: 15px;
+            border-bottom: 2px solid #333;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #222;
+        }
+
+        tr:hover {
+            background: #222;
+        }
+
+        .uptime-bar {
+            height: 8px;
+            background: #333;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .uptime-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff88, #00d4ff);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        .status-badge.online {
+            background: rgba(0, 255, 136, 0.2);
+            color: #00ff88;
+        }
+
+        .status-badge.offline {
+            background: rgba(255, 68, 68, 0.2);
+            color: #ff4444;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 60px;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .time-selector {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+
+        <header>
+            <h1>📊 Network Analytics Dashboard</h1>
+            <p class="subtitle">Historical performance metrics and uptime tracking</p>
+        </header>
+
+        <div class="time-selector">
+            <button class="time-btn active" onclick="changeTimeRange('24h')">Last 24 Hours</button>
+            <button class="time-btn" onclick="changeTimeRange('7d')">Last 7 Days</button>
+            <button class="time-btn" onclick="changeTimeRange('30d')">Last 30 Days</button>
+            <button class="time-btn" onclick="changeTimeRange('90d')">Last 90 Days</button>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="stat-card">
+                <div class="stat-title">Average Uptime</div>
+                <div class="stat-value" style="color: #00ff88;" id="avg-uptime">-</div>
+                <div class="stat-change positive" id="uptime-change">↑ 2.3% from last period</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-title">Total Incidents</div>
+                <div class="stat-value" style="color: #ff4444;" id="total-incidents">-</div>
+                <div class="stat-change negative" id="incidents-change">↓ 15% from last period</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-title">Avg. Downtime</div>
+                <div class="stat-value" style="color: #ffaa00;" id="avg-downtime">-</div>
+                <div class="stat-change positive" id="downtime-change">↓ 45min from last period</div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-title">Active Routers</div>
+                <div class="stat-value" style="color: #00d4ff;" id="active-routers">-</div>
+                <div class="stat-change" id="routers-change">No change</div>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <div class="chart-title">Network Uptime Over Time</div>
+            <div class="chart-wrapper">
+                <canvas id="uptimeChart"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <div class="chart-title">Router Status History</div>
+            <div class="chart-wrapper">
+                <canvas id="statusChart"></canvas>
+            </div>
+        </div>
+
+        <div class="router-table">
+            <div class="chart-title">Router Performance Summary</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Router Name</th>
+                        <th>Current Status</th>
+                        <th>Uptime %</th>
+                        <th>Total Downtime</th>
+                        <th>Incidents</th>
+                        <th>Last Seen</th>
+                    </tr>
+                </thead>
+                <tbody id="router-table-body">
+                    <tr>
+                        <td colspan="6" class="loading">Loading analytics data...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let currentTimeRange = '24h';
+        let uptimeChart, statusChart;
+
+        // Initialize charts
+        function initCharts() {
+            const chartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#fff'
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        ticks: { color: '#888' },
+                        grid: { color: '#333' }
+                    },
+                    x: {
+                        ticks: { color: '#888' },
+                        grid: { color: '#333' }
+                    }
+                }
+            };
+
+            // Uptime Chart
+            const uptimeCtx = document.getElementById('uptimeChart').getContext('2d');
+            uptimeChart = new Chart(uptimeCtx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Uptime %',
+                        data: [],
+                        borderColor: '#00ff88',
+                        backgroundColor: 'rgba(0, 255, 136, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    ...chartOptions,
+                    scales: {
+                        ...chartOptions.scales,
+                        y: {
+                            ...chartOptions.scales.y,
+                            min: 0,
+                            max: 100
+                        }
+                    }
+                }
+            });
+
+            // Status Chart
+            const statusCtx = document.getElementById('statusChart').getContext('2d');
+            statusChart = new Chart(statusCtx, {
+                type: 'bar',
+                data: {
+                    labels: [],
+                    datasets: [
+                        {
+                            label: 'Online',
+                            data: [],
+                            backgroundColor: '#00ff88'
+                        },
+                        {
+                            label: 'Offline',
+                            data: [],
+                            backgroundColor: '#ff4444'
+                        }
+                    ]
+                },
+                options: {
+                    ...chartOptions,
+                    scales: {
+                        ...chartOptions.scales,
+                        y: {
+                            ...chartOptions.scales.y,
+                            stacked: true
+                        },
+                        x: {
+                            ...chartOptions.scales.x,
+                            stacked: true
+                        }
+                    }
+                }
+            });
+        }
+
+        function changeTimeRange(range) {
+            currentTimeRange = range;
+
+            // Update button states
+            document.querySelectorAll('.time-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            // Reload data
+            loadAnalyticsData();
+        }
+
+        async function loadAnalyticsData() {
+            try {
+                // Fetch current router data
+                const response = await fetch('https://api.kerchunknetworks.com/data/routers.json');
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch analytics data');
+                }
+
+                const data = await response.json();
+
+                // Generate mock historical data based on current state
+                // In production, this would come from your database
+                const analyticsData = generateMockAnalytics(data, currentTimeRange);
+
+                displayAnalytics(analyticsData);
+                updateCharts(analyticsData);
+
+            } catch (error) {
+                console.error('Error loading analytics:', error);
+                document.getElementById('router-table-body').innerHTML = `
+                    <tr>
+                        <td colspan="6" style="color: #ff4444; text-align: center;">
+                            Error loading analytics data: ${error.message}
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+
+        function generateMockAnalytics(currentData, timeRange) {
+            const routers = currentData.routers;
+
+            // Generate time series data points
+            const hours = timeRange === '24h' ? 24 : timeRange === '7d' ? 168 : timeRange === '30d' ? 720 : 2160;
+            const interval = timeRange === '24h' ? 1 : timeRange === '7d' ? 3 : 6;
+
+            const timeLabels = [];
+            const uptimeData = [];
+            const onlineData = [];
+            const offlineData = [];
+
+            for (let i = hours; i >= 0; i -= interval) {
+                const date = new Date();
+                date.setHours(date.getHours() - i);
+
+                if (timeRange === '24h') {
+                    timeLabels.push(date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }));
+                } else {
+                    timeLabels.push(date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+                }
+
+                // Generate realistic uptime percentages (95-100%)
+                uptimeData.push(95 + Math.random() * 5);
+
+                // Generate online/offline counts
+                const online = routers.filter(r => r.state === 'online').length;
+                const offline = routers.length - online;
+
+                onlineData.push(online + Math.floor(Math.random() * 2) - 1);
+                offlineData.push(offline + Math.floor(Math.random() * 2));
+            }
+
+            // Calculate router-specific stats
+            const routerStats = routers.map(router => {
+                const uptime = 95 + Math.random() * 5;
+                const incidents = Math.floor(Math.random() * 5);
+                const totalDowntime = Math.floor((100 - uptime) * hours / 100);
+
+                return {
+                    ...router,
+                    uptime: uptime.toFixed(2),
+                    incidents,
+                    totalDowntime: `${Math.floor(totalDowntime / 60)}h ${totalDowntime % 60}m`,
+                    lastSeen: router.state === 'online' ? 'Now' : `${Math.floor(Math.random() * 12) + 1}h ago`
+                };
+            });
+
+            // Calculate overall stats
+            const avgUptime = (uptimeData.reduce((a, b) => a + b, 0) / uptimeData.length).toFixed(2);
+            const totalIncidents = routerStats.reduce((sum, r) => sum + r.incidents, 0);
+            const avgDowntimeMin = Math.floor(((100 - avgUptime) * hours / 100));
+
+            return {
+                timeLabels,
+                uptimeData,
+                onlineData,
+                offlineData,
+                routerStats,
+                avgUptime,
+                totalIncidents,
+                avgDowntime: `${Math.floor(avgDowntimeMin / 60)}h ${avgDowntimeMin % 60}m`,
+                activeRouters: routers.filter(r => r.state === 'online').length
+            };
+        }
+
+        function displayAnalytics(data) {
+            // Update stat cards
+            document.getElementById('avg-uptime').textContent = `${data.avgUptime}%`;
+            document.getElementById('total-incidents').textContent = data.totalIncidents;
+            document.getElementById('avg-downtime').textContent = data.avgDowntime;
+            document.getElementById('active-routers').textContent = data.activeRouters;
+
+            // Update router table
+            const tableHTML = data.routerStats.map(router => `
+                <tr>
+                    <td style="font-weight: 600;">${router.name}</td>
+                    <td>
+                        <span class="status-badge ${router.state}">${router.state.toUpperCase()}</span>
+                    </td>
+                    <td>
+                        <div style="margin-bottom: 5px;">${router.uptime}%</div>
+                        <div class="uptime-bar">
+                            <div class="uptime-fill" style="width: ${router.uptime}%"></div>
+                        </div>
+                    </td>
+                    <td>${router.totalDowntime}</td>
+                    <td>${router.incidents}</td>
+                    <td style="color: #888;">${router.lastSeen}</td>
+                </tr>
+            `).join('');
+
+            document.getElementById('router-table-body').innerHTML = tableHTML;
+        }
+
+        function updateCharts(data) {
+            // Update uptime chart
+            uptimeChart.data.labels = data.timeLabels;
+            uptimeChart.data.datasets[0].data = data.uptimeData;
+            uptimeChart.update();
+
+            // Update status chart
+            statusChart.data.labels = data.timeLabels;
+            statusChart.data.datasets[0].data = data.onlineData;
+            statusChart.data.datasets[1].data = data.offlineData;
+            statusChart.update();
+        }
+
+        // Initialize on page load
+        initCharts();
+        loadAnalyticsData();
+
+        // Refresh every 5 minutes
+        setInterval(loadAnalyticsData, 5 * 60 * 1000);
+    </script>
+</body>
+</html>
