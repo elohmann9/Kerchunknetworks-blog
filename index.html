@@ -274,9 +274,161 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
+
+        /* PIN Modal Styles */
+        .pin-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .pin-modal-content {
+            background: white;
+            margin: 10% auto;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 400px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .pin-modal h3 {
+            color: var(--fire-red);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .pin-modal p {
+            color: var(--fire-gray);
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        .pin-input {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        .pin-input:focus {
+            outline: none;
+            border-color: var(--fire-red);
+        }
+
+        .pin-input.error {
+            border-color: #dc3545;
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .pin-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .pin-submit, .pin-cancel {
+            flex: 1;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pin-submit {
+            background: var(--fire-red);
+            color: white;
+        }
+
+        .pin-submit:hover {
+            background: #a04944;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(184, 84, 80, 0.3);
+        }
+
+        .pin-cancel {
+            background: #f0f0f0;
+            color: var(--fire-gray);
+        }
+
+        .pin-cancel:hover {
+            background: #e0e0e0;
+        }
+
+        .pin-error-message {
+            color: #dc3545;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .protected-link {
+            position: relative;
+        }
+
+        .protected-link::after {
+            content: " 🔒";
+            font-size: 0.8em;
+        }
     </style>
 </head>
 <body>
+    <!-- PIN Modal -->
+    <div id="pinModal" class="pin-modal">
+        <div class="pin-modal-content">
+            <h3>🔒 Secure Access Required</h3>
+            <p>This content requires authorized access. Please enter your PIN.</p>
+            <input type="password"
+                   id="pinInput"
+                   class="pin-input"
+                   placeholder="Enter PIN"
+                   maxlength="6"
+                   autocomplete="off">
+            <div class="pin-error-message" id="pinError">Incorrect PIN. Please try again.</div>
+            <div class="pin-buttons">
+                <button class="pin-cancel" onclick="closePinModal()">Cancel</button>
+                <button class="pin-submit" onclick="validatePin()">Submit</button>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <!-- Emergency Alert Banner (Hidden by default) -->
         <div id="emergencyBanner" class="emergency-banner">
@@ -356,9 +508,9 @@
                     Real-time dashboards, n8n automation workflows, Home Assistant integrations, and comprehensive network visibility tools.
                 </p>
                 <div class="card-links">
-                    <a href="monitor.html" class="quick-link">Dashboard</a>
+                    <a href="#" class="quick-link protected-link" data-protected-url="monitor.html" onclick="requirePin(event, 'monitor.html'); return false;">Dashboard</a>
                     <a href="guides/n8n-teams-alerts-setup.html" class="quick-link">n8n Alerts</a>
-                    <a href="analytics.html" class="quick-link">Analytics</a>
+                    <a href="#" class="quick-link protected-link" data-protected-url="analytics.html" onclick="requirePin(event, 'analytics.html'); return false;">Analytics</a>
                 </div>
             </div>
 
@@ -397,7 +549,7 @@
                     Real-time vehicle tracking, Tablet Command, Versaterm AVL configuration, GPS troubleshooting, location services, and emergency vehicle tracking systems.
                 </p>
                 <div class="card-links">
-                    <a href="gps-tracking.html" class="quick-link">Live Map</a>
+                    <a href="#" class="quick-link protected-link" data-protected-url="gps-tracking.html" onclick="requirePin(event, 'gps-tracking.html'); return false;">Live Map</a>
                     <span class="quick-link">Tablet Command</span>
                     <span class="quick-link">Versaterm AVL</span>
                     <span class="quick-link">Unit 3311</span>
@@ -434,6 +586,114 @@
     </div>
 
     <script>
+        // PIN Authentication System
+        const CORRECT_PIN = '1234'; // Change this to your desired PIN
+        const PIN_SESSION_KEY = 'kerchunk_auth';
+        let pendingUrl = '';
+
+        // Check if user is already authenticated
+        function isAuthenticated() {
+            const auth = sessionStorage.getItem(PIN_SESSION_KEY);
+            return auth === 'true';
+        }
+
+        // Require PIN for protected pages
+        function requirePin(event, url) {
+            if (event) {
+                event.preventDefault();
+            }
+
+            // Check if already authenticated
+            if (isAuthenticated()) {
+                window.location.href = url;
+                return;
+            }
+
+            // Store the URL to redirect after successful authentication
+            pendingUrl = url;
+
+            // Show PIN modal
+            const modal = document.getElementById('pinModal');
+            const pinInput = document.getElementById('pinInput');
+            const pinError = document.getElementById('pinError');
+
+            modal.style.display = 'block';
+            pinError.style.display = 'none';
+            pinInput.value = '';
+            pinInput.classList.remove('error');
+
+            // Focus on input
+            setTimeout(() => pinInput.focus(), 100);
+        }
+
+        // Validate entered PIN
+        function validatePin() {
+            const pinInput = document.getElementById('pinInput');
+            const pinError = document.getElementById('pinError');
+            const enteredPin = pinInput.value;
+
+            if (enteredPin === CORRECT_PIN) {
+                // Correct PIN - authenticate and redirect
+                sessionStorage.setItem(PIN_SESSION_KEY, 'true');
+
+                // Show success briefly before redirect
+                const modal = document.getElementById('pinModal');
+                modal.style.display = 'none';
+
+                // Add small delay to ensure sessionStorage is saved
+                setTimeout(() => {
+                    console.log('Redirecting to:', pendingUrl);
+                    window.location.href = pendingUrl;
+                }, 100);
+            } else {
+                // Incorrect PIN - show error
+                pinInput.classList.add('error');
+                pinError.style.display = 'block';
+                pinInput.value = '';
+                pinInput.focus();
+
+                // Remove error animation after it completes
+                setTimeout(() => {
+                    pinInput.classList.remove('error');
+                }, 500);
+            }
+        }
+
+        // Close PIN modal
+        function closePinModal() {
+            const modal = document.getElementById('pinModal');
+            const pinInput = document.getElementById('pinInput');
+            const pinError = document.getElementById('pinError');
+
+            modal.style.display = 'none';
+            pinInput.value = '';
+            pinInput.classList.remove('error');
+            pinError.style.display = 'none';
+            pendingUrl = '';
+        }
+
+        // Allow Enter key to submit PIN
+        document.addEventListener('DOMContentLoaded', function() {
+            const pinInput = document.getElementById('pinInput');
+            if (pinInput) {
+                pinInput.addEventListener('keypress', function(event) {
+                    if (event.key === 'Enter') {
+                        validatePin();
+                    }
+                });
+            }
+
+            // Close modal when clicking outside of it
+            const modal = document.getElementById('pinModal');
+            if (modal) {
+                modal.addEventListener('click', function(event) {
+                    if (event.target === modal) {
+                        closePinModal();
+                    }
+                });
+            }
+        });
+
         // Update last modified time
         document.addEventListener('DOMContentLoaded', function() {
             const lastUpdatedElement = document.getElementById('lastUpdated');

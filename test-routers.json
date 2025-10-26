@@ -1,0 +1,35 @@
+{
+  "routers": [
+    {
+      "id": "3311",
+      "name": "Unit 3311",
+      "state": "online",
+      "last_known_location": {
+        "lat": 37.4299,
+        "lng": -122.2540,
+        "speed": 0
+      }
+    },
+    {
+      "id": "3321",
+      "name": "Unit 3321",
+      "state": "online",
+      "last_known_location": {
+        "lat": 37.4350,
+        "lng": -122.2600,
+        "speed": 35
+      }
+    },
+    {
+      "id": "3331",
+      "name": "Unit 3331",
+      "state": "offline",
+      "last_known_location": {
+        "lat": 37.4250,
+        "lng": -122.2480,
+        "speed": 0
+      }
+    }
+  ],
+  "last_update": "2025-01-26T12:00:00Z"
+}
