@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPS Debug Page</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        #map {
+            height: 500px;
+            width: 100%;
+            margin-bottom: 20px;
+            border: 2px solid #333;
+        }
+        .info {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .success { color: green; }
+        .error { color: red; }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            background: #b85450;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #a04944;
+        }
+    </style>
+</head>
+<body>
+    <h1>GPS Tracking Debug Page</h1>
+
+    <div class="info">
+        <h2>Authentication Status</h2>
+        <div id="auth-status"></div>
+        <button onclick="setAuth()">Set Auth</button>
+        <button onclick="clearAuth()">Clear Auth</button>
+    </div>
+
+    <div class="info">
+        <h2>Map Test</h2>
+        <div id="map"></div>
+        <button onclick="testMap()">Add Test Markers</button>
+        <button onclick="clearMarkers()">Clear Markers</button>
+    </div>
+
+    <div class="info">
+        <h2>API Test</h2>
+        <button onclick="testAPI()">Test API</button>
+        <button onclick="testLocalJSON()">Test Local JSON</button>
+        <button onclick="testMockData()">Test Mock Data</button>
+        <div id="api-status"></div>
+    </div>
+
+    <div class="info">
+        <h2>Console Log</h2>
+        <div id="console-log" style="background: #f9f9f9; padding: 10px; max-height: 300px; overflow-y: auto; font-family: monospace; font-size: 12px;"></div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        const PIN_SESSION_KEY = 'kerchunk_auth';
+        let map;
+        let markers = {};
+
+        // Intercept console.log
+        const oldLog = console.log;
+        console.log = function(...args) {
+            oldLog.apply(console, args);
+            const logDiv = document.getElementById('console-log');
+            logDiv.innerHTML += args.join(' ') + '<br>';
+            logDiv.scrollTop = logDiv.scrollHeight;
+        };
+
+        // Initialize map
+        console.log('Initializing map...');
+        map = L.map('map').setView([37.4299, -122.2540], 12);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 19
+        }).addTo(map);
+        console.log('Map initialized successfully');
+
+        function checkAuth() {
+            const auth = sessionStorage.getItem(PIN_SESSION_KEY);
+            const statusDiv = document.getElementById('auth-status');
+            if (auth === 'true') {
+                statusDiv.innerHTML = '<p class="success">✓ Authenticated</p>';
+            } else {
+                statusDiv.innerHTML = '<p class="error">✗ Not Authenticated</p>';
+            }
+        }
+
+        function setAuth() {
+            sessionStorage.setItem(PIN_SESSION_KEY, 'true');
+            console.log('Auth set to true');
+            checkAuth();
+        }
+
+        function clearAuth() {
+            sessionStorage.removeItem(PIN_SESSION_KEY);
+            console.log('Auth cleared');
+            checkAuth();
+        }
+
+        function testMap() {
+            console.log('Adding test markers...');
+
+            const testMarkers = [
+                { name: 'Unit 3311', lat: 37.4299, lng: -122.2540 },
+                { name: 'Unit 3321', lat: 37.4350, lng: -122.2600 },
+                { name: 'Unit 3331', lat: 37.4250, lng: -122.2480 }
+            ];
+
+            testMarkers.forEach(item => {
+                console.log(`Adding marker for ${item.name} at [${item.lat}, ${item.lng}]`);
+                const icon = L.divIcon({
+                    html: '🚒',
+                    className: 'fire-truck-icon',
+                    iconSize: [40, 40],
+                    iconAnchor: [20, 20]
+                });
+
+                const marker = L.marker([item.lat, item.lng], { icon }).addTo(map);
+                marker.bindPopup(`<b>${item.name}</b><br>Lat: ${item.lat}<br>Lng: ${item.lng}`);
+                markers[item.name] = marker;
+            });
+
+            console.log('Total markers added:', Object.keys(markers).length);
+
+            // Fit bounds
+            const bounds = Object.values(markers).map(m => m.getLatLng());
+            if (bounds.length > 0) {
+                map.fitBounds(bounds, { padding: [50, 50] });
+                console.log('Map fitted to bounds');
+            }
+        }
+
+        function clearMarkers() {
+            Object.values(markers).forEach(m => m.remove());
+            markers = {};
+            console.log('All markers cleared');
+        }
+
+        async function testAPI() {
+            const statusDiv = document.getElementById('api-status');
+            statusDiv.innerHTML = '<p>Testing API...</p>';
+            console.log('Testing API: https://api.kerchunknetworks.com/data/routers.json');
+
+            try {
+                const response = await fetch('https://api.kerchunknetworks.com/data/routers.json');
+                console.log('API Response status:', response.status);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log('API Data:', data);
+                statusDiv.innerHTML = '<p class="success">✓ API Working</p><pre>' + JSON.stringify(data, null, 2) + '</pre>';
+            } catch (error) {
+                console.error('API Error:', error);
+                statusDiv.innerHTML = '<p class="error">✗ API Failed: ' + error.message + '</p>';
+            }
+        }
+
+        async function testLocalJSON() {
+            const statusDiv = document.getElementById('api-status');
+            statusDiv.innerHTML = '<p>Testing Local JSON...</p>';
+            console.log('Testing local file: test-routers.json');
+
+            try {
+                const response = await fetch('test-routers.json');
+                console.log('Local JSON Response status:', response.status);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log('Local JSON Data:', data);
+                statusDiv.innerHTML = '<p class="success">✓ Local JSON Working</p><pre>' + JSON.stringify(data, null, 2) + '</pre>';
+            } catch (error) {
+                console.error('Local JSON Error:', error);
+                statusDiv.innerHTML = '<p class="error">✗ Local JSON Failed: ' + error.message + '</p>';
+            }
+        }
+
+        function testMockData() {
+            const statusDiv = document.getElementById('api-status');
+            console.log('Testing mock data...');
+
+            const mockData = {
+                routers: [
+                    {
+                        id: "3311",
+                        name: "Unit 3311",
+                        state: "online",
+                        last_known_location: { lat: 37.4299, lng: -122.2540, speed: 0 }
+                    },
+                    {
+                        id: "3321",
+                        name: "Unit 3321",
+                        state: "online",
+                        last_known_location: { lat: 37.4350, lng: -122.2600, speed: 35 }
+                    },
+                    {
+                        id: "3331",
+                        name: "Unit 3331",
+                        state: "offline",
+                        last_known_location: { lat: 37.4250, lng: -122.2480, speed: 0 }
+                    }
+                ],
+                last_update: new Date().toISOString()
+            };
+
+            console.log('Mock Data:', mockData);
+            statusDiv.innerHTML = '<p class="success">✓ Mock Data Loaded</p><pre>' + JSON.stringify(mockData, null, 2) + '</pre>';
+        }
+
+        // Check auth on load
+        window.onload = function() {
+            checkAuth();
+            console.log('Page loaded - ready for testing');
+        };
+    </script>
+</body>
+</html>
