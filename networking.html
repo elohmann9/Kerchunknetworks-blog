@@ -4,7 +4,505 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Networking Solutions - Kerchunk Networks</title>
-    <link rel="stylesheet" href="assets/css/shared-styles.css">
+    <meta name="description" content="Expert network design and implementation for fire departments. Cradlepoint routers, cellular connectivity, and comprehensive network solutions.">
+
+    <style>
+        :root {
+            --primary-tan: #e8ddd0;
+            --secondary-beige: #d4c4b0;
+            --maroon: #8b4049;
+            --dark-maroon: #6b3038;
+            --accent-gold: #d4a574;
+            --text-dark: #3a2a2a;
+            --text-light: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--primary-tan);
+        }
+
+        /* Background */
+        .background-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: url('assets/images/hero-background.jpeg');
+            background-size: contain;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: var(--primary-tan);
+        }
+
+        .background-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(232, 221, 208, 0.3) 0%, rgba(212, 196, 176, 0.3) 100%);
+        }
+
+        /* Navigation */
+        .nav-header {
+            background: rgba(139, 64, 73, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--accent-gold);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 0;
+        }
+
+        .logo-link {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-link:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .logo-subtitle {
+            font-size: 0.75rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 5px;
+            list-style: none;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 20px 30px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link.active {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--accent-gold);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--accent-gold);
+        }
+
+        .nav-link:hover::after {
+            width: 80%;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.8rem;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        /* Page Content */
+        .page-content {
+            padding-top: 40px;
+        }
+
+        .page-hero {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            margin-bottom: 20px;
+        }
+
+        .page-hero h1 {
+            font-size: 3rem;
+            color: var(--maroon);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .page-hero p {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+        }
+
+        .content-section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 60px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .container > h2 {
+            font-size: 2.5rem;
+            color: var(--maroon);
+            margin-bottom: 15px;
+            margin-top: 50px;
+            font-weight: 700;
+            border-bottom: 3px solid var(--accent-gold);
+            padding-bottom: 10px;
+        }
+
+        .container > h2:first-child {
+            margin-top: 0;
+        }
+
+        .container > p {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        /* Diagram Section */
+        .diagram-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            border: 2px solid var(--accent-gold);
+        }
+
+        .diagram-section h3 {
+            font-size: 2rem;
+            color: var(--maroon);
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .diagram-image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Feature Boxes */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .feature-box {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid var(--maroon);
+            transition: all 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(139, 64, 73, 0.2);
+        }
+
+        .feature-box h3 {
+            font-size: 1.5rem;
+            color: var(--maroon);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .feature-box p {
+            color: var(--text-dark);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .feature-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .feature-box ul li {
+            padding: 6px 0 6px 25px;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .feature-box ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--maroon);
+            font-weight: bold;
+        }
+
+        /* Info Section */
+        .info-section {
+            background: linear-gradient(135deg, rgba(139, 64, 73, 0.05) 0%, rgba(212, 165, 116, 0.05) 100%);
+            border-radius: 12px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+
+        .info-section h3 {
+            font-size: 1.8rem;
+            color: var(--maroon);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .info-section p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .info-section ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 20px 0;
+        }
+
+        .info-section ul li {
+            padding: 10px 0 10px 30px;
+            position: relative;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .info-section ul li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--maroon);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 60px 20px;
+            margin-top: 60px;
+            background: linear-gradient(135deg, rgba(139, 64, 73, 0.1) 0%, rgba(212, 165, 116, 0.1) 100%);
+            border-radius: 15px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.2rem;
+            color: var(--maroon);
+            margin-bottom: 15px;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary {
+            background: var(--maroon);
+            color: var(--text-light);
+        }
+
+        .btn-primary:hover {
+            background: var(--dark-maroon);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(139, 64, 73, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--maroon);
+            border: 3px solid var(--maroon);
+        }
+
+        .btn-secondary:hover {
+            background: var(--maroon);
+            color: var(--text-light);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(139, 64, 73, 0.95);
+            color: var(--text-light);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 3px solid var(--accent-gold);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .nav-container {
+                padding: 0 20px;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(139, 64, 73, 0.98);
+                flex-direction: column;
+                padding: 20px;
+                gap: 0;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                display: none;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-link {
+                padding: 15px 20px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .page-hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .logo-title {
+                font-size: 1.4rem;
+            }
+
+            .logo-icon {
+                font-size: 2rem;
+            }
+
+            .diagram-section {
+                padding: 20px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .page-hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .container > h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="background-wrapper">
@@ -41,9 +539,180 @@
 
         <section class="content-section">
             <div class="container">
-                <h2>Coming Soon</h2>
-                <p>Detailed networking solutions and services information will be available here.</p>
-                <a href="index.html" class="btn btn-primary">Back to Home</a>
+                <h2>Fire Engine Network Architecture</h2>
+                <p>Our comprehensive networking solutions are designed specifically for the unique demands of fire department operations. From apparatus-mounted systems to station infrastructure, we deliver reliable, secure connectivity that first responders can depend on.</p>
+
+                <!-- Network Diagram -->
+                <div class="diagram-section">
+                    <h3>🚒 IBR1900 Fire Engine Network - Unit Configuration</h3>
+                    <img src="diagrams/R1900_Fire_Engine.drawio.png" alt="IBR1900 Fire Engine Network Configuration Diagram" class="diagram-image">
+                </div>
+
+                <h2>Network Components & Architecture</h2>
+                <p>Each fire apparatus is equipped with enterprise-grade networking equipment configured for maximum reliability and redundancy.</p>
+
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <h3>🔥 Cradlepoint IBR1900 Router</h3>
+                        <p>At the heart of each vehicle network:</p>
+                        <ul>
+                            <li>LAN: 192.168.10.1/24</li>
+                            <li>DHCP Range: 192.168.10.10-100</li>
+                            <li>Admin Access: FireDept2025</li>
+                            <li>Dual-modem cellular connectivity</li>
+                            <li>Automatic failover capabilities</li>
+                            <li>Cloud-managed via NetCloud</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-box">
+                        <h3>📡 Cellular Connectivity</h3>
+                        <p>Primary connection with enterprise features:</p>
+                        <ul>
+                            <li>Telnyx eSIM (data00.telnyx)</li>
+                            <li>Private IP: 10.0.0.123</li>
+                            <li>Priority APN configuration</li>
+                            <li>FirstNet ready</li>
+                            <li>Multi-carrier support</li>
+                            <li>Always-on connectivity</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-box">
+                        <h3>🛰️ Starlink Backup</h3>
+                        <p>Satellite redundancy for remote operations:</p>
+                        <ul>
+                            <li>WAN2 Ethernet backup connection</li>
+                            <li>CGNAT addressing</li>
+                            <li>Automatic failover from cellular</li>
+                            <li>50-150 Mbps typical speeds</li>
+                            <li>Low latency for real-time apps</li>
+                            <li>Works anywhere with sky view</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-box">
+                        <h3>📶 WiFi Network</h3>
+                        <p>Dual-band wireless access:</p>
+                        <ul>
+                            <li>2.4GHz: Public-6c6G</li>
+                            <li>5GHz: Public-6c5G / Priority-5GHz</li>
+                            <li>Region: United States</li>
+                            <li>Band Steering: ON</li>
+                            <li>Max Clients: 20</li>
+                            <li>Fire Tablet Emergency Ops priority</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-box">
+                        <h3>💻 Device Management</h3>
+                        <p>Static IP assignment for critical devices:</p>
+                        <ul>
+                            <li>Emergency devices in DHCP pool</li>
+                            <li>Tablets and iPads configured</li>
+                            <li>SSH access with IP restrictions</li>
+                            <li>Remote admin enabled</li>
+                            <li>Secure credential management</li>
+                            <li>SNMP monitoring (Port 161)</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-box">
+                        <h3>📲 Tablet Command Integration</h3>
+                        <p>Incident management connectivity:</p>
+                        <ul>
+                            <li>avl.smo41f.org (Port 12345 UDP)</li>
+                            <li>avl.tabletcommand.com (Port 12121 UDP)</li>
+                            <li>3-second interval updates</li>
+                            <li>9AM-5PM stationary optimization</li>
+                            <li>Default: 300 sentences stored</li>
+                            <li>50m distance threshold</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-box">
+                        <h3>📍 Versaterm AVL</h3>
+                        <p>GPS tracking and dispatch integration:</p>
+                        <ul>
+                            <li>avl.smo41f.org (Port 12345 UDP)</li>
+                            <li>3-second position updates</li>
+                            <li>Stationary mode: 9AM-5PM</li>
+                            <li>Real-time location tracking</li>
+                            <li>CAD system integration</li>
+                            <li>Distance-based reporting</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-box">
+                        <h3>🔒 Security & Monitoring</h3>
+                        <p>Enterprise-grade security features:</p>
+                        <ul>
+                            <li>NetCloud remote management</li>
+                            <li>eSIM control and provisioning</li>
+                            <li>SSH access restrictions</li>
+                            <li>SNMP monitoring enabled</li>
+                            <li>Community: [Secure]</li>
+                            <li>Firmware auto-updates</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Why This Architecture Works</h3>
+                    <p>Our fire engine network design provides several critical advantages:</p>
+                    <ul>
+                        <li><strong>Redundancy:</strong> Dual WAN connections ensure connectivity even when cellular networks are congested or unavailable</li>
+                        <li><strong>Reliability:</strong> Enterprise-grade equipment designed for 24/7 operation in harsh environments</li>
+                        <li><strong>Performance:</strong> Optimized routing and QoS ensures critical applications always have priority</li>
+                        <li><strong>Management:</strong> Cloud-based monitoring and configuration enables fleet-wide updates and troubleshooting</li>
+                        <li><strong>Security:</strong> Multiple layers of protection including firewalls, encryption, and access controls</li>
+                        <li><strong>Scalability:</strong> Architecture supports additional devices and services as needs evolve</li>
+                    </ul>
+                </div>
+
+                <h2>Network Services We Provide</h2>
+                <p>Complete network lifecycle management for fire departments:</p>
+
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <h3>Design & Planning</h3>
+                        <p>Custom network architecture tailored to your fleet and operational requirements.</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <h3>Installation</h3>
+                        <p>Professional installation of all network equipment with minimal apparatus downtime.</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <h3>Configuration</h3>
+                        <p>Expert setup of routers, access points, and integration with your existing systems.</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <h3>24/7 Monitoring</h3>
+                        <p>Proactive monitoring of all network devices with automatic alerting and response.</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <h3>Ongoing Support</h3>
+                        <p>Dedicated technical support with rapid response times for emergency issues.</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <h3>Optimization</h3>
+                        <p>Regular performance tuning and updates to ensure optimal network performance.</p>
+                    </div>
+                </div>
+
+                <div class="cta-section">
+                    <h2>Ready to Upgrade Your Network?</h2>
+                    <p>Contact us for a free consultation and network assessment for your fire department.</p>
+                    <div class="cta-buttons">
+                        <a href="mailto:contact@kerchunknetworks.com" class="btn btn-primary">Request Consultation</a>
+                        <a href="products.html" class="btn btn-secondary">View Products</a>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -54,6 +723,18 @@
         </div>
     </footer>
 
-    <script src="assets/js/navigation.js"></script>
+    <script>
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const navMenu = document.getElementById('navMenu');
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
