@@ -1,0 +1,2221 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" prefix="content: http://purl.org/rss/1.0/modules/content/  dc: http://purl.org/dc/terms/  foaf: http://xmlns.com/foaf/0.1/  og: http://ogp.me/ns#  rdfs: http://www.w3.org/2000/01/rdf-schema#  schema: http://schema.org/  sioc: http://rdfs.org/sioc/ns#  sioct: http://rdfs.org/sioc/types#  skos: http://www.w3.org/2004/02/skos/core#  xsd: http://www.w3.org/2001/XMLSchema# ">
+<head>
+  <meta charset="utf-8" />
+<meta name="description" content="Page Not FoundThe requested page could not be found.Please try one of the following to locate the page that you were looking for:If you typed the page address in the address bar, make sure that it is spelled correctly.Go to our homepage, and browse through the site navigation to find the information you want.Try our search." />
+<meta name="robots" content="max-image-preview:standard" />
+<link rel="canonical" href="https://www.firstnet.gov/page-not-found" />
+<meta name="Generator" content="Drupal 10 (https://www.drupal.org)" />
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" href="/sites/default/files/favicon.ico" type="image/vnd.microsoft.icon" />
+
+  <title>Page Not Found | First Responder Network Authority</title>
+  <link rel="stylesheet" media="all" href="/sites/default/files/css/css_sUPrj8F1wi3JQWrlBVcN6zx3Z-16Bkb_7nOZQfsVtt8.css?delta=0&amp;language=en&amp;theme=uswds_base_subtheme&amp;include=eJyNkv1uwyAMxF8IwSMhE9yEBnCG7abZ04_0Q6vUbdk_iLv7CfksQobPzQ2UtVQTbiITxFTHhyoYE5hAJCwNFs-yZWQHxLZhIcH3bMk6pmoDDPPYSGv0_X1qNmjK8XecWsQjqEC7sX9CC8S9wAEleBUPOY21YJX_wK8tBmroYtMFsoUzXE0Hcqrz03tIc6IqsCJTQfdytyuGXfIhYHlKxZw_FNvmNXmBwG4_TIaNVHxMPNClp44q9hHNAg3GXmHi5zDfjtW6aMiJJ4yGNxYsLgCjkeALjtBXoe_GfRdGeY3s99SdWk9WavOL6VmDTNh7ADMK_xgNzL7_KKFmLglXdrfTFoqa8QsJ0QMq" />
+<link rel="stylesheet" media="all" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_NDZsZMTe8rvEUVcbpy9uh1LAjkzVuQq-IgmiRPkENBg.css?delta=2&amp;language=en&amp;theme=uswds_base_subtheme&amp;include=eJyNkv1uwyAMxF8IwSMhE9yEBnCG7abZ04_0Q6vUbdk_iLv7CfksQobPzQ2UtVQTbiITxFTHhyoYE5hAJCwNFs-yZWQHxLZhIcH3bMk6pmoDDPPYSGv0_X1qNmjK8XecWsQjqEC7sX9CC8S9wAEleBUPOY21YJX_wK8tBmroYtMFsoUzXE0Hcqrz03tIc6IqsCJTQfdytyuGXfIhYHlKxZw_FNvmNXmBwG4_TIaNVHxMPNClp44q9hHNAg3GXmHi5zDfjtW6aMiJJ4yGNxYsLgCjkeALjtBXoe_GfRdGeY3s99SdWk9WavOL6VmDTNh7ADMK_xgNzL7_KKFmLglXdrfTFoqa8QsJ0QMq" />
+<link rel="stylesheet" media="all" href="https://use.fontawesome.com/releases/v6.1.0/css/all.css" />
+<link rel="stylesheet" media="all" href="https://use.fontawesome.com/releases/v6.1.0/css/v4-shims.css" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_SVSCQ21e8hS3bCRISSvb9R7n-y317jjFBWtb1TDyih0.css?delta=5&amp;language=en&amp;theme=uswds_base_subtheme&amp;include=eJyNkv1uwyAMxF8IwSMhE9yEBnCG7abZ04_0Q6vUbdk_iLv7CfksQobPzQ2UtVQTbiITxFTHhyoYE5hAJCwNFs-yZWQHxLZhIcH3bMk6pmoDDPPYSGv0_X1qNmjK8XecWsQjqEC7sX9CC8S9wAEleBUPOY21YJX_wK8tBmroYtMFsoUzXE0Hcqrz03tIc6IqsCJTQfdytyuGXfIhYHlKxZw_FNvmNXmBwG4_TIaNVHxMPNClp44q9hHNAg3GXmHi5zDfjtW6aMiJJ4yGNxYsLgCjkeALjtBXoe_GfRdGeY3s99SdWk9WavOL6VmDTNh7ADMK_xgNzL7_KKFmLglXdrfTFoqa8QsJ0QMq" />
+<link rel="stylesheet" media="all" href="https://cdn.jsdelivr.net/npm/@uswds/uswds@3.0.1/dist/css/uswds.min.css" />
+<link rel="stylesheet" media="all" href="/sites/default/files/css/css_ABCIq9ODk1KW4WCqfSzaWEVmvRQxeg9PVAaor--EahM.css?delta=7&amp;language=en&amp;theme=uswds_base_subtheme&amp;include=eJyNkv1uwyAMxF8IwSMhE9yEBnCG7abZ04_0Q6vUbdk_iLv7CfksQobPzQ2UtVQTbiITxFTHhyoYE5hAJCwNFs-yZWQHxLZhIcH3bMk6pmoDDPPYSGv0_X1qNmjK8XecWsQjqEC7sX9CC8S9wAEleBUPOY21YJX_wK8tBmroYtMFsoUzXE0Hcqrz03tIc6IqsCJTQfdytyuGXfIhYHlKxZw_FNvmNXmBwG4_TIaNVHxMPNClp44q9hHNAg3GXmHi5zDfjtW6aMiJJ4yGNxYsLgCjkeALjtBXoe_GfRdGeY3s99SdWk9WavOL6VmDTNh7ADMK_xgNzL7_KKFmLglXdrfTFoqa8QsJ0QMq" />
+
+  <script type="application/json" data-drupal-selector="drupal-settings-json">{"path":{"baseUrl":"\/","pathPrefix":"","currentPath":"","currentPathIsAdmin":false,"isFront":false,"currentLanguage":"en","currentQuery":{"file":"2024-05\/FirstNet Logo 750x422.png"}},"pluralDelimiter":"\u0003","suppressDeprecationErrors":true,"gtag":{"tagId":"G-RMMG6T0VWC","consentMode":false,"otherIds":[],"events":[],"additionalConfigInfo":[]},"ajaxPageState":{"libraries":"eJyNkmtuAyEMhC-EliMhs3gJjcEUm2y2py9JN236TP9YnvEnga3xBC-b9ZdqrtXOBCKURG-aqefyLnKF24QYwt5mDAn2vjJtSyK6ycY5Ce6qwbJ3K_pqPLOKNqhOdCMUW6nHVCYP8zE27iW48T63yfdE4XecW8BHUIZ2Zf-EKoSQSnxAydyYyOGy4KzyAFY8qwNKsWQs-h_4fmX06hS82Kfnjm1zPV2lGRylcrSh9Qo07dIsXBRWFM5o7_ppXPsi5SEwySFlE5kj4Xgp2jjKVz3BE5w_m9kQbNzVhSQzn8ZXLRccm5gKDeLY9CC3z344Uy-1-5G2AwYjCjpyl-Z38MMxsolith5GlNS7jBHGOft34-2epssaxF2mdmljsnI73plOutcDjiOMtKPKj6NZxI1gKzdzSriKvdYpc-iEr3WnRog","theme":"uswds_base_subtheme","theme_token":null},"ajaxTrustedUrl":[],"gtm":{"tagId":null,"settings":{"data_layer":"dataLayer","include_environment":false},"tagIds":["GTM-WQHLK75"]},"data":{"extlink":{"extTarget":true,"extTargetAppendNewWindowDisplay":true,"extTargetAppendNewWindowLabel":"(opens in a new window)","extTargetNoOverride":false,"extNofollow":false,"extTitleNoOverride":false,"extNoreferrer":true,"extFollowNoOverride":false,"extClass":"ext","extLabel":"(link is external)","extImgClass":false,"extSubdomains":true,"extExclude":"","extInclude":"","extCssExclude":"","extCssInclude":"","extCssExplicit":"","extAlert":false,"extAlertText":"This link will take you to an external web site. We are not responsible for their content.","extHideIcons":false,"mailtoClass":"0","telClass":"0","mailtoLabel":"(link sends email)","telLabel":"(link is a phone number)","extUseFontAwesome":false,"extIconPlacement":"append","extPreventOrphan":false,"extFaLinkClasses":"fa fa-external-link","extFaMailtoClasses":"fa fa-envelope-o","extAdditionalLinkClasses":"","extAdditionalMailtoClasses":"","extAdditionalTelClasses":"","extFaTelClasses":"fa fa-phone","allowedDomains":[],"extExcludeNoreferrer":""}},"blazy":{"loadInvisible":false,"offset":100,"saveViewportOffsetDelay":50,"validateDelay":25,"container":"","loader":true,"unblazy":false,"visibleClass":false,"compat":true},"blazyIo":{"disconnect":false,"rootMargin":"0px","threshold":[0,0.25,0.5,0.75,1]},"ebtTabs":{"block-revision-id-151":{"blockClass":"block-revision-id-151","options":{"pass_options_to_javascript":true,"design_options":{"box1":{"margin_top":"","margin_right":"","margin_bottom":"","margin_left":"","box2":{"border_top":"","border_right":"","border_bottom":"","border_left":"","box3":{"padding_top":"","padding_right":"","padding_bottom":"","padding_left":""}}},"other_settings":{"border_color":"","border_style":"solid","border_radius":"none","background_color":"","background_media":null,"background_image_style":"default","edge_to_edge":0,"container_width":"auto"}},"styles":"default","active":"","collapsible":0,"closed":0,"disable":0,"heightStyle":"fill"}},"plugin-id-block-contentab8b30a1-54f6-45c5-9028-b073a6629abc":{"blockClass":"plugin-id-block-contentab8b30a1-54f6-45c5-9028-b073a6629abc","options":{"pass_options_to_javascript":true,"design_options":{"box1":{"margin_top":"","margin_right":"","margin_bottom":"","margin_left":"","box2":{"border_top":"","border_right":"","border_bottom":"","border_left":"","box3":{"padding_top":"","padding_right":"","padding_bottom":"","padding_left":""}}},"other_settings":{"border_color":"","border_style":"solid","border_radius":"none","background_color":"","background_media":null,"background_image_style":"default","edge_to_edge":0,"container_width":"auto"}},"styles":"default","active":"","collapsible":0,"closed":0,"disable":0,"heightStyle":"fill"}}},"ebtCore":{"mobileBreakpoint":"640","tabletBreakpoint":"1020","desktopBreakpoint":"1320"},"statistics":{"data":{"nid":"770"},"url":"\/core\/modules\/statistics\/statistics.php"},"TBMegaMenu":{"TBElementsCounter":{"column":null},"theme":"uswds_base_subtheme","f5d0010b-dae4-4cd2-bef0-80f8ef35941a":{"arrows":"0"}},"user":{"uid":0,"permissionsHash":"d826a540d0939c04f6efa73d22aa600ce1cd663de69f4ad0488747f1ca1e761f"}}</script>
+<script src="/sites/default/files/js/js_T3euyG8w8hiP2lOxBSNyPO2VWQRI-edtO0JWWz2FGmQ.js?scope=header&amp;delta=0&amp;language=en&amp;theme=uswds_base_subtheme&amp;include=eJxdkFuOwzAIRTdkhSVZ0BDXLS6uwUozqx-3cjSPn6t7jhASkODXAfTO8Em4CJpJNj9ZS8UTRHGdtfCacfaqcmxZ5MSmJRtParjNtjPVQKpu3rBG80PYANWWxkWdA5NHRzK4PTu3I_b8wcAvl_y4w9p6RVkmhqSahMdIgjTiPy94w9dfWYI5-jguX-zc9mOCUyycsPCjA-G4oNu-WnxX2Nrwu7b7Lxmtk1-5MIyfsds3AJqCfQ"></script>
+<script src="/modules/contrib/google_tag/js/gtag.js?t4t0ot"></script>
+<script src="/modules/contrib/google_tag/js/gtm.js?t4t0ot"></script>
+
+  <script src="https://kit.fontawesome.com/60ea8106ef.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<a href="#main-content" class="usa-sr-only focusable">
+  Skip to main content
+</a>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WQHLK75"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <div class="dialog-off-canvas-main-canvas" data-off-canvas-main-canvas>
+          <section class="usa-banner">
+      
+<div class="usa-banner ">
+  <div class="usa-accordion">
+    <header class="usa-banner__header">
+      <div class="usa-banner__inner">
+        <div class="grid-col-auto">
+          <img class="usa-banner__header-flag" src="/themes/custom/uswds_base_subtheme/node_modules/@uswds/uswds/dist/img/us_flag_small.png" alt="U.S. flag">
+        </div>
+        <div class="grid-col-fill tablet:grid-col-auto">
+          <p class="usa-banner__header-text">An official website of the United States government</p>
+          <p class="usa-banner__header-action" aria-hidden="true">Here's how you know</p>
+        </div>
+        
+        <div>
+          <button class="usa-accordion__button usa-banner__button" aria-expanded="false" aria-controls="gov-banner">
+          <span class="usa-banner__button-text">Here's how you know</span>
+          </button>
+        </div>        
+
+<div class="grid-col-fill text-right hide-sm" id="topsocial"><a href="/contact-us">Contact Us</a> | <span class="fontawesome-icon-inline"><a href="https://www.linkedin.com/company/first-responder-network-authority/" class="margin-x-05"><i class="fab fa-linkedin"></i></a></span> <span class="fontawesome-icon-inline"><a href="https://x.com/FirstNetGov" class="margin-x-05"><img alt="X" class="text-white svg-filter-x-top" data-entity-type="" data-entity-uuid="" src="/sites/default/files/x.svg" /></a></span> <span class="fontawesome-icon-inline"><a href="https://www.facebook.com/firstnetgov/" class="margin-x-05"><i class="fab fa-facebook-f"></i></a></span> <span class="fontawesome-icon-inline"><a href="https://youtube.com/FirstNetGov" class="margin-x-05"><i class="fab fa-youtube" class="margin-x-05"></i></a></span> <span class="fontawesome-icon-inline"><a href="https://www.instagram.com/firstnetgov" class="margin-x-05"><i class="fab fa-instagram"></i></a></span> | <a href="/about">Learn more about FirstNet Authority</a> | Visit<a href="https://www.firstnet.com" class="margin-x-05">FirstNet.com</a></div>
+
+      </div>  
+    </header>
+    <div class="usa-banner__content usa-accordion__content" id="gov-banner" hidden="">
+      <div class="grid-row grid-gap-lg">
+        <div class="usa-banner__guidance tablet:grid-col-6">
+          <img class="usa-banner__icon usa-media-block__img" src="/themes/custom/uswds_base_subtheme/node_modules/@uswds/uswds/dist/img/icon-dot-gov.svg" alt="Dot gov">
+          <div class="usa-media-block__body">
+            <p>
+              <strong>Official websites use .gov</strong>
+              <br>
+              A <strong>.gov</strong> website belongs to an official government organization in the United States.
+            </p>
+          </div>
+        </div>
+        <div class="usa-banner__guidance tablet:grid-col-6">
+          <img class="usa-banner__icon usa-media-block__img" src="/themes/custom/uswds_base_subtheme/node_modules/@uswds/uswds/dist/img/icon-https.svg" alt="Https">
+          <div class="usa-media-block__body">
+            <p>
+              <strong>Secure .gov websites use HTTPS</strong>
+              <br>
+              A <strong>lock</strong> (   <span class="icon-lock">
+    <svg xmlns="http://www.w3.org/2000/svg" width="52" height="64" viewBox="0 0 52 64" class="usa-banner__lock-image" role="img" aria-labelledby="banner-lock-title banner-lock-description" focusable="false">
+      <title id="banner-lock-title">Lock</title>
+      <desc id="banner-lock-description">A locked padlock</desc>
+      <path fill="#000000" fill-rule="evenodd" d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"/>
+    </svg>
+  </span>
+ ) or <strong>https://</strong> means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </section>
+  
+<div class="usa-overlay"></div>
+
+  <header class="usa-header usa-header--extended usa-header--extended-megamenu" id="header" role="banner">
+
+  
+  
+    <div class="region region-header usa-navbar">
+    <div class="usa-logo site-logo" id="logo">
+
+  <em class="usa-logo__text">
+      <a class="logo-img" href="/" accesskey="1" title="Home" aria-label="Home">
+      <img src="/sites/default/files/FirstNetAuthorityLogo.jpg" alt="Home" class="mbl-logo"/>
+    </a>
+  
+  </em>
+
+</div>
+<button class="usa-menu-btn">Menu</button>
+
+</div>
+
+
+    <nav class="usa-nav  bg-primary-dark usa-dark-background" role="navigation">
+            <div class="usa-nav__inner usdws-adjustnav">
+        
+        <button class="usa-nav__close">
+          <img src="/themes/custom/uswds_base_subtheme/node_modules/@uswds/uswds/dist/img/usa-icons/close.svg" alt="close"/>
+        </button>
+
+        
+        
+                      <div id="block-tbmegamenupanels-2" class="settings-tray-editable block block-tb-megamenu block-tb-megamenu-menu-blocktb-mega-menu-panels" data-drupal-settingstray="editable">
+  
+    
+      <nav  class="tbm tbm-tb-mega-menu-panels tbm-no-arrows" id="f5d0010b-dae4-4cd2-bef0-80f8ef35941a" data-breakpoint="1024" aria-label="tb-mega-menu-panels navigation">
+      <button class="tbm-button" type="button" aria-label="Toggle Menu Button">
+      <span class="tbm-button-container">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+    <div class="tbm-collapse ">
+    <ul  class="tbm-nav level-0 items-6" >
+        <li  class="tbm-item level-1 tbm-home-btn" aria-level="1" >
+      <div class="tbm-link-container">
+            <a href="/"  class="tbm-link level-1">
+                Home
+          </a>
+            </div>
+    
+</li>
+
+          <li  class="tbm-item level-1 tbm-item--has-dropdown" aria-level="1" >
+      <div class="tbm-link-container">
+            <span class="tbm-link level-1 no-link tbm-toggle" tabindex="0" aria-expanded="false">
+                About
+          </span>
+                <button class="tbm-submenu-toggle"><span class="visually-hidden">Toggle submenu</span></button>
+          </div>
+    <div  class="margin-0 padding-0 tbm-link tbm-submenu tbm-item-child">
+      <div  class="tbm-row">
+      <div  class="tbm-column span12 border-bottom-1px border-base-lighter padding-left-105 tbm-title padding-y-1">
+  <div class="tbm-column-inner">
+                 <div  class="tbm-block">
+    <div class="block-inner">
+      <div id="block-block-content6397b466-debb-40ac-b181-813ebbbc6a63" class="block block-block-content block-block-content6397b466-debb-40ac-b181-813ebbbc6a63">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="text-primary-darker mm-title">About</div></div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+
+    </div>
+  </div>
+
+      </div>
+</div>
+
+  </div>
+
+      <div  class="tbm-row">
+      <div  class="tbm-column span3 padding-left-105 padding-top-105">
+  <div class="tbm-column-inner">
+                 <div  class="tbm-block">
+    <div class="block-inner">
+      <div id="block-block-contentc6a3e95e-3152-4276-88e8-3bd2dc93ee2f" class="block block-block-content block-block-contentc6a3e95e-3152-4276-88e8-3bd2dc93ee2f">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="tab"><button class="tablinksabout margin-bottom-1 padding-1 active " onclick="openDivAbout(event, 'About')">About <svg aria-hidden="true" class="usa-icon float-right usa-icon--size-3" focusable="false" role="img"> <use xlink:href="/themes/custom/uswds_base_subtheme/node_modules/@uswds/uswds/dist/img/sprite.svg#navigate_next"></use> </svg></button><br />
+<button class="tablinksabout margin-bottom-1 padding-1 " onclick="openDivAbout(event, 'Board')">FirstNet Authority Board <svg aria-hidden="true" class="usa-icon float-right usa-icon--size-3" focusable="false" role="img"> <use xlink:href="/themes/custom/uswds_base_subtheme/node_modules/@uswds/uswds/dist/img/sprite.svg#navigate_next"></use> </svg></button><br />
+<button class="tablinksabout margin-bottom-1 padding-1 " onclick="openDivAbout(event, 'PSAC')">Public Safety Advisory Committee (PSAC) <svg aria-hidden="true" class="usa-icon float-right usa-icon--size-3" focusable="false" role="img"> <use xlink:href="/themes/custom/uswds_base_subtheme/node_modules/@uswds/uswds/dist/img/sprite.svg#navigate_next"></use> </svg></button></div>
+<script>
+function openDivAbout(evt, divNameAbout) {
+  var i, tabcontentabout, tablinksabout;
+  tabcontentabout = document.getElementsByClassName("tabcontentabout");
+  for (i = 0; i < tabcontentabout.length; i++) {
+    tabcontentabout[i].style.display = "none";
+  }
+
+  tablinksabout = document.getElementsByClassName("tablinksabout");
+  for (i = 0; i < tablinksabout.length; i++) {
+    tablinksabout[i].className = tablinksabout[i].className.replace(" active", "");
+  }
+  document.getElementById(divNameAbout).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script></div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+
+    </div>
+  </div>
+
+      </div>
+</div>
+
+      <div  class="tbm-column span5 padding-x-105 border-left-1px border-base-lighter tbm-link">
+  <div class="tbm-column-inner">
+                 <div  class="tbm-block">
+    <div class="block-inner">
+      <div id="block-block-contenta0bfee3c-fb7e-4907-a2fc-0289dfccdd44" class="block block-block-content block-block-contenta0bfee3c-fb7e-4907-a2fc-0289dfccdd44">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="tabcontentabout" id="About" style="display: block;">
+<div class="grid-row grid-gap">
+<div class="grid-col-12 margin-top-2">
+<nav aria-label="navAbout">
+<ul class="usa-sidenav">
+	<li class="usa-sidenav__item border-top-0"><a href="/about">About Us</a></li>
+	<li class="usa-sidenav__item"><a href="/about/history">History</a></li>
+	<li class="usa-sidenav__item"><a href="/about/leadership">Leadership and Team</a></li>
+	<li class="usa-sidenav__item"><a href="/about/firstnet-authority-awards">FirstNet Authority Awards</a></li>
+	<li class="usa-sidenav__item"><a href="/about/doing-business-with-us">Doing Business with Us</a></li>
+	<li class="usa-sidenav__item"><a href="/about/careers">Careers</a></li>
+	<li class="usa-sidenav__item"><a href="/about/contact-us">Contact Us</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+
+<div class="tabcontentabout" id="Board">
+<div class="grid-row grid-gap">
+<div class="grid-col-12 margin-top-2">
+<nav aria-label="navBoard">
+<ul class="usa-sidenav">
+	<li class="usa-sidenav__item border-top-0"><a href="/about/board">About FirstNet Authority Board</a></li>
+	<li class="usa-sidenav__item"><a href="/about/board/members">Board Members</a></li>
+	<li class="usa-sidenav__item"><a href="/about/board/meetings">Board Meetings</a></li>
+	<li class="usa-sidenav__item"><a href="/about/board/resolutions">Board Resolutions</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+
+<div class="tabcontentabout" id="PSAC">
+<div class="grid-row grid-gap">
+<div class="grid-col-12 margin-top-2">
+<nav aria-label="navBoard">
+<ul class="usa-sidenav">
+	<li class="usa-sidenav__item border-top-0"><a href="/about/psac">About PSAC</a></li>
+	<li class="usa-sidenav__item"><a href="/about/psac/psac-members">PSAC Members</a></li>
+	<li class="usa-sidenav__item"><a href="/about/psac/tribal-advocacy-group">PSAC Tribal Advocacy&nbsp;Group</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+
+    </div>
+  </div>
+
+      </div>
+</div>
+
+      <div  class="tbm-column span4 bg-base-lightest padding-x-105 tbm-link hidden-collapse">
+  <div class="tbm-column-inner">
+                 <div  class="tbm-block">
+    <div class="block-inner">
+      <div id="block-block-contentd38c5a6a-e6d1-4e2e-b4a9-429668efe9f6" class="block block-block-content block-block-contentd38c5a6a-e6d1-4e2e-b4a9-429668efe9f6">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><h3><strong class="text-primary-darker">Featured</strong></h3>
+
+<p><img alt="test" data-entity-type="file" data-entity-uuid="4af91ff3-32a4-4347-93bf-99f3acb22785" src="/sites/default/files/inline-images/public_safety_advocacy_banner_890x300_web.jpg" width="100%" /></p>
+
+<h4 class="margin-bottom-0 margin-top-1"><a href="/about/history">Our History</a></h4>
+
+<p class="margin-top-0"><small class="text-black">The FirstNet Authority was established in light of September 11, 2001 to create a single, nationwide broadband network specifically for first responders.</small></p>
+</div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+
+    </div>
+  </div>
+
+      </div>
+</div>
+
+  </div>
+
+  </div>
+
+</li>
+
+          <li  class="tbm-item level-1 tbm-item--has-dropdown" aria-level="1" >
+      <div class="tbm-link-container">
+            <span class="tbm-link level-1 no-link tbm-toggle" tabindex="0" aria-expanded="false">
+                The Network
+          </span>
+                <button class="tbm-submenu-toggle"><span class="visually-hidden">Toggle submenu</span></button>
+          </div>
+    <div  class="margin-0 padding-0 tbm-submenu tbm-item-child">
+      <div  class="tbm-row">
+      <div  class="tbm-column span12 border-bottom-1px border-base-lighter padding-left-105 tbm-title padding-y-1">
+  <div class="tbm-column-inner">
+                 <div  class="tbm-block">
+    <div class="block-inner">
+      <div id="block-block-content99cc0bf0-42d3-4bf6-8fe3-4ad3cf55bf72" class="block block-block-content block-block-content99cc0bf0-42d3-4bf6-8fe3-4ad3cf55bf72">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="text-primary-darker mm-title">The Network</div></div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+
+    </div>
+  </div>
+
+      </div>
+</div>
+
+  </div>
+
+      <div  class="tbm-row">
+      <div  class="tbm-column span3 padding-left-105 padding-top-105">
+  <div class="tbm-column-inner">
+                 <div  class="tbm-block">
+    <div class="block-inner">
+      <div id="block-block-content3da3661e-282a-46d8-a6fb-79f2036a2243" class="block block-block-content block-block-content3da3661e-282a-46d8-a6fb-79f2036a2243">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="tab"><button class="tablinks margin-bottom-1 padding-1 active" onclick="openDivNetwork(event, &apos;Network&apos;)">The Network <svg aria-hidden="true" class="usa-icon float-right usa-icon--size-3" focusable="false" role="img"> <use xlink:href="/themes/custom/uswds_base_subtheme/node_modules/@uswds/uswds/dist/img/sprite.svg#navigate_next"></use> </svg></button><br><button class="tablinks margin-bottom-1 padding-1" onclick="openDivNetwork(event, &apos;Investments&apos;)">Investments <svg aria-hidden="true" class="usa-icon float-right usa-icon--size-3" focusable="false" role="img"> <use xlink:href="/themes/custom/uswds_base_subtheme/node_modules/@uswds/uswds/dist/img/sprite.svg#navigate_next"></use> </svg></button><br><button class="tablinks margin-bottom-1 padding-1" onclick="openDivNetwork(event, &apos;TT&apos;)">Technology and Tools <svg aria-hidden="true" class="usa-icon float-right usa-icon--size-3" focusable="false" role="img"> <use xlink:href="/themes/custom/uswds_base_subtheme/node_modules/@uswds/uswds/dist/img/sprite.svg#navigate_next"></use> </svg></button><br><button class="tablinks margin-bottom-1 padding-1" onclick="openDivNetwork(event, &apos;Roadmap&apos;)">The Roadmap <svg aria-hidden="true" class="usa-icon float-right usa-icon--size-3" focusable="false" role="img"> <use xlink:href="/themes/custom/uswds_base_subtheme/node_modules/@uswds/uswds/dist/img/sprite.svg#navigate_next"></use> </svg></button></div><script>
+function openDivNetwork(evt, divNameNetwork) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(divNameNetwork).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script></div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+
+    </div>
+  </div>
+
+      </div>
+</div>
+
+      <div  class="tbm-column span5 padding-x-105 border-left-1px border-base-lighter tbm-link">
+  <div class="tbm-column-inner">
+                 <div  class="tbm-block">
+    <div class="block-inner">
+      <div id="block-block-contentd38c04aa-4d4f-468d-8713-ed745bfa394d" class="block block-block-content block-block-contentd38c04aa-4d4f-468d-8713-ed745bfa394d">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="tabcontent" style="display:block;" id="Network"><div class="grid-row grid-gap"><div class="grid-col-12 margin-top-2"><nav aria-label="navBoard"><ul class="usa-sidenav"><li class="usa-sidenav__item border-top-0"><a href="/network">About The Network</a></li><li class="usa-sidenav__item"><a href="/network/firstnet-in-action">FirstNet in Action</a></li><li class="usa-sidenav__item"><a href="/network/10-ways">10 Ways</a></li><li class="usa-sidenav__item"><a href="/network/network-services">Learn about FirstNet Network Services</a></li><li class="usa-sidenav__item"><a href="/network/environmental-compliance">Environmental Compliance</a></li></ul></nav></div></div></div><div class="tabcontent" id="Roadmap"><div class="grid-row grid-gap"><div class="grid-col-12 margin-top-2"><nav aria-label="navBoard"><ul class="usa-sidenav"><li class="usa-sidenav__item border-top-0"><a href="/network/roadmap">About the Roadmap</a></li></ul></nav></div></div></div><div class="tabcontent" id="Investments"><div class="grid-row grid-gap"><div class="grid-col-12 margin-top-2"><nav aria-label="navBoard"><ul class="usa-sidenav"><li class="usa-sidenav__item border-top-0"><a href="/network/investments/CEW">Coverage Enhancement Workshops</a></li></ul></nav></div></div></div><div class="tabcontent" id="TT"><div class="grid-row grid-gap"><div class="grid-col-12 margin-top-2"><nav aria-label="navBoard"><ul class="usa-sidenav"><li class="usa-sidenav__item border-top-0"><a href="/network/TT">About Technology and Tools</a></li><li class="usa-sidenav__item"><a href="/network/boulder-firstnet-lab">Boulder FirstNet Lab</a></li><li class="usa-sidenav__item"><a href="/network/TT/apps-first-responders">Apps for First Responders</a></li><li class="usa-sidenav__item"><a href="/network/TT/devices-first-responders">Devices for First Responders</a></li><li class="usa-sidenav__item"><a href="/network/TT/deployables">Deployables</a></li><li class="usa-sidenav__item"><a href="/network/TT/firstnet-core">The FirstNet Core</a></li><li class="usa-sidenav__item"><a href="/network/TT/firstnet-for-developers">FirstNet for Developers</a></li></ul></nav></div></div></div></div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+
+    </div>
+  </div>
+
+      </div>
+</div>
+
+      <div  class="tbm-column span4 bg-base-lightest padding-x-105 tbm-link hidden-collapse">
+  <div class="tbm-column-inner">
+                 <div  class="tbm-block">
+    <div class="block-inner">
+      <div id="block-block-content03dcbc2b-6c2a-4dc6-80dc-a56eccb86a17" class="block block-block-content block-block-content03dcbc2b-6c2a-4dc6-80dc-a56eccb86a17">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><h3><strong class="text-primary-darker">Featured</strong></h3>
+
+<p><img alt="FirstNet in Action" data-entity-type="file" data-entity-uuid="f573dd3d-a897-47e4-b674-ffbf99b7687c" src="/sites/default/files/inline-images/FirstNetInAction.jpg" width="100%" /></p>
+
+<h4 class="margin-bottom-0 margin-top-1"><a href="/network/firstnet-in-action">FirstNet in Action</a></h4>
+<p class="margin-top-0"><small class="text-black">Discover stories of how public safety integrates the FirstNet network into operations. Sort content by operational topics or disciplines.</small></p>
+</div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+
+    </div>
+  </div>
+
+      </div>
+</div>
+
+  </div>
+
+  </div>
+
+</li>
+
+          <li  class="tbm-item level-1 tbm-item--has-dropdown" aria-level="1" >
+      <div class="tbm-link-container">
+            <span class="tbm-link level-1 no-link tbm-toggle" tabindex="0" aria-expanded="false">
+                Public Safety
+          </span>
+                <button class="tbm-submenu-toggle"><span class="visually-hidden">Toggle submenu</span></button>
+          </div>
+    <div  class="margin-0 padding-0 tbm-submenu tbm-item-child">
+      <div  class="tbm-row">
+      <div  class="tbm-column span12 border-bottom-1px border-base-lighter padding-left-105 tbm-title padding-y-1">
+  <div class="tbm-column-inner">
+                 <div  class="tbm-block">
+    <div class="block-inner">
+      <div id="block-block-content98a221d4-6a10-49c9-941e-d929f20b51a9" class="block block-block-content block-block-content98a221d4-6a10-49c9-941e-d929f20b51a9">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="text-primary-darker mm-title">For Public Safety</div></div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+
+    </div>
+  </div>
+
+      </div>
+</div>
+
+  </div>
+
+      <div  class="tbm-row">
+      <div  class="tbm-column span3 padding-left-105 padding-top-105">
+  <div class="tbm-column-inner">
+                 <div  class="tbm-block">
+    <div class="block-inner">
+      <div id="block-block-content573eb14a-eda9-41bf-8e4a-2446fbac4918" class="block block-block-content block-block-content573eb14a-eda9-41bf-8e4a-2446fbac4918">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="tab"><button class="tablinks margin-bottom-1 padding-1 " onclick="location.href='/public-safety/public-safety-advocacy'">Public Safety Advocacy</button><br />
+<button class="tablinks margin-bottom-1 padding-1 " onclick="location.href='/public-safety/your-advisor'">Your Public Safety Advisor</button><br />
+<button class="tablinks margin-bottom-1 padding-1 " onclick="location.href='/public-safety/firstnet-for'">FirstNet For...</button><br />
+<button class="tablinks margin-bottom-1 padding-1 " onclick="location.href='/public-safety/operational-assistance'">Operational Assistance</button>
+<button class="tablinks margin-bottom-1 padding-1 " onclick="location.href='/public-safety/emergency-management-resource-guide'">Emergency Management Resource Guide</button></div>
+</div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+
+    </div>
+  </div>
+
+      </div>
+</div>
+
+      <div  class="tbm-column span9 padding-x-105 border-left-1px border-base-lighter tbm-link">
+  <div class="tbm-column-inner">
+                 <div  class="tbm-block">
+    <div class="block-inner">
+      <div id="block-views-blockuswds-firstnet-for-block-3" class="block block-views block-views-blockuswds-firstnet-for-block-3">
+  
+    
+      <div class="views-element-container"><div class="margin-y-2 js-view-dom-id-fe50dd66fcb8777debfea9467ea5f7242582d26a4cc7d11e7b0c039b6ee1e0aa">
+  
+  
+  
+
+  
+  
+  
+
+  <ul class="blazy blazy--grid b-column b-count-8 b-column--sm-1 b-column--md-2 b-column--lg-2 blazy--media blazy--view blazy--view--uswds-firstnet-for blazy--view--uswds-firstnet-for--block-3 blazy--view--uswds-firstnet-for-block-block-3 is-b-captioned" data-media-gallery data-blazy="" id="blazy-8b642ed84c2-3"><li class="grid"><div class="grid__content"><div><strong><div class="grid-row">
+    <div class="grid-col-auto"> <span class="fa-stack uswds-text-primary-dark tbm-icons ">
+    <i class="fas fa-square-full fa-stack-2x"></i>
+<i class="fas fa-headphones fa-stack-1x fa-inverse"></i>
+</span> </div>
+    <div class="grid-col-fill margin-y-1 font-sans-md"><a href="/public-safety/firstnet-for/9-1-1-emergency-communications" hreflang="en">9-1-1/Emergency Communications</a></div>
+  </div></strong></div></div></li><li class="grid"><div class="grid__content"><div><strong><div class="grid-row">
+    <div class="grid-col-auto"> <span class="fa-stack uswds-text-primary-dark tbm-icons ">
+    <i class="fas fa-square-full fa-stack-2x"></i>
+<i class="fas fa-vest fa-stack-1x fa-inverse"></i>
+</span> </div>
+    <div class="grid-col-fill margin-y-1 font-sans-md"><a href="/public-safety/firstnet-for/emergency-management" hreflang="en">Emergency Management</a></div>
+  </div></strong></div></div></li><li class="grid"><div class="grid__content"><div><strong><div class="grid-row">
+    <div class="grid-col-auto"> <span class="fa-stack uswds-text-primary-dark tbm-icons ">
+    <i class="fas fa-square-full fa-stack-2x"></i>
+<i class="fas fa-ambulance fa-stack-1x fa-inverse"></i>
+</span> </div>
+    <div class="grid-col-fill margin-y-1 font-sans-md"><a href="/public-safety/firstnet-for/ems" hreflang="en">EMS </a></div>
+  </div></strong></div></div></li><li class="grid"><div class="grid__content"><div><strong><div class="grid-row">
+    <div class="grid-col-auto"> <span class="fa-stack uswds-text-primary-dark tbm-icons ">
+    <i class="fas fa-square-full fa-stack-2x"></i>
+<i class="fas fa-hard-hat fa-stack-1x fa-inverse"></i>
+</span> </div>
+    <div class="grid-col-fill margin-y-1 font-sans-md"><a href="/public-safety/firstnet-for/other-users" hreflang="en">Extended Community</a></div>
+  </div></strong></div></div></li><li class="grid"><div class="grid__content"><div><strong><div class="grid-row">
+    <div class="grid-col-auto"> <span class="fa-stack uswds-text-primary-dark tbm-icons ">
+    <i class="fas fa-square-full fa-stack-2x"></i>
+<i class="fas fa-university fa-stack-1x fa-inverse"></i>
+</span> </div>
+    <div class="grid-col-fill margin-y-1 font-sans-md"><a href="/public-safety/firstnet-for/federal-users" hreflang="en">Federal Users</a></div>
+  </div></strong></div></div></li><li class="grid"><div class="grid__content"><div><strong><div class="grid-row">
+    <div class="grid-col-auto"> <span class="fa-stack uswds-text-primary-dark tbm-icons ">
+    <i class="fas fa-square-full fa-stack-2x"></i>
+<i class="fas fa-fire-extinguisher fa-stack-1x fa-inverse"></i>
+</span> </div>
+    <div class="grid-col-fill margin-y-1 font-sans-md"><a href="/public-safety/firstnet-for/fire-service" hreflang="en">Fire Service</a></div>
+  </div></strong></div></div></li><li class="grid"><div class="grid__content"><div><strong><div class="grid-row">
+    <div class="grid-col-auto"> <span class="fa-stack uswds-text-primary-dark tbm-icons ">
+    <i class="fas fa-square-full fa-stack-2x"></i>
+<i class="fas fa-shield fa-stack-1x fa-inverse"></i>
+</span> </div>
+    <div class="grid-col-fill margin-y-1 font-sans-md"><a href="/public-safety/firstnet-for/law-enforcement" hreflang="en">Law Enforcement</a></div>
+  </div></strong></div></div></li><li class="grid"><div class="grid__content"><div><strong><div class="grid-row">
+    <div class="grid-col-auto"> <span class="fa-stack uswds-text-primary-dark tbm-icons ">
+    <i class="fas fa-square-full fa-stack-2x"></i>
+<i class="fas fa-users fa-stack-1x fa-inverse"></i>
+</span> </div>
+    <div class="grid-col-fill margin-y-1 font-sans-md"><a href="/public-safety/firstnet-for/tribal-nations" hreflang="en">Tribal Nations</a></div>
+  </div></strong></div></div></li></ul>
+    
+
+  
+  
+
+      <footer>
+      <a href="https://firstnetauthority.gov1.qualtrics.com/jfe/form/SV_bvF49RBR31o9Uua" target="_blank" class="usa-button usa-button--big width-full"><div class="text-base-lightest width-full padding-1 bg-primary-dark">Public Safety: Share your feedback</div></a>
+    </footer>
+  
+  
+</div>
+</div>
+  </div>
+
+    </div>
+  </div>
+
+      </div>
+</div>
+
+  </div>
+
+  </div>
+
+</li>
+
+          <li  class="tbm-item level-1 tbm-item--has-dropdown" aria-level="1" >
+      <div class="tbm-link-container">
+            <span class="tbm-link level-1 no-link tbm-toggle" tabindex="0" aria-expanded="false">
+                Your State
+          </span>
+                <button class="tbm-submenu-toggle"><span class="visually-hidden">Toggle submenu</span></button>
+          </div>
+    <div  class="margin-0 padding-0 tbm-submenu tbm-item-child">
+      <div  class="tbm-row">
+      <div  class="tbm-column span12 border-bottom-1px border-base-lighter padding-left-105 tbm-title padding-y-1">
+  <div class="tbm-column-inner">
+                 <div  class="tbm-block">
+    <div class="block-inner">
+      <div id="block-block-content72565078-05c8-418f-80d3-5e3a70080d66" class="block block-block-content block-block-content72565078-05c8-418f-80d3-5e3a70080d66">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="text-primary-darker mm-title">Find your state or territory</div></div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+
+    </div>
+  </div>
+
+      </div>
+</div>
+
+  </div>
+
+      <div  class="tbm-row">
+      <div  class="tbm-column span8 padding-2 tbm-state-font tbm-link">
+  <div class="tbm-column-inner">
+                 <div  class="tbm-block">
+    <div class="block-inner">
+      <div id="block-views-blockuswds-state-profile-block-2" class="block block-views block-views-blockuswds-state-profile-block-2">
+  
+    
+      <div class="views-element-container"><div class="js-view-dom-id-cb905dc7cffbc7223128919f963a974355c5c0a8b0d6549ded7717636ad8bb6d">
+  
+  
+  
+
+  
+  
+  
+
+  <ul class="blazy blazy--grid b-column b-count-56 b-column--sm-2 b-column--md-4 b-column--lg-6 blazy--media blazy--view blazy--view--uswds-state-profile blazy--view--uswds-state-profile--block-2 blazy--view--uswds-state-profile-block-block-2" data-media-gallery data-blazy="" id="blazy-3f1bc8e1a38-5"><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/alabama" hreflang="en">Alabama</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/alaska" hreflang="en">Alaska</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/american-samoa" hreflang="en">American Samoa</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/arizona" hreflang="en">Arizona</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/arkansas" hreflang="en">Arkansas</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/california" hreflang="en">California</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/colorado" hreflang="en">Colorado</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/connecticut" hreflang="en">Connecticut</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/delaware" hreflang="en">Delaware</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/district-columbia" hreflang="en">District of Columbia</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/florida" hreflang="en">Florida</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/georgia" hreflang="en">Georgia</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/guam" hreflang="en">Guam</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/hawaii" hreflang="en">Hawaii</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/idaho" hreflang="en">Idaho</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/illinois" hreflang="en">Illinois</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/indiana" hreflang="en">Indiana</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/iowa" hreflang="en">Iowa</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/kansas" hreflang="en">Kansas</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/kentucky" hreflang="en">Kentucky</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/louisiana" hreflang="en">Louisiana</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/maine" hreflang="en">Maine</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/maryland" hreflang="en">Maryland</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/massachusetts" hreflang="en">Massachusetts</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/michigan" hreflang="en">Michigan</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/minnesota" hreflang="en">Minnesota</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/mississippi" hreflang="en">Mississippi</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/missouri" hreflang="en">Missouri</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/montana" hreflang="en">Montana</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/nebraska" hreflang="en">Nebraska</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/nevada" hreflang="en">Nevada</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/new-hampshire" hreflang="en">New Hampshire</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/new-jersey" hreflang="en">New Jersey</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/new-mexico" hreflang="en">New Mexico</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/new-york" hreflang="en">New York</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/north-carolina" hreflang="en">North Carolina</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/north-dakota" hreflang="en">North Dakota</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/northern-mariana-islands" hreflang="en">Northern Mariana Islands</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/ohio" hreflang="en">Ohio</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/oklahoma" hreflang="en">Oklahoma</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/oregon" hreflang="en">Oregon</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/pennsylvania" hreflang="en">Pennsylvania</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/puerto-rico" hreflang="en">Puerto Rico</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/rhode-island" hreflang="en">Rhode Island</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/south-carolina" hreflang="en">South Carolina</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/south-dakota" hreflang="en">South Dakota</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/tennessee" hreflang="en">Tennessee</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/texas" hreflang="en">Texas</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/us-virgin-islands" hreflang="en">U.S. Virgin Islands</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/utah" hreflang="en">Utah</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/vermont" hreflang="en">Vermont</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/virginia" hreflang="en">Virginia</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/washington" hreflang="en">Washington</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/west-virginia" hreflang="en">West Virginia</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/wisconsin" hreflang="en">Wisconsin</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/wyoming" hreflang="en">Wyoming</a></span></div></div></li></ul>
+    
+
+  
+  
+
+  
+  
+</div>
+</div>
+  </div>
+
+    </div>
+  </div>
+
+      </div>
+</div>
+
+      <div  class="tbm-column span4 bg-base-lightest padding-x-105 tbm-link hidden-collapse">
+  <div class="tbm-column-inner">
+                 <div  class="tbm-block">
+    <div class="block-inner">
+      <div id="block-block-content65d0fba5-51e9-48f9-8ad0-e7e2aacd1734" class="block block-block-content block-block-content65d0fba5-51e9-48f9-8ad0-e7e2aacd1734">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><h3><strong class="text-primary-darker">Featured</strong></h3>
+
+<p><img alt="Your Public Safety Advisor" data-entity-type="file" data-entity-uuid="982a6e97-db25-4da6-aecb-f051e6f28462" src="/sites/default/files/inline-images/Advisor_Header_0.jpg" width="100%" /></p>
+
+<h4 class="margin-bottom-0 margin-top-1"><a href="/public-safety/your-advisor">Find your local advisor</a></h4>
+<p class="margin-top-0"><small class="text-black">We have regional leads in the field with public safety for each of the 50 states, five territories and the District of Columbia.</small></p>
+</div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+
+    </div>
+  </div>
+
+      </div>
+</div>
+
+  </div>
+
+  </div>
+
+</li>
+
+          <li  class="tbm-item level-1 tbm-item--has-dropdown" aria-level="1" >
+      <div class="tbm-link-container">
+            <span class="tbm-link level-1 no-link tbm-toggle" tabindex="0" aria-expanded="false">
+                Newsroom
+          </span>
+                <button class="tbm-submenu-toggle"><span class="visually-hidden">Toggle submenu</span></button>
+          </div>
+    <div  class="margin-0 padding-0 tbm-submenu tbm-item-child">
+      <div  class="tbm-row">
+      <div  class="tbm-column span12 border-bottom-1px border-base-lighter padding-left-105 tbm-title padding-y-1">
+  <div class="tbm-column-inner">
+                 <div  class="tbm-block">
+    <div class="block-inner">
+      <div id="block-block-contentabe90e22-d559-476f-b9cb-21035825c739" class="block block-block-content block-block-contentabe90e22-d559-476f-b9cb-21035825c739">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="text-primary-darker mm-title">Newsroom</div></div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+
+    </div>
+  </div>
+
+      </div>
+</div>
+
+  </div>
+
+      <div  class="tbm-row">
+      <div  class="tbm-column span3 padding-left-105 padding-top-105">
+  <div class="tbm-column-inner">
+                 <div  class="tbm-block">
+    <div class="block-inner">
+      <div id="block-block-content8cf4a137-55af-4cf1-acd2-318cd591ee9e" class="block block-block-content block-block-content8cf4a137-55af-4cf1-acd2-318cd591ee9e">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="tab"><button class="tablinksnews margin-bottom-1 padding-1 active " onclick="openDivNews(event, 'Newsroom')">Newsroom<svg aria-hidden="true" class="usa-icon float-right usa-icon--size-3" focusable="false" role="img"> <use xlink:href="/themes/custom/uswds_base_subtheme/node_modules/@uswds/uswds/dist/img/sprite.svg#navigate_next"></use> </svg></button><br />
+<button class="tablinksnews margin-bottom-1 padding-1 " onclick="openDivNews(event, 'Resources')">Resources <svg aria-hidden="true" class="usa-icon float-right usa-icon--size-3" focusable="false" role="img"> <use xlink:href="/themes/custom/uswds_base_subtheme/node_modules/@uswds/uswds/dist/img/sprite.svg#navigate_next"></use> </svg></button></div>
+<script>
+function openDivNews(evt, divNameNews) {
+  var i, tabcontentnews, tablinksnews;
+  tabcontentnews = document.getElementsByClassName("tabcontentnews");
+  for (i = 0; i < tabcontentnews.length; i++) {
+    tabcontentnews[i].style.display = "none";
+  }
+
+  tablinksnews = document.getElementsByClassName("tablinksnews");
+  for (i = 0; i < tablinksnews.length; i++) {
+    tablinksnews[i].className = tablinksnews[i].className.replace(" active", "");
+  }
+  document.getElementById(divNameNews).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script></div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+
+    </div>
+  </div>
+
+      </div>
+</div>
+
+      <div  class="tbm-column span3 padding-x-105 border-left-1px border-base-lighter tbm-link">
+  <div class="tbm-column-inner">
+                 <div  class="tbm-block">
+    <div class="block-inner">
+      <div id="block-block-content38d9db29-c13f-4242-baa2-1c157506edf7" class="block block-block-content block-block-content38d9db29-c13f-4242-baa2-1c157506edf7">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="tabcontentnews" id="Newsroom" style="display: block;">
+<div class="grid-row grid-gap">
+<div class="grid-col-12 margin-top-2">
+<nav aria-label="navBoard">
+<ul class="usa-sidenav">
+	<li class="usa-sidenav__item border-top-0"><a href="/newsroom/blog">Blogs</a></li>
+	<li class="usa-sidenav__item"><a href="/newsroom/press-releases">Press Releases</a></li>
+	<li class="usa-sidenav__item"><a href="/newsroom/podcast">Podcast</a></li>
+	<li class="usa-sidenav__item"><a href="/newsroom/newsletters">Newsletters</a></li>
+	<li class="usa-sidenav__item"><a href="/newsroom/events">Events</a></li>
+	<li class="usa-sidenav__item"><a href="/newsroom/media-kit">For Media</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+
+<div class="tabcontentnews" id="Resources">
+<div class="grid-row grid-gap">
+<div class="grid-col-12 margin-top-2">
+<nav aria-label="navBoard">
+<ul class="usa-sidenav">
+	<li class="usa-sidenav__item border-top-0"><a href="/newsroom/resources/fact-sheet-faq">FAQs and Fact sheets</a></li>
+	<li class="usa-sidenav__item"><a href="/newsroom/resources/reports">Reports</a></li>
+	<li class="usa-sidenav__item"><a href="/newsroom/resources/federal-register-notices">Federal Register Notices</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+
+    </div>
+  </div>
+
+      </div>
+</div>
+
+      <div  class="tbm-column span6 bg-base-lightest padding-105 tbm-link hidden-collapse">
+  <div class="tbm-column-inner">
+                 <div  class="tbm-block">
+    <div class="block-inner">
+      <div id="block-views-blockusdws-article-block-5" class="block block-views block-views-blockusdws-article-block-5">
+  
+    
+      <div class="views-element-container"><div class="js-view-dom-id-e5e515dfeba34d95d52d7eed429630d32f17449b5f27a37a91a6188acc74cc92">
+  
+  
+  
+
+      <header>
+      <h3 class="margin-top-0 tbm-icons">Latest News</h3>
+    </header>
+  
+  
+  
+
+      <div class="views-view-grid horizontal cols-2 clearfix">
+            <div class="views-row clearfix row-1">
+                  <div class="views-col col-1" style="width: 50%;"><div><span><div class="grid-row grid-gap-1 tbm-news-font ">
+<div class="grid-col-3"><img src="/sites/default/files/styles/small_square/public/field/image/3GPP_Aug%20_2025.jpg?h=57013b68&amp;itok=0e3zQxJj" class="tbm-thumb-image" /></div>
+  <div class="grid-col-9"> <div class="margin-right-1"> <a href="/newsroom/blog/3gpp-focuses-release-20-6g-and-5g-advanced-including-key-public-safety-needs" hreflang="en">3GPP focuses on Release 20 6G and 5G-Advanced, including key public-safety needs</a></div></div>
+</div></span></div></div>
+                  <div class="views-col col-2" style="width: 50%;"><div><span><div class="grid-row grid-gap-1 tbm-news-font ">
+<div class="grid-col-3"><img src="/sites/default/files/styles/small_square/public/field/image/CRD_Boulder_Web.jpg?h=57013b68&amp;itok=1hdvyevM" class="tbm-thumb-image" /></div>
+  <div class="grid-col-9"> <div class="margin-right-1"> <a href="/newsroom/blog/boulder-county-strikes-gold-firstnet-crd" hreflang="en">Boulder County strikes gold with FirstNet CRD</a></div></div>
+</div></span></div></div>
+              </div>
+      </div>
+
+    
+
+  
+  
+
+      <footer>
+      <div class="margin-bottom-2 margin-top-1">
+<svg aria-hidden="true" class="usa-icon float-left" focusable="false" role="img"> <use xlink:href="/themes/custom/uswds_base_subtheme/node_modules/@uswds/uswds/dist/img/sprite.svg#navigate_next"></use> </svg><a href="/newsroom/blog" class="tbm-news-font"><strong>View all blogs</strong></a>
+</div><div class="js-view-dom-id-eb36f140f8ffab6dabc99521133b977d1b56f01dbb279eab9f21a57f7af0a081">
+  
+  
+  
+
+  
+  
+  
+
+      <div class="views-view-grid horizontal cols-2 clearfix">
+            <div class="views-row clearfix row-1">
+                  <div class="views-col col-1" style="width: 50%;"><div><span><div class="grid-row grid-gap-1 tbm-news-font ">
+<div class="grid-col-3"><img src="/sites/default/files/styles/small_square/public/field/image/DrumsPA_Web.jpg?h=ec2edfef&amp;itok=Gy7-T8xG" class="tbm-thumb-image" /></div>
+  <div class="grid-col-9"><div class="margin-right-1"> <a href="/newsroom/press-releases/firstnet-transforming-communications-first-responders-luzerne-county" hreflang="en">FirstNet is Transforming Communications for First Responders in Luzerne County </a></div></div>
+</div></span></div></div>
+                  <div class="views-col col-2" style="width: 50%;"><div><span><div class="grid-row grid-gap-1 tbm-news-font ">
+<div class="grid-col-3"><img src="/sites/default/files/styles/small_square/public/field/image/SwainCounty_tower_web%20%281%29.jpg?h=3355ee26&amp;itok=PYkdphh1" class="tbm-thumb-image" /></div>
+  <div class="grid-col-9"><div class="margin-right-1"> <a href="/newsroom/press-releases/firstnet-transforming-communications-first-responders-swain-county-north" hreflang="en">FirstNet is Transforming Communications for First Responders in Swain County, North Carolina</a></div></div>
+</div></span></div></div>
+              </div>
+      </div>
+
+    
+
+  
+  
+
+      <footer>
+      <div class="margin-y-2">
+<svg aria-hidden="true" class="usa-icon float-left" focusable="false" role="img"> <use xlink:href="/themes/custom/uswds_base_subtheme/node_modules/@uswds/uswds/dist/img/sprite.svg#navigate_next"></use> </svg><a href="/newsroom/press-releases" class="tbm-news-font"><strong>View all press releases</strong></a>
+</div>
+    </footer>
+  
+  
+</div>
+
+    </footer>
+  
+  
+</div>
+</div>
+  </div>
+
+    </div>
+  </div>
+
+      </div>
+</div>
+
+  </div>
+
+  </div>
+
+</li>
+
+  </ul>
+
+      </div>
+  </nav>
+
+<script>
+if (window.matchMedia("(max-width: 1024px)").matches) {
+  document.getElementById("f5d0010b-dae4-4cd2-bef0-80f8ef35941a").classList.add('tbm--mobile');
+}
+
+
+</script>
+
+  </div>
+
+
+          
+                      <div class="usa-nav__secondary">
+<form class="usa-search usa-search--small" action="/search/node" method="get" id="search-block-form" accept-charset="UTF-8">
+  <div role="search">
+    
+    <input class="usa-input" id="extended-search-field-small" type="search" name="keys" />
+    <button class="usa-button" type="submit">
+      <img src="/themes/custom/uswds_base_subtheme/node_modules/@uswds/uswds/dist/img/usa-icons-bg/search--white.svg" class="usa-search__submit-icon" alt="Search">
+    </button>
+  </div>
+</form>
+
+</div>
+
+          
+          
+              </div>
+          </nav>
+
+    
+</header>
+
+          
+<div id="block-uswds-base-subtheme-breadcrumbs" class="settings-tray-editable block block-system block-system-breadcrumb-block" data-drupal-settingstray="editable">
+  
+    
+      <div class="bg-white opacity-80 margin-bottom-neg-5">
+<div class="grid-container">
+    <nav class="usa-breadcrumb padding-y-0" role="navigation" aria-labelledby="system-breadcrumb">
+        <h2 id="system-breadcrumb" class="usa-sr-only">Breadcrumb</h2>
+        <ol class="usa-breadcrumb__list">
+                            <li class="usa-breadcrumb__list-item ">
+                                            <a href="/" class="usa-breadcrumb__link "><span>Home</span></a>
+                                    </li>
+                    </ol>
+    </nav>
+</div>
+</div>
+
+  </div>
+<div class="views-element-container settings-tray-editable block block-views block-views-block2025-wide-image-block-1" id="block-uswds-base-subtheme-views-block-2025-wide-image-block-1" data-drupal-settingstray="editable">
+  
+    
+      <div><div class="js-view-dom-id-b4730db833f24d7ec2ecbd8f220464910bd994eea66ab614dbc4fe9ea4f8df9b">
+  
+  
+  
+
+  
+  
+  
+
+      <div class="views-row"><div class="views-field views-field-field-image"><div class="field-content fix-img-header-20250220"></div></div><div class="views-field views-field-field-parallax-image"><div class="field-content fix-img-header-20250220"></div></div><div class="views-field views-field-views-conditional-field"><span class="field-content"></span></div></div>
+
+    
+
+  
+  
+
+  
+  
+</div>
+</div>
+  </div>
+
+  
+
+
+
+
+
+
+  <main class="main-content usa-layout-docs usa-section padding-top-7 " role="main"
+        id="main-content">
+
+    <div class="grid-container">
+
+                        <div class="grid-row">
+            
+          </div>
+        
+                  <div class="">
+            <div data-drupal-messages-fallback class="hidden"></div>
+
+
+          </div>
+        
+                                      <div class="grid-row ">
+              
+            </div>
+                        
+<div class="grid-container">
+        
+      </div>
+
+      <div class="grid-row grid-gap">
+        
+                  <div class="usa-layout-docs__main desktop:grid-col-fill">
+                  
+  <h1 class="margin-bottom-1 text-primary-dark">
+<span property="dc:title">Page Not Found</span>
+</h1>
+
+
+<div id="block-uswds-base-subtheme-content" class="block block-system block-system-main-block">
+  
+    
+      <article data-history-node-id="770" about="/page-not-found" typeof="foaf:Document">
+
+  
+      <span property="dc:title" content="Page Not Found" class="hidden"></span>
+
+
+  
+  <div>
+    <div  class="_none"><div  class="container">  
+  <div  class="layout row layout-builder__layout">
+    
+                        <div  class="grid-col-12">
+          <div class="block block-layout-builder block-field-blocknodepagebody">
+  
+    
+      
+
+            <div property="content:encoded" class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div><div><h2>Page Not Found</h2><h3>The requested page could not be found.</h3></div><div><p>Please try one of the following to locate the page that you were looking for:</p><ul><li>If you typed the page address in the address bar, make sure that it is spelled correctly.</li><li>Go to our <a href="https://www.firstnet.gov">homepage</a>, and browse through the site navigation to find the information you want.</li><li>Try our <a href="/search">search</a>.</li></ul></div></div></div>
+      
+  </div>
+
+        </div>
+                                                                                                                                                                                              
+  </div>
+
+</div></div>  <div class="layout layout--onecol">
+    <div >
+      
+    </div>
+  </div>
+
+  </div>
+
+</article>
+
+  </div>
+
+
+          </div>        
+              </div>
+    </div>
+  </main>
+
+
+
+
+
+
+
+
+
+
+
+
+  <footer class="usa-footer usa-footer--big" role="contentinfo">
+    <div class="usa-footer__return-to-top uswds-totop hidden">
+      <a href="#"><i class="fa-solid fa-arrow-up"></i><br>Return to top</a>
+    </div>
+
+
+<div class="usa-footer__primary-section ">
+  <div class="usa-footer__primary-content bg-gray-10">
+                    <div class="grid-container">
+            <div class="grid-row grid-gap">
+              
+                              <div id="block-uswdsfootermenu" class="settings-tray-editable block block-block-content block-block-content0caf04a9-c73e-4bc8-a58c-7b54a74332a4" data-drupal-settingstray="editable">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><p class="text-uppercase"><a class="margin-right-2" href="/">Home</a> <a class="margin-right-2" href="/about">About</a> <a class="margin-right-2" href="/network">The Network</a> <a class="margin-right-2" href="/public-safety/firstnet-for">Public Safety</a> <a class="margin-right-2" href="/public-safety/firstnet-for/">Your State</a> <a class="margin-right-2" href="/newsroom">Newsroom</a></p>
+</div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+
+
+                          </div>
+          </div>
+        </div>
+</div>
+
+          <div class="usa-footer__primary-section ">
+
+        <div class="usa-footer__primary-content bg-primary-dark text-white padding-y-4">
+                    <div class="grid-container">
+            <div class="grid-row grid-gap">
+              
+              
+                          </div>
+          </div>
+          
+                      <div class="grid-container">
+              <div class="grid-row grid-gap">
+                <div class="grid-col-fill">
+                    <div>
+    <div id="block-uswdsmainfooter" class="settings-tray-editable block block-block-content block-block-content1f70323b-87df-4c68-a6fa-b06f8475bac9" data-drupal-settingstray="editable">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="grid-row grid-gap-lg">
+<div class="grid-col-6">
+<div class="grid-col-auto text-left"><a href="https://www.firstnet.gov" rel="noreferrer"><img alt="FirstNet Logo" data-entity-type="file" data-entity-uuid="e06923c8-a9d4-4fed-aa88-b63557396170" src="/sites/default/files/inline-images/FirstNet-Logo-white.png" /></a></div>
+</div>
+
+<div class="grid-col-6">
+<div class="usa-footer__social-links grid-row grid-gap-1 social-footer">
+<div class="grid-col-auto"><a href="https://www.linkedin.com/company/first-responder-network-authority/" target="_blank"><i class="fab fa-linkedin margin-x-05"></i></a></div>
+
+<div class="grid-col-auto"><a href="https://x.com/FirstNetGov" target="_blank"><img alt="X" class="text-white svg-filter-x-footer" data-entity-type="" data-entity-uuid="" src="/sites/default/files/x.svg" /></a></div>
+
+<div class="grid-col-auto"><a href="https://www.facebook.com/firstnetgov/" target="_blank"><i class="fab fa-facebook-f margin-x-05">&nbsp;</i></a></div>
+
+<div class="grid-col-auto"><a href="https://youtube.com/FirstNetGov" target="_blank"><i class="fab fa-youtube margin-x-05">&nbsp;</i></a></div>
+
+<div class="grid-col-auto"><a href="https://www.instagram.com/firstnetgov" target="_blank"><i class="fab fa-instagram margin-x-05">&nbsp;</i></a></div>
+</div>
+
+<div class="grid-row grid-gap-1 text-right social-footer">
+<div class="grid-col-fill"><a href="mailto:info@FirstNet.gov">info@FirstNet.gov</a>
+
+<address>12201 Sunrise Valley Dr.<br />
+Reston, VA 20192</address>
+</div>
+</div>
+</div>
+</div>
+</div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+
+  </div>
+
+                </div>
+              </div>
+            </div>
+                  </div>
+
+      </div>
+    
+          <div class="usa-footer__secondary-section bg-primary-light-uswds text-white padding-bottom-0 padding-top-0">
+        <div class="grid-container">
+          <div class="grid-row grid-gap">
+            
+                              <div>
+    <div id="block-footergenerallinks-2" class="settings-tray-editable block block-block-content block-block-content2c89c973-aaad-448d-85fe-d7fcca6d36bc" data-drupal-settingstray="editable">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="display-flex flex-row flex-justify-start padding-y-1 flex-wrap" style="font-size:.95rem;"><div class="padding-right-2 border-right-1px"><a href="https://www.firstnet.com" target="_blank">FIRSTNET.COM</a></div><div class="padding-x-2 border-right-1px"><a href="https://www.commerce.gov/" target="_blank">COMMERCE.GOV</a></div><div class="padding-x-2 border-right-1px"><a href="https://www.commerce.gov/opog/freedom-information-act-foia" target="_blank">FOIA</a></div><div class="padding-x-2 border-right-1px"><a href="https://usa.gov/" target="_blank">USA.GOV</a></div><div class="padding-x-2 border-right-1px"><a href="/privacy-policy">PRIVACY POLICY</a></div><div class="padding-x-2 border-right-1px"><a href="/web-policies">WEB POLICIES</a></div><div class="padding-x-2 border-right-1px"><a href="/accessibility">ACCESSIBILITY</a></div><div class="padding-x-2 border-right-1px"><a href="/standard-disclaimer-external-links">EXTERNAL LINK DISCLAIMER</a></div></div></div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+
+  </div>
+
+          
+        </div>
+      </div>
+    
+
+<div class="usa-footer__secondary-section text-white bg-base-darkest">
+
+                      <div class="grid-container">
+              <div class="grid-row grid-gap">
+                <div class="grid-col-fill">
+                    <div>
+    <div id="block-footerbottom-2" class="settings-tray-editable block block-block-content block-block-content8bcebb18-0dd2-4b4a-ba32-7a425b1dae46" data-drupal-settingstray="editable">
+  
+    
+      <div  class="_none"><div  class="container">  
+  <div  class="layout row layout-builder__layout">
+    
+                        <div  class="desktop:grid-col-9 grid-col-12 tablet:grid-col-12">
+          <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><p class="margin-top-5">The First Responder Network Authority is an independent agency within the U.S. Department of Commerce's National Telecommunications and Information Administration.</p>
+</div>
+      
+  </div>
+
+        </div>
+                              <div  class="desktop:grid-col-3 grid-col-12 tablet:grid-col-12">
+          <div class="block block-layout-builder block-inline-blockbasic">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="grid-row">
+<div class="grid-col-6"><img alt="Department of Commerce" class="padding-2" data-entity-type="file" data-entity-uuid="4de3e748-2d7c-48e8-931d-ffdf1fbb91b5" src="/sites/default/files/inline-images/doc_logo.png" /></div>
+
+<div class="grid-col-6"><img alt="NTIA" class="padding-2" data-entity-type="file" data-entity-uuid="62c4c219-1cc7-4111-ae11-49736ff1aa6b" src="/sites/default/files/inline-images/inverse_ntia_logo.png" /></div>
+</div></div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+
+        </div>
+                                                                                                                                                                              
+  </div>
+
+</div></div>
+  </div>
+
+  </div>
+
+                </div>
+              </div>
+            </div>
+          
+</div>
+  </footer>
+
+<div class="hidden">
+              <div class="grid-container">
+              <div class="grid-row grid-gap">
+                <div class="grid-col-fill">
+                    <div>
+    
+
+
+
+<div id="block-tbabout" class="ebt-width-auto settings-tray-editable block ebt-block ebt-block-block-contentab8b30a1-54f6-45c5-9028-b073a6629abc block-block-content block-block-contentab8b30a1-54f6-45c5-9028-b073a6629abc plugin-id-block-contentab8b30a1-54f6-45c5-9028-b073a6629abc ebt-tabs-" data-drupal-settingstray="editable">
+  <div class="bg-inner"></div>
+  <div class="ebt-container">
+    
+        
+          
+      <div class="field field--name-field-ebt-tabs field--type-entity-reference-revisions field--label-hidden ebt-tabs-wrapper field__items">
+              <div class="field__item">  <div class="paragraph paragraph--type--ebt-tab paragraph--view-mode--default">
+                  <div class="ebt-tab-title">
+          
+
+            <div class="field field--name-field-ebt-tab-title field--type-text field--label-hidden field__item">About FirstNet</div>
+      
+        </div>
+        <div class="ebt-tab-content">
+          
+
+            <div class="field field--name-field-ebt-tab-text field--type-text-long field--label-hidden field__item"><p>About sub menu</p></div>
+      
+        </div>
+            </div>
+
+
+</div>
+              <div class="field__item">  <div class="paragraph paragraph--type--ebt-tab paragraph--view-mode--default">
+                  <div class="ebt-tab-title">
+          
+
+            <div class="field field--name-field-ebt-tab-title field--type-text field--label-hidden field__item">The FirstNet Authority Board</div>
+      
+        </div>
+        <div class="ebt-tab-content">
+          
+
+            <div class="field field--name-field-ebt-tab-text field--type-text-long field--label-hidden field__item"><p>The FirstNet Authority Board</p></div>
+      
+        </div>
+            </div>
+
+
+</div>
+              <div class="field__item">  <div class="paragraph paragraph--type--ebt-tab paragraph--view-mode--default">
+                  <div class="ebt-tab-title">
+          
+
+            <div class="field field--name-field-ebt-tab-title field--type-text field--label-hidden field__item">Public Safety Advisory Committee</div>
+      
+        </div>
+        <div class="ebt-tab-content">
+          
+
+            <div class="field field--name-field-ebt-tab-text field--type-text-long field--label-hidden field__item"><p>Public Safety Advisory Committee sub menu</p></div>
+      
+        </div>
+            </div>
+
+
+</div>
+          </div>
+  
+      </div>
+</div>
+
+<div id="block-tbaboutfeatured" class="settings-tray-editable block block-block-content block-block-contentd38c5a6a-e6d1-4e2e-b4a9-429668efe9f6" data-drupal-settingstray="editable">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><h3><strong class="text-primary-darker">Featured</strong></h3>
+
+<p><img alt="test" data-entity-type="file" data-entity-uuid="4af91ff3-32a4-4347-93bf-99f3acb22785" src="/sites/default/files/inline-images/public_safety_advocacy_banner_890x300_web.jpg" width="100%" /></p>
+
+<h4 class="margin-bottom-0 margin-top-1"><a href="/about/history">Our History</a></h4>
+
+<p class="margin-top-0"><small class="text-black">The FirstNet Authority was established in light of September 11, 2001 to create a single, nationwide broadband network specifically for first responders.</small></p>
+</div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+<div id="block-tbtitleabout" class="settings-tray-editable block block-block-content block-block-content6397b466-debb-40ac-b181-813ebbbc6a63" data-drupal-settingstray="editable">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="text-primary-darker mm-title">About</div></div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+<div id="block-tbaboutlevel1" class="settings-tray-editable block block-block-content block-block-contentc6a3e95e-3152-4276-88e8-3bd2dc93ee2f" data-drupal-settingstray="editable">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="tab"><button class="tablinksabout margin-bottom-1 padding-1 active " onclick="openDivAbout(event, 'About')">About <svg aria-hidden="true" class="usa-icon float-right usa-icon--size-3" focusable="false" role="img"> <use xlink:href="/themes/custom/uswds_base_subtheme/node_modules/@uswds/uswds/dist/img/sprite.svg#navigate_next"></use> </svg></button><br />
+<button class="tablinksabout margin-bottom-1 padding-1 " onclick="openDivAbout(event, 'Board')">FirstNet Authority Board <svg aria-hidden="true" class="usa-icon float-right usa-icon--size-3" focusable="false" role="img"> <use xlink:href="/themes/custom/uswds_base_subtheme/node_modules/@uswds/uswds/dist/img/sprite.svg#navigate_next"></use> </svg></button><br />
+<button class="tablinksabout margin-bottom-1 padding-1 " onclick="openDivAbout(event, 'PSAC')">Public Safety Advisory Committee (PSAC) <svg aria-hidden="true" class="usa-icon float-right usa-icon--size-3" focusable="false" role="img"> <use xlink:href="/themes/custom/uswds_base_subtheme/node_modules/@uswds/uswds/dist/img/sprite.svg#navigate_next"></use> </svg></button></div>
+<script>
+function openDivAbout(evt, divNameAbout) {
+  var i, tabcontentabout, tablinksabout;
+  tabcontentabout = document.getElementsByClassName("tabcontentabout");
+  for (i = 0; i < tabcontentabout.length; i++) {
+    tabcontentabout[i].style.display = "none";
+  }
+
+  tablinksabout = document.getElementsByClassName("tablinksabout");
+  for (i = 0; i < tablinksabout.length; i++) {
+    tablinksabout[i].className = tablinksabout[i].className.replace(" active", "");
+  }
+  document.getElementById(divNameAbout).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script></div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+<div id="block-tbaboutlevel2" class="settings-tray-editable block block-block-content block-block-contenta0bfee3c-fb7e-4907-a2fc-0289dfccdd44" data-drupal-settingstray="editable">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="tabcontentabout" id="About" style="display: block;">
+<div class="grid-row grid-gap">
+<div class="grid-col-12 margin-top-2">
+<nav aria-label="navAbout">
+<ul class="usa-sidenav">
+	<li class="usa-sidenav__item border-top-0"><a href="/about">About Us</a></li>
+	<li class="usa-sidenav__item"><a href="/about/history">History</a></li>
+	<li class="usa-sidenav__item"><a href="/about/leadership">Leadership and Team</a></li>
+	<li class="usa-sidenav__item"><a href="/about/firstnet-authority-awards">FirstNet Authority Awards</a></li>
+	<li class="usa-sidenav__item"><a href="/about/doing-business-with-us">Doing Business with Us</a></li>
+	<li class="usa-sidenav__item"><a href="/about/careers">Careers</a></li>
+	<li class="usa-sidenav__item"><a href="/about/contact-us">Contact Us</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+
+<div class="tabcontentabout" id="Board">
+<div class="grid-row grid-gap">
+<div class="grid-col-12 margin-top-2">
+<nav aria-label="navBoard">
+<ul class="usa-sidenav">
+	<li class="usa-sidenav__item border-top-0"><a href="/about/board">About FirstNet Authority Board</a></li>
+	<li class="usa-sidenav__item"><a href="/about/board/members">Board Members</a></li>
+	<li class="usa-sidenav__item"><a href="/about/board/meetings">Board Meetings</a></li>
+	<li class="usa-sidenav__item"><a href="/about/board/resolutions">Board Resolutions</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+
+<div class="tabcontentabout" id="PSAC">
+<div class="grid-row grid-gap">
+<div class="grid-col-12 margin-top-2">
+<nav aria-label="navBoard">
+<ul class="usa-sidenav">
+	<li class="usa-sidenav__item border-top-0"><a href="/about/psac">About PSAC</a></li>
+	<li class="usa-sidenav__item"><a href="/about/psac/psac-members">PSAC Members</a></li>
+	<li class="usa-sidenav__item"><a href="/about/psac/tribal-advocacy-group">PSAC Tribal Advocacy&nbsp;Group</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+<div id="block-tbaboutlevel2psac" class="settings-tray-editable block block-block-content block-block-content0f082e83-f2ed-4e89-982f-cb89dab54874" data-drupal-settingstray="editable">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="grid-row grid-gap">
+<div class="grid-col-12 margin-top-2">
+<nav aria-label="navBoard">
+<ul class="usa-sidenav">
+	<li class="usa-sidenav__item"><a class="usa-current" href="javascript:void(0);">Public Safety Advisory Committee (PSAC)</a>
+	<ul class="usa-sidenav__sublist">
+		<li class="usa-sidenav__item"><a href="/about/psac">About PSAC</a></li>
+		<li class="usa-sidenav__item"><a href="/about/psac/psac-members">PSAC Members</a></li>
+		<li class="usa-sidenav__item"><a href="/about/psac/tribal-advocacy-group">PSAC Tribal Advocacy Group</a></li>
+	</ul>
+	</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+<div id="block-tbnetworkfeatured" class="settings-tray-editable block block-block-content block-block-content03dcbc2b-6c2a-4dc6-80dc-a56eccb86a17" data-drupal-settingstray="editable">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><h3><strong class="text-primary-darker">Featured</strong></h3>
+
+<p><img alt="FirstNet in Action" data-entity-type="file" data-entity-uuid="f573dd3d-a897-47e4-b674-ffbf99b7687c" src="/sites/default/files/inline-images/FirstNetInAction.jpg" width="100%" /></p>
+
+<h4 class="margin-bottom-0 margin-top-1"><a href="/network/firstnet-in-action">FirstNet in Action</a></h4>
+<p class="margin-top-0"><small class="text-black">Discover stories of how public safety integrates the FirstNet network into operations. Sort content by operational topics or disciplines.</small></p>
+</div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+<div id="block-tbnetworklevel1" class="settings-tray-editable block block-block-content block-block-content3da3661e-282a-46d8-a6fb-79f2036a2243" data-drupal-settingstray="editable">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="tab"><button class="tablinks margin-bottom-1 padding-1 active" onclick="openDivNetwork(event, &apos;Network&apos;)">The Network <svg aria-hidden="true" class="usa-icon float-right usa-icon--size-3" focusable="false" role="img"> <use xlink:href="/themes/custom/uswds_base_subtheme/node_modules/@uswds/uswds/dist/img/sprite.svg#navigate_next"></use> </svg></button><br><button class="tablinks margin-bottom-1 padding-1" onclick="openDivNetwork(event, &apos;Investments&apos;)">Investments <svg aria-hidden="true" class="usa-icon float-right usa-icon--size-3" focusable="false" role="img"> <use xlink:href="/themes/custom/uswds_base_subtheme/node_modules/@uswds/uswds/dist/img/sprite.svg#navigate_next"></use> </svg></button><br><button class="tablinks margin-bottom-1 padding-1" onclick="openDivNetwork(event, &apos;TT&apos;)">Technology and Tools <svg aria-hidden="true" class="usa-icon float-right usa-icon--size-3" focusable="false" role="img"> <use xlink:href="/themes/custom/uswds_base_subtheme/node_modules/@uswds/uswds/dist/img/sprite.svg#navigate_next"></use> </svg></button><br><button class="tablinks margin-bottom-1 padding-1" onclick="openDivNetwork(event, &apos;Roadmap&apos;)">The Roadmap <svg aria-hidden="true" class="usa-icon float-right usa-icon--size-3" focusable="false" role="img"> <use xlink:href="/themes/custom/uswds_base_subtheme/node_modules/@uswds/uswds/dist/img/sprite.svg#navigate_next"></use> </svg></button></div><script>
+function openDivNetwork(evt, divNameNetwork) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(divNameNetwork).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script></div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+<div id="block-tbnetworklevel2" class="settings-tray-editable block block-block-content block-block-contentd38c04aa-4d4f-468d-8713-ed745bfa394d" data-drupal-settingstray="editable">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="tabcontent" style="display:block;" id="Network"><div class="grid-row grid-gap"><div class="grid-col-12 margin-top-2"><nav aria-label="navBoard"><ul class="usa-sidenav"><li class="usa-sidenav__item border-top-0"><a href="/network">About The Network</a></li><li class="usa-sidenav__item"><a href="/network/firstnet-in-action">FirstNet in Action</a></li><li class="usa-sidenav__item"><a href="/network/10-ways">10 Ways</a></li><li class="usa-sidenav__item"><a href="/network/network-services">Learn about FirstNet Network Services</a></li><li class="usa-sidenav__item"><a href="/network/environmental-compliance">Environmental Compliance</a></li></ul></nav></div></div></div><div class="tabcontent" id="Roadmap"><div class="grid-row grid-gap"><div class="grid-col-12 margin-top-2"><nav aria-label="navBoard"><ul class="usa-sidenav"><li class="usa-sidenav__item border-top-0"><a href="/network/roadmap">About the Roadmap</a></li></ul></nav></div></div></div><div class="tabcontent" id="Investments"><div class="grid-row grid-gap"><div class="grid-col-12 margin-top-2"><nav aria-label="navBoard"><ul class="usa-sidenav"><li class="usa-sidenav__item border-top-0"><a href="/network/investments/CEW">Coverage Enhancement Workshops</a></li></ul></nav></div></div></div><div class="tabcontent" id="TT"><div class="grid-row grid-gap"><div class="grid-col-12 margin-top-2"><nav aria-label="navBoard"><ul class="usa-sidenav"><li class="usa-sidenav__item border-top-0"><a href="/network/TT">About Technology and Tools</a></li><li class="usa-sidenav__item"><a href="/network/boulder-firstnet-lab">Boulder FirstNet Lab</a></li><li class="usa-sidenav__item"><a href="/network/TT/apps-first-responders">Apps for First Responders</a></li><li class="usa-sidenav__item"><a href="/network/TT/devices-first-responders">Devices for First Responders</a></li><li class="usa-sidenav__item"><a href="/network/TT/deployables">Deployables</a></li><li class="usa-sidenav__item"><a href="/network/TT/firstnet-core">The FirstNet Core</a></li><li class="usa-sidenav__item"><a href="/network/TT/firstnet-for-developers">FirstNet for Developers</a></li></ul></nav></div></div></div></div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+<div id="block-tbnewsroomtitle" class="settings-tray-editable block block-block-content block-block-contentabe90e22-d559-476f-b9cb-21035825c739" data-drupal-settingstray="editable">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="text-primary-darker mm-title">Newsroom</div></div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+<div id="block-tbnewsroomlevel1" class="settings-tray-editable block block-block-content block-block-content8cf4a137-55af-4cf1-acd2-318cd591ee9e" data-drupal-settingstray="editable">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="tab"><button class="tablinksnews margin-bottom-1 padding-1 active " onclick="openDivNews(event, 'Newsroom')">Newsroom<svg aria-hidden="true" class="usa-icon float-right usa-icon--size-3" focusable="false" role="img"> <use xlink:href="/themes/custom/uswds_base_subtheme/node_modules/@uswds/uswds/dist/img/sprite.svg#navigate_next"></use> </svg></button><br />
+<button class="tablinksnews margin-bottom-1 padding-1 " onclick="openDivNews(event, 'Resources')">Resources <svg aria-hidden="true" class="usa-icon float-right usa-icon--size-3" focusable="false" role="img"> <use xlink:href="/themes/custom/uswds_base_subtheme/node_modules/@uswds/uswds/dist/img/sprite.svg#navigate_next"></use> </svg></button></div>
+<script>
+function openDivNews(evt, divNameNews) {
+  var i, tabcontentnews, tablinksnews;
+  tabcontentnews = document.getElementsByClassName("tabcontentnews");
+  for (i = 0; i < tabcontentnews.length; i++) {
+    tabcontentnews[i].style.display = "none";
+  }
+
+  tablinksnews = document.getElementsByClassName("tablinksnews");
+  for (i = 0; i < tablinksnews.length; i++) {
+    tablinksnews[i].className = tablinksnews[i].className.replace(" active", "");
+  }
+  document.getElementById(divNameNews).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script></div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+<div id="block-tbnewsroomlevel2" class="settings-tray-editable block block-block-content block-block-content38d9db29-c13f-4242-baa2-1c157506edf7" data-drupal-settingstray="editable">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="tabcontentnews" id="Newsroom" style="display: block;">
+<div class="grid-row grid-gap">
+<div class="grid-col-12 margin-top-2">
+<nav aria-label="navBoard">
+<ul class="usa-sidenav">
+	<li class="usa-sidenav__item border-top-0"><a href="/newsroom/blog">Blogs</a></li>
+	<li class="usa-sidenav__item"><a href="/newsroom/press-releases">Press Releases</a></li>
+	<li class="usa-sidenav__item"><a href="/newsroom/podcast">Podcast</a></li>
+	<li class="usa-sidenav__item"><a href="/newsroom/newsletters">Newsletters</a></li>
+	<li class="usa-sidenav__item"><a href="/newsroom/events">Events</a></li>
+	<li class="usa-sidenav__item"><a href="/newsroom/media-kit">For Media</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+
+<div class="tabcontentnews" id="Resources">
+<div class="grid-row grid-gap">
+<div class="grid-col-12 margin-top-2">
+<nav aria-label="navBoard">
+<ul class="usa-sidenav">
+	<li class="usa-sidenav__item border-top-0"><a href="/newsroom/resources/fact-sheet-faq">FAQs and Fact sheets</a></li>
+	<li class="usa-sidenav__item"><a href="/newsroom/resources/reports">Reports</a></li>
+	<li class="usa-sidenav__item"><a href="/newsroom/resources/federal-register-notices">Federal Register Notices</a></li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+</div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+<div id="block-tbpublicsafetylevel1" class="settings-tray-editable block block-block-content block-block-content573eb14a-eda9-41bf-8e4a-2446fbac4918" data-drupal-settingstray="editable">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="tab"><button class="tablinks margin-bottom-1 padding-1 " onclick="location.href='/public-safety/public-safety-advocacy'">Public Safety Advocacy</button><br />
+<button class="tablinks margin-bottom-1 padding-1 " onclick="location.href='/public-safety/your-advisor'">Your Public Safety Advisor</button><br />
+<button class="tablinks margin-bottom-1 padding-1 " onclick="location.href='/public-safety/firstnet-for'">FirstNet For...</button><br />
+<button class="tablinks margin-bottom-1 padding-1 " onclick="location.href='/public-safety/operational-assistance'">Operational Assistance</button>
+<button class="tablinks margin-bottom-1 padding-1 " onclick="location.href='/public-safety/emergency-management-resource-guide'">Emergency Management Resource Guide</button></div>
+</div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+<div id="block-tbpublicsafetytitle" class="settings-tray-editable block block-block-content block-block-content98a221d4-6a10-49c9-941e-d929f20b51a9" data-drupal-settingstray="editable">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="text-primary-darker mm-title">For Public Safety</div></div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+<div id="block-tbtitlenetwork" class="settings-tray-editable block block-block-content block-block-content99cc0bf0-42d3-4bf6-8fe3-4ad3cf55bf72" data-drupal-settingstray="editable">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="text-primary-darker mm-title">The Network</div></div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+<div id="block-tbyourstatefeature" class="settings-tray-editable block block-block-content block-block-content65d0fba5-51e9-48f9-8ad0-e7e2aacd1734" data-drupal-settingstray="editable">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><h3><strong class="text-primary-darker">Featured</strong></h3>
+
+<p><img alt="Your Public Safety Advisor" data-entity-type="file" data-entity-uuid="982a6e97-db25-4da6-aecb-f051e6f28462" src="/sites/default/files/inline-images/Advisor_Header_0.jpg" width="100%" /></p>
+
+<h4 class="margin-bottom-0 margin-top-1"><a href="/public-safety/your-advisor">Find your local advisor</a></h4>
+<p class="margin-top-0"><small class="text-black">We have regional leads in the field with public safety for each of the 50 states, five territories and the District of Columbia.</small></p>
+</div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+<div id="block-tbyourstatetitle" class="settings-tray-editable block block-block-content block-block-content72565078-05c8-418f-80d3-5e3a70080d66" data-drupal-settingstray="editable">
+  
+    
+        <div class="layout layout--onecol">
+    <div  class="layout__region layout__region--content">
+      <div class="block block-layout-builder block-field-blockblock-contentbasicbody">
+  
+    
+      
+
+            <div class="field field--name-body field--type-text-with-summary field--label-hidden field__item"><div class="text-primary-darker mm-title">Find your state or territory</div></div>
+      
+  </div>
+
+    </div>
+  </div>
+
+  </div>
+<div class="views-element-container settings-tray-editable block block-views block-views-blockuswds-state-profile-block-2" id="block-views-block-uswds-state-profile-block-2" data-drupal-settingstray="editable">
+  
+    
+      <div><div class="js-view-dom-id-2fc2534c6d7c5405848d0e4406925e9cbbe8642681d51a8fb6d2b8981f618117">
+  
+  
+  
+
+  
+  
+  
+
+  <ul class="blazy blazy--grid b-column b-count-56 b-column--sm-2 b-column--md-4 b-column--lg-6 blazy--media blazy--view blazy--view--uswds-state-profile blazy--view--uswds-state-profile--block-2 blazy--view--uswds-state-profile-block-block-2" data-media-gallery data-blazy="" id="blazy-3f1bc8e1a38-1"><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/alabama" hreflang="en">Alabama</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/alaska" hreflang="en">Alaska</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/american-samoa" hreflang="en">American Samoa</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/arizona" hreflang="en">Arizona</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/arkansas" hreflang="en">Arkansas</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/california" hreflang="en">California</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/colorado" hreflang="en">Colorado</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/connecticut" hreflang="en">Connecticut</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/delaware" hreflang="en">Delaware</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/district-columbia" hreflang="en">District of Columbia</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/florida" hreflang="en">Florida</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/georgia" hreflang="en">Georgia</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/guam" hreflang="en">Guam</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/hawaii" hreflang="en">Hawaii</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/idaho" hreflang="en">Idaho</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/illinois" hreflang="en">Illinois</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/indiana" hreflang="en">Indiana</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/iowa" hreflang="en">Iowa</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/kansas" hreflang="en">Kansas</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/kentucky" hreflang="en">Kentucky</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/louisiana" hreflang="en">Louisiana</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/maine" hreflang="en">Maine</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/maryland" hreflang="en">Maryland</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/massachusetts" hreflang="en">Massachusetts</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/michigan" hreflang="en">Michigan</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/minnesota" hreflang="en">Minnesota</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/mississippi" hreflang="en">Mississippi</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/missouri" hreflang="en">Missouri</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/montana" hreflang="en">Montana</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/nebraska" hreflang="en">Nebraska</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/nevada" hreflang="en">Nevada</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/new-hampshire" hreflang="en">New Hampshire</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/new-jersey" hreflang="en">New Jersey</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/new-mexico" hreflang="en">New Mexico</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/new-york" hreflang="en">New York</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/north-carolina" hreflang="en">North Carolina</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/north-dakota" hreflang="en">North Dakota</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/northern-mariana-islands" hreflang="en">Northern Mariana Islands</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/ohio" hreflang="en">Ohio</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/oklahoma" hreflang="en">Oklahoma</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/oregon" hreflang="en">Oregon</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/pennsylvania" hreflang="en">Pennsylvania</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/puerto-rico" hreflang="en">Puerto Rico</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/rhode-island" hreflang="en">Rhode Island</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/south-carolina" hreflang="en">South Carolina</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/south-dakota" hreflang="en">South Dakota</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/tennessee" hreflang="en">Tennessee</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/texas" hreflang="en">Texas</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/us-virgin-islands" hreflang="en">U.S. Virgin Islands</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/utah" hreflang="en">Utah</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/vermont" hreflang="en">Vermont</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/virginia" hreflang="en">Virginia</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/washington" hreflang="en">Washington</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/west-virginia" hreflang="en">West Virginia</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/wisconsin" hreflang="en">Wisconsin</a></span></div></div></li><li class="grid"><div class="grid__content"><div class="views-field views-field-title"><span class="field-content"><a href="/public-safety/firstnet-for/wyoming" hreflang="en">Wyoming</a></span></div></div></li></ul>
+    
+
+  
+  
+
+  
+  
+</div>
+</div>
+  </div>
+<div class="views-element-container settings-tray-editable block block-views block-views-blockusdws-article-block-5" id="block-views-block-usdws-article-block-5" data-drupal-settingstray="editable">
+  
+    
+      <div><div class="js-view-dom-id-1f8bf0169514126fccef1ed70b07731d3ac314420e0999f456b2785d31a6113f">
+  
+  
+  
+
+      <header>
+      <h3 class="margin-top-0 tbm-icons">Latest News</h3>
+    </header>
+  
+  
+  
+
+      <div class="views-view-grid horizontal cols-2 clearfix">
+            <div class="views-row clearfix row-1">
+                  <div class="views-col col-1" style="width: 50%;"><div><span><div class="grid-row grid-gap-1 tbm-news-font ">
+<div class="grid-col-3"><img src="/sites/default/files/styles/small_square/public/field/image/3GPP_Aug%20_2025.jpg?h=57013b68&amp;itok=0e3zQxJj" class="tbm-thumb-image" /></div>
+  <div class="grid-col-9"> <div class="margin-right-1"> <a href="/newsroom/blog/3gpp-focuses-release-20-6g-and-5g-advanced-including-key-public-safety-needs" hreflang="en">3GPP focuses on Release 20 6G and 5G-Advanced, including key public-safety needs</a></div></div>
+</div></span></div></div>
+                  <div class="views-col col-2" style="width: 50%;"><div><span><div class="grid-row grid-gap-1 tbm-news-font ">
+<div class="grid-col-3"><img src="/sites/default/files/styles/small_square/public/field/image/CRD_Boulder_Web.jpg?h=57013b68&amp;itok=1hdvyevM" class="tbm-thumb-image" /></div>
+  <div class="grid-col-9"> <div class="margin-right-1"> <a href="/newsroom/blog/boulder-county-strikes-gold-firstnet-crd" hreflang="en">Boulder County strikes gold with FirstNet CRD</a></div></div>
+</div></span></div></div>
+              </div>
+      </div>
+
+    
+
+  
+  
+
+      <footer>
+      <div class="margin-bottom-2 margin-top-1">
+<svg aria-hidden="true" class="usa-icon float-left" focusable="false" role="img"> <use xlink:href="/themes/custom/uswds_base_subtheme/node_modules/@uswds/uswds/dist/img/sprite.svg#navigate_next"></use> </svg><a href="/newsroom/blog" class="tbm-news-font"><strong>View all blogs</strong></a>
+</div><div class="js-view-dom-id-d9b76e83c161ff1b1ba850f301000977ccc91fdb7e54253b4e5164dba82592db">
+  
+  
+  
+
+  
+  
+  
+
+      <div class="views-view-grid horizontal cols-2 clearfix">
+            <div class="views-row clearfix row-1">
+                  <div class="views-col col-1" style="width: 50%;"><div><span><div class="grid-row grid-gap-1 tbm-news-font ">
+<div class="grid-col-3"><img src="/sites/default/files/styles/small_square/public/field/image/DrumsPA_Web.jpg?h=ec2edfef&amp;itok=Gy7-T8xG" class="tbm-thumb-image" /></div>
+  <div class="grid-col-9"><div class="margin-right-1"> <a href="/newsroom/press-releases/firstnet-transforming-communications-first-responders-luzerne-county" hreflang="en">FirstNet is Transforming Communications for First Responders in Luzerne County </a></div></div>
+</div></span></div></div>
+                  <div class="views-col col-2" style="width: 50%;"><div><span><div class="grid-row grid-gap-1 tbm-news-font ">
+<div class="grid-col-3"><img src="/sites/default/files/styles/small_square/public/field/image/SwainCounty_tower_web%20%281%29.jpg?h=3355ee26&amp;itok=PYkdphh1" class="tbm-thumb-image" /></div>
+  <div class="grid-col-9"><div class="margin-right-1"> <a href="/newsroom/press-releases/firstnet-transforming-communications-first-responders-swain-county-north" hreflang="en">FirstNet is Transforming Communications for First Responders in Swain County, North Carolina</a></div></div>
+</div></span></div></div>
+              </div>
+      </div>
+
+    
+
+  
+  
+
+      <footer>
+      <div class="margin-y-2">
+<svg aria-hidden="true" class="usa-icon float-left" focusable="false" role="img"> <use xlink:href="/themes/custom/uswds_base_subtheme/node_modules/@uswds/uswds/dist/img/sprite.svg#navigate_next"></use> </svg><a href="/newsroom/press-releases" class="tbm-news-font"><strong>View all press releases</strong></a>
+</div>
+    </footer>
+  
+  
+</div>
+
+    </footer>
+  
+  
+</div>
+</div>
+  </div>
+<div class="views-element-container settings-tray-editable block block-views block-views-blockuswds-firstnet-for-block-2" id="block-views-block-uswds-firstnet-for-block-2-4" data-drupal-settingstray="editable">
+  
+    
+      <div><div class="margin-bottom-4 js-view-dom-id-f7be969acc757f26ef522c892b855e1ac4c570ccab16029c55fbd8fb0b7cc94e">
+  
+  
+  
+
+  
+  
+  
+
+  <ul class="blazy blazy--grid b-column b-count-8 b-column--sm-1 b-column--md-2 b-column--lg-2 blazy--media blazy--view blazy--view--uswds-firstnet-for blazy--view--uswds-firstnet-for--block-2 blazy--view--uswds-firstnet-for-block-block-2 is-b-captioned" data-media-gallery data-blazy="" id="blazy-81745a34840-3"><li class="grid"><div class="grid__content"><div><strong class="remove-underlink"><div class="grid-row">
+    <div class="grid-col-auto"> <span class="fa-stack fa-2x uswds-text-primary-dark">
+    <i class="fas fa-square-full fa-stack-2x"></i>
+<i class="fas fa-headphones fa-stack-1x fa-inverse"></i>
+</span> </div>
+    <div class="grid-col-fill margin-y-2 font-sans-md remove-underlink"><a href="/public-safety/firstnet-for/9-1-1-emergency-communications" hreflang="en">9-1-1/Emergency Communications</a></div>
+  </div></strong></div></div></li><li class="grid"><div class="grid__content"><div><strong class="remove-underlink"><div class="grid-row">
+    <div class="grid-col-auto"> <span class="fa-stack fa-2x uswds-text-primary-dark">
+    <i class="fas fa-square-full fa-stack-2x"></i>
+<i class="fas fa-vest fa-stack-1x fa-inverse"></i>
+</span> </div>
+    <div class="grid-col-fill margin-y-2 font-sans-md remove-underlink"><a href="/public-safety/firstnet-for/emergency-management" hreflang="en">Emergency Management</a></div>
+  </div></strong></div></div></li><li class="grid"><div class="grid__content"><div><strong class="remove-underlink"><div class="grid-row">
+    <div class="grid-col-auto"> <span class="fa-stack fa-2x uswds-text-primary-dark">
+    <i class="fas fa-square-full fa-stack-2x"></i>
+<i class="fas fa-ambulance fa-stack-1x fa-inverse"></i>
+</span> </div>
+    <div class="grid-col-fill margin-y-2 font-sans-md remove-underlink"><a href="/public-safety/firstnet-for/ems" hreflang="en">EMS </a></div>
+  </div></strong></div></div></li><li class="grid"><div class="grid__content"><div><strong class="remove-underlink"><div class="grid-row">
+    <div class="grid-col-auto"> <span class="fa-stack fa-2x uswds-text-primary-dark">
+    <i class="fas fa-square-full fa-stack-2x"></i>
+<i class="fas fa-hard-hat fa-stack-1x fa-inverse"></i>
+</span> </div>
+    <div class="grid-col-fill margin-y-2 font-sans-md remove-underlink"><a href="/public-safety/firstnet-for/other-users" hreflang="en">Extended Community</a></div>
+  </div></strong></div></div></li><li class="grid"><div class="grid__content"><div><strong class="remove-underlink"><div class="grid-row">
+    <div class="grid-col-auto"> <span class="fa-stack fa-2x uswds-text-primary-dark">
+    <i class="fas fa-square-full fa-stack-2x"></i>
+<i class="fas fa-university fa-stack-1x fa-inverse"></i>
+</span> </div>
+    <div class="grid-col-fill margin-y-2 font-sans-md remove-underlink"><a href="/public-safety/firstnet-for/federal-users" hreflang="en">Federal Users</a></div>
+  </div></strong></div></div></li><li class="grid"><div class="grid__content"><div><strong class="remove-underlink"><div class="grid-row">
+    <div class="grid-col-auto"> <span class="fa-stack fa-2x uswds-text-primary-dark">
+    <i class="fas fa-square-full fa-stack-2x"></i>
+<i class="fas fa-fire-extinguisher fa-stack-1x fa-inverse"></i>
+</span> </div>
+    <div class="grid-col-fill margin-y-2 font-sans-md remove-underlink"><a href="/public-safety/firstnet-for/fire-service" hreflang="en">Fire Service</a></div>
+  </div></strong></div></div></li><li class="grid"><div class="grid__content"><div><strong class="remove-underlink"><div class="grid-row">
+    <div class="grid-col-auto"> <span class="fa-stack fa-2x uswds-text-primary-dark">
+    <i class="fas fa-square-full fa-stack-2x"></i>
+<i class="fas fa-shield fa-stack-1x fa-inverse"></i>
+</span> </div>
+    <div class="grid-col-fill margin-y-2 font-sans-md remove-underlink"><a href="/public-safety/firstnet-for/law-enforcement" hreflang="en">Law Enforcement</a></div>
+  </div></strong></div></div></li><li class="grid"><div class="grid__content"><div><strong class="remove-underlink"><div class="grid-row">
+    <div class="grid-col-auto"> <span class="fa-stack fa-2x uswds-text-primary-dark">
+    <i class="fas fa-square-full fa-stack-2x"></i>
+<i class="fas fa-users fa-stack-1x fa-inverse"></i>
+</span> </div>
+    <div class="grid-col-fill margin-y-2 font-sans-md remove-underlink"><a href="/public-safety/firstnet-for/tribal-nations" hreflang="en">Tribal Nations</a></div>
+  </div></strong></div></div></li></ul>
+    
+
+  
+  
+
+  
+  
+</div>
+</div>
+  </div>
+<div class="views-element-container settings-tray-editable block block-views block-views-blockuswds-firstnet-for-block-3" id="block-views-block-uswds-firstnet-for-block-3" data-drupal-settingstray="editable">
+  
+    
+      <div><div class="margin-y-2 js-view-dom-id-08b16671423bcd0f777d294f0ec86ad35d99ff7050e997c7eec6ef49cbec67f7">
+  
+  
+  
+
+  
+  
+  
+
+  <ul class="blazy blazy--grid b-column b-count-8 b-column--sm-1 b-column--md-2 b-column--lg-2 blazy--media blazy--view blazy--view--uswds-firstnet-for blazy--view--uswds-firstnet-for--block-3 blazy--view--uswds-firstnet-for-block-block-3 is-b-captioned" data-media-gallery data-blazy="" id="blazy-8b642ed84c2-5"><li class="grid"><div class="grid__content"><div><strong><div class="grid-row">
+    <div class="grid-col-auto"> <span class="fa-stack uswds-text-primary-dark tbm-icons ">
+    <i class="fas fa-square-full fa-stack-2x"></i>
+<i class="fas fa-headphones fa-stack-1x fa-inverse"></i>
+</span> </div>
+    <div class="grid-col-fill margin-y-1 font-sans-md"><a href="/public-safety/firstnet-for/9-1-1-emergency-communications" hreflang="en">9-1-1/Emergency Communications</a></div>
+  </div></strong></div></div></li><li class="grid"><div class="grid__content"><div><strong><div class="grid-row">
+    <div class="grid-col-auto"> <span class="fa-stack uswds-text-primary-dark tbm-icons ">
+    <i class="fas fa-square-full fa-stack-2x"></i>
+<i class="fas fa-vest fa-stack-1x fa-inverse"></i>
+</span> </div>
+    <div class="grid-col-fill margin-y-1 font-sans-md"><a href="/public-safety/firstnet-for/emergency-management" hreflang="en">Emergency Management</a></div>
+  </div></strong></div></div></li><li class="grid"><div class="grid__content"><div><strong><div class="grid-row">
+    <div class="grid-col-auto"> <span class="fa-stack uswds-text-primary-dark tbm-icons ">
+    <i class="fas fa-square-full fa-stack-2x"></i>
+<i class="fas fa-ambulance fa-stack-1x fa-inverse"></i>
+</span> </div>
+    <div class="grid-col-fill margin-y-1 font-sans-md"><a href="/public-safety/firstnet-for/ems" hreflang="en">EMS </a></div>
+  </div></strong></div></div></li><li class="grid"><div class="grid__content"><div><strong><div class="grid-row">
+    <div class="grid-col-auto"> <span class="fa-stack uswds-text-primary-dark tbm-icons ">
+    <i class="fas fa-square-full fa-stack-2x"></i>
+<i class="fas fa-hard-hat fa-stack-1x fa-inverse"></i>
+</span> </div>
+    <div class="grid-col-fill margin-y-1 font-sans-md"><a href="/public-safety/firstnet-for/other-users" hreflang="en">Extended Community</a></div>
+  </div></strong></div></div></li><li class="grid"><div class="grid__content"><div><strong><div class="grid-row">
+    <div class="grid-col-auto"> <span class="fa-stack uswds-text-primary-dark tbm-icons ">
+    <i class="fas fa-square-full fa-stack-2x"></i>
+<i class="fas fa-university fa-stack-1x fa-inverse"></i>
+</span> </div>
+    <div class="grid-col-fill margin-y-1 font-sans-md"><a href="/public-safety/firstnet-for/federal-users" hreflang="en">Federal Users</a></div>
+  </div></strong></div></div></li><li class="grid"><div class="grid__content"><div><strong><div class="grid-row">
+    <div class="grid-col-auto"> <span class="fa-stack uswds-text-primary-dark tbm-icons ">
+    <i class="fas fa-square-full fa-stack-2x"></i>
+<i class="fas fa-fire-extinguisher fa-stack-1x fa-inverse"></i>
+</span> </div>
+    <div class="grid-col-fill margin-y-1 font-sans-md"><a href="/public-safety/firstnet-for/fire-service" hreflang="en">Fire Service</a></div>
+  </div></strong></div></div></li><li class="grid"><div class="grid__content"><div><strong><div class="grid-row">
+    <div class="grid-col-auto"> <span class="fa-stack uswds-text-primary-dark tbm-icons ">
+    <i class="fas fa-square-full fa-stack-2x"></i>
+<i class="fas fa-shield fa-stack-1x fa-inverse"></i>
+</span> </div>
+    <div class="grid-col-fill margin-y-1 font-sans-md"><a href="/public-safety/firstnet-for/law-enforcement" hreflang="en">Law Enforcement</a></div>
+  </div></strong></div></div></li><li class="grid"><div class="grid__content"><div><strong><div class="grid-row">
+    <div class="grid-col-auto"> <span class="fa-stack uswds-text-primary-dark tbm-icons ">
+    <i class="fas fa-square-full fa-stack-2x"></i>
+<i class="fas fa-users fa-stack-1x fa-inverse"></i>
+</span> </div>
+    <div class="grid-col-fill margin-y-1 font-sans-md"><a href="/public-safety/firstnet-for/tribal-nations" hreflang="en">Tribal Nations</a></div>
+  </div></strong></div></div></li></ul>
+    
+
+  
+  
+
+      <footer>
+      <a href="https://firstnetauthority.gov1.qualtrics.com/jfe/form/SV_bvF49RBR31o9Uua" target="_blank" class="usa-button usa-button--big width-full"><div class="text-base-lightest width-full padding-1 bg-primary-dark">Public Safety: Share your feedback</div></a>
+    </footer>
+  
+  
+</div>
+</div>
+  </div>
+
+  </div>
+
+                </div>
+              </div>
+            </div>
+            
+</div>  
+
+  </div>
+
+
+<script src="/sites/default/files/js/js_cX1chJt_6zeejrjuSh6QF1J2AoZVJm7UWB1i8a_LHMk.js?scope=footer&amp;delta=0&amp;language=en&amp;theme=uswds_base_subtheme&amp;include=eJxdkFuOwzAIRTdkhSVZ0BDXLS6uwUozqx-3cjSPn6t7jhASkODXAfTO8Em4CJpJNj9ZS8UTRHGdtfCacfaqcmxZ5MSmJRtParjNtjPVQKpu3rBG80PYANWWxkWdA5NHRzK4PTu3I_b8wcAvl_y4w9p6RVkmhqSahMdIgjTiPy94w9dfWYI5-jguX-zc9mOCUyycsPCjA-G4oNu-WnxX2Nrwu7b7Lxmtk1-5MIyfsds3AJqCfQ"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="/sites/default/files/js/js_rTDRwQlh7zAI5RUagZTpnuookmanUjRwQ-jMpNYp_wM.js?scope=footer&amp;delta=2&amp;language=en&amp;theme=uswds_base_subtheme&amp;include=eJxdkFuOwzAIRTdkhSVZ0BDXLS6uwUozqx-3cjSPn6t7jhASkODXAfTO8Em4CJpJNj9ZS8UTRHGdtfCacfaqcmxZ5MSmJRtParjNtjPVQKpu3rBG80PYANWWxkWdA5NHRzK4PTu3I_b8wcAvl_y4w9p6RVkmhqSahMdIgjTiPy94w9dfWYI5-jguX-zc9mOCUyycsPCjA-G4oNu-WnxX2Nrwu7b7Lxmtk1-5MIyfsds3AJqCfQ"></script>
+<script src="https://cdn.jsdelivr.net/npm/@uswds/uswds@3.0.1/dist/js/uswds.min.js"></script>
+<script src="/sites/default/files/js/js_NJQFaQ_DoKlVhI_iyPrmQlyBnWQK7U7ltM44-bh3SLM.js?scope=footer&amp;delta=4&amp;language=en&amp;theme=uswds_base_subtheme&amp;include=eJxdkFuOwzAIRTdkhSVZ0BDXLS6uwUozqx-3cjSPn6t7jhASkODXAfTO8Em4CJpJNj9ZS8UTRHGdtfCacfaqcmxZ5MSmJRtParjNtjPVQKpu3rBG80PYANWWxkWdA5NHRzK4PTu3I_b8wcAvl_y4w9p6RVkmhqSahMdIgjTiPy94w9dfWYI5-jguX-zc9mOCUyycsPCjA-G4oNu-WnxX2Nrwu7b7Lxmtk1-5MIyfsds3AJqCfQ"></script>
+
+
+<!-- AE include -->
+<script type="text/javascript">!function(){var b=function(){window.__AudioEyeSiteHash = "a51385c2b2215d54bc0f4c81054bb3f1"; var a=document.createElement("script");a.src="https://wsmcdn.audioeye.com/aem.js";a.type="text/javascript";a.setAttribute("async","");document.getElementsByTagName("body")[0].appendChild(a)};"complete"!==document.readyState?window.addEventListener?window.addEventListener("load",b):window.attachEvent&&window.attachEvent("onload",b):b()}();</script>
+</body>
+</html>
