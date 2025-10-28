@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kerchunk Networks - Fire Department Network Engineering</title>
+    <meta name="description" content="Professional network engineering documentation and guides for fire department communications systems, Cradlepoint routers, GPS services, and emergency connectivity solutions.">
+    <meta name="keywords" content="fire department, network engineering, Cradlepoint, GPS, emergency communications, IBR1900, IBR1700, Starlink, cellular networks">
+    
+    <style>
+        :root {
+            --fire-red: #b85450;
+            --fire-orange: #d79b00;
+            --fire-blue: #667eea;
+            --fire-dark: #2c3e50;
+            --fire-light: #f8f9fa;
+            --fire-gray: #6c757d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--fire-dark);
+            background: linear-gradient(135deg, var(--fire-red) 0%, var(--fire-orange) 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: var(--fire-red);
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .tagline {
+            color: var(--fire-gray);
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            font-weight: 300;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 15px;
+            background: rgba(184, 84, 80, 0.1);
+            border-radius: 10px;
+            min-width: 120px;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--fire-red);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--fire-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Navigation */
+        .main-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .nav-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .card-title {
+            color: var(--fire-red);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .card-description {
+            color: var(--fire-gray);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .card-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .quick-link {
+            color: var(--fire-blue);
+            text-decoration: none;
+            font-size: 0.85rem;
+            padding: 5px 12px;
+            border: 1px solid var(--fire-blue);
+            border-radius: 15px;
+            transition: all 0.2s ease;
+        }
+
+        .quick-link:hover {
+            background: var(--fire-blue);
+            color: white;
+        }
+
+        /* Status Bar */
+        .status-bar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            text-align: center;
+        }
+
+        .status-item {
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .status-label {
+            font-size: 0.9rem;
+            color: var(--fire-gray);
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .status-online { color: #28a745; }
+        .status-warning { color: #ffc107; }
+        .status-critical { color: #dc3545; }
+
+        /* Footer */
+        footer {
+            background: rgba(44, 62, 80, 0.95);
+            backdrop-filter: blur(15px);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        /* Emergency Alert Banner */
+        .emergency-banner {
+            background: linear-gradient(135deg, #dc3545, #c82333);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            animation: pulse 2s infinite;
+            display: none; /* Show only during emergencies */
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container { padding: 15px; }
+            h1 { font-size: 2rem; }
+            .tagline { font-size: 1.1rem; }
+            .hero-stats { gap: 15px; }
+            .main-nav { grid-template-columns: 1fr; }
+            .footer-links { flex-direction: column; gap: 15px; }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(184, 84, 80, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--fire-red);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* PIN Modal Styles */
+        .pin-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .pin-modal-content {
+            background: white;
+            margin: 10% auto;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 400px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .pin-modal h3 {
+            color: var(--fire-red);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .pin-modal p {
+            color: var(--fire-gray);
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        .pin-input {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        .pin-input:focus {
+            outline: none;
+            border-color: var(--fire-red);
+        }
+
+        .pin-input.error {
+            border-color: #dc3545;
+            animation: shake 0.5s;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        .pin-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .pin-submit, .pin-cancel {
+            flex: 1;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pin-submit {
+            background: var(--fire-red);
+            color: white;
+        }
+
+        .pin-submit:hover {
+            background: #a04944;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(184, 84, 80, 0.3);
+        }
+
+        .pin-cancel {
+            background: #f0f0f0;
+            color: var(--fire-gray);
+        }
+
+        .pin-cancel:hover {
+            background: #e0e0e0;
+        }
+
+        .pin-error-message {
+            color: #dc3545;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .protected-link {
+            position: relative;
+        }
+
+        .protected-link::after {
+            content: " 🔒";
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <!-- PIN Modal -->
+    <div id="pinModal" class="pin-modal">
+        <div class="pin-modal-content">
+            <h3>🔒 Secure Access Required</h3>
+            <p>This content requires authorized access. Please enter your PIN.</p>
+            <input type="password"
+                   id="pinInput"
+                   class="pin-input"
+                   placeholder="Enter PIN"
+                   maxlength="6"
+                   autocomplete="off">
+            <div class="pin-error-message" id="pinError">Incorrect PIN. Please try again.</div>
+            <div class="pin-buttons">
+                <button class="pin-cancel" onclick="closePinModal()">Cancel</button>
+                <button class="pin-submit" onclick="validatePin()">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Emergency Alert Banner (Hidden by default) -->
+        <div id="emergencyBanner" class="emergency-banner">
+            🚨 EMERGENCY NETWORK ALERT: Critical system maintenance in progress. Contact IT immediately if needed.
+        </div>
+
+        <!-- Header -->
+        <header>
+            <div class="logo">🚒</div>
+            <h1>Kerchunk Networks</h1>
+            <p class="tagline">Fire Department Network Engineering & Emergency Communications</p>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">Uptime</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Fire Engines</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">GPS</span>
+                    <span class="stat-label">Tracking</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">LTE+</span>
+                    <span class="stat-label">Starlink</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- System Status Bar -->
+        <div class="status-bar">
+            <div class="status-grid">
+                <div class="status-item">
+                    <div class="status-label">Network Status</div>
+                    <div class="status-value status-online">● ONLINE</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-label">GPS Services</div>
+                    <div class="status-value status-online">● ACTIVE</div>
+                </div>
+                <div class="status-item">
+                    <div class="status-label">Last Updated</div>
+                    <div class="status-value" id="lastUpdated">
+                        <span class="loading"></span>
+                    </div>
+                </div>
+                <div class="status-item">
+                    <div class="status-label">Documentation</div>
+                    <div class="status-value">v2.1.0</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Navigation -->
+        <div class="main-nav">
+            <a href="guides/ibr1900-setup.html" class="nav-card">
+                <span class="card-icon">🔧</span>
+                <h2 class="card-title">Equipment Setup Guides</h2>
+                <p class="card-description">
+                    Complete configuration guides for Cradlepoint IBR1900, IBR1700, GPS systems, cellular networks, and Starlink backup connections.
+                </p>
+                <div class="card-links">
+                    <span class="quick-link">IBR1900 Setup</span>
+                    <span class="quick-link">GPS Config</span>
+                    <span class="quick-link">Starlink</span>
+                    <span class="quick-link">Cellular</span>
+                </div>
+            </a>
+
+            <div class="nav-card">
+                <span class="card-icon">📊</span>
+                <h2 class="card-title">Network Monitoring</h2>
+                <p class="card-description">
+                    Real-time dashboards, n8n automation workflows, Home Assistant integrations, and comprehensive network visibility tools.
+                </p>
+                <div class="card-links">
+                    <a href="#" class="quick-link protected-link" data-protected-url="monitor.html" onclick="requirePin(event, 'monitor.html'); return false;">Dashboard</a>
+                    <a href="guides/n8n-teams-alerts-setup.html" class="quick-link">n8n Alerts</a>
+                    <a href="#" class="quick-link protected-link" data-protected-url="analytics.html" onclick="requirePin(event, 'analytics.html'); return false;">Analytics</a>
+                </div>
+            </div>
+
+            <a href="diagrams/network-overview.html" class="nav-card">
+                <span class="card-icon">🎨</span>
+                <h2 class="card-title">Network Diagrams</h2>
+                <p class="card-description">
+                    Interactive network diagrams, equipment layouts, data flow visualizations, and comprehensive fire department infrastructure maps.
+                </p>
+                <div class="card-links">
+                    <span class="quick-link">Fire Engine</span>
+                    <span class="quick-link">Station Network</span>
+                    <span class="quick-link">GPS Flow</span>
+                    <span class="quick-link">Emergency Comms</span>
+                </div>
+            </a>
+
+            <a href="guides/troubleshooting.html" class="nav-card">
+                <span class="card-icon">🚨</span>
+                <h2 class="card-title">Emergency Procedures</h2>
+                <p class="card-description">
+                    Critical troubleshooting guides, emergency communication protocols, failover procedures, and rapid recovery solutions.
+                </p>
+                <div class="card-links">
+                    <span class="quick-link">Troubleshooting</span>
+                    <span class="quick-link">Failover</span>
+                    <span class="quick-link">Emergency Contacts</span>
+                    <span class="quick-link">Recovery</span>
+                </div>
+            </a>
+
+            <div class="nav-card">
+                <span class="card-icon">🛰️</span>
+                <h2 class="card-title">GPS & AVL Systems</h2>
+                <p class="card-description">
+                    Real-time vehicle tracking, Tablet Command, Versaterm AVL configuration, GPS troubleshooting, location services, and emergency vehicle tracking systems.
+                </p>
+                <div class="card-links">
+                    <a href="#" class="quick-link protected-link" data-protected-url="gps-tracking.html" onclick="requirePin(event, 'gps-tracking.html'); return false;">Live Map</a>
+                    <span class="quick-link">Tablet Command</span>
+                    <span class="quick-link">Versaterm AVL</span>
+                    <span class="quick-link">Unit 3311</span>
+                </div>
+            </div>
+
+            <a href="guides/security-protocols.html" class="nav-card">
+                <span class="card-icon">🔐</span>
+                <h2 class="card-title">Security & Access</h2>
+                <p class="card-description">
+                    Network security protocols, SSH configuration, firewall rules, VPN setup, and secure remote access procedures.
+                </p>
+                <div class="card-links">
+                    <span class="quick-link">SSH Setup</span>
+                    <span class="quick-link">Firewall</span>
+                    <span class="quick-link">VPN Access</span>
+                    <span class="quick-link">Tailscale</span>
+                </div>
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-links">
+                <a href="https://github.com/elohmann9/kerchunknetworks-blog">GitHub Repository</a>
+                <a href="mailto:admin@kerchunknetworks.com">Contact IT</a>
+                <a href="guides/emergency-contacts.html">Emergency Contacts</a>
+                <a href="guides/change-log.html">Change Log</a>
+                <a href="about.html">About</a>
+            </div>
+            <p>&copy; 2025 Kerchunk Networks - Fire Department IT Services</p>
+            <p><small>Professional network engineering for emergency services • <a href="https://customer.cradlepoint.com" style="color: rgba(255,255,255,0.7);">NetCloud Manager</a></small></p>
+        </footer>
+    </div>
+
+    <script>
+        // PIN Authentication System
+        const CORRECT_PIN = '2276'; // Change this value to your desired PIN
+        const PIN_SESSION_KEY = 'kerchunk_auth';
+        let pendingUrl = '';
+
+        // Check if user is already authenticated
+        function isAuthenticated() {
+            const auth = sessionStorage.getItem(PIN_SESSION_KEY);
+            return auth === 'true';
+        }
+
+        // Require PIN for protected pages
+        function requirePin(event, url) {
+            if (event) {
+                event.preventDefault();
+            }
+
+            // Check if already authenticated
+            if (isAuthenticated()) {
+                window.location.href = url;
+                return;
+            }
+
+            // Store the URL to redirect after successful authentication
+            pendingUrl = url;
+
+            // Show PIN modal
+            const modal = document.getElementById('pinModal');
+            const pinInput = document.getElementById('pinInput');
+            const pinError = document.getElementById('pinError');
+
+            modal.style.display = 'block';
+            pinError.style.display = 'none';
+            pinInput.value = '';
+            pinInput.classList.remove('error');
+
+            // Focus on input
+            setTimeout(() => pinInput.focus(), 100);
+        }
+
+        // Validate entered PIN
+        function validatePin() {
+            const pinInput = document.getElementById('pinInput');
+            const pinError = document.getElementById('pinError');
+            const enteredPin = pinInput.value;
+
+            if (enteredPin === CORRECT_PIN) {
+                // Correct PIN - authenticate and redirect
+                sessionStorage.setItem(PIN_SESSION_KEY, 'true');
+
+                // Show success briefly before redirect
+                const modal = document.getElementById('pinModal');
+                modal.style.display = 'none';
+
+                // Add small delay to ensure sessionStorage is saved
+                setTimeout(() => {
+                    console.log('Redirecting to:', pendingUrl);
+                    window.location.href = pendingUrl;
+                }, 100);
+            } else {
+                // Incorrect PIN - show error
+                pinInput.classList.add('error');
+                pinError.style.display = 'block';
+                pinInput.value = '';
+                pinInput.focus();
+
+                // Remove error animation after it completes
+                setTimeout(() => {
+                    pinInput.classList.remove('error');
+                }, 500);
+            }
+        }
+
+        // Close PIN modal
+        function closePinModal() {
+            const modal = document.getElementById('pinModal');
+            const pinInput = document.getElementById('pinInput');
+            const pinError = document.getElementById('pinError');
+
+            modal.style.display = 'none';
+            pinInput.value = '';
+            pinInput.classList.remove('error');
+            pinError.style.display = 'none';
+            pendingUrl = '';
+        }
+
+        // Allow Enter key to submit PIN
+        document.addEventListener('DOMContentLoaded', function() {
+            const pinInput = document.getElementById('pinInput');
+            if (pinInput) {
+                pinInput.addEventListener('keypress', function(event) {
+                    if (event.key === 'Enter') {
+                        validatePin();
+                    }
+                });
+            }
+
+            // Close modal when clicking outside of it
+            const modal = document.getElementById('pinModal');
+            if (modal) {
+                modal.addEventListener('click', function(event) {
+                    if (event.target === modal) {
+                        closePinModal();
+                    }
+                });
+            }
+        });
+
+        // Update last modified time
+        document.addEventListener('DOMContentLoaded', function() {
+            const lastUpdatedElement = document.getElementById('lastUpdated');
+            const now = new Date();
+            const timeString = now.toLocaleString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+            
+            setTimeout(() => {
+                lastUpdatedElement.innerHTML = timeString;
+            }, 1000);
+        });
+
+        // Emergency banner toggle (for testing/emergencies)
+        function toggleEmergencyBanner() {
+            const banner = document.getElementById('emergencyBanner');
+            banner.style.display = banner.style.display === 'none' ? 'block' : 'none';
+        }
+
+        // Keyboard shortcut for emergency banner (Ctrl+Shift+E)
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && e.shiftKey && e.key === 'E') {
+                toggleEmergencyBanner();
+            }
+        });
+
+        // Add smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Service worker for offline functionality (progressive web app)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(function(registrationError) {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
