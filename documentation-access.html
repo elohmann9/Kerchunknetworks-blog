@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation Access - Kerchunk Networks</title>
+    <style>
+        :root {
+            --primary-tan: #e8ddd0;
+            --maroon: #8b4049;
+            --dark-maroon: #6b3038;
+            --accent-gold: #d4a574;
+            --text-dark: #3a2a2a;
+            --text-light: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, var(--primary-tan) 0%, var(--accent-gold) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .access-container {
+            background: white;
+            border-radius: 20px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 30px;
+        }
+
+        h1 {
+            color: var(--maroon);
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            color: var(--text-dark);
+            margin-bottom: 40px;
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+
+        .pin-form {
+            margin-bottom: 20px;
+        }
+
+        .pin-input {
+            width: 100%;
+            padding: 18px 25px;
+            font-size: 1.2rem;
+            border: 2px solid var(--primary-tan);
+            border-radius: 50px;
+            text-align: center;
+            letter-spacing: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .pin-input:focus {
+            border-color: var(--maroon);
+            box-shadow: 0 0 0 3px rgba(139, 64, 73, 0.1);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            background: var(--maroon);
+            color: var(--text-light);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background: var(--dark-maroon);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 64, 73, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .error-message {
+            color: #d32f2f;
+            margin-top: 15px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .error-message.show {
+            opacity: 1;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: var(--maroon);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--dark-maroon);
+        }
+
+        .shield-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .access-container {
+                padding: 40px 25px;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="access-container">
+        <div class="shield-icon">🔒</div>
+        <h1>Documentation Portal</h1>
+        <p class="subtitle">Enter PIN to access internal documentation</p>
+
+        <form class="pin-form" onsubmit="checkPIN(event)">
+            <input
+                type="password"
+                id="pinInput"
+                class="pin-input"
+                placeholder="••••"
+                maxlength="4"
+                inputmode="numeric"
+                pattern="[0-9]*"
+                required
+                autocomplete="off"
+            >
+            <button type="submit" class="submit-btn">Access Documentation</button>
+        </form>
+
+        <div class="error-message" id="errorMessage">
+            Incorrect PIN. Please try again.
+        </div>
+
+        <a href="index.html" class="back-link">← Back to Home</a>
+    </div>
+
+    <script>
+        const CORRECT_PIN = '2276';
+        const DOCUMENTATION_URL = 'index-old.html';
+
+        function checkPIN(event) {
+            event.preventDefault();
+
+            const pinInput = document.getElementById('pinInput');
+            const errorMessage = document.getElementById('errorMessage');
+            const enteredPIN = pinInput.value;
+
+            if (enteredPIN === CORRECT_PIN) {
+                // Correct PIN - redirect to documentation
+                window.location.href = DOCUMENTATION_URL;
+            } else {
+                // Incorrect PIN - show error
+                errorMessage.classList.add('show');
+                pinInput.value = '';
+                pinInput.focus();
+
+                // Shake animation
+                pinInput.style.animation = 'shake 0.5s';
+                setTimeout(() => {
+                    pinInput.style.animation = '';
+                }, 500);
+
+                // Hide error after 3 seconds
+                setTimeout(() => {
+                    errorMessage.classList.remove('show');
+                }, 3000);
+            }
+        }
+
+        // Add shake animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes shake {
+                0%, 100% { transform: translateX(0); }
+                10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+                20%, 40%, 60%, 80% { transform: translateX(5px); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Auto-focus on pin input
+        document.getElementById('pinInput').focus();
+
+        // Only allow numbers
+        document.getElementById('pinInput').addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+    </script>
+</body>
+</html>
