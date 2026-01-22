@@ -723,8 +723,8 @@
                 timestamp: new Date().toISOString()
             };
 
-            // Send to n8n webhook (replace with your webhook URL once created)
-            fetch('https://n8n.kerchunknetworks.com/webhook/quote-request', {
+            // Send to n8n webhook on Linode server
+            fetch('http://172.239.65.42:5678/webhook/quote-request', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
