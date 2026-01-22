@@ -282,7 +282,7 @@
 
             <form id="discoveryForm" action="https://api.web3forms.com/submit" method="POST">
                 <!-- Replace with your actual Access Key from Web3Forms -->
-                <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                <input type="hidden" name="access_key" value="1c07640f-5b18-4895-8c3b-5fbc899e6e48">
 
                 <!-- Optional: Custom Redirection after submission -->
                 <!-- <input type="hidden" name="redirect" value="https://kerchunknetworks.com/thank-you.html"> -->
@@ -1018,120 +1018,7 @@
     </div>
 
     <script>
-        document.getElementById('discoveryForm').addEventListener('submit', function (e) {
-            e.preventDefault();
 
-            // Collect all form data
-            const formData = new FormData(this);
-            const data = {};
-
-            // Convert FormData to object
-            for (let [key, value] of formData.entries()) {
-                if (data[key]) {
-                    if (!Array.isArray(data[key])) {
-                        data[key] = [data[key]];
-                    }
-                    data[key].push(value);
-                } else {
-                    data[key] = value;
-                }
-            }
-
-            // Create formatted output
-            let output = '=== KERCHUNK NETWORKS - CLIENT DISCOVERY QUESTIONNAIRE ===\n\n';
-            output += 'Date Submitted: ' + new Date().toLocaleString() + '\n\n';
-
-            output += '--- CONTACT & PROPERTY INFORMATION ---\n';
-            output += 'Name: ' + (data.fullName || '') + '\n';
-            output += 'Email: ' + (data.email || '') + '\n';
-            output += 'Phone: ' + (data.phone || '') + '\n';
-            output += 'Preferred Contact: ' + (data.preferredContact || '') + '\n';
-            output += 'Property Address: ' + (data.propertyAddress || '') + '\n';
-            output += 'Property Type: ' + (data.propertyType || '') + '\n';
-            output += 'Square Footage: ' + (data.squareFootage || 'Not provided') + '\n';
-            output += 'Number of Floors: ' + (data.numFloors || '') + '\n';
-            output += 'Construction Type: ' + (data.constructionType || '') + '\n\n';
-
-            output += '--- INTERNET SERVICE ---\n';
-            output += 'ISP: ' + (data.ispProvider || '') + '\n';
-            output += 'Speed: ' + (data.internetSpeed || '') + '\n';
-            output += 'Modem Location: ' + (data.modemLocation || '') + '\n';
-            output += 'Modem Accessibility: ' + (data.modemAccess || '') + '\n\n';
-
-            output += '--- CURRENT NETWORK SETUP ---\n';
-            output += 'Current Router: ' + (data.currentRouter || '') + '\n';
-            output += 'Current Setup: ' + (Array.isArray(data.currentSetup) ? data.currentSetup.join(', ') : data.currentSetup || 'None') + '\n';
-            output += 'Current Issues: ' + (data.currentIssues || '') + '\n\n';
-
-            output += '--- WIFI COVERAGE REQUIREMENTS ---\n';
-            output += 'Areas Needing Coverage: ' + (Array.isArray(data.wifiAreas) ? data.wifiAreas.join(', ') : data.wifiAreas || 'None specified') + '\n';
-            output += 'Problem Areas: ' + (data.problemAreas || '') + '\n';
-            output += 'Detached Building Distance: ' + (data.detachedDistance || 'N/A') + '\n\n';
-
-            output += '--- WIRED CONNECTIONS (CAT6) ---\n';
-            output += 'Locations Needing Wired: ' + (Array.isArray(data.cat6Locations) ? data.cat6Locations.join(', ') : data.cat6Locations || 'None') + '\n';
-            output += 'Wired Details: ' + (data.cat6Details || '') + '\n';
-            output += 'Cable Access: ' + (data.cableAccess || '') + '\n\n';
-
-            output += '--- DEVICES & USAGE ---\n';
-            output += 'Device Count: ' + (data.deviceCount || '') + '\n';
-            output += 'Network Usage: ' + (Array.isArray(data.networkUsage) ? data.networkUsage.join(', ') : data.networkUsage || 'None specified') + '\n';
-            output += 'Special Devices: ' + (data.specialDevices || '') + '\n\n';
-
-            output += '--- OUTDOOR CONNECTIVITY ---\n';
-            output += 'Outdoor Areas: ' + (Array.isArray(data.outdoorAreas) ? data.outdoorAreas.join(', ') : data.outdoorAreas || 'None') + '\n';
-            output += 'Distance to Detached: ' + (data.outdoorDistance || 'N/A') + '\n';
-            output += 'Outdoor Power: ' + (data.outdoorPower || '') + '\n';
-            output += 'Line of Sight: ' + (data.lineOfSight || '') + '\n';
-            output += 'Outdoor Devices: ' + (data.outdoorDevices || '') + '\n\n';
-
-            output += '--- HOME AUDIO & SPEAKERS ---\n';
-            output += 'Audio Systems: ' + (Array.isArray(data.audioSystems) ? data.audioSystems.join(', ') : data.audioSystems || 'None') + '\n';
-            output += 'Number of Speakers: ' + (data.audioCount || 'Not specified') + '\n';
-            output += 'Speaker Locations: ' + (data.audioLocations || '') + '\n';
-            output += 'Audio Issues: ' + (Array.isArray(data.audioIssues) ? data.audioIssues.join(', ') : data.audioIssues || 'None') + '\n\n';
-
-            output += '--- SECURITY & CAMERAS ---\n';
-            output += 'Camera Interest: ' + (data.camerasInterest || '') + '\n';
-            output += 'Camera Locations: ' + (data.cameraLocations || '') + '\n';
-            output += 'Existing Cameras: ' + (data.existingCameras || '') + '\n';
-            output += 'Existing Details: ' + (data.existingCameraDetails || '') + '\n\n';
-
-            output += '--- ACCESS CONTROL & SMART HOME ---\n';
-            output += 'Access Control Interest: ' + (data.accessInterest || '') + '\n';
-            output += 'Smart Home Devices: ' + (data.smartHomeDevices || '') + '\n\n';
-
-            output += '--- SPECIAL REQUIREMENTS ---\n';
-            output += 'Special Needs: ' + (Array.isArray(data.specialRequirements) ? data.specialRequirements.join(', ') : data.specialRequirements || 'None') + '\n';
-            output += 'Special Notes: ' + (data.specialNotes || '') + '\n\n';
-
-            output += '--- TIMELINE & BUDGET ---\n';
-            output += 'Timeline: ' + (data.timeline || '') + '\n';
-            output += 'Budget Range: ' + (data.budgetRange || '') + '\n';
-            output += 'Managed Services Interest: ' + (data.managedServices || '') + '\n\n';
-
-            output += '--- ADDITIONAL INFORMATION ---\n';
-            output += 'How They Heard: ' + (data.howHeard || '') + '\n';
-            output += 'Site Visit: ' + (data.siteVisit || '') + '\n';
-            output += 'Additional Comments: ' + (data.additionalComments || '') + '\n';
-
-            // Create a downloadable text file
-            const blob = new Blob([output], { type: 'text/plain' });
-            const url = window.URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'client_discovery_' + data.fullName.replace(/\s+/g, '_') + '_' + Date.now() + '.txt';
-            document.body.appendChild(a);
-            a.click();
-            window.URL.revokeObjectURL(url);
-            document.body.removeChild(a);
-
-            // Show success message
-            alert('Thank you! Your questionnaire has been saved. We will review your information and contact you within 24-48 hours to discuss your project.\n\nA copy has been downloaded to your device for your records.');
-
-            // Optional: You could also send this to a server/email service here
-            // For now, it just downloads locally
-        });
 
         // Auto-uncheck "None" options when other items are checked
         document.getElementById('hasNone').addEventListener('change', function () {
