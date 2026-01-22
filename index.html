@@ -489,6 +489,74 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        /* Dropdown Menu Styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(139, 64, 73, 0.98);
+            min-width: 220px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            list-style: none;
+            padding: 10px 0;
+            border-radius: 0 0 8px 8px;
+            z-index: 1001;
+            /* Ensure above hero content */
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+        }
+
+        .dropdown-link {
+            display: block;
+            padding: 12px 20px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: background 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .dropdown-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--accent-gold);
+        }
+
+        .nav-cta {
+            background: var(--accent-gold);
+            color: var(--text-dark) !important;
+            padding: 10px 20px !important;
+            border-radius: 4px;
+            font-weight: 700 !important;
+            margin-left: 15px;
+            border: 2px solid var(--accent-gold);
+        }
+
+        .nav-cta:hover {
+            background: transparent !important;
+            color: var(--accent-gold) !important;
+        }
+
+        .nav-cta::after {
+            display: none !important;
+            /* Remove underline effect */
+        }
     </style>
 </head>
 
@@ -523,13 +591,25 @@
             <!-- Navigation Menu -->
             <ul class="nav-menu" id="navMenu">
                 <li class="nav-item">
-                    <a href="#networking" class="nav-link">Networking</a>
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Services ▾</a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item"><a href="networking.html" class="dropdown-link">Networking</a></li>
+                        <li class="dropdown-item"><a href="equipment.html" class="dropdown-link">Equipment</a></li>
+                        <li class="dropdown-item"><a href="support.html" class="dropdown-link">Support & Monitoring</a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="#products" class="nav-link">Products</a>
+                    <a href="about.html" class="nav-link">About</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#services" class="nav-link">Services</a>
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="questionnaire/index.html" class="nav-link nav-cta">Schedule Consultation</a>
                 </li>
             </ul>
         </div>
@@ -547,9 +627,12 @@
     <!-- Services Preview Section -->
     <section class="services-preview">
         <div class="services-container">
-            <h2 class="section-title">What We Offer</h2>
+            <h2 class="section-title">Connecting Fire, Field, and Family</h2>
             <p class="section-subtitle">
-                Comprehensive network solutions tailored for fire departments and emergency response teams.
+                Reliable connectivity for fire, field, and family.
+                <br>
+                <span style="font-size: 0.9em; opacity: 0.9; display: block; margin-top: 10px;">Purpose built networks
+                    for emergency response, remote operations, and modern homes.</span>
             </p>
 
             <div class="services-grid">

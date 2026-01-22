@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment & Gear | Kerchunk Networks</title>
+    <style>
+        :root {
+            --primary-tan: #e8ddd0;
+            --maroon: #8b4049;
+            --accent-gold: #d4a574;
+            --text-dark: #3a2a2a;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--primary-tan);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1,
+        h2 {
+            color: var(--maroon);
+        }
+
+        .hero {
+            background: var(--maroon);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .gear-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .gear-item {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .gear-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--maroon);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-gold);
+            color: var(--text-dark);
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 40px;
+        }
+
+        .supply-banner {
+            background: white;
+            padding: 30px;
+            text-align: center;
+            margin: 40px 0;
+            border-left: 5px solid var(--accent-gold);
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 40px;
+            text-decoration: none;
+            color: var(--maroon);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hero">
+        <h1>Equipment & Gear</h1>
+        <p>Industry-leading hardware for reliable emergency communications.</p>
+    </div>
+
+    <div class="container">
+
+        <div class="supply-banner">
+            <h2>We Supply + Configure</h2>
+            <p>We don't just sell boxes. Every piece of equipment arrives pre-configured, labeled, and ready to deploy
+                for your specific environment.</p>
+        </div>
+
+        <h2>Recommended Gear</h2>
+        <div class="gear-grid">
+            <div class="gear-item">
+                <div class="gear-title">Cradlepoint Routers</div>
+                <p>Ruggedized cellular routers (IBR900/1700/1900) built for vehicle and field deployment.</p>
+            </div>
+            <div class="gear-item">
+                <div class="gear-title">Starlink for Business</div>
+                <p>High-performance satellite internet for mobile command centers and remote stations.</p>
+            </div>
+            <div class="gear-item">
+                <div class="gear-title">UniFi Networking</div>
+                <p>Enterprise-grade switches, gateways, and access points for seamless station coverage.</p>
+            </div>
+            <div class="gear-item">
+                <div class="gear-title">High-Gain Antennas</div>
+                <p>Panorama and Parsec antennas optimized for maximum cellular signal reception.</p>
+            </div>
+        </div>
+
+        <div style="text-align: center;">
+            <a href="questionnaire/index.html" class="cta-button">Request a Quote</a>
+        </div>
+
+        <a href="index.html" class="back-link">← Return to Home</a>
+    </div>
+
+</body>
+
+</html>
