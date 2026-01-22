@@ -644,6 +644,9 @@
                 return;
             }
 
+            // Send notification to n8n webhook
+            sendQuoteNotification(clientName);
+
             const now = new Date();
             const quoteNumber = `KN-${now.getFullYear()}${(now.getMonth()+1).toString().padStart(2,'0')}${now.getDate().toString().padStart(2,'0')}-${now.getHours().toString().padStart(2,'0')}${now.getMinutes().toString().padStart(2,'0')}`;
             const quoteDate = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -699,6 +702,37 @@
         function editQuote() {
             document.querySelector('.form-section').style.display = 'block';
             document.getElementById('quotePreview').style.display = 'none';
+        }
+
+        function sendQuoteNotification(clientName) {
+            const equipmentTotal = quoteItems.reduce((sum, item) => sum + item.total, 0);
+            const hourlyRate = parseFloat(document.getElementById('hourlyRate').value) || 0;
+            const laborHours = parseFloat(document.getElementById('laborHours').value) || 0;
+            const laborTotal = hourlyRate * laborHours;
+            const grandTotal = equipmentTotal + laborTotal;
+            
+            const data = {
+                clientName: clientName,
+                projectName: document.getElementById('projectName').value || 'Network Installation',
+                items: quoteItems,
+                totals: {
+                    equipment: equipmentTotal,
+                    labor: laborTotal,
+                    grand: grandTotal
+                },
+                timestamp: new Date().toISOString()
+            };
+
+            // Send to n8n webhook (replace with your webhook URL once created)
+            fetch('https://n8n.kerchunknetworks.com/webhook/quote-request', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            }).catch(error => {
+                console.log('Notification sent:', error);
+            });
         }
 
         document.getElementById('hourlyRate').addEventListener('input', updateTotals);
