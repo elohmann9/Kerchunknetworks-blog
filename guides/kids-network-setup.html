@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Network Setup Guide - UniFi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --unifi-blue: #006FFF;
+            --unifi-blue-dark: #0052CC;
+            --unifi-slate: #1A1F2E;
+            --unifi-dark: #0D1117;
+            --unifi-card: #161B26;
+            --unifi-border: #2D3548;
+            --unifi-text: #E6EDF3;
+            --unifi-muted: #8B949E;
+            --unifi-success: #3FB950;
+            --unifi-warning: #F0883E;
+            --unifi-purple: #8B5CF6;
+            --unifi-pink: #EC4899;
+            --kids-gradient: linear-gradient(135deg, #8B5CF6 0%, #EC4899 50%, #F97316 100%);
+            --kids-soft: linear-gradient(135deg, #C4B5FD 0%, #FBCFE8 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--unifi-dark);
+            color: var(--unifi-text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(249, 115, 22, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--kids-gradient);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 24px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .header h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 16px;
+            background: var(--kids-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: var(--unifi-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Network Diagram */
+        .network-diagram {
+            background: var(--unifi-card);
+            border: 1px solid var(--unifi-border);
+            border-radius: 24px;
+            padding: 48px;
+            margin-bottom: 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .network-diagram::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--kids-gradient);
+        }
+
+        .diagram-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .diagram-title svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .network-visual {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 32px;
+        }
+
+        /* Gateway Device */
+        .gateway {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .gateway-icon {
+            width: 120px;
+            height: 80px;
+            background: linear-gradient(145deg, #2D3548, #1A1F2E);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .gateway-icon::before {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 8px;
+            background: var(--unifi-blue);
+            border-radius: 4px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .gateway-label {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--unifi-text);
+        }
+
+        .gateway-model {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11px;
+            color: var(--unifi-muted);
+        }
+
+        /* Connection Lines */
+        .connections {
+            position: relative;
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .connection-line {
+            position: absolute;
+            width: 2px;
+            height: 40px;
+            top: 0;
+        }
+
+        .connection-line::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--unifi-border), transparent);
+        }
+
+        .connection-line.main {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .connection-line.main::before {
+            background: var(--unifi-blue);
+            animation: dataFlow 1.5s ease-in-out infinite;
+        }
+
+        @keyframes dataFlow {
+            0% { opacity: 0.3; transform: scaleY(0.5); transform-origin: top; }
+            50% { opacity: 1; transform: scaleY(1); }
+            100% { opacity: 0.3; transform: scaleY(0.5); transform-origin: bottom; }
+        }
+
+        /* VLAN Container */
+        .vlans-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            width: 100%;
+            max-width: 900px;
+        }
+
+        .vlan-card {
+            background: var(--unifi-slate);
+            border: 2px solid var(--unifi-border);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vlan-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+        }
+
+        .vlan-card.main::before { background: var(--unifi-blue); }
+        .vlan-card.iot::before { background: var(--unifi-warning); }
+        .vlan-card.guest::before { background: var(--unifi-success); }
+        .vlan-card.kids::before { background: var(--kids-gradient); }
+
+        .vlan-card.kids {
+            border-color: rgba(139, 92, 246, 0.5);
+            background: linear-gradient(145deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.05));
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(139, 92, 246, 0.2);
+        }
+
+        .vlan-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+            font-size: 24px;
+        }
+
+        .vlan-card.main .vlan-icon { background: rgba(0, 111, 255, 0.2); }
+        .vlan-card.iot .vlan-icon { background: rgba(240, 136, 62, 0.2); }
+        .vlan-card.guest .vlan-icon { background: rgba(63, 185, 80, 0.2); }
+        .vlan-card.kids .vlan-icon { background: var(--kids-gradient); }
+
+        .vlan-name {
+            font-weight: 700;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .vlan-id {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--unifi-muted);
+            margin-bottom: 12px;
+        }
+
+        .vlan-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+        }
+
+        .feature-tag {
+            font-size: 10px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--unifi-muted);
+        }
+
+        .vlan-card.kids .feature-tag {
+            background: rgba(139, 92, 246, 0.2);
+            color: #C4B5FD;
+        }
+
+        /* Setup Steps */
+        .steps-section {
+            margin-bottom: 48px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .section-number {
+            width: 48px;
+            height: 48px;
+            background: var(--kids-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+        }
+
+        /* UI Mockup */
+        .ui-mockup {
+            background: var(--unifi-card);
+            border: 1px solid var(--unifi-border);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .ui-header {
+            background: var(--unifi-slate);
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--unifi-border);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .ui-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--unifi-muted);
+        }
+
+        .ui-breadcrumb span {
+            color: var(--unifi-text);
+        }
+
+        .ui-breadcrumb svg {
+            width: 16px;
+            height: 16px;
+            opacity: 0.5;
+        }
+
+        .ui-content {
+            padding: 32px;
+        }
+
+        .ui-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .ui-subtitle {
+            color: var(--unifi-muted);
+            margin-bottom: 32px;
+        }
+
+        /* Form Elements */
+        .form-section {
+            margin-bottom: 32px;
+        }
+
+        .form-section-title {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--unifi-muted);
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--unifi-border);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--unifi-text);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 14px 16px;
+            background: var(--unifi-slate);
+            border: 1px solid var(--unifi-border);
+            border-radius: 8px;
+            color: var(--unifi-text);
+            font-family: inherit;
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--unifi-blue);
+            box-shadow: 0 0 0 3px rgba(0, 111, 255, 0.15);
+        }
+
+        .form-input.kids-input {
+            border-color: rgba(139, 92, 246, 0.5);
+            background: linear-gradient(145deg, rgba(139, 92, 246, 0.05), transparent);
+        }
+
+        .form-input.kids-input:focus {
+            border-color: var(--unifi-purple);
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-hint {
+            font-size: 12px;
+            color: var(--unifi-muted);
+            margin-top: 6px;
+        }
+
+        /* Toggle Switch */
+        .toggle-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px;
+            background: var(--unifi-slate);
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .toggle-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .toggle-title {
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .toggle-desc {
+            font-size: 12px;
+            color: var(--unifi-muted);
+        }
+
+        .toggle {
+            width: 48px;
+            height: 26px;
+            background: var(--unifi-border);
+            border-radius: 13px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .toggle.active {
+            background: var(--unifi-blue);
+        }
+
+        .toggle.active.kids {
+            background: var(--kids-gradient);
+        }
+
+        .toggle::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            top: 3px;
+            left: 3px;
+            transition: all 0.3s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .toggle.active::after {
+            left: 25px;
+        }
+
+        /* Traffic Rules */
+        .traffic-rules {
+            background: var(--unifi-card);
+            border: 1px solid var(--unifi-border);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-top: 24px;
+        }
+
+        .rules-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--unifi-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .rules-title {
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .add-rule-btn {
+            background: var(--unifi-blue);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.2s;
+        }
+
+        .add-rule-btn:hover {
+            background: var(--unifi-blue-dark);
+        }
+
+        .rule-item {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--unifi-border);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .rule-item:last-child {
+            border-bottom: none;
+        }
+
+        .rule-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .rule-icon.block {
+            background: rgba(239, 68, 68, 0.15);
+            color: #EF4444;
+        }
+
+        .rule-icon.schedule {
+            background: rgba(139, 92, 246, 0.15);
+            color: var(--unifi-purple);
+        }
+
+        .rule-icon.limit {
+            background: rgba(249, 115, 22, 0.15);
+            color: #F97316;
+        }
+
+        .rule-content {
+            flex: 1;
+        }
+
+        .rule-name {
+            font-weight: 500;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .rule-desc {
+            font-size: 12px;
+            color: var(--unifi-muted);
+        }
+
+        .rule-status {
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .rule-status.active {
+            background: rgba(63, 185, 80, 0.15);
+            color: var(--unifi-success);
+        }
+
+        /* Schedule Visualization */
+        .schedule-visual {
+            background: var(--unifi-card);
+            border: 1px solid var(--unifi-border);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 24px;
+        }
+
+        .schedule-title {
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .schedule-grid {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 16px;
+        }
+
+        .hour-block {
+            flex: 1;
+            height: 40px;
+            border-radius: 4px;
+            background: var(--unifi-border);
+            position: relative;
+            transition: all 0.2s;
+        }
+
+        .hour-block.allowed {
+            background: linear-gradient(145deg, rgba(63, 185, 80, 0.3), rgba(63, 185, 80, 0.1));
+            border: 1px solid rgba(63, 185, 80, 0.3);
+        }
+
+        .hour-block.blocked {
+            background: linear-gradient(145deg, rgba(239, 68, 68, 0.3), rgba(239, 68, 68, 0.1));
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .hour-block.limited {
+            background: linear-gradient(145deg, rgba(249, 115, 22, 0.3), rgba(249, 115, 22, 0.1));
+            border: 1px solid rgba(249, 115, 22, 0.3);
+        }
+
+        .time-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            color: var(--unifi-muted);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .schedule-legend {
+            display: flex;
+            gap: 24px;
+            margin-top: 16px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: var(--unifi-muted);
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+        }
+
+        .legend-dot.allowed { background: var(--unifi-success); }
+        .legend-dot.blocked { background: #EF4444; }
+        .legend-dot.limited { background: #F97316; }
+
+        /* Device Groups */
+        .device-groups {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .device-card {
+            background: var(--unifi-slate);
+            border: 1px solid var(--unifi-border);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: all 0.2s;
+        }
+
+        .device-card:hover {
+            border-color: var(--unifi-purple);
+            transform: translateY(-2px);
+        }
+
+        .device-avatar {
+            width: 48px;
+            height: 48px;
+            background: var(--kids-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+
+        .device-info h4 {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+
+        .device-info p {
+            font-size: 12px;
+            color: var(--unifi-muted);
+        }
+
+        .device-status {
+            margin-left: auto;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--unifi-success);
+            box-shadow: 0 0 10px var(--unifi-success);
+        }
+
+        /* Tips Section */
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 24px;
+        }
+
+        .tip-card {
+            background: var(--unifi-card);
+            border: 1px solid var(--unifi-border);
+            border-radius: 16px;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tip-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+        }
+
+        .tip-card:nth-child(1)::before { background: var(--unifi-purple); }
+        .tip-card:nth-child(2)::before { background: var(--unifi-pink); }
+        .tip-card:nth-child(3)::before { background: #F97316; }
+        .tip-card:nth-child(4)::before { background: var(--unifi-success); }
+
+        .tip-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 20px;
+        }
+
+        .tip-card:nth-child(1) .tip-icon { background: rgba(139, 92, 246, 0.15); }
+        .tip-card:nth-child(2) .tip-icon { background: rgba(236, 72, 153, 0.15); }
+        .tip-card:nth-child(3) .tip-icon { background: rgba(249, 115, 22, 0.15); }
+        .tip-card:nth-child(4) .tip-icon { background: rgba(63, 185, 80, 0.15); }
+
+        .tip-card h4 {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .tip-card p {
+            font-size: 14px;
+            color: var(--unifi-muted);
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 48px 0;
+            border-top: 1px solid var(--unifi-border);
+            margin-top: 60px;
+        }
+
+        .footer-logo {
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: var(--kids-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+        }
+
+        .footer p {
+            color: var(--unifi-muted);
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 24px 16px;
+            }
+
+            .network-diagram {
+                padding: 24px;
+            }
+
+            .vlans-container {
+                grid-template-columns: 1fr;
+            }
+
+            .vlan-card.kids {
+                transform: scale(1);
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .ui-content {
+                padding: 20px;
+            }
+
+            .schedule-grid {
+                flex-wrap: wrap;
+            }
+
+            .hour-block {
+                width: calc(25% - 4px);
+                flex: none;
+            }
+        }
+
+        /* Animations */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: slideUp 0.6s ease-out forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; opacity: 0; }
+        .delay-2 { animation-delay: 0.2s; opacity: 0; }
+        .delay-3 { animation-delay: 0.3s; opacity: 0; }
+        .delay-4 { animation-delay: 0.4s; opacity: 0; }
+    </style>
+</head>
+<body>
+    <div class="bg-pattern"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <header class="header animate-in">
+            <div class="badge">
+                <span>🛡️</span>
+                <span>Network Setup Guide</span>
+            </div>
+            <h1>Kids Network Setup</h1>
+            <p>Create a safe, controlled network environment for children with content filtering, time scheduling, and device management through UniFi.</p>
+        </header>
+
+        <!-- Network Architecture -->
+        <section class="network-diagram animate-in delay-1">
+            <div class="diagram-title">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <path d="M12 6v6l4 2"/>
+                </svg>
+                Network Architecture Overview
+            </div>
+            
+            <div class="network-visual">
+                <div class="gateway">
+                    <div class="gateway-icon">
+                        <svg width="48" height="32" viewBox="0 0 48 32" fill="none">
+                            <rect x="4" y="8" width="40" height="16" rx="2" fill="#374151"/>
+                            <rect x="8" y="12" width="4" height="4" rx="1" fill="#3B82F6"/>
+                            <rect x="14" y="12" width="4" height="4" rx="1" fill="#3B82F6"/>
+                            <rect x="20" y="12" width="4" height="4" rx="1" fill="#3B82F6"/>
+                            <rect x="26" y="12" width="4" height="4" rx="1" fill="#3B82F6"/>
+                            <circle cx="38" cy="14" r="2" fill="#10B981"/>
+                        </svg>
+                    </div>
+                    <span class="gateway-label">Cloud Gateway Max</span>
+                    <span class="gateway-model">UCG-Max</span>
+                </div>
+
+                <div class="connections">
+                    <div class="connection-line main"></div>
+                </div>
+
+                <div class="vlans-container">
+                    <div class="vlan-card main">
+                        <div class="vlan-icon">🏠</div>
+                        <div class="vlan-name">Main Network</div>
+                        <div class="vlan-id">VLAN 1 • 192.168.1.0/24</div>
+                        <div class="vlan-features">
+                            <span class="feature-tag">Full Access</span>
+                            <span class="feature-tag">Adults</span>
+                        </div>
+                    </div>
+
+                    <div class="vlan-card iot">
+                        <div class="vlan-icon">📱</div>
+                        <div class="vlan-name">IoT Network</div>
+                        <div class="vlan-id">VLAN 20 • 192.168.20.0/24</div>
+                        <div class="vlan-features">
+                            <span class="feature-tag">Isolated</span>
+                            <span class="feature-tag">Smart Devices</span>
+                        </div>
+                    </div>
+
+                    <div class="vlan-card guest">
+                        <div class="vlan-icon">👋</div>
+                        <div class="vlan-name">Guest Network</div>
+                        <div class="vlan-id">VLAN 30 • 192.168.30.0/24</div>
+                        <div class="vlan-features">
+                            <span class="feature-tag">Client Isolation</span>
+                            <span class="feature-tag">Bandwidth Limit</span>
+                        </div>
+                    </div>
+
+                    <div class="vlan-card kids">
+                        <div class="vlan-icon">👶</div>
+                        <div class="vlan-name">Kids Network</div>
+                        <div class="vlan-id">VLAN 40 • 192.168.40.0/24</div>
+                        <div class="vlan-features">
+                            <span class="feature-tag">Content Filter</span>
+                            <span class="feature-tag">Time Limits</span>
+                            <span class="feature-tag">Safe Search</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 1: Create Network -->
+        <section class="steps-section animate-in delay-2">
+            <div class="section-header">
+                <div class="section-number">1</div>
+                <h2>Create Kids Network</h2>
+            </div>
+
+            <div class="ui-mockup">
+                <div class="ui-header">
+                    <div class="ui-breadcrumb">
+                        Settings
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                        Networks
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                        <span>Create New</span>
+                    </div>
+                </div>
+                <div class="ui-content">
+                    <h3 class="ui-title">Create New Network</h3>
+                    <p class="ui-subtitle">Configure a dedicated VLAN for children's devices with safety controls</p>
+
+                    <div class="form-section">
+                        <div class="form-section-title">Network Settings</div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Network Name</label>
+                            <input type="text" class="form-input kids-input" value="Kids" placeholder="Enter network name">
+                            <p class="form-hint">This name will appear in WiFi network lists</p>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">VLAN ID</label>
+                                <input type="text" class="form-input kids-input" value="40" placeholder="1-4094">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Gateway IP / Subnet</label>
+                                <input type="text" class="form-input kids-input" value="192.168.40.1/24">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">DHCP Range Start</label>
+                                <input type="text" class="form-input" value="192.168.40.10">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">DHCP Range End</label>
+                                <input type="text" class="form-input" value="192.168.40.254">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <div class="form-section-title">Safety Features</div>
+                        
+                        <div class="toggle-row">
+                            <div class="toggle-info">
+                                <span class="toggle-title">Content Filtering</span>
+                                <span class="toggle-desc">Block adult content, malware, and inappropriate sites</span>
+                            </div>
+                            <div class="toggle active kids"></div>
+                        </div>
+
+                        <div class="toggle-row">
+                            <div class="toggle-info">
+                                <span class="toggle-title">Safe Search Enforcement</span>
+                                <span class="toggle-desc">Force safe search on Google, Bing, YouTube, and DuckDuckGo</span>
+                            </div>
+                            <div class="toggle active kids"></div>
+                        </div>
+
+                        <div class="toggle-row">
+                            <div class="toggle-info">
+                                <span class="toggle-title">Block Inter-VLAN Routing</span>
+                                <span class="toggle-desc">Prevent access to other network segments</span>
+                            </div>
+                            <div class="toggle active"></div>
+                        </div>
+
+                        <div class="toggle-row">
+                            <div class="toggle-info">
+                                <span class="toggle-title">Client Isolation</span>
+                                <span class="toggle-desc">Devices cannot communicate with each other</span>
+                            </div>
+                            <div class="toggle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 2: Traffic Rules -->
+        <section class="steps-section animate-in delay-3">
+            <div class="section-header">
+                <div class="section-number">2</div>
+                <h2>Configure Traffic Rules</h2>
+            </div>
+
+            <div class="traffic-rules">
+                <div class="rules-header">
+                    <span class="rules-title">Traffic Management Rules</span>
+                    <button class="add-rule-btn">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12h14"/>
+                        </svg>
+                        Add Rule
+                    </button>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-icon block">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M4.93 4.93l14.14 14.14"/>
+                        </svg>
+                    </div>
+                    <div class="rule-content">
+                        <div class="rule-name">Block Social Media Apps</div>
+                        <div class="rule-desc">TikTok, Instagram, Snapchat, Twitter/X • Kids Network (VLAN 40)</div>
+                    </div>
+                    <span class="rule-status active">Active</span>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-icon schedule">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <div class="rule-content">
+                        <div class="rule-name">Bedtime Schedule</div>
+                        <div class="rule-desc">Block internet access 9:00 PM - 7:00 AM • Mon-Fri</div>
+                    </div>
+                    <span class="rule-status active">Active</span>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-icon limit">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                    </div>
+                    <div class="rule-content">
+                        <div class="rule-name">Bandwidth Limit</div>
+                        <div class="rule-desc">25 Mbps download / 10 Mbps upload • Kids Network</div>
+                    </div>
+                    <span class="rule-status active">Active</span>
+                </div>
+
+                <div class="rule-item">
+                    <div class="rule-icon block">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                            <path d="M7 11V7a5 5 0 0110 0v4"/>
+                        </svg>
+                    </div>
+                    <div class="rule-content">
+                        <div class="rule-name">Block Gaming Platforms</div>
+                        <div class="rule-desc">Steam, Epic Games, Discord • School Hours Only (8 AM - 3 PM)</div>
+                    </div>
+                    <span class="rule-status active">Active</span>
+                </div>
+            </div>
+
+            <!-- Schedule Visualization -->
+            <div class="schedule-visual">
+                <div class="schedule-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                        <line x1="16" y1="2" x2="16" y2="6"/>
+                        <line x1="8" y1="2" x2="8" y2="6"/>
+                        <line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    Daily Access Schedule (Weekdays)
+                </div>
+                <div class="schedule-grid">
+                    <div class="hour-block blocked" title="12AM"></div>
+                    <div class="hour-block blocked" title="1AM"></div>
+                    <div class="hour-block blocked" title="2AM"></div>
+                    <div class="hour-block blocked" title="3AM"></div>
+                    <div class="hour-block blocked" title="4AM"></div>
+                    <div class="hour-block blocked" title="5AM"></div>
+                    <div class="hour-block blocked" title="6AM"></div>
+                    <div class="hour-block allowed" title="7AM"></div>
+                    <div class="hour-block limited" title="8AM"></div>
+                    <div class="hour-block limited" title="9AM"></div>
+                    <div class="hour-block limited" title="10AM"></div>
+                    <div class="hour-block limited" title="11AM"></div>
+                    <div class="hour-block limited" title="12PM"></div>
+                    <div class="hour-block limited" title="1PM"></div>
+                    <div class="hour-block limited" title="2PM"></div>
+                    <div class="hour-block allowed" title="3PM"></div>
+                    <div class="hour-block allowed" title="4PM"></div>
+                    <div class="hour-block allowed" title="5PM"></div>
+                    <div class="hour-block allowed" title="6PM"></div>
+                    <div class="hour-block allowed" title="7PM"></div>
+                    <div class="hour-block allowed" title="8PM"></div>
+                    <div class="hour-block blocked" title="9PM"></div>
+                    <div class="hour-block blocked" title="10PM"></div>
+                    <div class="hour-block blocked" title="11PM"></div>
+                </div>
+                <div class="time-labels">
+                    <span>12AM</span>
+                    <span>6AM</span>
+                    <span>12PM</span>
+                    <span>6PM</span>
+                    <span>12AM</span>
+                </div>
+                <div class="schedule-legend">
+                    <div class="legend-item">
+                        <div class="legend-dot allowed"></div>
+                        <span>Full Access</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot limited"></div>
+                        <span>School Hours (Limited)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot blocked"></div>
+                        <span>Bedtime (Blocked)</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 3: Device Assignment -->
+        <section class="steps-section animate-in delay-4">
+            <div class="section-header">
+                <div class="section-number">3</div>
+                <h2>Assign Devices</h2>
+            </div>
+
+            <div class="ui-mockup">
+                <div class="ui-header">
+                    <div class="ui-breadcrumb">
+                        Client Devices
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                        <span>Kids Network</span>
+                    </div>
+                </div>
+                <div class="ui-content">
+                    <h3 class="ui-title">Assigned Devices</h3>
+                    <p class="ui-subtitle">These devices will use the Kids network with all safety controls applied</p>
+
+                    <div class="device-groups">
+                        <div class="device-card">
+                            <div class="device-avatar">📱</div>
+                            <div class="device-info">
+                                <h4>Emma's iPad</h4>
+                                <p>192.168.40.12 • Online</p>
+                            </div>
+                            <div class="device-status"></div>
+                        </div>
+
+                        <div class="device-card">
+                            <div class="device-avatar">💻</div>
+                            <div class="device-info">
+                                <h4>Kids Chromebook</h4>
+                                <p>192.168.40.15 • Online</p>
+                            </div>
+                            <div class="device-status"></div>
+                        </div>
+
+                        <div class="device-card">
+                            <div class="device-avatar">🎮</div>
+                            <div class="device-info">
+                                <h4>Nintendo Switch</h4>
+                                <p>192.168.40.20 • Online</p>
+                            </div>
+                            <div class="device-status"></div>
+                        </div>
+
+                        <div class="device-card">
+                            <div class="device-avatar">📺</div>
+                            <div class="device-info">
+                                <h4>Playroom TV</h4>
+                                <p>192.168.40.25 • Offline</p>
+                            </div>
+                            <div class="device-status" style="background: var(--unifi-muted); box-shadow: none;"></div>
+                        </div>
+                    </div>
+
+                    <p class="form-hint" style="margin-top: 20px;">💡 Tip: Use fixed IP assignments for devices that need consistent rules, or assign by MAC address for automatic network assignment.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Best Practices -->
+        <section class="steps-section">
+            <div class="section-header">
+                <div class="section-number">💡</div>
+                <h2>Best Practices</h2>
+            </div>
+
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">🔐</div>
+                    <h4>Use Strong WiFi Passwords</h4>
+                    <p>Keep the Kids network password different from your main network. Consider changing it periodically to maintain control over which devices connect.</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">📊</div>
+                    <h4>Monitor Usage Reports</h4>
+                    <p>Review UniFi's built-in analytics to see which sites and apps are being accessed. Look for patterns that might indicate bypasses or concerning activity.</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">⏰</div>
+                    <h4>Weekend Flexibility</h4>
+                    <p>Consider creating separate weekend schedules with extended access hours. This teaches time management while allowing appropriate leisure time.</p>
+                </div>
+
+                <div class="tip-card">
+                    <div class="tip-icon">🛡️</div>
+                    <h4>DNS-Level Protection</h4>
+                    <p>Use family-friendly DNS servers like CleanBrowsing (185.228.168.168) or OpenDNS Family (208.67.222.123) for additional content filtering.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-logo">Kerchunk Networks</div>
+            <p>Professional Network Solutions • elohmann@kerchunknetworks.com</p>
+        </footer>
+    </div>
+
+    <script>
+        // Toggle functionality
+        document.querySelectorAll('.toggle').forEach(toggle => {
+            toggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.steps-section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'all 0.6s ease-out';
+            observer.observe(section);
+        });
+
+        // Hour block hover tooltips
+        document.querySelectorAll('.hour-block').forEach((block, index) => {
+            const hour = index;
+            const ampm = hour < 12 ? 'AM' : 'PM';
+            const displayHour = hour === 0 ? 12 : hour > 12 ? hour - 12 : hour;
+            block.title = `${displayHour}:00 ${ampm}`;
+        });
+    </script>
+</body>
+</html>
