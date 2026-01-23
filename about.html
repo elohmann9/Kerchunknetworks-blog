@@ -327,228 +327,237 @@
             color: rgba(255, 255, 255, 0.8);
             margin-top: 5px;
             font-size: 0.9rem;
-        }
+
+            /* Responsive Design / Mobile Menu */
+            @media (max-width: 968px) {
+                .nav-container {
+                    padding: 0 20px;
+                }
+
+                .mobile-menu-toggle {
+                    display: block;
+                }
+
+                .nav-menu {
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    right: 0;
+                    background: rgba(139, 64, 73, 0.98);
+                    flex-direction: column;
+                    padding: 20px;
+                    gap: 0;
+                    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                    display: none;
+                }
+
+                .nav-menu.active {
+                    display: flex;
+                }
+
+                .nav-link {
+                    padding: 15px 20px;
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                }
+
+                .nav-link::after {
+                    display: none;
+                }
+
+                .logo-title {
+                    font-size: 1.4rem;
+                }
+
+                .logo-icon {
+                    height: 35px;
+                }
+
+                .nav-cta {
+                    margin: 15px 20px 0 20px;
+                    text-align: center;
+                }
+            }
+
+            .mobile-menu-toggle {
+                display: none;
+                background: none;
+                border: none;
+                color: white;
+                font-size: 1.5rem;
+                cursor: pointer;
+                padding: 10px;
+            }
     </style>
 </head>
 
 <body>
 
-    /* Responsive Design / Mobile Menu */
-    @media (max-width: 968px) {
-    .nav-container { padding: 0 20px; }
-    .mobile-menu-toggle { display: block; }
-
-    .nav-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: rgba(139, 64, 73, 0.98);
-    flex-direction: column;
-    padding: 20px;
-    gap: 0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    display: none;
-    }
-
-    .nav-menu.active { display: flex; }
-
-    .nav-link {
-    padding: 15px 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .nav-link::after { display: none; }
-
-    .logo-title { font-size: 1.4rem; }
-    .logo-icon { height: 35px; }
-
-    .nav-cta {
-    margin: 15px 20px 0 20px;
-    text-align: center;
-    }
-    }
-
-    .mobile-menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 10px;
-    }
-    </style>
-    </head>
-
-    <body>
-
-        <!-- Standard Header -->
-        <nav class="nav-header">
-            <div class="nav-container">
-                <!-- Logo -->
-                <div class="logo-section">
-                    <a href="index.html" class="logo-link">
-                        <img src="assets/images/PNG Logo.png" alt="Kerchunk Networks Logo" class="logo-icon">
-                        <div class="logo-text">
-                            <span class="logo-title">Kerchunk Networks</span>
-                            <span class="logo-subtitle">Professional Solutions</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Mobile Menu Toggle -->
-                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
-
-                <!-- Navigation Menu -->
-                <ul class="nav-menu" id="navMenu">
-                    <li class="nav-item">
-                        <a href="index.html" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link">Services ▾</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="networking.html" class="dropdown-link">Networking</a></li>
-                            <li><a href="equipment.html" class="dropdown-link">Equipment</a></li>
-                            <li><a href="support.html" class="dropdown-link">Support & Monitoring</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="about.html" class="nav-link">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="index.html#contact" class="nav-link">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="questionnaire/index.html" class="nav-link nav-cta">Schedule Consultation</a>
-                    </li>
-                </ul>
+    <!-- Standard Header -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <!-- Logo -->
+            <div class="logo-section">
+                <a href="index.html" class="logo-link">
+                    <img src="assets/images/PNG Logo.png" alt="Kerchunk Networks Logo" class="logo-icon">
+                    <div class="logo-text">
+                        <span class="logo-title">Kerchunk Networks</span>
+                        <span class="logo-subtitle">Professional Solutions</span>
+                    </div>
+                </a>
             </div>
-        </nav>
 
-        <script>
-            function toggleMobileMenu() {
-                const navMenu = document.getElementById('navMenu');
-                navMenu.classList.toggle('active');
-            }
-        </script>
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
 
-        <div class="hero">
-            <h1>About Kerchunk Networks</h1>
+            <!-- Navigation Menu -->
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Services ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="networking.html" class="dropdown-link">Networking</a></li>
+                        <li><a href="equipment.html" class="dropdown-link">Equipment</a></li>
+                        <li><a href="support.html" class="dropdown-link">Support & Monitoring</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="questionnaire/index.html" class="nav-link nav-cta">Schedule Consultation</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <script>
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+    </script>
+
+    <div class="hero">
+        <h1>About Kerchunk Networks</h1>
+    </div>
+
+    <div class="container">
+
+        <div class="mission-box">
+            <h2>Our Mission</h2>
+            <div class="divider"></div>
+            <p class="mission-statement">
+                To provide reliable, secure connectivity for those who protect our communities — and the families
+                who
+                support them.
+            </p>
+            <p class="mission-detail">
+                We believe technology should reduce stress, not create it. Every system we design prioritizes
+                stability,
+                clarity, and usability so teams can focus on operations, not troubleshooting.
+            </p>
         </div>
 
-        <div class="container">
-
-            <div class="mission-box">
-                <h2>Our Mission</h2>
-                <div class="divider"></div>
-                <p class="mission-statement">
-                    To provide reliable, secure connectivity for those who protect our communities — and the families
-                    who
-                    support them.
-                </p>
-                <p class="mission-detail">
-                    We believe technology should reduce stress, not create it. Every system we design prioritizes
-                    stability,
-                    clarity, and usability so teams can focus on operations, not troubleshooting.
-                </p>
-            </div>
-
-            <!-- About Kerchunk Networks -->
-            <div class="content-section">
-                <h2>About Kerchunk Networks</h2>
-                <p>
-                    Kerchunk Networks provides professional network engineering, deployment, and support services
-                    designed
-                    specifically for emergency response environments, remote operations, and modern households.
-                </p>
-                <br>
-                <p>
-                    Founded on firsthand experience in the fire service, Kerchunk Networks understands that connectivity
-                    is
-                    no longer a convenience — it is a critical component of operations, safety, and communication. From
-                    incident response and station infrastructure to mobile deployments and home networks, our solutions
-                    are
-                    built to perform when reliability matters most.
-                </p>
-                <br>
-                <p>
-                    We specialize in designing and implementing secure, resilient network systems that support
-                    real-world
-                    conditions, including limited connectivity areas, mobile command environments, and high-availability
-                    requirements. Every network we deploy is purpose-built, carefully documented, and configured for
-                    long-term reliability and scalability.
-                </p>
-            </div>
-
-            <!-- What Sets Us Apart -->
-            <div class="content-section">
-                <h2>What Sets Us Apart</h2>
-                <p>
-                    Unlike traditional IT providers, Kerchunk Networks focuses on operational environments where failure
-                    is
-                    not an option.
-                </p>
-                <br>
-                <h3>Our approach combines:</h3>
-                <ul class="feature-list">
-                    <li class="feature-item">
-                        <span class="feature-title">Fire-service insight</span> — Built with an understanding of
-                        emergency
-                        operations, shift work, and field deployments
-                    </li>
-                    <li class="feature-item">
-                        <span class="feature-title">Enterprise-grade equipment</span> — Including Cradlepoint, Starlink,
-                        UniFi, cellular failover, and GPS-enabled systems
-                    </li>
-                    <li class="feature-item">
-                        <span class="feature-title">Mission-ready design</span> — Redundancy, uptime monitoring, and
-                        secure
-                        remote access
-                    </li>
-                    <li class="feature-item">
-                        <span class="feature-title">Clear documentation</span> — So departments know exactly how their
-                        systems function
-                    </li>
-                    <li class="feature-item">
-                        <span class="feature-title">Long-term support</span> — Not just installation, but ongoing
-                        reliability
-                    </li>
-                </ul>
-                <br>
-                <p style="text-align: center; font-weight: bold; font-size: 1.1em; color: var(--maroon);">
-                    We don’t sell generic networks. We design infrastructure that supports people who serve their
-                    communities.
-                </p>
-            </div>
-
-            <a href="index.html" class="back-link">← Return to Home</a>
+        <!-- About Kerchunk Networks -->
+        <div class="content-section">
+            <h2>About Kerchunk Networks</h2>
+            <p>
+                Kerchunk Networks provides professional network engineering, deployment, and support services
+                designed
+                specifically for emergency response environments, remote operations, and modern households.
+            </p>
+            <br>
+            <p>
+                Founded on firsthand experience in the fire service, Kerchunk Networks understands that connectivity
+                is
+                no longer a convenience — it is a critical component of operations, safety, and communication. From
+                incident response and station infrastructure to mobile deployments and home networks, our solutions
+                are
+                built to perform when reliability matters most.
+            </p>
+            <br>
+            <p>
+                We specialize in designing and implementing secure, resilient network systems that support
+                real-world
+                conditions, including limited connectivity areas, mobile command environments, and high-availability
+                requirements. Every network we deploy is purpose-built, carefully documented, and configured for
+                long-term reliability and scalability.
+            </p>
         </div>
 
-        <footer id="contact">
-            <div class="footer-content">
-                <div class="footer-links">
-                    <a href="about.html" class="footer-link">About Us</a>
-                    <a href="mailto:elohmann@kerchunknetworks.com" class="footer-link">Contact</a>
-                    <a href="guides/emergency-contacts.html" class="footer-link">Emergency Support</a>
-                    <a href="documentation-access.html" class="footer-link">Documentation Portal</a>
-                </div>
-                <div class="footer-contact" style="margin-bottom: 20px;">
-                    <p style="color: rgba(255,255,255,0.9); margin-bottom: 5px;"><strong>Contact Us:</strong></p>
-                    <p><a href="tel:415-737-9223"
-                            style="color: var(--accent-gold); text-decoration: none; font-weight: bold;">415-737-9223</a>
-                    </p>
-                    <p><a href="mailto:elohmann@kerchunknetworks.com"
-                            style="color: var(--accent-gold); text-decoration: none;">elohmann@kerchunknetworks.com</a>
-                    </p>
-                </div>
-                <p class="footer-text">&copy; 2025 Kerchunk Networks - Professional Network Solutions for Fire
-                    Departments
-                </p>
-                <p class="footer-text"><small>Connecting Fire, Field, and Family</small></p>
-            </div>
-        </footer>
+        <!-- What Sets Us Apart -->
+        <div class="content-section">
+            <h2>What Sets Us Apart</h2>
+            <p>
+                Unlike traditional IT providers, Kerchunk Networks focuses on operational environments where failure
+                is
+                not an option.
+            </p>
+            <br>
+            <h3>Our approach combines:</h3>
+            <ul class="feature-list">
+                <li class="feature-item">
+                    <span class="feature-title">Fire-service insight</span> — Built with an understanding of
+                    emergency
+                    operations, shift work, and field deployments
+                </li>
+                <li class="feature-item">
+                    <span class="feature-title">Enterprise-grade equipment</span> — Including Cradlepoint, Starlink,
+                    UniFi, cellular failover, and GPS-enabled systems
+                </li>
+                <li class="feature-item">
+                    <span class="feature-title">Mission-ready design</span> — Redundancy, uptime monitoring, and
+                    secure
+                    remote access
+                </li>
+                <li class="feature-item">
+                    <span class="feature-title">Clear documentation</span> — So departments know exactly how their
+                    systems function
+                </li>
+                <li class="feature-item">
+                    <span class="feature-title">Long-term support</span> — Not just installation, but ongoing
+                    reliability
+                </li>
+            </ul>
+            <br>
+            <p style="text-align: center; font-weight: bold; font-size: 1.1em; color: var(--maroon);">
+                We don’t sell generic networks. We design infrastructure that supports people who serve their
+                communities.
+            </p>
+        </div>
 
-    </body>
+        <a href="index.html" class="back-link">← Return to Home</a>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="about.html" class="footer-link">About Us</a>
+                <a href="mailto:elohmann@kerchunknetworks.com" class="footer-link">Contact</a>
+                <a href="guides/emergency-contacts.html" class="footer-link">Emergency Support</a>
+                <a href="documentation-access.html" class="footer-link">Documentation Portal</a>
+            </div>
+            <div class="footer-contact" style="margin-bottom: 20px;">
+                <p style="color: rgba(255,255,255,0.9); margin-bottom: 5px;"><strong>Contact Us:</strong></p>
+                <p><a href="tel:415-737-9223"
+                        style="color: var(--accent-gold); text-decoration: none; font-weight: bold;">415-737-9223</a>
+                </p>
+                <p><a href="mailto:elohmann@kerchunknetworks.com"
+                        style="color: var(--accent-gold); text-decoration: none;">elohmann@kerchunknetworks.com</a>
+                </p>
+            </div>
+            <p class="footer-text">&copy; 2025 Kerchunk Networks - Professional Network Solutions for Fire
+                Departments
+            </p>
+            <p class="footer-text"><small>Connecting Fire, Field, and Family</small></p>
+        </div>
+    </footer>
+
+</body>
 
 </html>

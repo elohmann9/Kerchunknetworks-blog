@@ -301,193 +301,203 @@
             margin-top: 5px;
             font-size: 0.9rem;
         }
+
+        /* Responsive Design / Mobile Menu */
+        @media (max-width: 968px) {
+            .nav-container {
+                padding: 0 20px;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(139, 64, 73, 0.98);
+                flex-direction: column;
+                padding: 20px;
+                gap: 0;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+                display: none;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-link {
+                padding: 15px 20px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .nav-link::after {
+                display: none;
+            }
+
+            .logo-title {
+                font-size: 1.4rem;
+            }
+
+            .logo-icon {
+                height: 35px;
+            }
+
+            .nav-cta {
+                margin: 15px 20px 0 20px;
+                text-align: center;
+            }
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 10px;
+        }
     </style>
 </head>
 
 <body>
 
-    /* Responsive Design / Mobile Menu */
-    @media (max-width: 968px) {
-    .nav-container { padding: 0 20px; }
-    .mobile-menu-toggle { display: block; }
-
-    .nav-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: rgba(139, 64, 73, 0.98);
-    flex-direction: column;
-    padding: 20px;
-    gap: 0;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    display: none;
-    }
-
-    .nav-menu.active { display: flex; }
-
-    .nav-link {
-    padding: 15px 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .nav-link::after { display: none; }
-
-    .logo-title { font-size: 1.4rem; }
-    .logo-icon { height: 35px; }
-
-    .nav-cta {
-    margin: 15px 20px 0 20px;
-    text-align: center;
-    }
-    }
-
-    .mobile-menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 10px;
-    }
-    </style>
-    </head>
-
-    <body>
-
-        <!-- Standard Header -->
-        <nav class="nav-header">
-            <div class="nav-container">
-                <!-- Logo -->
-                <div class="logo-section">
-                    <a href="index.html" class="logo-link">
-                        <img src="assets/images/PNG Logo.png" alt="Kerchunk Networks Logo" class="logo-icon">
-                        <div class="logo-text">
-                            <span class="logo-title">Kerchunk Networks</span>
-                            <span class="logo-subtitle">Professional Solutions</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Mobile Menu Toggle -->
-                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
-
-                <!-- Navigation Menu -->
-                <ul class="nav-menu" id="navMenu">
-                    <li class="nav-item">
-                        <a href="index.html" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link">Services ▾</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="networking.html" class="dropdown-link">Networking</a></li>
-                            <li><a href="equipment.html" class="dropdown-link">Equipment</a></li>
-                            <li><a href="support.html" class="dropdown-link">Support & Monitoring</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="about.html" class="nav-link">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="index.html#contact" class="nav-link">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="questionnaire/index.html" class="nav-link nav-cta">Schedule Consultation</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <script>
-            function toggleMobileMenu() {
-                const navMenu = document.getElementById('navMenu');
-                navMenu.classList.toggle('active');
-            }
-        </script>
-
-        <div class="hero">
-            <h1>Equipment & Gear</h1>
-            <p>Industry-leading hardware for reliable emergency communications.</p>
-        </div>
-
-        <div class="container">
-
-            <div class="supply-banner">
-                <h2>We Supply + Configure</h2>
-                <p>We don't just sell boxes. Every piece of equipment arrives pre-configured, labeled, and ready to
-                    deploy
-                    for your specific environment.</p>
-            </div>
-
-            <h2>Recommended Gear</h2>
-            <div class="gear-grid">
-                <div class="gear-item">
-                    <div class="gear-title">Peplink Antenna Max S</div>
-                    <p>Advanced high-gain mobility antenna for bonding multiple cellular connections.</p>
-                </div>
-                <div class="gear-item">
-                    <div class="gear-title">Cradlepoint R1900</div>
-                    <p>Ruggedized 5G automotive router built for mission-critical vehicle fleets.</p>
-                </div>
-                <div class="gear-item">
-                    <div class="gear-title">UniFi Dream Router 5G Max</div>
-                    <p>Complete home and station network console with integrated WiFi 6 and PoE.</p>
-                </div>
-                <div class="gear-item">
-                    <div class="gear-title">Starlink Mini</div>
-                    <p>Ultra-portable satellite internet for high-speed connectivity anywhere.</p>
-                </div>
-                <div class="gear-item">
-                    <div class="gear-title">Home Speaker Systems</div>
-                    <p>Integrated audio solutions including Sonos and architectural speakers.</p>
-                </div>
-                <div class="gear-item"
-                    style="display: flex; align-items: center; justify-content: center; background: var(--maroon);">
-                    <div>
-                        <div class="gear-title" style="color: white;">Need Custom Gear?</div>
-                        <p style="color: rgba(255,255,255,0.8);">We source and configure any networking hardware you
-                            need.</p>
-                        <a href="questionnaire/index.html" class="cta-button"
-                            style="margin-top: 10px; background: white; color: var(--maroon);">Contact Us</a>
+    <!-- Standard Header -->
+    <nav class="nav-header">
+        <div class="nav-container">
+            <!-- Logo -->
+            <div class="logo-section">
+                <a href="index.html" class="logo-link">
+                    <img src="assets/images/PNG Logo.png" alt="Kerchunk Networks Logo" class="logo-icon">
+                    <div class="logo-text">
+                        <span class="logo-title">Kerchunk Networks</span>
+                        <span class="logo-subtitle">Professional Solutions</span>
                     </div>
-                </div>
-            </div> terrain.
-            </p>
-        </div>
-        </div>
-
-        <div style="text-align: center;">
-            <a href="questionnaire/index.html" class="cta-button">Request a Quote</a>
-        </div>
-
-        <a href="index.html" class="back-link">← Return to Home</a>
-        </div>
-
-        <footer id="contact">
-            <div class="footer-content">
-                <div class="footer-links">
-                    <a href="about.html" class="footer-link">About Us</a>
-                    <a href="mailto:elohmann@kerchunknetworks.com" class="footer-link">Contact</a>
-                    <a href="guides/emergency-contacts.html" class="footer-link">Emergency Support</a>
-                    <a href="documentation-access.html" class="footer-link">Documentation Portal</a>
-                </div>
-                <div class="footer-contact" style="margin-bottom: 20px;">
-                    <p style="color: rgba(255,255,255,0.9); margin-bottom: 5px;"><strong>Contact Us:</strong></p>
-                    <p><a href="tel:415-737-9223"
-                            style="color: var(--accent-gold); text-decoration: none; font-weight: bold;">415-737-9223</a>
-                    </p>
-                    <p><a href="mailto:elohmann@kerchunknetworks.com"
-                            style="color: var(--accent-gold); text-decoration: none;">elohmann@kerchunknetworks.com</a>
-                    </p>
-                </div>
-                <p class="footer-text">&copy; 2025 Kerchunk Networks - Professional Network Solutions for Fire
-                    Departments
-                </p>
-                <p class="footer-text"><small>Connecting Fire, Field, and Family</small></p>
+                </a>
             </div>
-        </footer>
 
-    </body>
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+
+            <!-- Navigation Menu -->
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link">Services ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="networking.html" class="dropdown-link">Networking</a></li>
+                        <li><a href="equipment.html" class="dropdown-link">Equipment</a></li>
+                        <li><a href="support.html" class="dropdown-link">Support & Monitoring</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="index.html#contact" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="questionnaire/index.html" class="nav-link nav-cta">Schedule Consultation</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <script>
+        function toggleMobileMenu() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        }
+    </script>
+
+    <div class="hero">
+        <h1>Equipment & Gear</h1>
+        <p>Industry-leading hardware for reliable emergency communications.</p>
+    </div>
+
+    <div class="container">
+
+        <div class="supply-banner">
+            <h2>We Supply + Configure</h2>
+            <p>We don't just sell boxes. Every piece of equipment arrives pre-configured, labeled, and ready to
+                deploy
+                for your specific environment.</p>
+        </div>
+
+        <h2>Recommended Gear</h2>
+        <div class="gear-grid">
+            <div class="gear-item">
+                <div class="gear-title">Peplink Antenna Max S</div>
+                <p>Advanced high-gain mobility antenna for bonding multiple cellular connections.</p>
+            </div>
+            <div class="gear-item">
+                <div class="gear-title">Cradlepoint R1900</div>
+                <p>Ruggedized 5G automotive router built for mission-critical vehicle fleets.</p>
+            </div>
+            <div class="gear-item">
+                <div class="gear-title">UniFi Dream Router 5G Max</div>
+                <p>Complete home and station network console with integrated WiFi 6 and PoE.</p>
+            </div>
+            <div class="gear-item">
+                <div class="gear-title">Starlink Mini</div>
+                <p>Ultra-portable satellite internet for high-speed connectivity anywhere.</p>
+            </div>
+            <div class="gear-item">
+                <div class="gear-title">Home Speaker Systems</div>
+                <p>Integrated audio solutions including Sonos and architectural speakers.</p>
+            </div>
+            <div class="gear-item"
+                style="display: flex; align-items: center; justify-content: center; background: var(--maroon);">
+                <div>
+                    <div class="gear-title" style="color: white;">Need Custom Gear?</div>
+                    <p style="color: rgba(255,255,255,0.8);">We source and configure any networking hardware you
+                        need.</p>
+                    <a href="questionnaire/index.html" class="cta-button"
+                        style="margin-top: 10px; background: white; color: var(--maroon);">Contact Us</a>
+                </div>
+            </div>
+        </div> terrain.
+        </p>
+    </div>
+    </div>
+
+    <div style="text-align: center;">
+        <a href="questionnaire/index.html" class="cta-button">Request a Quote</a>
+    </div>
+
+    <a href="index.html" class="back-link">← Return to Home</a>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="about.html" class="footer-link">About Us</a>
+                <a href="mailto:elohmann@kerchunknetworks.com" class="footer-link">Contact</a>
+                <a href="guides/emergency-contacts.html" class="footer-link">Emergency Support</a>
+                <a href="documentation-access.html" class="footer-link">Documentation Portal</a>
+            </div>
+            <div class="footer-contact" style="margin-bottom: 20px;">
+                <p style="color: rgba(255,255,255,0.9); margin-bottom: 5px;"><strong>Contact Us:</strong></p>
+                <p><a href="tel:415-737-9223"
+                        style="color: var(--accent-gold); text-decoration: none; font-weight: bold;">415-737-9223</a>
+                </p>
+                <p><a href="mailto:elohmann@kerchunknetworks.com"
+                        style="color: var(--accent-gold); text-decoration: none;">elohmann@kerchunknetworks.com</a>
+                </p>
+            </div>
+            <p class="footer-text">&copy; 2025 Kerchunk Networks - Professional Network Solutions for Fire
+                Departments
+            </p>
+            <p class="footer-text"><small>Connecting Fire, Field, and Family</small></p>
+        </div>
+    </footer>
+
+</body>
 
 </html>
