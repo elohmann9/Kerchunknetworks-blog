@@ -245,6 +245,49 @@
             text-align: center;
             font-weight: bold;
         }
+
+        .content-section {
+            margin-top: 60px;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .content-section h2 {
+            margin-bottom: 20px;
+            text-align: left;
+            border-bottom: 2px solid var(--accent-gold);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            margin-bottom: 20px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .feature-item::before {
+            content: "•";
+            color: var(--accent-gold);
+            font-weight: bold;
+            font-size: 1.5em;
+            position: absolute;
+            left: 0;
+            top: -5px;
+        }
+
+        .feature-title {
+            font-weight: bold;
+            color: var(--maroon);
+        }
     </style>
 </head>
 
