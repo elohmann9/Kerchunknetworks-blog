@@ -242,6 +242,46 @@
             color: var(--maroon);
             text-align: center;
         }
+
+        /* Footer */
+        footer {
+            background: rgba(139, 64, 73, 0.95);
+            color: var(--text-light);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 3px solid var(--accent-gold);
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 5px;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 
@@ -319,6 +359,28 @@
 
         <a href="index.html" class="back-link">← Return to Home</a>
     </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="about.html" class="footer-link">About Us</a>
+                <a href="mailto:elohmann@kerchunknetworks.com" class="footer-link">Contact</a>
+                <a href="guides/emergency-contacts.html" class="footer-link">Emergency Support</a>
+                <a href="documentation-access.html" class="footer-link">Documentation Portal</a>
+            </div>
+            <div class="footer-contact" style="margin-bottom: 20px;">
+                <p style="color: rgba(255,255,255,0.9); margin-bottom: 5px;"><strong>Contact Us:</strong></p>
+                <p><a href="tel:415-737-9223"
+                        style="color: var(--accent-gold); text-decoration: none; font-weight: bold;">415-737-9223</a>
+                </p>
+                <p><a href="mailto:elohmann@kerchunknetworks.com"
+                        style="color: var(--accent-gold); text-decoration: none;">elohmann@kerchunknetworks.com</a></p>
+            </div>
+            <p class="footer-text">&copy; 2025 Kerchunk Networks - Professional Network Solutions for Fire Departments
+            </p>
+            <p class="footer-text"><small>Connecting Fire, Field, and Family</small></p>
+        </div>
+    </footer>
 
 </body>
 
