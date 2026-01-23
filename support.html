@@ -297,126 +297,188 @@
 
 <body>
 
-    <!-- Standard Header -->
-    <nav class="nav-header">
-        <div class="nav-container">
-            <!-- Logo -->
-            <div class="logo-section">
-                <a href="index.html" class="logo-link">
-                    <img src="assets/images/PNG Logo.png" alt="Kerchunk Networks Logo" class="logo-icon">
-                    <div class="logo-text">
-                        <span class="logo-title">Kerchunk Networks</span>
-                        <span class="logo-subtitle">Professional Solutions</span>
-                    </div>
-                </a>
-            </div>
+    /* Responsive Design / Mobile Menu */
+    @media (max-width: 968px) {
+    .nav-container { padding: 0 20px; }
+    .mobile-menu-toggle { display: block; }
 
-            <!-- Navigation Menu -->
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a href="#" class="nav-link">Services ▾</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="networking.html" class="dropdown-link">Networking</a></li>
-                        <li><a href="equipment.html" class="dropdown-link">Equipment</a></li>
-                        <li><a href="support.html" class="dropdown-link">Support & Monitoring</a></li>
+    .nav-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(139, 64, 73, 0.98);
+    flex-direction: column;
+    padding: 20px;
+    gap: 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: none;
+    }
+
+    .nav-menu.active { display: flex; }
+
+    .nav-link {
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-link::after { display: none; }
+
+    .logo-title { font-size: 1.4rem; }
+    .logo-icon { height: 35px; }
+
+    .nav-cta {
+    margin: 15px 20px 0 20px;
+    text-align: center;
+    }
+    }
+
+    .mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 10px;
+    }
+    </style>
+    </head>
+
+    <body>
+
+        <!-- Standard Header -->
+        <nav class="nav-header">
+            <div class="nav-container">
+                <!-- Logo -->
+                <div class="logo-section">
+                    <a href="index.html" class="logo-link">
+                        <img src="assets/images/PNG Logo.png" alt="Kerchunk Networks Logo" class="logo-icon">
+                        <div class="logo-text">
+                            <span class="logo-title">Kerchunk Networks</span>
+                            <span class="logo-subtitle">Professional Solutions</span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Toggle -->
+                <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+
+                <!-- Navigation Menu -->
+                <ul class="nav-menu" id="navMenu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link">Services ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="networking.html" class="dropdown-link">Networking</a></li>
+                            <li><a href="equipment.html" class="dropdown-link">Equipment</a></li>
+                            <li><a href="support.html" class="dropdown-link">Support & Monitoring</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#contact" class="nav-link">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="questionnaire/index.html" class="nav-link nav-cta">Schedule Consultation</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <script>
+            function toggleMobileMenu() {
+                const navMenu = document.getElementById('navMenu');
+                navMenu.classList.toggle('active');
+            }
+        </script>
+
+        <div class="hero">
+            <h1>Support & Monitoring</h1>
+            <p>Proactive network oversight ensuring your systems are always mission-ready.</p>
+        </div>
+
+        <div class="container">
+
+            <h2>Service Tiers</h2>
+            <div class="tiers-grid">
+                <!-- Basic -->
+                <div class="tier-card">
+                    <div class="tier-name">Basic</div>
+                    <p>Essential monitoring for stable uptime.</p>
+                    <ul class="tier-list">
+                        <li>Uptime Monitoring</li>
+                        <li>Monthly Health Reports</li>
+                        <li>Email Support</li>
+                        <li>Firmware Updates (Quarterly)</li>
                     </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="about.html" class="nav-link">About</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#contact" class="nav-link">Contact</a>
-                </li>
-                <li class="nav-item">
-                    <a href="questionnaire/index.html" class="nav-link nav-cta">Schedule Consultation</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+                </div>
 
-    <div class="hero">
-        <h1>Support & Monitoring</h1>
-        <p>Proactive network oversight ensuring your systems are always mission-ready.</p>
-    </div>
+                <!-- Standard -->
+                <div class="tier-card featured">
+                    <div class="tier-name">Standard</div>
+                    <p>Comprehensive support for active stations.</p>
+                    <ul class="tier-list">
+                        <li>24/7 Connectivity Alerts</li>
+                        <li>Remote Troubleshooting</li>
+                        <li>Priority Email & Phone Support</li>
+                        <li>Firmware Updates (Monthly)</li>
+                        <li>Configuration Changes</li>
+                    </ul>
+                </div>
 
-    <div class="container">
-
-        <h2>Service Tiers</h2>
-        <div class="tiers-grid">
-            <!-- Basic -->
-            <div class="tier-card">
-                <div class="tier-name">Basic</div>
-                <p>Essential monitoring for stable uptime.</p>
-                <ul class="tier-list">
-                    <li>Uptime Monitoring</li>
-                    <li>Monthly Health Reports</li>
-                    <li>Email Support</li>
-                    <li>Firmware Updates (Quarterly)</li>
-                </ul>
+                <!-- Mission-Critical -->
+                <div class="tier-card">
+                    <div class="tier-name">Mission-Critical</div>
+                    <p>Maximum availability for command centers.</p>
+                    <ul class="tier-list">
+                        <li>Real-Time Traffic Analysis</li>
+                        <li>Immediate Incident Response</li>
+                        <li>Dedicated Account Engineer</li>
+                        <li>SLA-Backed Response Times</li>
+                        <li>On-Site Support Options</li>
+                    </ul>
+                </div>
             </div>
 
-            <!-- Standard -->
-            <div class="tier-card featured">
-                <div class="tier-name">Standard</div>
-                <p>Comprehensive support for active stations.</p>
-                <ul class="tier-list">
-                    <li>24/7 Connectivity Alerts</li>
-                    <li>Remote Troubleshooting</li>
-                    <li>Priority Email & Phone Support</li>
-                    <li>Firmware Updates (Monthly)</li>
-                    <li>Configuration Changes</li>
-                </ul>
+            <div style="text-align: center; background: white; padding: 40px; border-radius: 10px;">
+                <h3>What's Included</h3>
+                <p>All monitoring plans include access to our secure customer portal, rigorous privacy standards, and
+                    documentation management.</p>
+                <a href="questionnaire/index.html" class="cta-button">Get Support</a>
             </div>
 
-            <!-- Mission-Critical -->
-            <div class="tier-card">
-                <div class="tier-name">Mission-Critical</div>
-                <p>Maximum availability for command centers.</p>
-                <ul class="tier-list">
-                    <li>Real-Time Traffic Analysis</li>
-                    <li>Immediate Incident Response</li>
-                    <li>Dedicated Account Engineer</li>
-                    <li>SLA-Backed Response Times</li>
-                    <li>On-Site Support Options</li>
-                </ul>
-            </div>
+            <a href="index.html" class="back-link">← Return to Home</a>
         </div>
 
-        <div style="text-align: center; background: white; padding: 40px; border-radius: 10px;">
-            <h3>What's Included</h3>
-            <p>All monitoring plans include access to our secure customer portal, rigorous privacy standards, and
-                documentation management.</p>
-            <a href="questionnaire/index.html" class="cta-button">Get Support</a>
-        </div>
-
-        <a href="index.html" class="back-link">← Return to Home</a>
-    </div>
-
-    <footer id="contact">
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="about.html" class="footer-link">About Us</a>
-                <a href="mailto:elohmann@kerchunknetworks.com" class="footer-link">Contact</a>
-                <a href="guides/emergency-contacts.html" class="footer-link">Emergency Support</a>
-                <a href="documentation-access.html" class="footer-link">Documentation Portal</a>
-            </div>
-            <div class="footer-contact" style="margin-bottom: 20px;">
-                <p style="color: rgba(255,255,255,0.9); margin-bottom: 5px;"><strong>Contact Us:</strong></p>
-                <p><a href="tel:415-737-9223"
-                        style="color: var(--accent-gold); text-decoration: none; font-weight: bold;">415-737-9223</a>
+        <footer id="contact">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="about.html" class="footer-link">About Us</a>
+                    <a href="mailto:elohmann@kerchunknetworks.com" class="footer-link">Contact</a>
+                    <a href="guides/emergency-contacts.html" class="footer-link">Emergency Support</a>
+                    <a href="documentation-access.html" class="footer-link">Documentation Portal</a>
+                </div>
+                <div class="footer-contact" style="margin-bottom: 20px;">
+                    <p style="color: rgba(255,255,255,0.9); margin-bottom: 5px;"><strong>Contact Us:</strong></p>
+                    <p><a href="tel:415-737-9223"
+                            style="color: var(--accent-gold); text-decoration: none; font-weight: bold;">415-737-9223</a>
+                    </p>
+                    <p><a href="mailto:elohmann@kerchunknetworks.com"
+                            style="color: var(--accent-gold); text-decoration: none;">elohmann@kerchunknetworks.com</a>
+                    </p>
+                </div>
+                <p class="footer-text">&copy; 2025 Kerchunk Networks - Professional Network Solutions for Fire
+                    Departments
                 </p>
-                <p><a href="mailto:elohmann@kerchunknetworks.com"
-                        style="color: var(--accent-gold); text-decoration: none;">elohmann@kerchunknetworks.com</a></p>
+                <p class="footer-text"><small>Connecting Fire, Field, and Family</small></p>
             </div>
-            <p class="footer-text">&copy; 2025 Kerchunk Networks - Professional Network Solutions for Fire Departments
-            </p>
-            <p class="footer-text"><small>Connecting Fire, Field, and Family</small></p>
-        </div>
-    </footer>
+        </footer>
 
-</body>
+    </body>
 
 </html>
