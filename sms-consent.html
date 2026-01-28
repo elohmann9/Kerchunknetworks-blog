@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS Consent | Kerchunk Networks</title>
+    <style>
+        :root {
+            --primary-tan: #e8ddd0;
+            --secondary-beige: #d4c4b0;
+            --maroon: #8b4049;
+            --dark-maroon: #6b3038;
+            --accent-gold: #d4a574;
+            --text-dark: #3a2a2a;
+            --text-light: #ffffff;
+            --overlay-dark: rgba(58, 42, 42, 0.7);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--primary-tan);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Navigation Header */
+        .nav-header {
+            background: rgba(139, 64, 73, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--accent-gold);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 0;
+        }
+
+        .logo-link {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-link:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            height: 80px;
+            width: auto;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .logo-subtitle {
+            font-size: 0.75rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 5px;
+            list-style: none;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 20px 30px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .nav-cta {
+            background: var(--accent-gold);
+            color: var(--text-dark) !important;
+            padding: 10px 20px !important;
+            border-radius: 4px;
+            font-weight: 700 !important;
+            margin-left: 15px;
+            border: 2px solid var(--accent-gold);
+        }
+
+        .nav-cta:hover {
+            background: transparent !important;
+            color: var(--accent-gold) !important;
+        }
+
+        /* Page Content */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .form-wrapper {
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: var(--maroon);
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        p {
+            margin-bottom: 25px;
+            color: #555;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"] {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            box-sizing: border-box;
+            /* Fix for padding issue */
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus {
+            border-color: var(--maroon);
+            outline: none;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+
+        input[type="checkbox"] {
+            margin-top: 5px;
+            width: 20px;
+            height: 20px;
+            accent-color: var(--maroon);
+        }
+
+        .checkbox-label {
+            font-weight: normal;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .submit-btn {
+            background: var(--maroon);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: var(--dark-maroon);
+        }
+
+        .disclaimer {
+            font-size: 0.8rem;
+            color: #777;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .disclaimer a {
+            color: var(--maroon);
+            text-decoration: none;
+        }
+
+        .disclaimer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(139, 64, 73, 0.95);
+            color: var(--text-light);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 3px solid var(--accent-gold);
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 5px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 968px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .logo-title {
+                font-size: 1.4rem;
+            }
+
+            .logo-icon {
+                height: 40px;
+            }
+
+            .form-wrapper {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav-header">
+        <div class="nav-container">
+            <div class="logo-section">
+                <a href="index.html" class="logo-link">
+                    <img src="assets/images/PNG Logo.png" alt="Kerchunk Networks Logo" class="logo-icon">
+                    <div class="logo-text">
+                        <span class="logo-title">Kerchunk Networks</span>
+                        <span class="logo-subtitle">Professional Solutions</span>
+                    </div>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="form-wrapper">
+            <h1>SMS Communications Sign Up</h1>
+            <p>Please complete this form to opt-in to receive important service updates, appointment reminders, and
+                support messages via text.</p>
+
+            <form id="smsConsentForm" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="1c07640f-5b18-4895-8c3b-5fbc899e6e48">
+                <input type="hidden" name="subject" value="New SMS Consent Submission">
+                <input type="hidden" name="redirect"
+                    value="https://kerchunknetworks.com/sms-consent.html?submitted=true">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required placeholder="John Doe">
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Mobile Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required placeholder="(415) 555-0123">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="john@example.com">
+                </div>
+
+                <div class="checkbox-group">
+                    <input type="checkbox" id="consent" name="consent" required>
+                    <label for="consent" class="checkbox-label">
+                        I agree to receive SMS text messages from Kerchunk Networks at the phone number provided above.
+                        I understand that I am not required to provide this consent as a condition of purchasing any
+                        goods or services. Message frequency varies. Message and data rates may apply. Reply STOP to opt
+                        out.
+                    </label>
+                </div>
+
+                <button type="submit" class="submit-btn">Subscribe to Updates</button>
+
+                <div class="disclaimer">
+                    <p>By clicking "Subscribe to Updates", you agree to our <a href="terms-of-service.html"
+                            target="_blank">Terms of Service</a> and <a href="privacy-policy.html"
+                            target="_blank">Privacy Policy</a>.</p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="about.html" class="footer-link">About Us</a>
+                <a href="mailto:elohmann@kerchunknetworks.com" class="footer-link">Contact</a>
+                <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
+                <a href="terms-of-service.html" class="footer-link">Terms of Service</a>
+                <a href="sms-consent.html" class="footer-link">SMS Consent</a>
+            </div>
+            <p class="footer-text">&copy; 2026 Kerchunk Networks. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Check for success parameter in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('submitted') === 'true') {
+            const formWrapper = document.querySelector('.form-wrapper');
+            formWrapper.innerHTML = `
+                <div style="text-align: center; padding: 40px 20px;">
+                    <div style="color: #4CAF50; font-size: 3rem; margin-bottom: 20px;">✓</div>
+                    <h1 style="color: #2E7D32;">Thank You!</h1>
+                    <p style="font-size: 1.2rem;">You have successfully subscribed to SMS updates.</p>
+                    <a href="index.html" class="submit-btn" style="display: inline-block; text-decoration: none; margin-top: 20px;">Return Home</a>
+                </div>
+            `;
+        }
+    </script>
+</body>
+
+</html>

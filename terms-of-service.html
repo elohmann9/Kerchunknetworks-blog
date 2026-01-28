@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | Kerchunk Networks</title>
+    <style>
+        :root {
+            --primary-tan: #e8ddd0;
+            --secondary-beige: #d4c4b0;
+            --maroon: #8b4049;
+            --dark-maroon: #6b3038;
+            --accent-gold: #d4a574;
+            --text-dark: #3a2a2a;
+            --text-light: #ffffff;
+            --overlay-dark: rgba(58, 42, 42, 0.7);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--primary-tan);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Navigation Header */
+        .nav-header {
+            background: rgba(139, 64, 73, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--accent-gold);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 40px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 0;
+        }
+
+        .logo-link {
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-link:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            height: 80px;
+            width: auto;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-light);
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .logo-subtitle {
+            font-size: 0.75rem;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 5px;
+            list-style: none;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 20px 30px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .nav-cta {
+            background: var(--accent-gold);
+            color: var(--text-dark) !important;
+            padding: 10px 20px !important;
+            border-radius: 4px;
+            font-weight: 700 !important;
+            margin-left: 15px;
+            border: 2px solid var(--accent-gold);
+        }
+
+        .nav-cta:hover {
+            background: transparent !important;
+            color: var(--accent-gold) !important;
+        }
+
+        /* Page Content */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        h1 {
+            color: var(--maroon);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            color: var(--dark-maroon);
+            margin-top: 40px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--secondary-beige);
+            padding-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        ul {
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        .document-wrapper {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        .last-updated {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(139, 64, 73, 0.95);
+            color: var(--text-light);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 3px solid var(--accent-gold);
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 500;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 5px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 968px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .logo-title {
+                font-size: 1.4rem;
+            }
+
+            .logo-icon {
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav-header">
+        <div class="nav-container">
+            <div class="logo-section">
+                <a href="index.html" class="logo-link">
+                    <img src="assets/images/PNG Logo.png" alt="Kerchunk Networks Logo" class="logo-icon">
+                    <div class="logo-text">
+                        <span class="logo-title">Kerchunk Networks</span>
+                        <span class="logo-subtitle">Professional Solutions</span>
+                    </div>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="questionnaire/index.html" class="nav-link nav-cta">Schedule Consultation</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="document-wrapper">
+            <h1>Terms of Service</h1>
+            <p class="last-updated">Last Updated: January 28, 2026</p>
+
+            <p>Welcome to Kerchunk Networks ("we," "our," or "us"). By accessing or using our website, services, or
+                products, you agree to be bound by these Terms of Service. If you do not agree to all of these Terms, do
+                not use our services.</p>
+
+            <h2>1. Services</h2>
+            <p>Kerchunk Networks provides network engineering, installation, and monitoring services, primarily for fire
+                departments and emergency personnel. We reserve the right to modify, suspend, or discontinue any service
+                at any time without notice.</p>
+
+            <h2>2. User Content & Conduct</h2>
+            <p>You agree not to use our services for any unlawful purpose or in any way that interrupts, damages, or
+                impairs the service. You are responsible for all activity that occurs under your account or connection.
+            </p>
+
+            <h2>3. SMS/Messaging Terms</h2>
+            <p>By opting in to receive SMS messages from Kerchunk Networks, you agree to the following:</p>
+            <ul>
+                <li><strong>Program Description:</strong> We send text messages regarding your service status,
+                    appointment reminders, support ticket updates, and urgent network alerts.</li>
+                <li><strong>Message Frequency:</strong> Message frequency varies based on your service activity and
+                    support needs.</li>
+                <li><strong>Cost:</strong> Message and data rates may apply depending on your mobile carrier plan.</li>
+                <li><strong>Opt-Out:</strong> You can opt out of receiving messages at any time by replying "STOP".</li>
+                <li><strong>Help:</strong> For assistance, reply "HELP" or contact customer support at 415-737-9223.
+                </li>
+                <li><strong>Carriers:</strong> Carriers are not liable for delayed or undelivered messages.</li>
+            </ul>
+
+            <h2>4. Limitation of Liability</h2>
+            <p>To the fullest extent permitted by law, Kerchunk Networks shall not be liable for any indirect,
+                incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether
+                incurred directly or indirectly.</p>
+
+            <h2>5. Changes to Terms</h2>
+            <p>We may revise these Terms from time to time. The most current version will always be on this page. By
+                continuing to use the Services after changes become effective, you agree to be bound by the revised
+                Terms.</p>
+
+            <h2>6. Governing Law</h2>
+            <p>These Terms shall be governed by the laws of the State of California, without respect to its conflict of
+                laws principles.</p>
+
+            <h2>7. Contact Us</h2>
+            <p>If you have any questions about these Terms, please contact us at <a
+                    href="mailto:elohmann@kerchunknetworks.com">elohmann@kerchunknetworks.com</a>.</p>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="about.html" class="footer-link">About Us</a>
+                <a href="mailto:elohmann@kerchunknetworks.com" class="footer-link">Contact</a>
+                <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
+                <a href="terms-of-service.html" class="footer-link">Terms of Service</a>
+                <a href="sms-consent.html" class="footer-link">SMS Consent</a>
+            </div>
+            <p class="footer-text">&copy; 2026 Kerchunk Networks. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
