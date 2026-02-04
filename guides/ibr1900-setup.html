@@ -1,22 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IBR1900 Fire Engine Setup Guide - Kerchunk Networks</title>
-    <meta name="description" content="Complete setup guide for Cradlepoint IBR1900 router in fire engine applications with GPS services, cellular, and Starlink backup">
-    
+    <meta name="description"
+        content="Complete setup guide for Cradlepoint IBR1900 router in fire engine applications with GPS services, cellular, and Starlink backup">
+
     <style>
         :root {
-            --fire-red: #b85450;
-            --fire-orange: #d79b00;
-            --fire-blue: #667eea;
-            --fire-dark: #2c3e50;
-            --fire-light: #f8f9fa;
-            --fire-gray: #6c757d;
+            /* Kerchunk Networks Palette */
+            --primary-tan: #e8ddd0;
+            --secondary-beige: #d4c4b0;
+            --maroon: #8b4049;
+            --dark-maroon: #6b3038;
+            --accent-gold: #d4a574;
+            --text-dark: #3a2a2a;
+            --text-light: #ffffff;
+
+            /* Status Colors */
             --success-green: #28a745;
             --warning-yellow: #ffc107;
             --danger-red: #dc3545;
+
+            /* Legacy mappings for existing classes */
+            --fire-red: var(--maroon);
+            --fire-orange: var(--accent-gold);
+            --fire-blue: var(--maroon);
+            --fire-dark: var(--text-dark);
+            --fire-light: #ffffff;
+            --fire-gray: #5a4a4a;
         }
 
         * {
@@ -28,8 +42,8 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: var(--fire-dark);
-            background: #f8f9fa;
+            color: var(--text-dark);
+            background: var(--primary-tan);
         }
 
         .container {
@@ -40,7 +54,9 @@
 
         /* Header */
         .guide-header {
-            background: linear-gradient(135deg, var(--fire-red), var(--fire-orange));
+            background: rgba(139, 64, 73, 0.95);
+            backdrop-filter: blur(15px);
+            border-bottom: 3px solid var(--accent-gold);
             color: white;
             padding: 40px;
             border-radius: 15px;
@@ -64,7 +80,7 @@
             padding: 15px 20px;
             border-radius: 10px;
             margin-bottom: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .nav-breadcrumb a {
@@ -82,7 +98,7 @@
             padding: 25px;
             border-radius: 10px;
             margin-bottom: 30px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .toc h2 {
@@ -122,7 +138,7 @@
             margin-bottom: 30px;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .section-header {
@@ -281,11 +297,11 @@
             .container {
                 padding: 10px;
             }
-            
+
             .guide-header h1 {
                 font-size: 2rem;
             }
-            
+
             .code-block {
                 font-size: 12px;
                 padding: 15px;
@@ -293,18 +309,20 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <!-- Header -->
         <div class="guide-header">
             <h1>🚒 IBR1900 Fire Engine Setup Guide</h1>
-            <p class="subtitle">Complete configuration for Cradlepoint IBR1900 with GPS, cellular, and Starlink backup</p>
+            <p class="subtitle">Complete configuration for Cradlepoint IBR1900 with GPS, cellular, and Starlink backup
+            </p>
         </div>
 
         <!-- Navigation -->
         <div class="nav-breadcrumb">
-            <a href="../index.html">← Back to Kerchunk Networks</a> • 
-            <span>Setup Guides</span> • 
+            <a href="../index.html">← Back to Kerchunk Networks</a> •
+            <span>Setup Guides</span> •
             <strong>IBR1900 Configuration</strong>
         </div>
 
@@ -312,16 +330,42 @@
         <div class="toc">
             <h2>📋 Quick Navigation</h2>
             <ul>
-                <li><a href="#overview">Equipment Overview</a></li>
-                <li><a href="#initial-setup">Initial Router Setup</a></li>
-                <li><a href="#cellular-config">Cellular eSIM Configuration</a></li>
-                <li><a href="#starlink-backup">Starlink Backup Setup</a></li>
+                <li><a href="#start-here">🏁 Start Here: Hardware Setup</a></li>
+                <li><a href="#initial-setup">Initial Router Access</a></li>
+                <li><a href="#dual-gps">🛰️ Dual GPS Configuration (Versaterm & Tablet Command)</a></li>
+                <li><a href="#cellular-config">Cellular & Starlink Backup</a></li>
                 <li><a href="#wifi-config">WiFi Configuration</a></li>
-                <li><a href="#gps-services">GPS Services Setup</a></li>
                 <li><a href="#security">Security & SSH Access</a></li>
                 <li><a href="#testing">Testing & Validation</a></li>
                 <li><a href="#troubleshooting">Troubleshooting</a></li>
             </ul>
+        </div>
+
+        <!-- Beginner's Checklist / Start Here -->
+        <div id="start-here" class="content-section">
+            <div class="section-header">🏁 Start Here: Hardware Setup</div>
+            <div class="section-content">
+                <div class="alert alert-info">
+                    <strong>First Time?</strong> Follow these physical setup steps before trying to log into the
+                    software.
+                </div>
+
+                <div class="checklist">
+                    <li><strong>Power:</strong> Connect the 4-pin Molex power connector. Ensure the router powers on
+                        (Power LED solid green).</li>
+                    <li><strong>Antennas:</strong>
+                        <ul>
+                            <li>Connect 4x Cellular/5G antennas to "Cellular" ports.</li>
+                            <li>Connect 2x WiFi antennas to "WiFi" ports.</li>
+                            <li>Connect 1x GPS antenna to "GPS" port (Critical for tracking!).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Laptop Connection:</strong> Connect your laptop via Ethernet cable to <strong>LAN Port
+                            1</strong>.</li>
+                    <li><strong>Starlink (Optional):</strong> Connect Starlink Ethernet adapter to <strong>WAN
+                            Port</strong>.</li>
+                </div>
+            </div>
         </div>
 
         <!-- Equipment Overview -->
@@ -362,7 +406,9 @@
                 </table>
 
                 <div class="alert alert-info">
-                    <strong>🔥 Fire Department Specific:</strong> This configuration ensures 24/7 connectivity for emergency operations with automatic failover and dual GPS tracking for dispatch and tactical coordination.
+                    <strong>🔥 Fire Department Specific:</strong> This configuration ensures 24/7 connectivity for
+                    emergency operations with automatic failover and dual GPS tracking for dispatch and tactical
+                    coordination.
                 </div>
             </div>
         </div>
@@ -371,21 +417,23 @@
         <div id="initial-setup" class="content-section">
             <div class="section-header">🚀 Initial Router Setup</div>
             <div class="section-content">
-                
+
                 <div class="step">
                     <div class="step-header">Step 1: Router Access & Security</div>
                     <div class="step-content">
                         <div class="code-block">
-<span class="comment"># Initial connection</span>
-URL: https://192.168.0.1
-Default Login: admin / [last 8 digits of MAC address]
-<span class="comment"># If login fails: Factory reset (hold button 45s, wait 1min)</span>
+                            <span class="comment"># Initial connection</span>
+                            URL: https://192.168.0.1
+                            Default Login: admin / [last 8 digits of MAC address]
+                            <span class="comment"># If login fails: Factory reset (hold button 45s, wait 1min)</span>
                         </div>
 
                         <p><strong>Secure Admin Password:</strong></p>
                         <ul>
-                            <li><strong>Local Router:</strong> <span class="path">System → Administration → Router Security</span></li>
-                            <li><strong>NetCloud:</strong> <span class="netcloud-path">Settings → Device Settings → [Select Router] → Security</span></li>
+                            <li><strong>Local Router:</strong> <span class="path">System → Administration → Router
+                                    Security</span></li>
+                            <li><strong>NetCloud:</strong> <span class="netcloud-path">Settings → Device Settings →
+                                    [Select Router] → Security</span></li>
                             <li><strong>Set strong password:</strong> FireDept2025! (or similar)</li>
                         </ul>
                     </div>
@@ -395,7 +443,8 @@ Default Login: admin / [last 8 digits of MAC address]
                     <div class="step-header">Step 2: NetCloud Manager Registration</div>
                     <div class="step-content">
                         <div class="alert alert-warning">
-                            <strong>⚠️ Security:</strong> Only whitelist specific IP addresses for SSH access. Never allow unrestricted SSH access to fire department equipment.
+                            <strong>⚠️ Security:</strong> Only whitelist specific IP addresses for SSH access. Never
+                            allow unrestricted SSH access to fire department equipment.
                         </div>
 
                         <p><strong>Recommended Whitelist:</strong></p>
@@ -407,8 +456,8 @@ Default Login: admin / [last 8 digits of MAC address]
 
                         <p><strong>Test SSH Access:</strong></p>
                         <div class="code-block">
-ssh admin@[ROUTER_CELLULAR_IP]
-<span class="comment"># Should connect from whitelisted IPs only</span>
+                            ssh admin@[ROUTER_CELLULAR_IP]
+                            <span class="comment"># Should connect from whitelisted IPs only</span>
                         </div>
                     </div>
                 </div>
@@ -455,7 +504,7 @@ ssh admin@[ROUTER_CELLULAR_IP]
         <div id="testing" class="content-section">
             <div class="section-header">🧪 Testing & Validation</div>
             <div class="section-content">
-                
+
                 <div class="step">
                     <div class="step-header">Step 1: Cellular Connection Testing</div>
                     <div class="step-content">
@@ -467,10 +516,10 @@ ssh admin@[ROUTER_CELLULAR_IP]
                         </div>
 
                         <div class="code-block">
-<span class="comment"># Verification commands</span>
-ping 8.8.8.8
-nslookup google.com
-speedtest (via web interface)
+                            <span class="comment"># Verification commands</span>
+                            ping 8.8.8.8
+                            nslookup google.com
+                            speedtest (via web interface)
                         </div>
                     </div>
                 </div>
@@ -479,7 +528,8 @@ speedtest (via web interface)
                     <div class="step-header">Step 2: Starlink Failover Testing</div>
                     <div class="step-content">
                         <div class="alert alert-info">
-                            <strong>📋 Test Procedure:</strong> Document failover timing for emergency response planning.
+                            <strong>📋 Test Procedure:</strong> Document failover timing for emergency response
+                            planning.
                         </div>
 
                         <ol>
@@ -517,7 +567,8 @@ speedtest (via web interface)
                     <div class="step-header">Step 4: GPS Service Testing</div>
                     <div class="step-content">
                         <div class="alert alert-warning">
-                            <strong>⏰ Testing Time:</strong> GPS services may have specific active hours. Tablet Command example: 9:00 AM - 5:00 PM PDT.
+                            <strong>⏰ Testing Time:</strong> GPS services may have specific active hours. Tablet Command
+                            example: 9:00 AM - 5:00 PM PDT.
                         </div>
 
                         <div class="checklist">
@@ -531,10 +582,10 @@ speedtest (via web interface)
 
                         <p><strong>Verification Commands:</strong></p>
                         <div class="code-block">
-<span class="comment"># Local router verification</span>
-show location clients
-show location statistics
-show gps status
+                            <span class="comment"># Local router verification</span>
+                            show location clients
+                            show location statistics
+                            show gps status
                         </div>
                     </div>
                 </div>
@@ -558,13 +609,14 @@ show gps status
         <div id="troubleshooting" class="content-section">
             <div class="section-header">🚨 Troubleshooting Guide</div>
             <div class="section-content">
-                
+
                 <div class="step">
                     <div class="step-header">GPS Services Not Reporting</div>
                     <div class="step-content">
                         <p><strong>Diagnostic Steps:</strong></p>
                         <ol>
-                            <li><strong>Check GPS Status:</strong> <span class="path">Status → Location → GPS Status</span>
+                            <li><strong>Check GPS Status:</strong> <span class="path">Status → Location → GPS
+                                    Status</span>
                                 <ul>
                                     <li>Satellites: Should show 4+ satellites</li>
                                     <li>Fix Quality: Should be "3D Fix"</li>
@@ -572,11 +624,12 @@ show gps status
                             </li>
                             <li><strong>Test Server Connectivity:</strong>
                                 <div class="code-block">
-ping avl.tabletcommand.com
-ping avl.smc911.org
+                                    ping avl.tabletcommand.com
+                                    ping avl.smc911.org
                                 </div>
                             </li>
-                            <li><strong>Check Client Status:</strong> <span class="path">Location → GPS Clients → [CLIENT] → Status</span>
+                            <li><strong>Check Client Status:</strong> <span class="path">Location → GPS Clients →
+                                    [CLIENT] → Status</span>
                                 <ul>
                                     <li>Last Transmission: Should be recent</li>
                                     <li>Packets Sent: Should be incrementing</li>
@@ -605,7 +658,8 @@ ping avl.smc911.org
                     <div class="step-content">
                         <p><strong>Diagnostic Steps:</strong></p>
                         <ol>
-                            <li><strong>Verify Interface Status:</strong> <span class="path">Status → WAN → Interfaces</span>
+                            <li><strong>Verify Interface Status:</strong> <span class="path">Status → WAN →
+                                    Interfaces</span>
                                 <ul>
                                     <li>Both cellular and Starlink should show "Connected"</li>
                                 </ul>
@@ -617,7 +671,8 @@ ping avl.smc911.org
                                     <li>Time the switchover process</li>
                                 </ul>
                             </li>
-                            <li><strong>Check Health Monitoring:</strong> <span class="path">Network → WAN → Failover → Health Checks</span>
+                            <li><strong>Check Health Monitoring:</strong> <span class="path">Network → WAN → Failover →
+                                    Health Checks</span>
                                 <ul>
                                     <li>Ping targets should respond</li>
                                     <li>Adjust thresholds if needed</li>
@@ -669,7 +724,8 @@ ping avl.smc911.org
                     <div class="step-header">Emergency Procedures</div>
                     <div class="step-content">
                         <div class="alert alert-danger">
-                            <strong>🚨 Critical System Failure:</strong> If primary communications fail during emergency operations.
+                            <strong>🚨 Critical System Failure:</strong> If primary communications fail during emergency
+                            operations.
                         </div>
 
                         <p><strong>Emergency Recovery Steps:</strong></p>
@@ -712,9 +768,10 @@ ping avl.smc911.org
         <div class="content-section">
             <div class="section-content" style="text-align: center; padding: 30px;">
                 <div class="alert alert-success">
-                    <strong>✅ Configuration Complete!</strong> Your IBR1900 is now configured for fire department operations with redundant connectivity and GPS tracking.
+                    <strong>✅ Configuration Complete!</strong> Your IBR1900 is now configured for fire department
+                    operations with redundant connectivity and GPS tracking.
                 </div>
-                
+
                 <p><strong>Next Steps:</strong></p>
                 <ul style="text-align: left; max-width: 600px; margin: 0 auto;">
                     <li>Add to <a href="../index.html">Kerchunk Networks documentation</a></li>
@@ -724,8 +781,10 @@ ping avl.smc911.org
                 </ul>
 
                 <p style="margin-top: 30px;">
-                    <a href="../index.html" style="color: var(--fire-blue); text-decoration: none;">← Back to Kerchunk Networks</a> | 
-                    <a href="gps-configuration.html" style="color: var(--fire-blue); text-decoration: none;">GPS Configuration Guide →</a>
+                    <a href="../index.html" style="color: var(--fire-blue); text-decoration: none;">← Back to Kerchunk
+                        Networks</a> |
+                    <a href="gps-configuration.html" style="color: var(--fire-blue); text-decoration: none;">GPS
+                        Configuration Guide →</a>
                 </p>
             </div>
         </div>
@@ -752,7 +811,7 @@ ping avl.smc911.org
         }
 
         // Add print button (optional)
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const header = document.querySelector('.guide-header');
             const printBtn = document.createElement('button');
             printBtn.innerHTML = '🖨️ Print Guide';
@@ -770,419 +829,441 @@ ping avl.smc911.org
         });
     </script>
 </body>
+
 </html> alert-warning">
-                            <strong>⚠️ Critical:</strong> Register with NetCloud Manager BEFORE deployment for remote management capabilities.
-                        </div>
+<strong>⚠️ Critical:</strong> Register with NetCloud Manager BEFORE deployment for remote management capabilities.
+</div>
 
-                        <ol>
-                            <li>Go to <a href="https://customer.cradlepoint.com" target="_blank">NetCloud Manager</a></li>
-                            <li><span class="netcloud-path">Dashboard → Add Device → Manual Registration</span></li>
-                            <li>Enter Serial Number and MAC Address (found on router label)</li>
-                            <li>Device Name: "Fire Engine [NUMBER] - IBR1900"</li>
-                            <li>Location: Your fire station address</li>
-                        </ol>
-                    </div>
+<ol>
+    <li>Go to <a href="https://customer.cradlepoint.com" target="_blank">NetCloud Manager</a></li>
+    <li><span class="netcloud-path">Dashboard → Add Device → Manual Registration</span></li>
+    <li>Enter Serial Number and MAC Address (found on router label)</li>
+    <li>Device Name: "Fire Engine [NUMBER] - IBR1900"</li>
+    <li>Location: Your fire station address</li>
+</ol>
+</div>
+</div>
+
+<div class="step">
+    <div class="step-header">Step 3: Configuration Backup</div>
+    <div class="step-content">
+        <p><strong>Always backup before making changes:</strong></p>
+        <ul>
+            <li><strong>Local Router:</strong> <span class="path">System → Configuration → Export Configuration</span>
+            </li>
+            <li><strong>NetCloud:</strong> <span class="netcloud-path">Settings → Device Settings → [Router] →
+                    Configuration → Export</span></li>
+            <li><strong>Save as:</strong> "IBR1900_FireEngine_Backup_YYYY-MM-DD.json"</li>
+        </ul>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- Cellular Configuration -->
+<div id="cellular-config" class="content-section">
+    <div class="section-header">📱 Cellular eSIM Configuration</div>
+    <div class="section-content">
+
+        <div class="step">
+            <div class="step-header">Step 1: eSIM Activation</div>
+            <div class="step-content">
+                <p><strong>NetCloud Manager Path:</strong></p>
+                <div class="code-block">
+                    <span class="netcloud-path">Settings → Connectivity → Modems → [Select Router] → SIM
+                        Management</span>
                 </div>
 
-                <div class="step">
-                    <div class="step-header">Step 3: Configuration Backup</div>
-                    <div class="step-content">
-                        <p><strong>Always backup before making changes:</strong></p>
-                        <ul>
-                            <li><strong>Local Router:</strong> <span class="path">System → Configuration → Export Configuration</span></li>
-                            <li><strong>NetCloud:</strong> <span class="netcloud-path">Settings → Device Settings → [Router] → Configuration → Export</span></li>
-                            <li><strong>Save as:</strong> "IBR1900_FireEngine_Backup_YYYY-MM-DD.json"</li>
-                        </ul>
-                    </div>
+                <p><strong>Local Router Path:</strong></p>
+                <div class="code-block">
+                    <span class="path">Networking → Modems → SIM/APN Settings</span>
+                </div>
+
+                <ol>
+                    <li>Select <strong>eSIM option</strong></li>
+                    <li>Download profile via NetCloud Manager</li>
+                    <li>Choose carrier (Telnyx recommended for fire departments)</li>
+                    <li>Set APN: <code>data00.telnyx</code> (or carrier-specific)</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-header">Step 2: Verify Private IP Assignment</div>
+            <div class="step-content">
+                <div class="alert alert-danger">
+                    <strong>🚨 Critical:</strong> Ensure you get a PRIVATE IP address, not CGNAT. Fire departments need
+                    direct connectivity for emergency operations.
+                </div>
+
+                <p><strong>Verification Paths:</strong></p>
+                <ul>
+                    <li><strong>NetCloud:</strong> <span class="netcloud-path">Status → Devices → [Router] → Connection
+                            Status</span></li>
+                    <li><strong>Local:</strong> <span class="path">Status → Internet → Connection Manager</span></li>
+                </ul>
+
+                <p><strong>Expected Result:</strong> IP like 10.0.0.123 (private range)</p>
+                <p><strong>If CGNAT:</strong> Contact carrier immediately to request static/private IP</p>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-header">Step 3: LAN Network Configuration</div>
+            <div class="step-content">
+                <p><strong>Path:</strong> <span class="path">Networking → Local Networks → Local IP Networks</span></p>
+
+                <table class="info-table">
+                    <tr>
+                        <th>Setting</th>
+                        <th>Value</th>
+                        <th>Purpose</th>
+                    </tr>
+                    <tr>
+                        <td>Router IP</td>
+                        <td>192.168.10.1</td>
+                        <td>Fire engine network gateway</td>
+                    </tr>
+                    <tr>
+                        <td>Subnet Mask</td>
+                        <td>255.255.255.0</td>
+                        <td>/24 network (254 devices)</td>
+                    </tr>
+                    <tr>
+                        <td>DHCP Range</td>
+                        <td>192.168.10.10 - 192.168.10.100</td>
+                        <td>Automatic device assignment</td>
+                    </tr>
+                    <tr>
+                        <td>Reserved IPs</td>
+                        <td>192.168.10.2-9</td>
+                        <td>Static assignments for critical equipment</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Starlink Backup -->
+<div id="starlink-backup" class="content-section">
+    <div class="section-header">🛰️ Starlink Backup Configuration</div>
+    <div class="section-content">
+
+        <div class="step">
+            <div class="step-header">Step 1: Physical Connection</div>
+            <div class="step-content">
+                <ol>
+                    <li>Connect Starlink dish to <strong>WAN2 Ethernet port</strong> on IBR1900</li>
+                    <li>Set Starlink dish to <strong>IP Passthrough mode</strong> via Starlink app</li>
+                    <li>Verify connection via Starlink app shows "Connected"</li>
+                </ol>
+
+                <div class="alert alert-info">
+                    <strong>📍 Mounting:</strong> Ensure Starlink dish has clear sky view for optimal satellite
+                    connectivity during emergency operations.
                 </div>
             </div>
         </div>
 
-        <!-- Cellular Configuration -->
-        <div id="cellular-config" class="content-section">
-            <div class="section-header">📱 Cellular eSIM Configuration</div>
-            <div class="section-content">
-                
-                <div class="step">
-                    <div class="step-header">Step 1: eSIM Activation</div>
-                    <div class="step-content">
-                        <p><strong>NetCloud Manager Path:</strong></p>
-                        <div class="code-block">
-<span class="netcloud-path">Settings → Connectivity → Modems → [Select Router] → SIM Management</span>
-                        </div>
+        <div class="step">
+            <div class="step-header">Step 2: WAN2 Interface Configuration</div>
+            <div class="step-content">
+                <p><strong>Path:</strong> <span class="path">Networking → WAN → Interfaces</span></p>
 
-                        <p><strong>Local Router Path:</strong></p>
-                        <div class="code-block">
-<span class="path">Networking → Modems → SIM/APN Settings</span>
-                        </div>
+                <ul>
+                    <li>Set WAN2 as <strong>Ethernet interface</strong></li>
+                    <li>Configuration: <strong>DHCP Client</strong></li>
+                    <li>Priority: <strong>2</strong> (backup to cellular)</li>
+                    <li>Enable interface: <strong>✅</strong></li>
+                </ul>
+            </div>
+        </div>
 
-                        <ol>
-                            <li>Select <strong>eSIM option</strong></li>
-                            <li>Download profile via NetCloud Manager</li>
-                            <li>Choose carrier (Telnyx recommended for fire departments)</li>
-                            <li>Set APN: <code>data00.telnyx</code> (or carrier-specific)</li>
-                        </ol>
-                    </div>
+        <div class="step">
+            <div class="step-header">Step 3: Failover Configuration</div>
+            <div class="step-content">
+                <p><strong>Path:</strong> <span class="path">Networking → WAN → Connection Manager</span></p>
+
+                <table class="info-table">
+                    <tr>
+                        <th>Setting</th>
+                        <th>Value</th>
+                        <th>Purpose</th>
+                    </tr>
+                    <tr>
+                        <td>Primary Interface</td>
+                        <td>Cellular (WAN1)</td>
+                        <td>Main internet connection</td>
+                    </tr>
+                    <tr>
+                        <td>Secondary Interface</td>
+                        <td>Starlink (WAN2)</td>
+                        <td>Automatic backup</td>
+                    </tr>
+                    <tr>
+                        <td>Health Check</td>
+                        <td>ping 8.8.8.8</td>
+                        <td>Connection monitoring</td>
+                    </tr>
+                    <tr>
+                        <td>Failover Time</td>
+                        <td>30 seconds</td>
+                        <td>Emergency response acceptable</td>
+                    </tr>
+                    <tr>
+                        <td>Auto Failback</td>
+                        <td>Enabled</td>
+                        <td>Return to cellular when restored</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- WiFi Configuration -->
+<div id="wifi-config" class="content-section">
+    <div class="section-header">📶 WiFi Configuration</div>
+    <div class="section-content">
+
+        <div class="step">
+            <div class="step-header">Step 1: Dual-Band WiFi Setup</div>
+            <div class="step-content">
+                <p><strong>Path:</strong> <span class="path">Networking → WiFi → Wireless Settings</span></p>
+
+                <ul>
+                    <li>Enable <strong>Dual-Band Concurrent</strong></li>
+                    <li><strong>2.4GHz SSID:</strong> Public-fc</li>
+                    <li><strong>5GHz SSID:</strong> Public-fc5G</li>
+                    <li><strong>Region:</strong> United States</li>
+                    <li><strong>Channel Selection:</strong> SmartSelect (automatic)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-header">Step 2: Advanced WiFi Settings</div>
+            <div class="step-content">
+                <p><strong>Path:</strong> <span class="path">Networking → WiFi → Advanced Settings</span></p>
+
+                <ul>
+                    <li><strong>Band Steering:</strong> Enable (automatic 5GHz preference)</li>
+                    <li><strong>Alternative:</strong> Use separate SSIDs with manual 5GHz preference</li>
+                    <li><strong>Max Clients:</strong> 20 (fire department equipment limit)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-header">Step 3: Fire Engine Optimization</div>
+            <div class="step-content">
+                <p><strong>Path:</strong> <span class="path">Networking → WiFi → Client Management</span></p>
+
+                <ul>
+                    <li><strong>Priority Devices:</strong> Fire tablets, emergency equipment → 5GHz band</li>
+                    <li><strong>QoS:</strong> Enable for emergency traffic</li>
+                    <li><strong>Device Priority:</strong> Critical fire department equipment first</li>
+                </ul>
+
+                <div class="alert alert-success">
+                    <strong>✅ Optimization:</strong> 5GHz provides better performance for data-heavy applications like
+                    mapping and video streaming during emergency operations.
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-                <div class="step">
-                    <div class="step-header">Step 2: Verify Private IP Assignment</div>
-                    <div class="step-content">
-                        <div class="alert alert-danger">
-                            <strong>🚨 Critical:</strong> Ensure you get a PRIVATE IP address, not CGNAT. Fire departments need direct connectivity for emergency operations.
-                        </div>
+<!-- Dual GPS Configuration -->
+<div id="dual-gps" class="content-section">
+    <div class="section-header">🛰️ Dual GPS Configuration</div>
+    <div class="section-content">
+        <div class="alert alert-info">
+            <strong>Why Dual GPS?</strong> We configure two separate GPS clients because Versaterm (CAD) and Tablet
+            Command (Tactical) require different data formats and update intervals.
+        </div>
 
-                        <p><strong>Verification Paths:</strong></p>
-                        <ul>
-                            <li><strong>NetCloud:</strong> <span class="netcloud-path">Status → Devices → [Router] → Connection Status</span></li>
-                            <li><strong>Local:</strong> <span class="path">Status → Internet → Connection Manager</span></li>
-                        </ul>
-
-                        <p><strong>Expected Result:</strong> IP like 10.0.0.123 (private range)</p>
-                        <p><strong>If CGNAT:</strong> Contact carrier immediately to request static/private IP</p>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-header">Step 3: LAN Network Configuration</div>
-                    <div class="step-content">
-                        <p><strong>Path:</strong> <span class="path">Networking → Local Networks → Local IP Networks</span></p>
-
-                        <table class="info-table">
-                            <tr>
-                                <th>Setting</th>
-                                <th>Value</th>
-                                <th>Purpose</th>
-                            </tr>
-                            <tr>
-                                <td>Router IP</td>
-                                <td>192.168.10.1</td>
-                                <td>Fire engine network gateway</td>
-                            </tr>
-                            <tr>
-                                <td>Subnet Mask</td>
-                                <td>255.255.255.0</td>
-                                <td>/24 network (254 devices)</td>
-                            </tr>
-                            <tr>
-                                <td>DHCP Range</td>
-                                <td>192.168.10.10 - 192.168.10.100</td>
-                                <td>Automatic device assignment</td>
-                            </tr>
-                            <tr>
-                                <td>Reserved IPs</td>
-                                <td>192.168.10.2-9</td>
-                                <td>Static assignments for critical equipment</td>
-                            </tr>
-                        </table>
-                    </div>
+        <div class="step">
+            <div class="step-header">Global GPS Settings (Main Page)</div>
+            <div class="step-content">
+                <p><strong>Path:</strong> <span class="path">System → Administration → GPS</span></p>
+                <div class="checklist">
+                    <li><strong>Enable GPS:</strong> ✅ Checked</li>
+                    <li><strong>Enable GPS Lock LED:</strong> ✅ Checked (Helps troubleshooting)</li>
+                    <li><strong>Enable GPS Keepalive:</strong> ✅ Checked (Prevents "disappearing" units)</li>
+                    <li><strong>Enable GPS verbose logging:</strong> ☐ Unchecked</li>
+                    <li><strong>TAIP Vehicle ID:</strong> #3302 (Your unique Unit ID)</li>
                 </div>
             </div>
         </div>
 
-        <!-- Starlink Backup -->
-        <div id="starlink-backup" class="content-section">
-            <div class="section-header">🛰️ Starlink Backup Configuration</div>
-            <div class="section-content">
-                
-                <div class="step">
-                    <div class="step-header">Step 1: Physical Connection</div>
-                    <div class="step-content">
-                        <ol>
-                            <li>Connect Starlink dish to <strong>WAN2 Ethernet port</strong> on IBR1900</li>
-                            <li>Set Starlink dish to <strong>IP Passthrough mode</strong> via Starlink app</li>
-                            <li>Verify connection via Starlink app shows "Connected"</li>
-                        </ol>
+        <h3>Client 1: Versaterm (Dispatch/CAD)</h3>
+        <div class="step">
+            <div class="step-header">Versaterm Configuration</div>
+            <div class="step-content">
+                <table class="info-table">
+                    <tr>
+                        <th>Setting</th>
+                        <th>Value</th>
+                        <th>Notes</th>
+                    </tr>
+                    <tr>
+                        <td>Client Name</td>
+                        <td><strong>Versaterm</strong></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Server</td>
+                        <td><strong>avl.smc911.org</strong></td>
+                        <td>San Mateo County AVL</td>
+                    </tr>
+                    <tr>
+                        <td>Port</td>
+                        <td><strong>12345</strong></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Protocol</td>
+                        <td><strong>UDP</strong></td>
+                        <td>Faster, lower overhead</td>
+                    </tr>
+                    <tr>
+                        <td>Stored Sentences</td>
+                        <td><strong>1000</strong></td>
+                        <td>~50 min buffer</td>
+                    </tr>
+                    <tr>
+                        <td>Time Interval</td>
+                        <td><strong>3 seconds</strong></td>
+                        <td>High frequency updates</td>
+                    </tr>
+                </table>
 
-                        <div class="alert alert-info">
-                            <strong>📍 Mounting:</strong> Ensure Starlink dish has clear sky view for optimal satellite connectivity during emergency operations.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-header">Step 2: WAN2 Interface Configuration</div>
-                    <div class="step-content">
-                        <p><strong>Path:</strong> <span class="path">Networking → WAN → Interfaces</span></p>
-
+                <p><strong>NMEA Settings (Language Page):</strong></p>
+                <div class="checklist">
+                    <li><strong>Language:</strong> NMEA</li>
+                    <li><strong>Prepend Unique Identifier:</strong> ✅ Checked (Critical for Versaterm!)</li>
+                    <li><strong>Unique Identifier Definition:</strong> Custom: "3302"</li>
+                    <li><strong>Sentence Types:</strong>
                         <ul>
-                            <li>Set WAN2 as <strong>Ethernet interface</strong></li>
-                            <li>Configuration: <strong>DHCP Client</strong></li>
-                            <li>Priority: <strong>2</strong> (backup to cellular)</li>
-                            <li>Enable interface: <strong>✅</strong></li>
+                            <li>✅ <strong>RMC</strong> (Recommended Minimum) - ONLY this one needed.</li>
+                            <li>☐ GGA/GNS/VTG - Leave OFF to save data.</li>
                         </ul>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-header">Step 3: Failover Configuration</div>
-                    <div class="step-content">
-                        <p><strong>Path:</strong> <span class="path">Networking → WAN → Connection Manager</span></p>
-
-                        <table class="info-table">
-                            <tr>
-                                <th>Setting</th>
-                                <th>Value</th>
-                                <th>Purpose</th>
-                            </tr>
-                            <tr>
-                                <td>Primary Interface</td>
-                                <td>Cellular (WAN1)</td>
-                                <td>Main internet connection</td>
-                            </tr>
-                            <tr>
-                                <td>Secondary Interface</td>
-                                <td>Starlink (WAN2)</td>
-                                <td>Automatic backup</td>
-                            </tr>
-                            <tr>
-                                <td>Health Check</td>
-                                <td>ping 8.8.8.8</td>
-                                <td>Connection monitoring</td>
-                            </tr>
-                            <tr>
-                                <td>Failover Time</td>
-                                <td>30 seconds</td>
-                                <td>Emergency response acceptable</td>
-                            </tr>
-                            <tr>
-                                <td>Auto Failback</td>
-                                <td>Enabled</td>
-                                <td>Return to cellular when restored</td>
-                            </tr>
-                        </table>
-                    </div>
+                    </li>
                 </div>
             </div>
         </div>
 
-        <!-- WiFi Configuration -->
-        <div id="wifi-config" class="content-section">
-            <div class="section-header">📶 WiFi Configuration</div>
-            <div class="section-content">
-                
-                <div class="step">
-                    <div class="step-header">Step 1: Dual-Band WiFi Setup</div>
-                    <div class="step-content">
-                        <p><strong>Path:</strong> <span class="path">Networking → WiFi → Wireless Settings</span></p>
+        <h3>Client 2: Tablet Command (Tactical Map)</h3>
+        <div class="step">
+            <div class="step-header">Tablet Command Configuration</div>
+            <div class="step-content">
+                <table class="info-table">
+                    <tr>
+                        <th>Setting</th>
+                        <th>Value</th>
+                        <th>Notes</th>
+                    </tr>
+                    <tr>
+                        <td>Client Name</td>
+                        <td><strong>Tablet Command</strong></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Server</td>
+                        <td><strong>avl.tabletcommand.com</strong></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Port</td>
+                        <td><strong>12121</strong></td>
+                        <td>Different from Versaterm</td>
+                    </tr>
+                    <tr>
+                        <td>Protocol</td>
+                        <td><strong>UDP</strong></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Stored Sentences</td>
+                        <td><strong>1000</strong></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Time Interval</td>
+                        <td><strong>10 seconds</strong></td>
+                        <td>Slightly slower update rate</td>
+                    </tr>
+                </table>
 
+                <p><strong>NMEA Settings (Language Page):</strong></p>
+                <div class="checklist">
+                    <li><strong>Language:</strong> NMEA</li>
+                    <li><strong>Include Unique Identifier:</strong> ✅ Checked (Appended at end)</li>
+                    <li><strong>Prepend Unique Identifier:</strong> ☐ Unchecked</li>
+                    <li><strong>Unique Identifier Definition:</strong> System ID (Router Serial/MAC)</li>
+                    <li><strong>Sentence Types:</strong>
                         <ul>
-                            <li>Enable <strong>Dual-Band Concurrent</strong></li>
-                            <li><strong>2.4GHz SSID:</strong> Public-fc</li>
-                            <li><strong>5GHz SSID:</strong> Public-fc5G</li>
-                            <li><strong>Region:</strong> United States</li>
-                            <li><strong>Channel Selection:</strong> SmartSelect (automatic)</li>
+                            <li>✅ <strong>GGA</strong> (Position Fix)</li>
+                            <li>✅ <strong>GNS</strong> (GNSS Fix)</li>
+                            <li>✅ <strong>RMC</strong> (Recommended Minimum)</li>
+                            <li>✅ <strong>VTG</strong> (Velocity/Track)</li>
                         </ul>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-header">Step 2: Advanced WiFi Settings</div>
-                    <div class="step-content">
-                        <p><strong>Path:</strong> <span class="path">Networking → WiFi → Advanced Settings</span></p>
-
-                        <ul>
-                            <li><strong>Band Steering:</strong> Enable (automatic 5GHz preference)</li>
-                            <li><strong>Alternative:</strong> Use separate SSIDs with manual 5GHz preference</li>
-                            <li><strong>Max Clients:</strong> 20 (fire department equipment limit)</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-header">Step 3: Fire Engine Optimization</div>
-                    <div class="step-content">
-                        <p><strong>Path:</strong> <span class="path">Networking → WiFi → Client Management</span></p>
-
-                        <ul>
-                            <li><strong>Priority Devices:</strong> Fire tablets, emergency equipment → 5GHz band</li>
-                            <li><strong>QoS:</strong> Enable for emergency traffic</li>
-                            <li><strong>Device Priority:</strong> Critical fire department equipment first</li>
-                        </ul>
-
-                        <div class="alert alert-success">
-                            <strong>✅ Optimization:</strong> 5GHz provides better performance for data-heavy applications like mapping and video streaming during emergency operations.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- GPS Services -->
-        <div id="gps-services" class="content-section">
-            <div class="section-header">🛰️ GPS Services Configuration</div>
-            <div class="section-content">
-                
-                <div class="step">
-                    <div class="step-header">Step 1: Tablet Command GPS Client</div>
-                    <div class="step-content">
-                        <p><strong>NetCloud Path:</strong></p>
-                        <div class="code-block">
-<span class="netcloud-path">Settings → Location Services → [Select Router] → GPS Clients → Add Client</span>
-                        </div>
-
-                        <p><strong>Local Router Path:</strong></p>
-                        <div class="code-block">
-<span class="path">System → Administration → GPS → Location Services → GPS Clients</span>
-                        </div>
-
-                        <table class="info-table">
-                            <tr>
-                                <th>Setting</th>
-                                <th>Value</th>
-                            </tr>
-                            <tr>
-                                <td>Client Name</td>
-                                <td>tablet_command</td>
-                            </tr>
-                            <tr>
-                                <td>Enabled</td>
-                                <td>✅ Yes</td>
-                            </tr>
-                            <tr>
-                                <td>Server</td>
-                                <td>avl.tabletcommand.com</td>
-                            </tr>
-                            <tr>
-                                <td>Port</td>
-                                <td>12121</td>
-                            </tr>
-                            <tr>
-                                <td>Protocol</td>
-                                <td>UDP</td>
-                            </tr>
-                            <tr>
-                                <td>Update Interval</td>
-                                <td>3 seconds</td>
-                            </tr>
-                            <tr>
-                                <td>Distance Interval</td>
-                                <td>0 meters</td>
-                            </tr>
-                            <tr>
-                                <td>Stationary Time</td>
-                                <td>300 seconds</td>
-                            </tr>
-                            <tr>
-                                <td>Language</td>
-                                <td>NMEA</td>
-                            </tr>
-                        </table>
-
-                        <p><strong>NMEA Settings:</strong></p>
-                        <ul>
-                            <li>✅ Include ID</li>
-                            <li>Custom ID: system_id</li>
-                            <li>✅ GGA (position data)</li>
-                            <li>✅ RMC (recommended minimum)</li>
-                            <li>✅ VTG (velocity data)</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-header">Step 2: Versaterm AVL GPS Client</div>
-                    <div class="step-content">
-                        <p><strong>Same paths as above, different configuration:</strong></p>
-
-                        <table class="info-table">
-                            <tr>
-                                <th>Setting</th>
-                                <th>Value</th>
-                            </tr>
-                            <tr>
-                                <td>Client Name</td>
-                                <td>versaterm_avl</td>
-                            </tr>
-                            <tr>
-                                <td>Enabled</td>
-                                <td>✅ Yes</td>
-                            </tr>
-                            <tr>
-                                <td>Server</td>
-                                <td>avl.smc911.org</td>
-                            </tr>
-                            <tr>
-                                <td>Port</td>
-                                <td>12345</td>
-                            </tr>
-                            <tr>
-                                <td>Update Interval</td>
-                                <td>15 seconds</td>
-                            </tr>
-                            <tr>
-                                <td>Distance Interval</td>
-                                <td>50 meters</td>
-                            </tr>
-                        </table>
-
-                        <p><strong>NMEA Settings:</strong></p>
-                        <ul>
-                            <li>✅ Prepend ID</li>
-                            <li>Custom String: <strong>3311</strong> (Unit ID)</li>
-                            <li>✅ RMC (only RMC needed)</li>
-                            <li>❌ GGA</li>
-                            <li>❌ VTG</li>
-                        </ul>
-
-                        <div class="alert alert-info">
-                            <strong>📡 Unit ID 3311:</strong> This identifies your fire engine in the dispatch system. Verify with your communications center.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-header">Step 3: GPS Verification</div>
-                    <div class="step-content">
-                        <p><strong>NetCloud Verification:</strong></p>
-                        <ul>
-                            <li><span class="netcloud-path">Status → Location → [Router] → GPS Status</span></li>
-                            <li><span class="netcloud-path">Status → Location → [Router] → Last Known Position</span></li>
-                        </ul>
-
-                        <p><strong>Local Router Verification:</strong></p>
-                        <ul>
-                            <li><span class="path">Status → Location → GPS Clients</span></li>
-                            <li><span class="path">Status → Location → Position Data</span></li>
-                        </ul>
-
-                        <div class="checklist">
-                            <li>GPS shows 4+ satellites</li>
-                            <li>Fix quality shows "3D Fix"</li>
-                            <li>Both clients show "Connected"</li>
-                            <li>Packets being sent to both servers</li>
-                            <li>Position accuracy within 5 meters</li>
-                        </div>
-                    </div>
+                    </li>
                 </div>
             </div>
         </div>
 
-        <!-- Security -->
-        <div id="security" class="content-section">
-            <div class="section-header">🔐 Security & SSH Access</div>
-            <div class="section-content">
-                
-                <div class="step">
-                    <div class="step-header">Step 1: SSH Configuration</div>
-                    <div class="step-content">
-                        <p><strong>Enable SSH Server:</strong></p>
-                        <ul>
-                            <li><span class="path">System → Administration → Local Management</span></li>
-                            <li>✅ Enable SSH Server</li>
-                        </ul>
-
-                        <p><strong>Enable Remote SSH:</strong></p>
-                        <ul>
-                            <li><span class="path">System → Administration → Remote Admin</span></li>
-                            <li>✅ Allow Remote SSH Access</li>
-                        </ul>
-                    </div>
+        <div class="step">
+            <div class="step-header">Optimization: Reduce Data Usage</div>
+            <div class="step-content">
+                <div class="alert alert-success">
+                    <strong>💡 Pro Tip:</strong> Configure "Stationary Settings" to save cellular data when the fire
+                    engine is parked at the station or a scene.
                 </div>
 
-                <div class="step">
-                    <div class="step-header">Step 2: SSH Access Restriction</div>
-                    <div class="step-content">
-                        <p><strong>Path:</strong> <span class="path">Security → Zone Firewall → Remote Access Restriction</span></p>
+                <p><strong>Recommended Settings (Page 3):</strong></p>
+                <ul>
+                    <li><strong>Stationary Time Interval:</strong> 30-60 seconds (Slower updates when parked)</li>
+                    <li><strong>Stationary Event Threshold:</strong> 60 seconds (Wait 1 min before slowing down)</li>
+                    <li><strong>Stationary Distance Threshold:</strong> 20 meters (Ignore GPS "drift")</li>
+                </ul>
 
-                        <div class="alert
+                <p><strong>Impact:</strong> Reduces GPS data usage by ~75% while maintaining instant tracking when the
+                    vehicle starts moving.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Security -->
+<div id="security" class="content-section">
+    <div class="section-header">🔐 Security & SSH Access</div>
+    <div class="section-content">
+
+        <div class="step">
+            <div class="step-header">Step 1: SSH Configuration</div>
+            <div class="step-content">
+                <p><strong>Enable SSH Server:</strong></p>
+                <ul>
+                    <li><span class="path">System → Administration → Local Management</span></li>
+                    <li>✅ Enable SSH Server</li>
+                </ul>
+
+                <p><strong>Enable Remote SSH:</strong></p>
+                <ul>
+                    <li><span class="path">System → Administration → Remote Admin</span></li>
+                    <li>✅ Allow Remote SSH Access</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-header">Step 2: SSH Access Restriction</div>
+            <div class="step-content">
+                <p><strong>Path:</strong> <span class="path">Security → Zone Firewall → Remote Access Restriction</span>
+                </p>
+
+                <div class="alert
