@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>n8n & Cal.com Automation - Kerchunk Networks</title>
+    <style>
+        :root {
+            /* Kerchunk Networks Palette */
+            --primary-tan: #e8ddd0;
+            --secondary-beige: #d4c4b0;
+            --maroon: #8b4049;
+            --dark-maroon: #6b3038;
+            --accent-gold: #d4a574;
+            --text-dark: #3a2a2a;
+            --text-light: #ffffff;
+
+            /* Status Colors */
+            --success-green: #28a745;
+            --warning-yellow: #ffc107;
+            --info-blue: #17a2b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--primary-tan);
+            color: var(--text-dark);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            border-top: 5px solid var(--maroon);
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--maroon);
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        h1 {
+            color: var(--maroon);
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: var(--maroon);
+            font-size: 1.6rem;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--secondary-beige);
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .alert {
+            background: #fff3cd;
+            border-left: 4px solid var(--warning-yellow);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            color: #856404;
+        }
+
+        .alert.info {
+            background: #d1ecf1;
+            border-left-color: var(--info-blue);
+            color: #0c5460;
+        }
+
+        .step {
+            background: #fcfbf9;
+            border-left: 4px solid var(--accent-gold);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 4px;
+            border: 1px solid #eee;
+            border-left-width: 4px;
+        }
+
+        .step-number {
+            color: var(--maroon);
+            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        code {
+            background: #f8f9fa;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: var(--maroon);
+            border: 1px solid #eee;
+        }
+
+        pre {
+            background: #1e1e1e;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 15px 0;
+            font-size: 0.85rem;
+            border: 1px solid #333;
+        }
+
+        ol,
+        ul {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        button.copy-btn {
+            background: var(--maroon);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        button.copy-btn:hover {
+            background: var(--dark-maroon);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <a href="../index.html" class="back-link">← Back to Home</a>
+
+        <h1>🤖 Cal.com + n8n Automation Guide</h1>
+        <p class="subtitle">Auto-send your questionnaire when a client books a meeting</p>
+
+        <div class="alert info">
+            <strong>📋 How this works:</strong> n8n allows you to bypass Cal.com's paid workflows by using free
+            Webhooks. When someone books on Cal.com, it sends a signal to n8n, which automatically emails the client
+            your questionnaire link.
+        </div>
+
+        <h2>Step 1: Set up the n8n Workflow</h2>
+
+        <div class="step">
+            <div class="step-number">The "Copy & Paste" Method</div>
+            <p>n8n has an incredible feature where you can literally copy code and paste it directly onto your workflow
+                canvas to instantly generate the nodes.</p>
+            <ol>
+                <li>Open your n8n dashboard and create a <strong>New Workflow</strong>.</li>
+                <li>Copy the JSON code block below.</li>
+                <li>Click anywhere on the blank n8n canvas and press <strong>Cmd+V</strong> (Mac) or
+                    <strong>Ctrl+V</strong> (Windows) to paste it.</li>
+            </ol>
+
+            <button class="copy-btn" onclick="copyCode()">Copy n8n Workflow JSON</button>
+            <pre><code id="n8n-json">{
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "calcom-booking",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "1",
+      "name": "Cal.com Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300],
+      "webhookId": "kerchunk-calcom-book"
+    },
+    {
+      "parameters": {
+        "fromEmail": "admin@kerchunknetworks.com",
+        "toEmail": "={{ $json.body.payload.attendees[0].email }}",
+        "subject": "Kerchunk Networks - Please complete your network questionnaire",
+        "text": "Hi {{$json.body.payload.attendees[0].name}},\n\nThanks for booking a consultation with Kerchunk Networks!\n\nTo ensure we make the most of our time together, please take 5-10 minutes to complete our network assessment questionnaire prior to our meeting. This will help us review your current setup and prepare an accurate game plan.\n\nClick here to fill out the form:\nhttps://kerchunknetworks.com/questionnaire/index.html\n\nTalk to you soon,\n\nErik\nKerchunk Networks",
+        "options": {}
+      },
+      "id": "2",
+      "name": "Send Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [450, 300]
+    }
+  ],
+  "connections": {
+    "Cal.com Webhook": {
+      "main": [
+        [
+          {
+            "node": "Send Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  }
+}</code></pre>
+        </div>
+
+        <h2>Step 2: Configure the Email Node in n8n</h2>
+
+        <div class="step">
+            <ol>
+                <li>Double click the <strong>Send Email</strong> node that appeared on your canvas.</li>
+                <li>You need to set up your Email Credentials (if you haven't already). Click <strong>Create New
+                        Credential</strong>.</li>
+                <li>If you use Google Workspace/Gmail, you can use the built-in Gmail node instead of standard SMTP. If
+                    you use Microsoft 365, you can use the Outlook node!</li>
+                <li>Ensure the "From Email" matches your actual email address.</li>
+            </ol>
+        </div>
+
+        <h2>Step 3: Connect Cal.com to n8n</h2>
+
+        <div class="step">
+            <ol>
+                <li>In n8n, double click the <strong>Cal.com Webhook</strong> node.</li>
+                <li>Look for the <strong>Production URL</strong> and copy it to your clipboard.</li>
+                <li>Log in to your <strong>Cal.com</strong> dashboard.</li>
+                <li>Go to <strong>Settings</strong> > <strong>Developer</strong> > <strong>Webhooks</strong>.</li>
+                <li>Click <strong>New Webhook</strong>.</li>
+                <li>Paste your n8n Production URL into the Subscriber URL box.</li>
+                <li>Under "Triggers", uncheck everything EXCEPT <strong>"Booking Created"</strong>.</li>
+                <li>Click <strong>Save</strong>.</li>
+            </ol>
+        </div>
+
+        <h2>Step 4: Activate & Test</h2>
+
+        <div class="step">
+            <ol>
+                <li>In n8n, flip the toggle in the top right corner from <strong>Inactive</strong> to
+                    <strong>Active</strong>.</li>
+                <li>Save your workflow.</li>
+                <li>Go to your public Cal.com page and book a dummy meeting with your own personal email address.</li>
+                <li>Check your personal email inbox—you should receive the automated questionnaire link instantly!</li>
+            </ol>
+        </div>
+
+    </div>
+
+    <script>
+        function copyCode() {
+            const code = document.getElementById('n8n-json').innerText;
+            navigator.clipboard.writeText(code).then(() => {
+                const btn = document.querySelector('.copy-btn');
+                btn.innerText = 'Copied!';
+                setTimeout(() => {
+                    btn.innerText = 'Copy n8n Workflow JSON';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+
+</html>
