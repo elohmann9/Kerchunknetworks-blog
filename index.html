@@ -557,6 +557,56 @@
             display: none !important;
             /* Remove underline effect */
         }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: var(--maroon);
+            padding: 28px 20px;
+            border-top: 3px solid var(--accent-gold);
+            border-bottom: 3px solid var(--accent-gold);
+        }
+
+        .stats-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .stat-item {
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            display: block;
+            line-height: 1.1;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 
@@ -617,28 +667,52 @@
     </nav>
 
     <!-- Hero Section -->
-    <!-- Hero Section -->
     <section class="hero-section">
         <div class="hero-content">
-
-
+            <h1 class="hero-tagline">Networks Built for When It Matters Most</h1>
+            <p class="hero-description">
+                Professional network engineering, installation, and monitoring for fire departments, emergency services, and residential clients.
+            </p>
+            <div class="cta-buttons">
+                <a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="btn btn-primary">Schedule a Booking</a>
+                <a href="#services" class="btn btn-secondary">View Services</a>
+            </div>
         </div>
     </section>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <div class="stats-container">
+            <div class="stat-item">
+                <span class="stat-number">Unifi</span>
+                <span class="stat-label">Gear We Trust & Install</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">99.9%</span>
+                <span class="stat-label">Uptime Guaranteed</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">24/7</span>
+                <span class="stat-label">Support Available</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">🔥</span>
+                <span class="stat-label">Firefighter Owned & Operated</span>
+            </div>
+        </div>
+    </div>
 
     <!-- Services Preview Section -->
     <section class="services-preview">
         <div class="services-container">
             <h2 class="section-title">Connecting Fire, Field, and Family</h2>
             <p class="section-subtitle">
-                Reliable connectivity for fire, field, and family.
-                <br>
-                <span style="font-size: 0.9em; opacity: 0.9; display: block; margin-top: 10px;">Purpose built networks
-                    for emergency response, remote operations, and modern homes.</span>
+                Purpose-built networks for emergency response, remote operations, and modern homes.
             </p>
 
             <div class="services-grid">
                 <!-- Networking Service -->
-                <div class="service-card" id="networking">
+                <div class="service-card reveal" id="networking">
                     <img src="assets/images/Kerchunk-radio-new.png" alt="Radio Icon"
                         style="height: 80px; display: block; margin: 0 auto 20px auto;">
                     <h3 class="service-title">Networking</h3>
@@ -650,8 +724,10 @@
                 </div>
 
                 <!-- Products Service -->
-                <div class="service-card" id="products">
-                    <span class="service-icon">📦</span>
+                <div class="service-card reveal" id="products">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#8b4049" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:60px;height:60px;display:block;margin:0 auto 20px;"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+                    </div>
                     <h3 class="service-title">Products</h3>
                     <p class="service-description">
                         Industry-leading equipment including Cradlepoint IBR1900/IBR1700 routers, GPS tracking systems,
@@ -661,8 +737,10 @@
                 </div>
 
                 <!-- Services -->
-                <div class="service-card" id="services">
-                    <span class="service-icon">🛠️</span>
+                <div class="service-card reveal" id="services">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#8b4049" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="width:60px;height:60px;display:block;margin:0 auto 20px;"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                    </div>
                     <h3 class="service-title">Services</h3>
                     <p class="service-description">
                         Complete installation, 24/7 monitoring, GPS vehicle tracking, network security, and ongoing
@@ -694,7 +772,7 @@
                 <p><a href="mailto:elohmann@kerchunknetworks.com"
                         style="color: var(--accent-gold); text-decoration: none;">elohmann@kerchunknetworks.com</a></p>
             </div>
-            <p class="footer-text">&copy; 2025 Kerchunk Networks - Professional Network Solutions for Fire Departments
+            <p class="footer-text">&copy; 2026 Kerchunk Networks - Professional Network Solutions for Fire Departments
             </p>
             <p class="footer-text"><small>Connecting Fire, Field, and Family</small></p>
         </div>
@@ -737,6 +815,17 @@
                 background.style.transform = `translateY(${scrolled * 0.5}px)`;
             }
         });
+
+        // Scroll reveal animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     </script>
 </body>
 
