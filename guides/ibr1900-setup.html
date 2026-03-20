@@ -1,36 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IBR1900 Fire Engine Setup Guide - Kerchunk Networks</title>
-    <meta name="description"
-        content="Complete setup guide for Cradlepoint IBR1900 router in fire engine applications — WFPD configuration with GPS services, cellular, and Starlink backup">
+    <title>IBR1900 Fire Engine Setup Guide — WFPD — Kerchunk Networks</title>
+    <meta name="description" content="Complete setup guide for Cradlepoint IBR1900 router in fire engine applications — WFPD configuration with GPS, cellular, and Starlink backup">
 
     <style>
         :root {
-            /* Kerchunk Networks Palette */
-            --primary-tan: #e8ddd0;
-            --secondary-beige: #d4c4b0;
-            --maroon: #8b4049;
-            --dark-maroon: #6b3038;
-            --accent-gold: #d4a574;
-            --text-dark: #3a2a2a;
-            --text-light: #ffffff;
-
-            /* Status Colors */
+            --fire-red: #b85450;
+            --fire-orange: #d79b00;
+            --fire-blue: #667eea;
+            --fire-dark: #2c3e50;
+            --fire-light: #f8f9fa;
+            --fire-gray: #6c757d;
             --success-green: #28a745;
             --warning-yellow: #ffc107;
             --danger-red: #dc3545;
-
-            /* Legacy mappings for existing classes */
-            --fire-red: var(--maroon);
-            --fire-orange: var(--accent-gold);
-            --fire-blue: var(--maroon);
-            --fire-dark: var(--text-dark);
-            --fire-light: #ffffff;
-            --fire-gray: #5a4a4a;
         }
 
         * {
@@ -42,8 +28,8 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
-            color: var(--text-dark);
-            background: var(--primary-tan);
+            color: var(--fire-dark);
+            background: #f8f9fa;
         }
 
         .container {
@@ -54,9 +40,7 @@
 
         /* Header */
         .guide-header {
-            background: rgba(139, 64, 73, 0.95);
-            backdrop-filter: blur(15px);
-            border-bottom: 3px solid var(--accent-gold);
+            background: linear-gradient(135deg, var(--fire-red), var(--fire-orange));
             color: white;
             padding: 40px;
             border-radius: 15px;
@@ -80,7 +64,7 @@
             padding: 15px 20px;
             border-radius: 10px;
             margin-bottom: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .nav-breadcrumb a {
@@ -98,7 +82,7 @@
             padding: 25px;
             border-radius: 10px;
             margin-bottom: 30px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .toc h2 {
@@ -138,7 +122,7 @@
             margin-bottom: 30px;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         .section-header {
@@ -228,22 +212,6 @@
             color: #0c5460;
         }
 
-        /* Critical warning — hard to miss */
-        .alert-critical {
-            background: #3a0000;
-            border-left: 6px solid #ff0000;
-            color: #ffcccc;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 20px 0;
-            font-size: 1.05rem;
-        }
-
-        .alert-critical strong {
-            color: #ff6666;
-            font-size: 1.1rem;
-        }
-
         /* Checklist */
         .checklist {
             list-style: none;
@@ -308,6 +276,12 @@
             color: var(--fire-dark);
         }
 
+        /* Unit table highlight */
+        .info-table td.highlight {
+            font-weight: 700;
+            color: var(--fire-red);
+        }
+
         /* Mobile responsive */
         @media (max-width: 768px) {
             .container {
@@ -325,398 +299,38 @@
         }
     </style>
 </head>
-
 <body>
     <div class="container">
         <!-- Header -->
         <div class="guide-header">
-            <h1>🚒 IBR1900 Fire Engine Setup Guide</h1>
-            <p class="subtitle">WFPD Configuration — Networks, WiFi, GPS, and WAN Failover</p>
-            <p class="subtitle" style="font-size:0.95rem; margin-top:8px; opacity:0.75;">Last updated: 2026-03-15 — reflects live configuration session</p>
+            <h1>🚒 IBR1900 Fire Engine Setup Guide — WFPD</h1>
+            <p class="subtitle">Woodside Fire Protection District — Complete configuration for Cradlepoint IBR1900 with GPS, cellular, and Starlink backup</p>
         </div>
 
         <!-- Navigation -->
         <div class="nav-breadcrumb">
             <a href="../index.html">← Back to Kerchunk Networks</a> •
             <span>Setup Guides</span> •
-            <strong>IBR1900 Configuration</strong>
+            <strong>IBR1900 Configuration — WFPD</strong>
         </div>
 
         <!-- Table of Contents -->
         <div class="toc">
             <h2>📋 Quick Navigation</h2>
             <ul>
-                <li><a href="#start-here">🏁 Start Here: Hardware Setup</a></li>
-                <li><a href="#factory-reset">Factory Reset &amp; Default Credentials</a></li>
-                <li><a href="#ip-scheme">IP Addressing Scheme (All Units)</a></li>
+                <li><a href="#overview">Equipment Overview</a></li>
+                <li><a href="#initial-setup">Initial Router Setup &amp; Default Login</a></li>
+                <li><a href="#ip-scheme">IP Addressing Scheme — All WFPD Units</a></li>
+                <li><a href="#vlan-warning">⚠️ VLAN Warning — Read Before Touching Anything</a></li>
                 <li><a href="#config-order">Safe Configuration Order</a></li>
-                <li><a href="#vlan-warning">⚠️ VLAN Warning — Read Before Touching VLANs</a></li>
-                <li><a href="#wifi-config">WiFi Configuration (WFPD SSIDs)</a></li>
-                <li><a href="#guest-isolation">Guest Network Isolation</a></li>
-                <li><a href="#wan-failover">WAN Failover (Active Ping)</a></li>
-                <li><a href="#static-reservations">Static IP Reservations</a></li>
-                <li><a href="#dual-gps">🛰️ Dual GPS Configuration (Versaterm &amp; Tablet Command)</a></li>
+                <li><a href="#wifi-config">WiFi / SSID Configuration</a></li>
+                <li><a href="#reservations">Static DHCP Reservations</a></li>
+                <li><a href="#wan-failover">WAN Failover</a></li>
+                <li><a href="#gps-services">GPS Services Setup</a></li>
+                <li><a href="#security">Security &amp; SSH Access</a></li>
                 <li><a href="#testing">Testing &amp; Validation</a></li>
                 <li><a href="#troubleshooting">Troubleshooting</a></li>
             </ul>
-        </div>
-
-        <!-- Start Here -->
-        <div id="start-here" class="content-section">
-            <div class="section-header">🏁 Start Here: Hardware Setup</div>
-            <div class="section-content">
-                <div class="alert alert-info">
-                    <strong>First Time?</strong> Follow these physical setup steps before trying to log into the software.
-                    Pull the SIM card before configuring locally — see Factory Reset section below.
-                </div>
-
-                <div class="checklist">
-                    <li><strong>Power:</strong> Connect the 4-pin Molex power connector. Amber LED = booting, solid green = healthy. Note: unit may still show amber even when fully functional — try hitting 192.168.0.1 anyway.</li>
-                    <li><strong>Pull SIM card</strong> before configuring locally. With the SIM inserted, the unit tries to connect to NetCloud Manager and the local UI becomes sluggish and unreliable.</li>
-                    <li><strong>Antennas:</strong>
-                        <ul>
-                            <li>Connect 4x Cellular/5G antennas to "Cellular" ports.</li>
-                            <li>Connect 2x WiFi antennas to "WiFi" ports.</li>
-                            <li>Connect 1x GPS antenna to "GPS" port (Critical for tracking!).</li>
-                        </ul>
-                    </li>
-                    <li><strong>Laptop Connection:</strong> Connect your PC via Ethernet cable to <strong>LAN Port 1</strong> (not the WAN port).</li>
-                    <li><strong>Starlink (if applicable):</strong> Connect Starlink Ethernet adapter to <strong>WAN Port</strong>.</li>
-                </div>
-            </div>
-        </div>
-
-        <!-- Factory Reset -->
-        <div id="factory-reset" class="content-section">
-            <div class="section-header">🔄 Factory Reset &amp; Default Credentials</div>
-            <div class="section-content">
-                <div class="alert alert-warning">
-                    <strong>When to factory reset:</strong> If you've lost access, made a config mistake, or the unit is coming from another deployment. Hold the reset button for 45 seconds, then wait 1–2 minutes for it to fully boot.
-                </div>
-
-                <table class="info-table">
-                    <tr>
-                        <th>Setting</th>
-                        <th>Default Value</th>
-                        <th>Notes</th>
-                    </tr>
-                    <tr>
-                        <td>URL</td>
-                        <td><strong>192.168.0.1</strong></td>
-                        <td>Connect via LAN port only</td>
-                    </tr>
-                    <tr>
-                        <td>Username</td>
-                        <td><strong>admin</strong></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td>Password</td>
-                        <td><strong>admin</strong></td>
-                        <td>After factory reset</td>
-                    </tr>
-                    <tr>
-                        <td>Power LED: amber</td>
-                        <td>Booting</td>
-                        <td>Wait for green or just try the IP</td>
-                    </tr>
-                    <tr>
-                        <td>Power LED: solid green</td>
-                        <td>Healthy</td>
-                        <td></td>
-                    </tr>
-                </table>
-
-                <div class="alert alert-info">
-                    <strong>Pro tip:</strong> After reset, pull the SIM card before doing anything else. The unit will try to phone home to NetCloud and the local UI becomes nearly unusable while it does that.
-                </div>
-            </div>
-        </div>
-
-        <!-- IP Scheme -->
-        <div id="ip-scheme" class="content-section">
-            <div class="section-header">🗺️ IP Addressing Scheme — All WFPD Units</div>
-            <div class="section-content">
-                <p>Each apparatus gets a unique 3rd octet. The ops network is <code>10.7.X.0/24</code> and the guest network is <code>10.8.X.0/24</code>, where X is the unit's assigned octet.</p>
-
-                <table class="info-table">
-                    <tr>
-                        <th>Unit</th>
-                        <th>Type</th>
-                        <th>3rd Octet</th>
-                        <th>Ops Network</th>
-                        <th>Guest Network</th>
-                        <th>Gateway</th>
-                    </tr>
-                    <tr>
-                        <td><strong>E7</strong></td>
-                        <td>Engine</td>
-                        <td>7</td>
-                        <td>10.7.7.0/24</td>
-                        <td>10.8.7.0/24</td>
-                        <td>10.7.7.1</td>
-                    </tr>
-                    <tr>
-                        <td><strong>E8</strong></td>
-                        <td>Engine</td>
-                        <td>8</td>
-                        <td>10.7.8.0/24</td>
-                        <td>10.8.8.0/24</td>
-                        <td>10.7.8.1</td>
-                    </tr>
-                    <tr>
-                        <td><strong>E19</strong></td>
-                        <td>Engine</td>
-                        <td>19</td>
-                        <td>10.7.19.0/24</td>
-                        <td>10.8.19.0/24</td>
-                        <td>10.7.19.1</td>
-                    </tr>
-                    <tr>
-                        <td><strong>R7</strong></td>
-                        <td>Rescue</td>
-                        <td>27</td>
-                        <td>10.7.27.0/24</td>
-                        <td>10.8.27.0/24</td>
-                        <td>10.7.27.1</td>
-                    </tr>
-                    <tr>
-                        <td><strong>E307</strong></td>
-                        <td>Engine</td>
-                        <td>37</td>
-                        <td>10.7.37.0/24</td>
-                        <td>10.8.37.0/24</td>
-                        <td>10.7.37.1</td>
-                    </tr>
-                    <tr>
-                        <td><strong>E507</strong></td>
-                        <td>Engine</td>
-                        <td>57</td>
-                        <td>10.7.57.0/24</td>
-                        <td>10.8.57.0/24</td>
-                        <td>10.7.57.1</td>
-                    </tr>
-                    <tr>
-                        <td><strong>WT108</strong></td>
-                        <td>Water Tender</td>
-                        <td>108</td>
-                        <td>10.7.108.0/24</td>
-                        <td>10.8.108.0/24</td>
-                        <td>10.7.108.1</td>
-                    </tr>
-                    <tr>
-                        <td><strong>WT119</strong></td>
-                        <td>Water Tender</td>
-                        <td>119</td>
-                        <td>10.7.119.0/24</td>
-                        <td>10.8.119.0/24</td>
-                        <td>10.7.119.1</td>
-                    </tr>
-                    <tr>
-                        <td><strong>BC2</strong></td>
-                        <td>Battalion Chief</td>
-                        <td>202</td>
-                        <td>10.7.202.0/24</td>
-                        <td>10.8.202.0/24</td>
-                        <td>10.7.202.1</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Scene (all)</strong></td>
-                        <td>Mesh</td>
-                        <td>99</td>
-                        <td>10.7.99.0/24</td>
-                        <td>—</td>
-                        <td>First unit online</td>
-                    </tr>
-                </table>
-
-                <h3 style="margin-top: 20px;">Standard Address Reservations (Every Unit)</h3>
-                <table class="info-table">
-                    <tr>
-                        <th>Address</th>
-                        <th>Role</th>
-                        <th>Notes</th>
-                    </tr>
-                    <tr>
-                        <td><strong>10.7.X.1</strong></td>
-                        <td>Cradlepoint gateway</td>
-                        <td>Static — do not assign to devices</td>
-                    </tr>
-                    <tr>
-                        <td><strong>10.7.X.50</strong></td>
-                        <td>Tablet Command iPad</td>
-                        <td>Static DHCP reservation — need iPad MAC address</td>
-                    </tr>
-                    <tr>
-                        <td><strong>10.7.X.51–.60</strong></td>
-                        <td>APX6000XE radios</td>
-                        <td>Reserved for future ROIP — do not assign</td>
-                    </tr>
-                    <tr>
-                        <td><strong>10.7.X.100–.200</strong></td>
-                        <td>DHCP pool</td>
-                        <td>Automatic assignment range</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-
-        <!-- VLAN Warning -->
-        <div id="vlan-warning" class="content-section">
-            <div class="section-header">⚠️ VLAN Warning — Read This Before Touching Anything</div>
-            <div class="section-content">
-
-                <div class="alert-critical">
-                    <strong>🚨 DO NOT MANUALLY CREATE VLAN INTERFACES.</strong>
-                    <br><br>
-                    VLAN tagging is handled automatically by the router when you assign SSIDs to networks. Manually creating VLAN interfaces has caused units to <strong>lose all connectivity and require a factory reset</strong>. This has happened 4+ times. Do not do it.
-                    <br><br>
-                    The only pre-existing VLAN interfaces are <code>wan</code> (VID 1) and <code>lan</code> (VID 2). <strong>Leave them alone.</strong> Do not rename them, do not add more. Just assign your SSIDs to the correct network via the Interfaces tab and the router handles the rest.
-                </div>
-
-                <div class="alert alert-warning">
-                    <strong>If you think you need to create a VLAN interface manually — you don't.</strong> Assign the SSID to the correct network instead. If it still doesn't work after that, factory reset and start fresh rather than digging deeper into VLAN settings.
-                </div>
-            </div>
-        </div>
-
-        <!-- Safe Configuration Order -->
-        <div id="config-order" class="content-section">
-            <div class="section-header">📋 Safe Configuration Order</div>
-            <div class="section-content">
-                <div class="alert alert-info">
-                    <strong>Follow this exact sequence.</strong> Deviating from it — especially doing VLAN interfaces early or in the wrong order — is how units get bricked.
-                </div>
-
-                <div class="step">
-                    <div class="step-header">Step 1: Initial Access</div>
-                    <div class="step-content">
-                        <p>Log into <strong>192.168.0.1</strong> with your PC connected via Ethernet to the <strong>LAN port</strong> (not WAN). Default credentials: admin / admin after factory reset.</p>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-header">Step 2: Configure Primary LAN IP</div>
-                    <div class="step-content">
-                        <p>Edit <strong>Primary LAN</strong> directly — do not create a new network.</p>
-                        <ul>
-                            <li>Go to: <span class="path">Networking → Local Networks → Local IP Networks → Edit Primary LAN</span></li>
-                            <li>IPv4 Settings → change IP to <code>10.7.X.1</code> (use unit's octet)</li>
-                            <li>Subnet: <code>255.255.255.0</code></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-header">Step 3: Configure DHCP (Same Editor, Don't Save Yet)</div>
-                    <div class="step-content">
-                        <p>While still in the same Primary LAN editor:</p>
-                        <ul>
-                            <li>IPv4 DHCP → set range: <strong>100–200</strong></li>
-                            <li>Add Custom Option 6: <code>1.1.1.1,8.8.8.8</code> (DNS servers)</li>
-                        </ul>
-                        <p><strong>Now hit Save.</strong> You will immediately lose your browser connection — this is expected.</p>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-header">Step 4: Reconnect to New IP</div>
-                    <div class="step-content">
-                        <p>Set your PC to a static IP:</p>
-                        <div class="code-block">
-IP Address: 10.7.X.50
-Subnet: 255.255.255.0
-Gateway: 10.7.X.1
-DNS: 1.1.1.1
-                        </div>
-                        <p>Then navigate to <code>10.7.X.1</code> in your browser to confirm it loads.</p>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-header">Step 5: Add Guest Network</div>
-                    <div class="step-content">
-                        <p>Add a new local network for guest traffic:</p>
-                        <ul>
-                            <li>IP: <code>10.8.X.1</code> / subnet <code>255.255.255.0</code></li>
-                            <li>DHCP range: 100–200</li>
-                            <li>Custom Option 6: <code>1.1.1.1,8.8.8.8</code></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-header">Step 6: DO NOT Create VLAN Interfaces</div>
-                    <div class="step-content">
-                        <div class="alert-critical">
-                            <strong>🚨 Skip this.</strong> Do not go into VLAN Interfaces and add anything. The router handles VLAN tagging automatically when you assign SSIDs in the next step. Creating VLAN interfaces manually will brick the unit.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-header">Step 7: Configure WiFi SSIDs</div>
-                    <div class="step-content">
-                        <p>Go to <span class="path">Networking → WiFi → Wireless Settings</span> and configure three SSIDs:</p>
-                        <ul>
-                            <li><strong>WFPD-[UNIT]</strong> — 5GHz, assigned to Primary LAN (ops network)</li>
-                            <li><strong>WFPD-[UNIT]-GUEST</strong> — 2.4GHz, assigned to Guest network</li>
-                            <li><strong>WFPD-SCENE</strong> — 5GHz, assigned to Scene mesh network</li>
-                        </ul>
-                        <p>Assign each SSID to the correct network via the <strong>Interfaces tab</strong> in the SSID editor.</p>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-header">Step 8: Add Scene Mesh Network</div>
-                    <div class="step-content">
-                        <p>Add a third local network for scene mesh:</p>
-                        <ul>
-                            <li>IP: <code>10.7.99.1</code> / subnet <code>255.255.255.0</code></li>
-                            <li>DHCP range: 100–200</li>
-                            <li>Assign <strong>WFPD-SCENE</strong> SSID to this network</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-header">Step 9: Configure WAN Failover</div>
-                    <div class="step-content">
-                        <p>See the <a href="#wan-failover">WAN Failover section</a> below for exact settings.</p>
-                        <p>Short version: Connection Manager → WAN Verify → Active Ping → 8.8.8.8 / retry interval 5s / retry count 3.</p>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-header">Step 10: Configure Guest Isolation</div>
-                    <div class="step-content">
-                        <p>See the <a href="#guest-isolation">Guest Isolation section</a> below.</p>
-                        <p>Short version: Security → Zone Firewall → Zone Forwarding → Add rule: Guest LAN Zone → Primary LAN Zone → Default Deny All.</p>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-header">Step 11: Set Static DHCP Reservation for Tablet Command iPad</div>
-                    <div class="step-content">
-                        <p>Reserve <code>10.7.X.50</code> for the Tablet Command iPad using the iPad's MAC address.</p>
-                        <p>Path: <span class="path">Networking → Local Networks → DHCP Leases → Add Reservation</span></p>
-                        <div class="alert alert-warning">
-                            <strong>Note:</strong> You need the iPad's MAC address to complete this step. Get it from Settings → General → About → Wi-Fi Address.
-                        </div>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-header">Step 12: Backup Configuration</div>
-                    <div class="step-content">
-                        <p>Always export and save the config after a successful build:</p>
-                        <ul>
-                            <li>Path: <span class="path">System → Configuration → Export Configuration</span></li>
-                            <li>Save as: <code>IBR1900_[UNIT]_Backup_YYYY-MM-DD.json</code></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <!-- Equipment Overview -->
@@ -741,7 +355,7 @@ DNS: 1.1.1.1
                     </tr>
                     <tr>
                         <td>Backup Internet</td>
-                        <td>Starlink Satellite or secondary SIM</td>
+                        <td>Starlink Satellite</td>
                         <td>Automatic failover connection</td>
                     </tr>
                     <tr>
@@ -752,153 +366,478 @@ DNS: 1.1.1.1
                     <tr>
                         <td>GPS Service 2</td>
                         <td>Versaterm AVL</td>
-                        <td>CAD system integration</td>
+                        <td>CAD system integration (San Mateo County)</td>
                     </tr>
                 </table>
 
                 <div class="alert alert-info">
-                    <strong>WFPD Specific:</strong> This configuration is purpose-built for Woodside Fire Protection District apparatus. IP scheme, SSID naming, and DHCP reservations all follow the WFPD standard defined in this guide.
+                    <strong>🔥 WFPD-Specific:</strong> This configuration is specific to Woodside Fire Protection District. IP addresses, SSIDs, and GPS clients are standardized across all WFPD apparatus. Follow the safe configuration order exactly — deviating from it is how units get bricked.
+                </div>
+            </div>
+        </div>
+
+        <!-- Initial Setup -->
+        <div id="initial-setup" class="content-section">
+            <div class="section-header">🚀 Initial Router Setup</div>
+            <div class="section-content">
+
+                <div class="step">
+                    <div class="step-header">Step 1: Hardware Prep</div>
+                    <div class="step-content">
+                        <ul>
+                            <li><strong>Pull the SIM card before configuring locally.</strong> With SIM inserted, the unit tries to connect to NetCloud Manager and the local UI becomes sluggish and unreliable.</li>
+                            <li><strong>Antennas:</strong> 4× Cellular/5G → Cellular ports. 2× WiFi → WiFi ports. 1× GPS → GPS port.</li>
+                            <li><strong>Connect PC via Ethernet to LAN Port 1</strong> — NOT the WAN port.</li>
+                            <li><strong>Starlink (if applicable):</strong> Connect Starlink Ethernet adapter to the WAN port.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">Step 2: Router Access &amp; Default Credentials</div>
+                    <div class="step-content">
+                        <div class="code-block">
+<span class="comment"># Initial connection — PC connected to LAN port via Ethernet</span>
+URL: https://192.168.0.1
+Default Login: admin / [serial number found on the barcode label on the unit]
+<span class="comment"># If login fails or config is corrupted: Factory reset (hold button 45s, wait 2 min)</span>
+                        </div>
+
+                        <div class="alert alert-warning">
+                            <strong>⚠️ Default Password:</strong> The default password is the <strong>serial number found on the barcode label on the unit</strong> — not "admin" and not the MAC address.
+                        </div>
+
+                        <p><strong>Secure Admin Password after initial setup:</strong></p>
+                        <ul>
+                            <li><strong>Local Router:</strong> <span class="path">System → Administration → Router Security</span></li>
+                            <li><strong>NetCloud:</strong> <span class="netcloud-path">Settings → Device Settings → [Select Router] → Security</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">Step 3: NetCloud Manager Registration</div>
+                    <div class="step-content">
+                        <div class="alert alert-warning">
+                            <strong>⚠️ Critical:</strong> Register with NetCloud Manager BEFORE deployment for remote management capabilities.
+                        </div>
+
+                        <ol>
+                            <li>Go to <a href="https://customer.cradlepoint.com" target="_blank">NetCloud Manager</a></li>
+                            <li><span class="netcloud-path">Dashboard → Add Device → Manual Registration</span></li>
+                            <li>Enter Serial Number and MAC Address (found on router label)</li>
+                            <li>Device Name: "WFPD [UNIT] - IBR1900" (e.g., "WFPD E7 - IBR1900")</li>
+                            <li>Location: Woodside Fire Protection District</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">Step 4: Configuration Backup</div>
+                    <div class="step-content">
+                        <p><strong>Always backup before making changes:</strong></p>
+                        <ul>
+                            <li><strong>Local Router:</strong> <span class="path">System → Configuration → Export Configuration</span></li>
+                            <li><strong>NetCloud:</strong> <span class="netcloud-path">Settings → Device Settings → [Router] → Configuration → Export</span></li>
+                            <li><strong>Save as:</strong> "IBR1900_[UNIT]_Backup_YYYY-MM-DD.json"</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- IP Scheme -->
+        <div id="ip-scheme" class="content-section">
+            <div class="section-header">🗺️ IP Addressing Scheme — All WFPD Units</div>
+            <div class="section-content">
+
+                <p>Each apparatus gets a unique 3rd octet (X). Ops network is <strong>10.7.X.0/24</strong> and guest network is <strong>10.8.X.0/24</strong>, where X is the unit's assigned octet. See table below.</p>
+
+                <div class="alert alert-info">
+                    <strong>📐 IP Scheme Rules:</strong>
+                    <ul style="margin-top:8px; padding-left: 20px;">
+                        <li>Second octet = 7 (Woodside district) for ops, 8 for guest</li>
+                        <li>Engines 1–99: unit number direct (E7 = 7, E8 = 8, E19 = 19)</li>
+                        <li>Rescue: 20s (R7 = 27)</li>
+                        <li>Water Tenders: unit number direct (WT108 = 108, WT119 = 119)</li>
+                        <li>Battalion Chief: 200s (BC2 = 202)</li>
+                        <li>3-digit engines: hundreds×10 + ones (E307 = 37, E507 = 57)</li>
+                        <li>Reserve engines: same formula +10 (E108 = 28, E119 = 29)</li>
+                    </ul>
+                </div>
+
+                <h3 style="margin: 20px 0 10px; font-size: 1.1rem; color: var(--fire-red);">WFPD Unit IP Assignment Table</h3>
+                <table class="info-table">
+                    <tr>
+                        <th>Unit</th>
+                        <th>Type</th>
+                        <th>3rd Octet (X)</th>
+                        <th>Ops Network</th>
+                        <th>Guest Network</th>
+                        <th>Gateway</th>
+                    </tr>
+                    <tr>
+                        <td class="highlight">E7</td>
+                        <td>Engine</td>
+                        <td><strong>7</strong></td>
+                        <td>10.7.7.0/24</td>
+                        <td>10.8.7.0/24</td>
+                        <td>10.7.7.1</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">E8</td>
+                        <td>Engine</td>
+                        <td><strong>8</strong></td>
+                        <td>10.7.8.0/24</td>
+                        <td>10.8.8.0/24</td>
+                        <td>10.7.8.1</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">E19</td>
+                        <td>Engine</td>
+                        <td><strong>19</strong></td>
+                        <td>10.7.19.0/24</td>
+                        <td>10.8.19.0/24</td>
+                        <td>10.7.19.1</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">R7</td>
+                        <td>Rescue</td>
+                        <td><strong>27</strong></td>
+                        <td>10.7.27.0/24</td>
+                        <td>10.8.27.0/24</td>
+                        <td>10.7.27.1</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">E108</td>
+                        <td>Engine (Reserve)</td>
+                        <td><strong>28</strong></td>
+                        <td>10.7.28.0/24</td>
+                        <td>10.8.28.0/24</td>
+                        <td>10.7.28.1</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">E119</td>
+                        <td>Engine (Reserve)</td>
+                        <td><strong>29</strong></td>
+                        <td>10.7.29.0/24</td>
+                        <td>10.8.29.0/24</td>
+                        <td>10.7.29.1</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">E307</td>
+                        <td>Engine</td>
+                        <td><strong>37</strong></td>
+                        <td>10.7.37.0/24</td>
+                        <td>10.8.37.0/24</td>
+                        <td>10.7.37.1</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">E507</td>
+                        <td>Engine</td>
+                        <td><strong>57</strong></td>
+                        <td>10.7.57.0/24</td>
+                        <td>10.8.57.0/24</td>
+                        <td>10.7.57.1</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">WT108</td>
+                        <td>Water Tender</td>
+                        <td><strong>108</strong></td>
+                        <td>10.7.108.0/24</td>
+                        <td>10.8.108.0/24</td>
+                        <td>10.7.108.1</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">WT119</td>
+                        <td>Water Tender</td>
+                        <td><strong>119</strong></td>
+                        <td>10.7.119.0/24</td>
+                        <td>10.8.119.0/24</td>
+                        <td>10.7.119.1</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">BC2</td>
+                        <td>Battalion Chief</td>
+                        <td><strong>202</strong></td>
+                        <td>10.7.202.0/24</td>
+                        <td>10.8.202.0/24</td>
+                        <td>10.7.202.1</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">Scene (all)</td>
+                        <td>Mesh</td>
+                        <td><strong>99</strong></td>
+                        <td>10.7.99.0/24</td>
+                        <td>—</td>
+                        <td>First unit online</td>
+                    </tr>
+                </table>
+
+                <div class="alert alert-info" style="margin-top:15px;">
+                    <strong>📐 DHCP Pool &amp; DNS (All Units):</strong>
+                    <ul style="margin-top:8px; padding-left: 20px;">
+                        <li>Gateway: <strong>10.7.X.1</strong></li>
+                        <li>DHCP Range: <strong>10.7.X.100 – 10.7.X.200</strong></li>
+                        <li>Reserved (future use): 10.7.X.2 – 10.7.X.99</li>
+                        <li>DNS Primary: <strong>1.1.1.1</strong> — Secondary: <strong>8.8.8.8</strong></li>
+                        <li>Set DNS via Custom Options → Option 6: <code>1.1.1.1,8.8.8.8</code> on each network</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- VLAN WARNING — CRITICAL -->
+        <div id="vlan-warning" class="content-section">
+            <div class="section-header" style="background: var(--danger-red);">⚠️ DO NOT Manually Create VLAN Interfaces</div>
+            <div class="section-content">
+
+                <div class="alert alert-danger">
+                    <strong>🚨 CRITICAL — Read This Before Touching Anything:</strong>
+                    <p style="margin-top: 10px;">VLAN tagging is handled <strong>automatically</strong> by the router when you assign SSIDs to local networks. <strong>DO NOT manually create VLAN interfaces</strong> for guest or scene mesh networks.</p>
+                    <p style="margin-top: 10px;">This has caused units to lose all connectivity and required factory reset. <strong>This has happened 4+ times.</strong></p>
+                    <p style="margin-top: 10px;"><strong>The only pre-existing VLAN interfaces are:</strong> <code>wan (VID 1)</code> and <code>lan (VID 2)</code> — leave them alone. Do not rename them. Do not add more.</p>
+                    <p style="margin-top: 10px;">Assign SSIDs to the correct network via the <strong>Interfaces tab</strong> inside the SSID editor. The router handles the rest. If you think you need to create a VLAN interface manually — you don't.</p>
+                </div>
+
+                <div class="alert alert-warning">
+                    <strong>If it still doesn't work after assigning the SSID correctly:</strong> Factory reset and start fresh. Don't dig deeper into VLAN settings.
+                </div>
+            </div>
+        </div>
+
+        <!-- Safe Configuration Order -->
+        <div id="config-order" class="content-section">
+            <div class="section-header">📋 Safe Configuration Order — Follow Exactly</div>
+            <div class="section-content">
+
+                <div class="alert alert-warning">
+                    <strong>⚠️ Follow this exact sequence.</strong> Deviating — especially doing VLAN interfaces early or out of order — is how units get bricked.
+                </div>
+
+                <div class="step">
+                    <div class="step-header">Step 1 — Initial Access</div>
+                    <div class="step-content">
+                        <p>Connect PC via Ethernet to <strong>LAN port</strong> (not WAN). Navigate to <code>192.168.0.1</code>. Default after factory reset: username <code>admin</code>, password is the <strong>serial number on the barcode label on the unit</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">Step 2 — Configure Primary LAN IP</div>
+                    <div class="step-content">
+                        <p>Edit the <strong>Primary LAN</strong> directly — do not create a new network.</p>
+                        <p><span class="path">Networking → Local Networks → Local IP Networks → Edit Primary LAN</span></p>
+                        <ul>
+                            <li>IPv4 Settings → change IP to <code>10.7.X.1</code> (use this unit's assigned 3rd octet from the table above)</li>
+                            <li>Subnet Mask: <code>255.255.255.0</code></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">Step 3 — Configure DHCP (Same Editor — Don't Save Yet)</div>
+                    <div class="step-content">
+                        <p>While still in the Primary LAN editor:</p>
+                        <ul>
+                            <li>IPv4 DHCP → set range: <strong>100–200</strong> (gives range 10.7.X.100 – 10.7.X.200)</li>
+                            <li>Custom Options → Option 6: <code>1.1.1.1,8.8.8.8</code> (DNS)</li>
+                        </ul>
+                        <p>Now hit <strong>Save</strong>. You will immediately lose your browser connection — <strong>this is expected.</strong></p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">Step 4 — Reconnect to New IP</div>
+                    <div class="step-content">
+                        <p>Unplug and replug the Ethernet cable. Your PC will receive a DHCP address automatically in the <code>10.7.X.100–10.7.X.200</code> range. No need to set a static IP on the PC.</p>
+                        <p>Navigate to <code>10.7.X.1</code> to confirm it loads.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">Step 5 — Add Guest Network</div>
+                    <div class="step-content">
+                        <p>Add a new local network for guest traffic:</p>
+                        <ul>
+                            <li>IP: <code>10.8.X.1</code> / Subnet: <code>255.255.255.0</code></li>
+                            <li>DHCP range: 100–200</li>
+                            <li>Custom Options → Option 6: <code>1.1.1.1,8.8.8.8</code></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">Step 6 — Add Scene Mesh Network</div>
+                    <div class="step-content">
+                        <p>Add a third local network for scene mesh (same IP on all units — first unit online becomes the gateway):</p>
+                        <ul>
+                            <li>IP: <code>10.7.99.1</code> / Subnet: <code>255.255.255.0</code></li>
+                            <li>DHCP range: 100–200</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">Step 7 — DO NOT Manually Create VLAN Interfaces</div>
+                    <div class="step-content">
+                        <div class="alert alert-danger">
+                            <strong>🚨 Skip VLAN Interfaces entirely.</strong> The router handles VLAN tagging automatically when you assign SSIDs in the next step. Manually creating VLAN interfaces will brick the unit.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">Step 8 — Configure WiFi SSIDs</div>
+                    <div class="step-content">
+                        <p><span class="path">Networking → WiFi → Wireless Settings</span></p>
+                        <ul>
+                            <li><strong>WFPD-[UNIT]</strong> — 5GHz, assigned to Primary LAN (ops) — e.g., WFPD-E7</li>
+                            <li><strong>WFPD-[UNIT]-GUEST</strong> — 2.4GHz, assigned to Guest network — e.g., WFPD-E7-GUEST</li>
+                            <li><strong>WFPD-SCENE</strong> — 5GHz, assigned to Scene mesh network (same SSID on all units)</li>
+                        </ul>
+                        <p>Assign each SSID to the correct network via the <strong>Interfaces tab</strong> inside the SSID editor.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">Step 9 — Guest Zone Firewall Rule</div>
+                    <div class="step-content">
+                        <p><span class="path">Security → Zone Firewall → Zone Forwarding → Add Rule</span></p>
+                        <ul>
+                            <li>Source Zone: <strong>Guest LAN Zone</strong></li>
+                            <li>Destination Zone: <strong>Primary LAN Zone</strong></li>
+                            <li>Filter Policy: <strong>Default Deny All</strong></li>
+                        </ul>
+                        <p>Guest devices can reach the internet but cannot reach the ops network. One rule is all that's needed.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">Step 10 — WAN Health Check (All WAN Interfaces)</div>
+                    <div class="step-content">
+                        <p><span class="path">Networking → Connection Manager → WAN Verify</span></p>
+                        <ul>
+                            <li>Verify Method: <strong>Active Ping</strong> (do not use passive DNS)</li>
+                            <li>Ping Target: <code>8.8.8.8</code></li>
+                            <li>Retry Interval: <strong>5 seconds</strong></li>
+                            <li>Retry Count: <strong>3</strong> (fails after ~15s)</li>
+                        </ul>
+                        <p>Apply to <strong>all WAN interfaces</strong> (SIM and WiFi/Starlink WAN).</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">Step 11 — AutoQoS</div>
+                    <div class="step-content">
+                        <p><span class="path">Networking → QoS → AutoQoS</span></p>
+                        <p>Verify AutoQoS is enabled — it's on by default. Leave it as-is unless there's a specific reason to change it.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">Step 12 — Static DHCP Reservation (Tablet Command iPad)</div>
+                    <div class="step-content">
+                        <p>Reserve <code>10.7.X.50</code> for the Tablet Command iPad using the iPad's Wi-Fi MAC address.</p>
+                        <p><span class="path">Networking → Local Networks → DHCP Leases → Add Reservation</span></p>
+                        <div class="alert alert-info">
+                            <strong>Getting the iPad MAC:</strong> Settings → General → About → Wi-Fi Address. Use the Wi-Fi address — not cellular or Bluetooth.
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- WiFi Configuration -->
         <div id="wifi-config" class="content-section">
-            <div class="section-header">📶 WiFi Configuration — WFPD SSIDs</div>
+            <div class="section-header">📶 WiFi / SSID Configuration</div>
             <div class="section-content">
 
+                <p>All SSIDs use the <code>WFPD-</code> prefix. Replace <code>[UNIT]</code> with the apparatus designation (E7, E8, WT108, BC2, etc.).</p>
+
                 <div class="alert alert-info">
-                    <strong>Naming convention:</strong> All SSIDs use the <code>WFPD-</code> prefix (Woodside Fire Protection District). Replace <code>[UNIT]</code> with the apparatus designation (E7, E8, WT108, BC2, etc.).
+                    <strong>📋 Assign via Interfaces Tab — Not VLAN Interfaces:</strong> Inside each SSID editor, use the Interfaces tab to assign the network. This is the only correct method.
                 </div>
 
                 <div class="step">
-                    <div class="step-header">SSID 1: Ops Network (Primary LAN)</div>
+                    <div class="step-header">SSID 1 — Ops Network (Primary LAN)</div>
                     <div class="step-content">
                         <table class="info-table">
-                            <tr>
-                                <th>Setting</th>
-                                <th>Value</th>
-                            </tr>
-                            <tr>
-                                <td>SSID</td>
-                                <td><strong>WFPD-[UNIT]</strong> (e.g., WFPD-E7)</td>
-                            </tr>
-                            <tr>
-                                <td>Band</td>
-                                <td><strong>5GHz</strong></td>
-                            </tr>
-                            <tr>
-                                <td>Network Assignment</td>
-                                <td>Primary LAN (ops, 10.7.X.0/24)</td>
-                            </tr>
-                            <tr>
-                                <td>Security</td>
-                                <td>WPA2-Personal</td>
-                            </tr>
+                            <tr><th>Setting</th><th>Value</th></tr>
+                            <tr><td>SSID Name</td><td><strong>WFPD-[UNIT]</strong> (e.g., WFPD-E7)</td></tr>
+                            <tr><td>Band</td><td>5GHz</td></tr>
+                            <tr><td>Network Assignment</td><td>Primary LAN — 10.7.X.0/24</td></tr>
+                            <tr><td>Security</td><td>WPA2-Personal</td></tr>
+                            <tr><td>Purpose</td><td>Ops traffic — tablets, radios, primary devices</td></tr>
                         </table>
                     </div>
                 </div>
 
                 <div class="step">
-                    <div class="step-header">SSID 2: Guest Network</div>
+                    <div class="step-header">SSID 2 — Guest Network</div>
                     <div class="step-content">
                         <table class="info-table">
-                            <tr>
-                                <th>Setting</th>
-                                <th>Value</th>
-                            </tr>
-                            <tr>
-                                <td>SSID</td>
-                                <td><strong>WFPD-[UNIT]-GUEST</strong> (e.g., WFPD-E7-GUEST)</td>
-                            </tr>
-                            <tr>
-                                <td>Band</td>
-                                <td><strong>2.4GHz</strong></td>
-                            </tr>
-                            <tr>
-                                <td>Network Assignment</td>
-                                <td>Guest network (10.8.X.0/24)</td>
-                            </tr>
-                            <tr>
-                                <td>Security</td>
-                                <td>WPA2-Personal (separate password)</td>
-                            </tr>
+                            <tr><th>Setting</th><th>Value</th></tr>
+                            <tr><td>SSID Name</td><td><strong>WFPD-[UNIT]-GUEST</strong> (e.g., WFPD-E7-GUEST)</td></tr>
+                            <tr><td>Band</td><td>2.4GHz</td></tr>
+                            <tr><td>Network Assignment</td><td>Guest network — 10.8.X.0/24</td></tr>
+                            <tr><td>Security</td><td>WPA2-Personal (separate password from ops)</td></tr>
+                            <tr><td>Purpose</td><td>Personal devices, guests — isolated from ops network</td></tr>
                         </table>
                     </div>
                 </div>
 
                 <div class="step">
-                    <div class="step-header">SSID 3: Scene Mesh Network</div>
+                    <div class="step-header">SSID 3 — Scene Mesh Network</div>
                     <div class="step-content">
                         <table class="info-table">
-                            <tr>
-                                <th>Setting</th>
-                                <th>Value</th>
-                            </tr>
-                            <tr>
-                                <td>SSID</td>
-                                <td><strong>WFPD-SCENE</strong> (same on all units)</td>
-                            </tr>
-                            <tr>
-                                <td>Band</td>
-                                <td><strong>5GHz</strong></td>
-                            </tr>
-                            <tr>
-                                <td>Network Assignment</td>
-                                <td>Scene mesh network (10.7.99.0/24)</td>
-                            </tr>
-                            <tr>
-                                <td>Purpose</td>
-                                <td>Inter-apparatus connectivity at incidents</td>
-                            </tr>
+                            <tr><th>Setting</th><th>Value</th></tr>
+                            <tr><td>SSID Name</td><td><strong>WFPD-SCENE</strong> (same on ALL units)</td></tr>
+                            <tr><td>Band</td><td>5GHz</td></tr>
+                            <tr><td>Network Assignment</td><td>Scene mesh — 10.7.99.0/24</td></tr>
+                            <tr><td>Purpose</td><td>Inter-apparatus connectivity at incidents</td></tr>
                         </table>
                     </div>
-                </div>
-
-                <div class="alert alert-warning">
-                    <strong>Assign SSIDs via the Interfaces tab</strong> inside each SSID's editor — not via VLAN interfaces. This is the only correct method. See the VLAN Warning section above.
                 </div>
             </div>
         </div>
 
-        <!-- Guest Isolation -->
-        <div id="guest-isolation" class="content-section">
-            <div class="section-header">🔒 Guest Network Isolation</div>
+        <!-- Static DHCP Reservations -->
+        <div id="reservations" class="content-section">
+            <div class="section-header">📌 Static DHCP Reservations</div>
             <div class="section-content">
 
+                <p>Reservations are set by MAC address — you need the device's MAC before you can lock in the reservation. Path: <span class="path">Networking → Local Networks → DHCP Leases → Add Reservation</span></p>
+
+                <table class="info-table">
+                    <tr>
+                        <th>Address</th>
+                        <th>Device</th>
+                        <th>How to Set</th>
+                    </tr>
+                    <tr>
+                        <td class="highlight">10.7.X.1</td>
+                        <td>Cradlepoint gateway</td>
+                        <td>Set during Primary LAN config — not a DHCP reservation</td>
+                    </tr>
+                    <tr>
+                        <td class="highlight">10.7.X.50</td>
+                        <td>Tablet Command iPad</td>
+                        <td>Static DHCP reservation by MAC — need iPad Wi-Fi MAC address first</td>
+                    </tr>
+                    <tr>
+                        <td>10.7.X.51 – .60</td>
+                        <td>APX6000XE radios (future ROIP)</td>
+                        <td>Reserved — do not assign until ROIP deployed</td>
+                    </tr>
+                    <tr>
+                        <td>10.7.X.100 – .200</td>
+                        <td>DHCP pool</td>
+                        <td>Automatic assignment — set in Primary LAN DHCP settings</td>
+                    </tr>
+                </table>
+
                 <div class="alert alert-info">
-                    <strong>Goal:</strong> Guest devices can reach the internet but cannot reach the ops network (Primary LAN). One rule handles this.
-                </div>
-
-                <div class="step">
-                    <div class="step-header">Zone Firewall — Guest Isolation Rule</div>
-                    <div class="step-content">
-                        <p><strong>Path:</strong> <span class="path">Security → Zone Firewall → Zone Forwarding</span></p>
-
-                        <p>Add one rule:</p>
-                        <table class="info-table">
-                            <tr>
-                                <th>Setting</th>
-                                <th>Value</th>
-                            </tr>
-                            <tr>
-                                <td>Source Zone</td>
-                                <td><strong>Guest LAN Zone</strong></td>
-                            </tr>
-                            <tr>
-                                <td>Destination Zone</td>
-                                <td><strong>Primary LAN Zone</strong></td>
-                            </tr>
-                            <tr>
-                                <td>Filter Policy</td>
-                                <td><strong>Default Deny All</strong></td>
-                            </tr>
-                        </table>
-
-                        <div class="alert alert-success">
-                            <strong>That's it.</strong> The default rules already handle WAN ↔ LAN correctly. This one explicit rule is all that's needed for guest isolation. Do not create additional rules unless you have a specific reason.
-                        </div>
-                    </div>
+                    <strong>📌 Getting the iPad MAC:</strong> Settings → General → About → Wi-Fi Address. Use the Wi-Fi address — not cellular or Bluetooth address.
                 </div>
             </div>
         </div>
@@ -908,288 +847,227 @@ DNS: 1.1.1.1
             <div class="section-header">📡 WAN Failover Configuration</div>
             <div class="section-content">
 
-                <div class="alert alert-info">
-                    <strong>Method: Active Ping (not passive DNS).</strong> Active ping is more reliable for detecting real connectivity loss. Both SIM and WiFi WAN should be set to Always On with strict priority failover.
-                </div>
+                <p>Use Active Ping — not passive DNS. More reliable for detecting real connectivity loss. Both SIM and WiFi WAN should be set to Always On with strict priority failover.</p>
 
                 <div class="step">
-                    <div class="step-header">WAN Verify / Active Ping Settings</div>
+                    <div class="step-header">Starlink Physical Connection</div>
                     <div class="step-content">
-                        <p><strong>Path:</strong> <span class="path">Networking → Connection Manager → WAN Verify</span></p>
-
-                        <table class="info-table">
-                            <tr>
-                                <th>Setting</th>
-                                <th>Value</th>
-                                <th>Notes</th>
-                            </tr>
-                            <tr>
-                                <td>Verify Method</td>
-                                <td><strong>Active Ping</strong></td>
-                                <td>Do not use passive DNS</td>
-                            </tr>
-                            <tr>
-                                <td>Ping Target</td>
-                                <td><strong>8.8.8.8</strong></td>
-                                <td>Google DNS — reliable target</td>
-                            </tr>
-                            <tr>
-                                <td>Retry Interval</td>
-                                <td><strong>5 seconds</strong></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Retry Count</td>
-                                <td><strong>3</strong></td>
-                                <td>Fail after 3 missed pings (~15s)</td>
-                            </tr>
-                            <tr>
-                                <td>Connection State</td>
-                                <td><strong>Always On</strong></td>
-                                <td>Apply to both SIM and WiFi WAN</td>
-                            </tr>
-                            <tr>
-                                <td>Smart WAN Selection</td>
-                                <td><strong>Disabled</strong></td>
-                                <td>Use strict priority failover instead</td>
-                            </tr>
-                            <tr>
-                                <td>QoS</td>
-                                <td><strong>AutoQoS (default)</strong></td>
-                                <td>Leave as-is</td>
-                            </tr>
-                        </table>
+                        <ol>
+                            <li>Connect Starlink Ethernet adapter to <strong>WAN port</strong> on IBR1900</li>
+                            <li>Set Starlink dish to <strong>IP Passthrough mode</strong> via Starlink app</li>
+                            <li>Verify connection via Starlink app shows "Connected"</li>
+                        </ol>
                     </div>
                 </div>
 
                 <div class="step">
-                    <div class="step-header">Interface Priority</div>
+                    <div class="step-header">WAN Failover Settings</div>
                     <div class="step-content">
+                        <p><span class="path">Networking → Connection Manager → WAN Verify</span></p>
+                        <table class="info-table">
+                            <tr><th>Setting</th><th>Value</th><th>Notes</th></tr>
+                            <tr><td>Verify Method</td><td><strong>Active Ping</strong></td><td>Do not use passive DNS</td></tr>
+                            <tr><td>Ping Target</td><td>8.8.8.8</td><td>Google DNS — reliable target</td></tr>
+                            <tr><td>Retry Interval</td><td>5 seconds</td><td></td></tr>
+                            <tr><td>Retry Count</td><td>3</td><td>Fails after ~15 seconds</td></tr>
+                            <tr><td>Connection State</td><td>Always On</td><td>Apply to both SIM and WiFi WAN</td></tr>
+                            <tr><td>Smart WAN Selection</td><td>Disabled</td><td>Use strict priority instead</td></tr>
+                            <tr><td>QoS</td><td>AutoQoS (default)</td><td>Leave as-is</td></tr>
+                        </table>
+
+                        <h3 style="margin: 15px 0 8px; font-size: 1rem; color: var(--fire-red);">Interface Priority</h3>
                         <ul>
                             <li><strong>Priority 1 (Primary):</strong> Cellular SIM</li>
                             <li><strong>Priority 2 (Failover):</strong> Starlink / WiFi as WAN</li>
                         </ul>
-                        <p>Both interfaces should be set to <strong>Always On</strong> — the router uses the priority order to decide which to route through, and automatically fails over if the primary loses ping verification.</p>
+                        <p style="margin-top:10px;">Both interfaces set to Always On — router uses priority to decide routing and auto-fails over when primary loses ping verification.</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Static IP Reservations -->
-        <div id="static-reservations" class="content-section">
-            <div class="section-header">📌 Static IP Reservations</div>
+        <!-- GPS Services -->
+        <div id="gps-services" class="content-section">
+            <div class="section-header">🛰️ GPS Services Configuration</div>
             <div class="section-content">
 
-                <p>Every unit follows this standard reservation layout. DHCP reservations are set by MAC address — you need the device's MAC before you can lock in the reservation.</p>
-
-                <table class="info-table">
-                    <tr>
-                        <th>Address</th>
-                        <th>Device</th>
-                        <th>How to Set</th>
-                    </tr>
-                    <tr>
-                        <td><strong>10.7.X.1</strong></td>
-                        <td>Cradlepoint gateway (automatic)</td>
-                        <td>Set during Primary LAN config — not a DHCP reservation</td>
-                    </tr>
-                    <tr>
-                        <td><strong>10.7.X.50</strong></td>
-                        <td>Tablet Command iPad</td>
-                        <td>DHCP reservation by MAC address — need iPad MAC first</td>
-                    </tr>
-                    <tr>
-                        <td><strong>10.7.X.51–.60</strong></td>
-                        <td>APX6000XE radios (future ROIP)</td>
-                        <td>Reserve range — do not assign until ROIP is deployed</td>
-                    </tr>
-                    <tr>
-                        <td><strong>10.7.X.100–.200</strong></td>
-                        <td>DHCP pool</td>
-                        <td>Set in Primary LAN DHCP settings</td>
-                    </tr>
-                </table>
-
-                <div class="alert alert-warning">
-                    <strong>Getting the iPad MAC:</strong> Settings → General → About → Wi-Fi Address. Use this MAC for the DHCP reservation, not the cellular/Bluetooth address.
-                </div>
+                <p>Two separate GPS clients are configured because Versaterm (CAD/Dispatch) and Tablet Command (Tactical) require different data formats and update intervals.</p>
 
                 <div class="alert alert-info">
-                    <strong>Path for DHCP reservations:</strong> <span class="path">Networking → Local Networks → DHCP Leases → Add Reservation</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Dual GPS Configuration -->
-        <div id="dual-gps" class="content-section">
-            <div class="section-header">🛰️ Dual GPS Configuration</div>
-            <div class="section-content">
-                <div class="alert alert-info">
-                    <strong>Why Dual GPS?</strong> We configure two separate GPS clients because Versaterm (CAD) and Tablet Command (Tactical) require different data formats and update intervals.
+                    <strong>📍 Global GPS Settings:</strong> <span class="path">System → Administration → GPS</span> — Enable GPS ✅, Enable GPS Lock LED ✅, Enable GPS Keepalive ✅, Verbose logging ☐ off.
                 </div>
 
                 <div class="step">
-                    <div class="step-header">Global GPS Settings</div>
+                    <div class="step-header">Client 1: Versaterm AVL (Dispatch / CAD)</div>
                     <div class="step-content">
-                        <p><strong>Path:</strong> <span class="path">System → Administration → GPS</span></p>
-                        <div class="checklist">
-                            <li><strong>Enable GPS:</strong> ✅ Checked</li>
-                            <li><strong>Enable GPS Lock LED:</strong> ✅ Checked (Helps troubleshooting)</li>
-                            <li><strong>Enable GPS Keepalive:</strong> ✅ Checked (Prevents "disappearing" units)</li>
-                            <li><strong>Enable GPS verbose logging:</strong> ☐ Unchecked</li>
-                            <li><strong>TAIP Vehicle ID:</strong> Set to unit-specific ID (e.g., 3302 for unit 3302)</li>
-                        </div>
-                    </div>
-                </div>
+                        <p><strong>NetCloud Path:</strong> <span class="netcloud-path">Settings → Location Services → [Router] → GPS Clients → Add Client</span></p>
+                        <p><strong>Local Router Path:</strong> <span class="path">System → Administration → GPS → Location Services → GPS Clients</span></p>
 
-                <h3 style="margin: 20px 0 10px;">Client 1: Versaterm (Dispatch/CAD)</h3>
-                <div class="step">
-                    <div class="step-header">Versaterm Configuration</div>
-                    <div class="step-content">
                         <table class="info-table">
-                            <tr>
-                                <th>Setting</th>
-                                <th>Value</th>
-                                <th>Notes</th>
-                            </tr>
-                            <tr>
-                                <td>Client Name</td>
-                                <td><strong>Versaterm</strong></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Server</td>
-                                <td><strong>avl.smc911.org</strong></td>
-                                <td>San Mateo County AVL</td>
-                            </tr>
-                            <tr>
-                                <td>Port</td>
-                                <td><strong>12345</strong></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Protocol</td>
-                                <td><strong>UDP</strong></td>
-                                <td>Faster, lower overhead</td>
-                            </tr>
-                            <tr>
-                                <td>Stored Sentences</td>
-                                <td><strong>1000</strong></td>
-                                <td>~50 min buffer</td>
-                            </tr>
-                            <tr>
-                                <td>Time Interval</td>
-                                <td><strong>3 seconds</strong></td>
-                                <td>High frequency updates</td>
-                            </tr>
+                            <tr><th>Setting</th><th>Value</th></tr>
+                            <tr><td>Client Name</td><td>versaterm_avl</td></tr>
+                            <tr><td>Enabled</td><td>✅ Yes</td></tr>
+                            <tr><td>Server</td><td>avl.smc911.org</td></tr>
+                            <tr><td>Port</td><td>12345</td></tr>
+                            <tr><td>Protocol</td><td>UDP</td></tr>
+                            <tr><td><strong>Update Interval</strong></td><td><strong>3 seconds</strong></td></tr>
+                            <tr><td>Stored Sentences</td><td>1000 (~50 min buffer)</td></tr>
                         </table>
 
-                        <p><strong>NMEA Settings (Language Page):</strong></p>
-                        <div class="checklist">
-                            <li><strong>Language:</strong> NMEA</li>
-                            <li><strong>Prepend Unique Identifier:</strong> ✅ Checked (Critical for Versaterm!)</li>
-                            <li><strong>Unique Identifier Definition:</strong> Custom — enter unit ID (e.g., "3302")</li>
-                            <li><strong>Sentence Types:</strong>
-                                <ul>
-                                    <li>✅ <strong>RMC</strong> (Recommended Minimum) — ONLY this one needed.</li>
-                                    <li>☐ GGA/GNS/VTG — Leave OFF to save data.</li>
-                                </ul>
-                            </li>
-                        </div>
-                    </div>
-                </div>
-
-                <h3 style="margin: 20px 0 10px;">Client 2: Tablet Command (Tactical Map)</h3>
-                <div class="step">
-                    <div class="step-header">Tablet Command Configuration</div>
-                    <div class="step-content">
-                        <table class="info-table">
-                            <tr>
-                                <th>Setting</th>
-                                <th>Value</th>
-                                <th>Notes</th>
-                            </tr>
-                            <tr>
-                                <td>Client Name</td>
-                                <td><strong>Tablet Command</strong></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Server</td>
-                                <td><strong>avl.tabletcommand.com</strong></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Port</td>
-                                <td><strong>12121</strong></td>
-                                <td>Different from Versaterm</td>
-                            </tr>
-                            <tr>
-                                <td>Protocol</td>
-                                <td><strong>UDP</strong></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Stored Sentences</td>
-                                <td><strong>1000</strong></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Time Interval</td>
-                                <td><strong>10 seconds</strong></td>
-                                <td>Slightly slower update rate</td>
-                            </tr>
-                        </table>
-
-                        <p><strong>NMEA Settings (Language Page):</strong></p>
-                        <div class="checklist">
-                            <li><strong>Language:</strong> NMEA</li>
-                            <li><strong>Include Unique Identifier:</strong> ✅ Checked (Appended at end)</li>
-                            <li><strong>Prepend Unique Identifier:</strong> ☐ Unchecked</li>
-                            <li><strong>Unique Identifier Definition:</strong> System ID (Router Serial/MAC)</li>
-                            <li><strong>Sentence Types:</strong>
-                                <ul>
-                                    <li>✅ <strong>GGA</strong> (Position Fix)</li>
-                                    <li>✅ <strong>GNS</strong> (GNSS Fix)</li>
-                                    <li>✅ <strong>RMC</strong> (Recommended Minimum)</li>
-                                    <li>✅ <strong>VTG</strong> (Velocity/Track)</li>
-                                </ul>
-                            </li>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-header">Optimization: Reduce Data Usage</div>
-                    <div class="step-content">
-                        <div class="alert alert-success">
-                            <strong>Pro Tip:</strong> Configure "Stationary Settings" to save cellular data when the apparatus is parked.
-                        </div>
-
-                        <p><strong>Recommended Settings:</strong></p>
+                        <p><strong>NMEA Settings:</strong></p>
                         <ul>
-                            <li><strong>Stationary Time Interval:</strong> 30–60 seconds (slower updates when parked)</li>
-                            <li><strong>Stationary Event Threshold:</strong> 60 seconds (wait 1 min before slowing down)</li>
-                            <li><strong>Stationary Distance Threshold:</strong> 20 meters (ignore GPS drift)</li>
+                            <li>Language: NMEA</li>
+                            <li>✅ <strong>Prepend Unique Identifier</strong> — Critical for Versaterm</li>
+                            <li>Custom String: Unit ID (e.g., <strong>3302</strong> — verify with comm center)</li>
+                            <li>Sentence Types: <strong>RMC only</strong> — turn off GGA/GNS/VTG to save data</li>
                         </ul>
 
-                        <p><strong>Impact:</strong> Reduces GPS data usage by ~75% while maintaining instant tracking when the vehicle moves.</p>
+                        <div class="alert alert-info">
+                            <strong>📡 Unit ID:</strong> This identifies your fire engine in the dispatch system. Verify the unit ID with your communications center before deploying.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">Client 2: Tablet Command (Tactical Map)</div>
+                    <div class="step-content">
+                        <table class="info-table">
+                            <tr><th>Setting</th><th>Value</th></tr>
+                            <tr><td>Client Name</td><td>tablet_command</td></tr>
+                            <tr><td>Enabled</td><td>✅ Yes</td></tr>
+                            <tr><td>Server</td><td>avl.tabletcommand.com</td></tr>
+                            <tr><td>Port</td><td>12121</td></tr>
+                            <tr><td>Protocol</td><td>UDP</td></tr>
+                            <tr><td><strong>Update Interval</strong></td><td><strong>3 seconds</strong></td></tr>
+                            <tr><td>Stored Sentences</td><td>1000</td></tr>
+                        </table>
+
+                        <p><strong>NMEA Settings:</strong></p>
+                        <ul>
+                            <li>Language: NMEA</li>
+                            <li>✅ Include Unique Identifier (Appended at end)</li>
+                            <li>☐ Prepend Unique Identifier — unchecked</li>
+                            <li>Unique Identifier Definition: System ID (Router Serial/MAC)</li>
+                            <li>Sentence Types: <strong>GGA, GNS, RMC, VTG</strong> — all four checked</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">GPS Data Optimization — Stationary Settings</div>
+                    <div class="step-content">
+                        <div class="alert alert-success">
+                            <strong>✅ Reduces GPS data usage ~75% when parked at station</strong>
+                        </div>
+                        <ul>
+                            <li><strong>Stationary Time Interval:</strong> 30–60 seconds</li>
+                            <li><strong>Stationary Event Threshold:</strong> 60 seconds</li>
+                            <li><strong>Stationary Distance Threshold:</strong> 20 meters (ignores GPS drift)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">GPS Verification</div>
+                    <div class="step-content">
+                        <div class="checklist">
+                            <li>GPS shows 4+ satellites locked</li>
+                            <li>Fix quality shows "3D Fix"</li>
+                            <li>Both GPS clients show "Connected"</li>
+                            <li>Packets Sent is incrementing on both clients</li>
+                            <li>Correct Unit ID transmitting — confirm with dispatch</li>
+                        </div>
+
+                        <div class="code-block">
+<span class="comment"># CLI verification commands</span>
+show location clients
+show location statistics
+show gps status
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Testing -->
+        <!-- Security & SSH -->
+        <div id="security" class="content-section">
+            <div class="section-header">🔐 Security &amp; SSH Access</div>
+            <div class="section-content">
+
+                <div class="step">
+                    <div class="step-header">Step 1: SSH Configuration</div>
+                    <div class="step-content">
+                        <p><strong>Enable SSH Server (Local):</strong></p>
+                        <ul>
+                            <li><span class="path">System → Administration → Local Management</span></li>
+                            <li>✅ Enable SSH Server</li>
+                        </ul>
+
+                        <p><strong>Enable Remote SSH (NetCloud):</strong></p>
+                        <ul>
+                            <li><span class="path">System → Administration → Remote Admin</span></li>
+                            <li>✅ Allow Remote SSH Access</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">Step 2: SSH Access Restriction</div>
+                    <div class="step-content">
+                        <p><strong>Path:</strong> <span class="path">Security → Zone Firewall → Remote Access Restriction</span></p>
+
+                        <div class="alert alert-warning">
+                            <strong>⚠️ Security:</strong> Only whitelist specific IP addresses for SSH access. Never allow unrestricted SSH access to fire department equipment.
+                        </div>
+
+                        <p><strong>Test SSH Access:</strong></p>
+                        <div class="code-block">
+ssh admin@[ROUTER_CELLULAR_IP]
+<span class="comment"># Should connect from whitelisted IPs only</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">Step 3: Firewall Rules</div>
+                    <div class="step-content">
+                        <p><strong>Path:</strong> <span class="path">Security → Zone Firewall</span></p>
+
+                        <p><strong>Required Outbound Rules:</strong></p>
+                        <ul>
+                            <li>Allow UDP 12121 to avl.tabletcommand.com (Tablet Command GPS)</li>
+                            <li>Allow UDP 12345 to avl.smc911.org (Versaterm GPS)</li>
+                            <li>Allow UDP 53 to DNS servers (1.1.1.1, 8.8.8.8)</li>
+                            <li>Allow ICMP for WAN health checks</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">Step 4: SNMP Monitoring</div>
+                    <div class="step-content">
+                        <p><strong>Path:</strong> <span class="path">System → SNMP Configuration</span></p>
+                        <ul>
+                            <li>Enable <strong>SNMPv3</strong> (secure version)</li>
+                            <li>Access: Read-only for monitoring tools</li>
+                            <li>Allowed Hosts: Kerchunk Networks monitoring systems only</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testing & Validation -->
         <div id="testing" class="content-section">
             <div class="section-header">🧪 Testing &amp; Validation</div>
             <div class="section-content">
 
                 <div class="step">
-                    <div class="step-header">Step 1: Network Connectivity</div>
+                    <div class="step-header">Network Connectivity</div>
                     <div class="step-content">
                         <div class="checklist">
-                            <li>Confirm <code>10.7.X.1</code> loads in browser from ops SSID</li>
-                            <li>Confirm internet connectivity from ops network: ping 8.8.8.8</li>
+                            <li>Confirm <code>10.7.X.1</code> loads in browser from ops SSID (WFPD-[UNIT])</li>
+                            <li>Confirm internet: <code>ping 8.8.8.8</code> from ops network</li>
                             <li>Confirm guest devices can reach internet but cannot ping <code>10.7.X.1</code></li>
                             <li>Confirm WFPD-SCENE SSID connects to 10.7.99.0/24 range</li>
                         </div>
@@ -1197,62 +1075,56 @@ DNS: 1.1.1.1
                 </div>
 
                 <div class="step">
-                    <div class="step-header">Step 2: WAN Failover Test</div>
+                    <div class="step-header">WAN Failover Test</div>
                     <div class="step-content">
                         <div class="alert alert-info">
-                            <strong>Test Procedure:</strong> Document failover timing for emergency response planning.
+                            <strong>📋 Test Procedure:</strong> Document failover timing for emergency response planning.
                         </div>
-
                         <ol>
                             <li>Disable primary cellular interface temporarily</li>
-                            <li>Confirm automatic switch to secondary WAN (Starlink/SIM2)</li>
+                            <li>Confirm automatic switch to Starlink</li>
                             <li>Verify GPS continues reporting during failover</li>
-                            <li>Test internet connectivity on backup WAN</li>
-                            <li>Re-enable primary and confirm failback</li>
-                            <li>Document total failover time</li>
+                            <li>Test internet connectivity via Starlink</li>
+                            <li>Re-enable cellular and confirm failback</li>
+                            <li>Document total failover time — expected: 15–30 seconds</li>
                         </ol>
-
-                        <p><strong>Expected Results:</strong></p>
-                        <ul>
-                            <li>Failover time: ~15–30 seconds (3 failed pings × 5s interval)</li>
-                            <li>GPS services continue uninterrupted</li>
-                            <li>Automatic failback when primary restored</li>
-                        </ul>
                     </div>
                 </div>
 
                 <div class="step">
-                    <div class="step-header">Step 3: GPS Service Testing</div>
+                    <div class="step-header">WiFi Performance Testing</div>
                     <div class="step-content">
-                        <div class="alert alert-warning">
-                            <strong>Testing Time:</strong> Verify with dispatch/Versaterm during normal business hours. Tablet Command AVL may also have specific active-hours behavior.
+                        <div class="checklist">
+                            <li>Connect devices to WFPD-[UNIT] (5GHz ops)</li>
+                            <li>Connect devices to WFPD-[UNIT]-GUEST (2.4GHz guest)</li>
+                            <li>Connect to WFPD-SCENE and confirm 10.7.99.x address</li>
+                            <li>Test signal strength at various apparatus locations</li>
+                            <li>Check channel interference with WiFi analyzer</li>
                         </div>
+                    </div>
+                </div>
 
+                <div class="step">
+                    <div class="step-header">GPS Service Testing</div>
+                    <div class="step-content">
                         <div class="checklist">
                             <li>Verify GPS lock with 4+ satellites</li>
                             <li>Confirm Tablet Command server connection</li>
-                            <li>Verify Versaterm server connection</li>
-                            <li>Check GPS packet transmission is incrementing</li>
+                            <li>Confirm Versaterm server connection</li>
+                            <li>Check GPS packets are incrementing on both clients</li>
+                            <li>Confirm Unit ID is correct — verify with dispatch</li>
                             <li>Test position accuracy vs. known location</li>
-                            <li>Confirm correct Unit ID is transmitting</li>
-                        </div>
-
-                        <p><strong>Verification Commands (local router CLI):</strong></p>
-                        <div class="code-block">
-show location clients
-show location statistics
-show gps status
                         </div>
                     </div>
                 </div>
 
                 <div class="step">
-                    <div class="step-header">Step 4: Static DHCP Reservation Verification</div>
+                    <div class="step-header">Static Reservation Verification</div>
                     <div class="step-content">
                         <div class="checklist">
                             <li>Connect Tablet Command iPad to WFPD-[UNIT] SSID</li>
-                            <li>Verify iPad receives 10.7.X.50 (not a random DHCP address)</li>
-                            <li>If wrong address: confirm iPad MAC matches what's in the reservation</li>
+                            <li>Verify iPad receives <code>10.7.X.50</code> — not a random DHCP address</li>
+                            <li>If wrong address: confirm iPad MAC in reservation matches Wi-Fi address (Settings → General → About → Wi-Fi Address)</li>
                         </div>
                     </div>
                 </div>
@@ -1265,14 +1137,21 @@ show gps status
             <div class="section-content">
 
                 <div class="step">
-                    <div class="step-header">Lost Connectivity After Configuration Change</div>
+                    <div class="step-header">Lost Connectivity After Config Change</div>
                     <div class="step-content">
-                        <p><strong>Most likely cause:</strong> Manual VLAN interface was created. See the VLAN Warning section — this has happened 4+ times.</p>
-                        <ol>
-                            <li>Try setting PC to a static IP in the new subnet and hitting the gateway IP</li>
-                            <li>If the UI is unreachable, factory reset is the fastest path forward</li>
-                            <li>After reset, pull SIM before reconfiguring and follow the Safe Configuration Order exactly</li>
-                        </ol>
+                        <div class="alert alert-danger">
+                            <strong>🚨 Most likely: a VLAN interface was manually created.</strong> This has happened 4+ times. Try setting PC to a static IP in the expected subnet and hitting the gateway IP. If UI is unreachable, factory reset is the fastest path forward.
+                        </div>
+                        <p>See the <a href="#vlan-warning">VLAN Warning section</a> — read it before trying anything else.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">Local UI Slow / Unresponsive</div>
+                    <div class="step-content">
+                        <div class="alert alert-warning">
+                            <strong>⚠️ Almost certainly: SIM is inserted.</strong> Unit is trying to connect to NetCloud Manager. Pull the SIM, wait 30 seconds, reload the UI. It will be snappy again.
+                        </div>
                     </div>
                 </div>
 
@@ -1295,7 +1174,6 @@ ping avl.smc911.org
                             </li>
                             <li><strong>Check Client Status:</strong> <span class="path">Location → GPS Clients → [CLIENT] → Status</span>
                                 <ul>
-                                    <li>Last Transmission: Should be recent</li>
                                     <li>Packets Sent: Should be incrementing</li>
                                 </ul>
                             </li>
@@ -1304,9 +1182,9 @@ ping avl.smc911.org
                         <p><strong>Solutions:</strong></p>
                         <ul>
                             <li>Restart GPS client: <code>restart location-client [CLIENT_NAME]</code></li>
-                            <li>Check antenna connections</li>
+                            <li>Check all antenna connections</li>
                             <li>Verify server addresses haven't changed</li>
-                            <li>Contact dispatch to confirm reception on their end</li>
+                            <li>Contact dispatch center to confirm reception on their end</li>
                         </ul>
                     </div>
                 </div>
@@ -1314,20 +1192,13 @@ ping avl.smc911.org
                 <div class="step">
                     <div class="step-header">WAN Failover Not Working</div>
                     <div class="step-content">
-                        <p><strong>Diagnostic Steps:</strong></p>
-                        <ol>
-                            <li>Verify both interfaces show "Connected" in <span class="path">Status → WAN → Interfaces</span></li>
-                            <li>Confirm Active Ping is configured (not passive DNS)</li>
-                            <li>Make sure Smart WAN Selection is off — it interferes with strict priority failover</li>
+                        <ul>
+                            <li>Verify both interfaces show "Connected": <span class="path">Status → WAN → Interfaces</span></li>
+                            <li>Confirm Active Ping is configured — not passive DNS</li>
+                            <li>Make sure Smart WAN Selection is Off — interferes with strict priority failover</li>
                             <li>Confirm both interfaces are set to Always On</li>
-                        </ol>
-                    </div>
-                </div>
-
-                <div class="step">
-                    <div class="step-header">Local UI Slow / Unresponsive</div>
-                    <div class="step-content">
-                        <p><strong>Almost certainly:</strong> SIM card is inserted and the unit is trying to connect to NetCloud Manager. Pull the SIM, wait 30 seconds, reload the UI. It'll be snappy again.</p>
+                            <li>Add multiple ping targets (8.8.8.8, 1.1.1.1) if one isn't responding</li>
+                        </ul>
                     </div>
                 </div>
 
@@ -1335,22 +1206,22 @@ ping avl.smc911.org
                     <div class="step-header">Emergency Procedures</div>
                     <div class="step-content">
                         <div class="alert alert-danger">
-                            <strong>Critical System Failure:</strong> If primary communications fail during emergency operations.
+                            <strong>🚨 Critical System Failure:</strong> If primary communications fail during emergency operations.
                         </div>
 
                         <p><strong>Emergency Recovery Steps:</strong></p>
                         <ol>
                             <li>Switch to radio backup communications immediately</li>
-                            <li>Document system failure time</li>
-                            <li>Quick checks: power connections, antenna connections</li>
+                            <li>Document failure time</li>
+                            <li>Quick checks: power connections, antenna connections, known-good cable</li>
                             <li>Router reboot: <span class="path">System → Actions → Reboot</span></li>
-                            <li>Factory reset (last resort): hold reset button 45s, wait 2min to boot</li>
+                            <li>Factory reset (last resort): Hold reset button 45s, wait 2 min to fully boot</li>
                         </ol>
 
                         <p><strong>Emergency Contacts:</strong></p>
                         <ul>
                             <li><strong>Cradlepoint Support:</strong> 1-855-813-3385</li>
-                            <li><strong>Kerchunk Networks (Erik):</strong> [CONTACT NUMBER]</li>
+                            <li><strong>Kerchunk Networks (Erik):</strong> 415-737-9223</li>
                         </ul>
                     </div>
                 </div>
@@ -1361,20 +1232,20 @@ ping avl.smc911.org
         <div class="content-section">
             <div class="section-content" style="text-align: center; padding: 30px;">
                 <div class="alert alert-success">
-                    <strong>Configuration Complete!</strong> Your IBR1900 is configured for WFPD operations with redundant connectivity, proper SSID naming, guest isolation, and GPS tracking.
+                    <strong>✅ Configuration Complete!</strong> Your IBR1900 is now configured for WFPD operations with redundant connectivity, correct IP addressing, and dual GPS tracking.
                 </div>
 
                 <p><strong>Next Steps:</strong></p>
                 <ul style="text-align: left; max-width: 600px; margin: 0 auto;">
-                    <li>Get iPad MAC addresses and complete DHCP reservations for all units</li>
-                    <li>Verify GPS reporting with dispatch after SIM is inserted</li>
-                    <li>Test WAN failover before the unit goes back in service</li>
+                    <li>Verify Tablet Command iPad receives <code>10.7.X.50</code></li>
+                    <li>Confirm GPS Unit ID with dispatch center</li>
                     <li>Export and save configuration backup</li>
+                    <li>Test WAN failover before deployment</li>
+                    <li>Register unit in NetCloud Manager</li>
                 </ul>
 
                 <p style="margin-top: 30px;">
-                    <a href="../index.html" style="color: var(--fire-blue); text-decoration: none;">← Back to Kerchunk Networks</a> |
-                    <a href="gps-configuration.html" style="color: var(--fire-blue); text-decoration: none;">GPS Configuration Guide →</a>
+                    <a href="../index.html" style="color: var(--fire-blue); text-decoration: none;">← Back to Kerchunk Networks</a>
                 </p>
             </div>
         </div>
@@ -1401,7 +1272,7 @@ ping avl.smc911.org
         }
 
         // Add print button
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             const header = document.querySelector('.guide-header');
             const printBtn = document.createElement('button');
             printBtn.innerHTML = '🖨️ Print Guide';
@@ -1419,5 +1290,4 @@ ping avl.smc911.org
         });
     </script>
 </body>
-
 </html>
