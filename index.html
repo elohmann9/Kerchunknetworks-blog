@@ -1152,6 +1152,67 @@
     .mega-menu-footer a:hover {
       color: var(--maroon) !important;
     }
+  
+    /* ── MOBILE NAV ── */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 8px;
+      margin-left: auto;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #fff;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: var(--maroon);
+      border-top: 1px solid rgba(184,134,11,0.3);
+      z-index: 998;
+      padding: 8px 0 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+    .mobile-nav.open { display: block; }
+    .mobile-nav a {
+      display: block;
+      padding: 13px 24px;
+      color: rgba(255,255,255,0.9);
+      font-family: var(--ui);
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      letter-spacing: 0.3px;
+    }
+    .mobile-nav a:hover { color: #fff; background: rgba(255,255,255,0.06); }
+    .mobile-nav .mobile-cta {
+      display: block;
+      margin: 12px 24px 0;
+      text-align: center;
+      background: var(--gold);
+      color: #1a1a1a !important;
+      padding: 12px 24px !important;
+      border-radius: 2px;
+      font-weight: 700;
+      border-bottom: none !important;
+      letter-spacing: 0.5px;
+    }
+    @media (max-width: 900px) {
+      .nav-hamburger { display: flex; }
+    }
+
   </style>
 </head>
 <body>
@@ -1210,7 +1271,17 @@
     <li><a href="contact.html">Contact</a></li>
     <li><a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="nav-cta">Schedule a Booking</a></li>
   </ul>
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
 </nav>
+<div class="mobile-nav" id="mobile-nav">
+  <a href="/">Home</a>
+  <a href="services-fire.html">Fire &amp; Safety</a>
+  <a href="services-residential.html">Residential</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="equipment.html">Equipment</a>
+  <a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="mobile-cta">Schedule a Booking</a>
+</div>
 
 <!-- HERO -->
 <div class="hero">
@@ -1471,5 +1542,17 @@
   </div>
 </footer>
 
+<script>
+(function(){
+  var btn = document.getElementById('nav-hamburger');
+  var menu = document.getElementById('mobile-nav');
+  if(btn && menu){
+    btn.addEventListener('click', function(){ menu.classList.toggle('open'); });
+    document.addEventListener('click', function(e){
+      if(!btn.contains(e.target) && !menu.contains(e.target)) menu.classList.remove('open');
+    });
+  }
+})();
+</script>
 </body>
 </html>
