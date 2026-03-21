@@ -1561,8 +1561,12 @@
   var video = document.getElementById('hero-video');
   var canvas = document.getElementById('hero-canvas');
   if (!canvas || !video) return;
-  var ctx = canvas.getContext('2d', {willReadFrequently: true});
   var rafId = null;
+
+  // Chrome/Firefox support VP9 alpha natively in the webm — just draw, no pixel stripping needed.
+  // Safari does not — we strip the white background manually.
+  var needsBgRemoval = video.canPlayType('video/webm; codecs="vp9"') === '';
+  var ctx = canvas.getContext('2d', needsBgRemoval ? {willReadFrequently: true} : {});
 
   function renderFrame() {
     var w = video.videoWidth, h = video.videoHeight;
@@ -1574,14 +1578,17 @@
       canvas.width = w;
       canvas.height = h;
     }
+    ctx.clearRect(0, 0, w, h);
     ctx.drawImage(video, 0, 0, w, h);
-    var img = ctx.getImageData(0, 0, w, h);
-    var d = img.data;
-    for (var i = 0; i < d.length; i += 4) {
-      var r = d[i], g = d[i+1], b = d[i+2];
-      if (r > 195 && g > 182 && b > 170) { d[i+3] = 0; }
+    if (needsBgRemoval) {
+      var img = ctx.getImageData(0, 0, w, h);
+      var d = img.data;
+      for (var i = 0; i < d.length; i += 4) {
+        var r = d[i], g = d[i+1], b = d[i+2];
+        if (r > 195 && g > 182 && b > 170) { d[i+3] = 0; }
+      }
+      ctx.putImageData(img, 0, 0);
     }
-    ctx.putImageData(img, 0, 0);
     if (!video.paused) { rafId = requestAnimationFrame(renderFrame); }
   }
 
