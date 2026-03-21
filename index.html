@@ -1309,7 +1309,7 @@
       <span class="tick"></span>
       <span class="tick"></span>
       <canvas id="hero-canvas" class="hero-logo-video"></canvas>
-      <video id="hero-video" autoplay loop muted playsinline style="display:none">
+      <video id="hero-video" autoplay loop muted playsinline style="position:absolute;width:0;height:0;opacity:0;pointer-events:none">
         <source src="assets/images/kerchunk-transparent.webm" type="video/webm">
         <source src="assets/images/kerchunk.mp4" type="video/mp4">
       </video>
@@ -1562,30 +1562,49 @@
   var canvas = document.getElementById('hero-canvas');
   if (!canvas || !video) return;
   var ctx = canvas.getContext('2d', {willReadFrequently: true});
-  var running = false;
+  var rafId = null;
 
-  function removeBackground() {
-    if (video.readyState < 2) return;
+  function renderFrame() {
     var w = video.videoWidth, h = video.videoHeight;
-    if (canvas.width !== w) canvas.width = w;
-    if (canvas.height !== h) canvas.height = h;
+    if (!w || !h || video.readyState < 2) {
+      rafId = requestAnimationFrame(renderFrame);
+      return;
+    }
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width = w;
+      canvas.height = h;
+    }
     ctx.drawImage(video, 0, 0, w, h);
     var img = ctx.getImageData(0, 0, w, h);
     var d = img.data;
     for (var i = 0; i < d.length; i += 4) {
       var r = d[i], g = d[i+1], b = d[i+2];
-      if (r > 195 && g > 182 && b > 170) {
-        d[i+3] = 0;
-      }
+      if (r > 195 && g > 182 && b > 170) { d[i+3] = 0; }
     }
     ctx.putImageData(img, 0, 0);
-    requestAnimationFrame(removeBackground);
+    if (!video.paused) { rafId = requestAnimationFrame(renderFrame); }
   }
 
-  video.addEventListener('play', function(){
-    if (!running) { running = true; requestAnimationFrame(removeBackground); }
-  });
-  video.play().catch(function(){});
+  function startLoop() {
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(renderFrame);
+  }
+
+  video.addEventListener('playing', startLoop);
+  video.addEventListener('play', startLoop);
+
+  var p = video.play();
+  if (p && p.catch) {
+    p.catch(function() {
+      function tryPlay() {
+        video.play().catch(function(){});
+        document.removeEventListener('touchstart', tryPlay);
+        document.removeEventListener('click', tryPlay);
+      }
+      document.addEventListener('touchstart', tryPlay, {once: true, passive: true});
+      document.addEventListener('click', tryPlay, {once: true});
+    });
+  }
 })();
 </script>
 </body>
