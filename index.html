@@ -327,7 +327,6 @@
       object-fit: contain;
       filter: drop-shadow(0 8px 40px rgba(139,64,73,.3));
       animation: float 6s ease-in-out infinite;
-      mix-blend-mode: multiply;
     }
 
     @keyframes float {
@@ -1309,10 +1308,8 @@
       <span class="tick"></span>
       <span class="tick"></span>
       <span class="tick"></span>
-      <video class="hero-logo-video"
-             autoplay loop muted playsinline
-             poster="assets/images/Kerchunk-radio-transparent-Print.svg">
-        <source src="assets/images/kerchunk-transparent.mov" type="video/mp4; codecs=hvc1">
+      <canvas id="hero-canvas" class="hero-logo-video"></canvas>
+      <video id="hero-video" autoplay loop muted playsinline style="display:none">
         <source src="assets/images/kerchunk-transparent.webm" type="video/webm">
         <source src="assets/images/kerchunk.mp4" type="video/mp4">
       </video>
@@ -1557,6 +1554,38 @@
       if(!btn.contains(e.target) && !menu.contains(e.target)) menu.classList.remove('open');
     });
   }
+})();
+</script>
+<script>
+(function(){
+  var video = document.getElementById('hero-video');
+  var canvas = document.getElementById('hero-canvas');
+  if (!canvas || !video) return;
+  var ctx = canvas.getContext('2d', {willReadFrequently: true});
+  var running = false;
+
+  function removeBackground() {
+    if (video.readyState < 2) return;
+    var w = video.videoWidth, h = video.videoHeight;
+    if (canvas.width !== w) canvas.width = w;
+    if (canvas.height !== h) canvas.height = h;
+    ctx.drawImage(video, 0, 0, w, h);
+    var img = ctx.getImageData(0, 0, w, h);
+    var d = img.data;
+    for (var i = 0; i < d.length; i += 4) {
+      var r = d[i], g = d[i+1], b = d[i+2];
+      if (r > 195 && g > 182 && b > 170) {
+        d[i+3] = 0;
+      }
+    }
+    ctx.putImageData(img, 0, 0);
+    requestAnimationFrame(removeBackground);
+  }
+
+  video.addEventListener('play', function(){
+    if (!running) { running = true; requestAnimationFrame(removeBackground); }
+  });
+  video.play().catch(function(){});
 })();
 </script>
 </body>
