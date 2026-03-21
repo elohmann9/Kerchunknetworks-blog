@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Residential Services — Kerchunk Networks</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;500;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --tan: #e8ddd0;
+      --beige: #d4c4b0;
+      --beige-dark: #c0ae96;
+      --maroon: #8b4049;
+      --maroon-dark: #6b3038;
+      --maroon-dim: rgba(139,64,73,.1);
+      --maroon-glow: rgba(139,64,73,.3);
+      --gold: #b8860b;
+      --gold-light: #d4a574;
+      --gold-dim: rgba(184,134,11,.12);
+      --text: #3a2a2a;
+      --text2: #7a5a5a;
+      --text3: #b09080;
+      --border: rgba(139,64,73,.15);
+      --border-hi: rgba(139,64,73,.3);
+      --mono: 'Share Tech Mono', monospace;
+      --ui: 'Barlow Condensed', sans-serif;
+      --body: 'Barlow', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--body); background: var(--tan); color: var(--text); line-height: 1.6; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(139,64,73,.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--maroon-dark);
+      box-shadow: 0 2px 0 0 rgba(184,134,11,.35);
+      padding: 0 40px; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo img { height: 38px; width: auto; filter: brightness(0) invert(1); }
+    .nav-logo-text .name { font-family: var(--ui); font-size: 20px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #fff; line-height: 1; }
+    .nav-logo-text .sub { font-family: var(--mono); font-size: 9px; color: var(--gold-light); letter-spacing: 2px; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a { font-family: var(--ui); font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.75); text-decoration: none; padding: 8px 16px; transition: color .15s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 16px; right: 16px; height: 2px; background: var(--gold-light); transform: scaleX(0); transition: transform .15s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-cta { background: var(--gold) !important; color: #fff !important; border-radius: 3px; padding: 8px 20px !important; font-weight: 700 !important; }
+    .nav-cta:hover { background: var(--gold-light) !important; }
+    .nav-cta::after { display: none !important; }
+
+    /* ── MEGA MENU ── */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a { display: flex; align-items: center; gap: 5px; }
+    .nav-dropdown > a::after { display: none !important; }
+    .nav-dropdown-arrow { font-family: var(--mono); font-size: 8px; color: var(--gold-light); transition: transform .2s; }
+    .nav-dropdown:hover .nav-dropdown-arrow { transform: rotate(180deg); }
+    .mega-menu { position: absolute; top: calc(100% + 12px); left: 50%; transform: translateX(-50%) translateY(-4px); width: 520px; background: rgba(232,221,208,.98); backdrop-filter: blur(16px); border: 1px solid var(--border-hi); border-top: 2px solid var(--maroon); box-shadow: 0 8px 32px rgba(139,64,73,.15); border-radius: 0 0 3px 3px; opacity: 0; pointer-events: none; transition: opacity .15s, transform .15s; z-index: 200; }
+    .nav-dropdown:hover .mega-menu { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
+    .mega-menu-header { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; background: var(--beige-dark); border-bottom: 1px solid var(--border-hi); }
+    .mega-menu-title { font-family: var(--mono); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--maroon-dark); }
+    .mega-menu-tag { font-family: var(--mono); font-size: 8px; letter-spacing: 1px; color: var(--maroon); border: 1px solid var(--maroon); padding: 1px 6px; border-radius: 2px; opacity: 0.6; }
+    .mega-menu-cols { display: grid; grid-template-columns: 1fr 1fr; }
+    .mega-col { padding: 16px 20px; }
+    .mega-col:first-child { border-right: 1px solid var(--border); }
+    .mega-col-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .mega-col-icon { font-size: 14px; }
+    .mega-col-title { font-family: var(--ui); font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text); }
+    .mega-col-items { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+    .mega-col-items li a { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 2px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.5px; color: var(--text2) !important; text-decoration: none; transition: background .15s, color .15s; position: static !important; }
+    .mega-col-items li a::before { content: '—'; color: var(--maroon); opacity: 0.5; flex-shrink: 0; font-size: 9px; }
+    .mega-col-items li a:hover { background: var(--maroon-dim); color: var(--maroon) !important; }
+    .mega-col-items li a:hover::before { opacity: 1; }
+    .mega-menu-footer { padding: 10px 16px; background: var(--beige); border-top: 1px solid var(--border); text-align: center; }
+    .mega-menu-footer a { font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold) !important; text-decoration: none; }
+    .mega-menu-footer a:hover { color: var(--maroon) !important; }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: linear-gradient(135deg, var(--tan) 0%, var(--beige) 100%);
+      padding: 72px 80px 60px;
+      position: relative; overflow: hidden;
+      border-bottom: 1px solid var(--border-hi);
+    }
+    .page-hero::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(139,64,73,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(139,64,73,.05) 1px, transparent 1px);
+      background-size: 50px 50px; pointer-events: none;
+    }
+    .page-hero-inner { position: relative; z-index: 1; max-width: 700px; }
+    .page-hero-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .page-hero-eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); animation: pulse-dot 2s ease-in-out infinite; }
+    @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
+    .page-hero h1 { font-family: var(--ui); font-size: clamp(36px, 5vw, 64px); font-weight: 900; letter-spacing: 3px; text-transform: uppercase; color: var(--text); line-height: 1; margin-bottom: 20px; }
+    .page-hero h1 span { color: var(--maroon); display: block; }
+    .hero-divider { width: 80px; height: 3px; background: linear-gradient(90deg, var(--maroon), var(--gold)); margin: 24px 0; border-radius: 2px; }
+    .page-hero p { font-size: 17px; font-weight: 300; color: var(--text2); max-width: 560px; line-height: 1.8; }
+
+    /* ── SERVICE BLOCKS ── */
+    .service-block { padding: 80px 80px; border-bottom: 1px solid var(--border); }
+    .service-block.alt { background: #fff; }
+    .service-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .service-inner.reverse { direction: rtl; }
+    .service-inner.reverse > * { direction: ltr; }
+    .service-label { font-family: var(--mono); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .service-title { font-family: var(--ui); font-size: clamp(26px, 3vw, 40px); font-weight: 900; letter-spacing: 2px; text-transform: uppercase; color: var(--text); line-height: 1.1; margin-bottom: 18px; }
+    .service-desc { font-size: 16px; font-weight: 300; color: var(--text2); line-height: 1.8; margin-bottom: 28px; }
+    .service-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .service-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: var(--text2); }
+    .service-list li::before { content: '—'; color: var(--maroon); font-family: var(--mono); flex-shrink: 0; margin-top: 2px; }
+
+    /* ── DETAIL CARD ── */
+    .detail-card { background: var(--tan); border: 1px solid var(--border-hi); border-radius: 3px; overflow: hidden; }
+    .service-block.alt .detail-card { background: var(--beige); }
+    .detail-card-header { background: var(--beige-dark); border-bottom: 1px solid var(--border-hi); padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; }
+    .detail-card-title { font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--maroon-dark); }
+    .detail-card-badge { font-family: var(--mono); font-size: 9px; letter-spacing: 1px; color: var(--maroon); border: 1px solid var(--maroon); padding: 2px 8px; border-radius: 2px; opacity: 0.7; }
+    .detail-row { display: flex; justify-content: space-between; align-items: center; padding: 11px 16px; border-bottom: 1px solid var(--border); font-family: var(--mono); font-size: 11px; }
+    .detail-row:last-child { border-bottom: none; }
+    .detail-row-label { color: var(--text3); letter-spacing: 1px; }
+    .detail-row-val { color: var(--text); }
+    .detail-row-val.highlight { color: var(--maroon); font-weight: bold; }
+
+    /* ── UNIFI PANEL CARD ── */
+    .unifi-card { background: var(--tan); border: 1px solid var(--border-hi); border-radius: 3px; overflow: hidden; }
+    .service-block.alt .unifi-card { background: var(--beige); }
+    .unifi-card-header { background: var(--beige-dark); border-bottom: 1px solid var(--border-hi); padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; }
+    .unifi-card-title { font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--maroon-dark); }
+    .unifi-card-live { font-family: var(--mono); font-size: 9px; color: var(--maroon); border: 1px solid var(--maroon); padding: 1px 6px; border-radius: 2px; opacity: 0.7; }
+
+    .unifi-site-bar { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; background: var(--beige); border-bottom: 1px solid var(--border); }
+    .unifi-site-name { font-family: var(--ui); font-size: 13px; font-weight: 600; letter-spacing: 1px; color: var(--text); }
+    .unifi-site-meta { display: flex; gap: 16px; }
+    .unifi-site-stat { text-align: right; }
+    .unifi-stat-val { font-family: var(--mono); font-size: 13px; color: var(--maroon); font-weight: bold; }
+    .unifi-stat-label { font-family: var(--mono); font-size: 8px; color: var(--text3); letter-spacing: 1px; text-transform: uppercase; }
+
+    .ap-row { display: flex; align-items: center; gap: 12px; padding: 11px 16px; border-bottom: 1px solid var(--border); }
+    .ap-row:last-of-type { border-bottom: none; }
+    .ap-icon { width: 28px; height: 28px; background: var(--maroon-dim); border: 1px solid var(--border-hi); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
+    .ap-info { flex: 1; }
+    .ap-name { font-family: var(--ui); font-size: 13px; font-weight: 600; color: var(--text); }
+    .ap-model { font-family: var(--mono); font-size: 8px; color: var(--text3); letter-spacing: 1px; text-transform: uppercase; }
+    .ap-clients { font-family: var(--mono); font-size: 12px; color: var(--maroon); font-weight: bold; text-align: right; }
+    .ap-clients-label { font-family: var(--mono); font-size: 8px; color: var(--text3); letter-spacing: 1px; text-align: right; }
+
+    /* ── VLAN CARD ── */
+    .vlan-card { background: var(--tan); border: 1px solid var(--border-hi); border-radius: 3px; overflow: hidden; }
+    .vlan-card-header { background: var(--beige-dark); border-bottom: 1px solid var(--border-hi); padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; }
+    .vlan-card-title { font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--maroon-dark); }
+
+    .vlan-row { padding: 13px 16px; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 14px; }
+    .vlan-row:last-child { border-bottom: none; }
+    .vlan-tag { font-family: var(--mono); font-size: 9px; color: var(--text3); background: var(--maroon-dim); border: 1px solid var(--border-hi); padding: 2px 8px; border-radius: 2px; flex-shrink: 0; margin-top: 2px; }
+    .vlan-info { flex: 1; }
+    .vlan-name { font-family: var(--ui); font-size: 14px; font-weight: 700; color: var(--text); letter-spacing: 0.5px; margin-bottom: 2px; }
+    .vlan-desc { font-family: var(--mono); font-size: 9px; color: var(--text3); letter-spacing: 0.5px; }
+
+    /* ── CARE PLAN PRICING ── */
+    .pricing-section { padding: 80px 40px; background: var(--beige); border-bottom: 1px solid var(--border); text-align: center; }
+    .pricing-inner { max-width: 480px; margin: 0 auto; }
+    .pricing-card { background: #fff; border: 1px solid var(--border-hi); border-radius: 3px; overflow: hidden; margin-top: 40px; box-shadow: 0 4px 24px rgba(139,64,73,.08); }
+    .pricing-card-header { background: var(--maroon); padding: 28px 32px; text-align: center; }
+    .pricing-card-name { font-family: var(--ui); font-size: 22px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #fff; margin-bottom: 6px; }
+    .pricing-card-price { font-family: var(--ui); font-size: 52px; font-weight: 900; color: #fff; line-height: 1; }
+    .pricing-card-price span { font-size: 18px; font-weight: 300; opacity: 0.8; }
+    .pricing-card-sub { font-family: var(--mono); font-size: 9px; letter-spacing: 2px; color: rgba(255,255,255,.6); text-transform: uppercase; margin-top: 6px; }
+    .pricing-features { padding: 28px 32px; list-style: none; display: flex; flex-direction: column; gap: 12px; text-align: left; }
+    .pricing-features li { display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--text2); }
+    .pricing-features li::before { content: '—'; color: var(--maroon); font-family: var(--mono); flex-shrink: 0; }
+    .pricing-card-footer { padding: 0 32px 28px; }
+    .pricing-note { font-family: var(--mono); font-size: 9px; letter-spacing: 1px; color: var(--text3); text-align: center; margin-top: 12px; }
+
+    /* ── SECTION SHARED ── */
+    .section-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; text-align: center; }
+    .section-title { font-family: var(--ui); font-size: clamp(30px, 4vw, 48px); font-weight: 900; letter-spacing: 2px; text-transform: uppercase; color: var(--text); margin-bottom: 16px; text-align: center; }
+    .section-sub { font-size: 16px; font-weight: 300; color: var(--text2); max-width: 540px; margin: 0 auto 52px; line-height: 1.8; text-align: center; }
+
+    /* ── CTA BAND ── */
+    .band { background: var(--maroon); padding: 64px 40px; text-align: center; }
+    .band-inner { max-width: 640px; margin: 0 auto; }
+    .band h2 { font-family: var(--ui); font-size: clamp(28px, 3vw, 42px); font-weight: 900; letter-spacing: 2px; text-transform: uppercase; color: #fff; margin-bottom: 14px; }
+    .band p { font-size: 16px; font-weight: 300; color: rgba(255,255,255,.75); margin-bottom: 32px; line-height: 1.8; }
+    .btn-primary { display: inline-block; background: #fff; color: var(--maroon); font-family: var(--ui); font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; padding: 14px 32px; border-radius: 2px; transition: opacity .2s; }
+    .btn-primary:hover { opacity: 0.9; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--beige-dark); border-top: 1px solid var(--border-hi); padding: 40px 40px 24px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto 28px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px; }
+    .footer-logo .name { font-family: var(--ui); font-size: 18px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--text); }
+    .footer-logo .sub { font-family: var(--mono); font-size: 9px; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 6px 20px; list-style: none; }
+    .footer-links a { font-family: var(--mono); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text2); text-decoration: none; }
+    .footer-links a:hover { color: var(--maroon); }
+    .footer-copy { text-align: center; font-family: var(--mono); font-size: 10px; color: var(--text3); letter-spacing: 1px; border-top: 1px solid var(--border); padding-top: 20px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .page-hero { padding: 52px 24px 44px; }
+      .service-block { padding: 60px 24px; }
+      .service-inner { grid-template-columns: 1fr; gap: 32px; }
+      .service-inner.reverse { direction: ltr; }
+      .pricing-section { padding: 60px 24px; }
+      .band { padding: 52px 24px; }
+      footer { padding: 32px 24px 20px; }
+      .footer-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="/">
+    <img src="assets/images/Kerchunk-radio-transparent-Print.svg" alt="Kerchunk Networks">
+    <div class="nav-logo-text">
+      <div class="name">Kerchunk Networks</div>
+      <div class="sub">Professional Solutions</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li class="nav-dropdown">
+      <a href="#">Services <span class="nav-dropdown-arrow">▾</span></a>
+      <div class="mega-menu">
+        <div class="mega-menu-header">
+          <span class="mega-menu-title">Services · Select a Category</span>
+          <span class="mega-menu-tag">Kerchunk Networks</span>
+        </div>
+        <div class="mega-menu-cols">
+          <div class="mega-col">
+            <div class="mega-col-header">
+              <span class="mega-col-icon">📡</span>
+              <span class="mega-col-title">Fire &amp; Safety</span>
+            </div>
+            <ul class="mega-col-items">
+              <li><a href="services-fire.html">Cradlepoint Installs</a></li>
+              <li><a href="services-fire.html">NCM Fleet Management</a></li>
+              <li><a href="services-fire.html">Dual SIM Failover</a></li>
+              <li><a href="services-fire.html">Starlink Integration</a></li>
+            </ul>
+          </div>
+          <div class="mega-col">
+            <div class="mega-col-header">
+              <span class="mega-col-icon">🏠</span>
+              <span class="mega-col-title">Residential</span>
+            </div>
+            <ul class="mega-col-items">
+              <li><a href="services-residential.html">Unifi Home Installs</a></li>
+              <li><a href="services-residential.html">Care Plan — $20/mo</a></li>
+              <li><a href="services-residential.html">VLAN Segmentation</a></li>
+              <li><a href="services-residential.html">Support &amp; Monitoring</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="mega-menu-footer">
+          <a href="services-fire.html">View All Services →</a>
+        </div>
+      </div>
+    </li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="nav-cta">Schedule a Booking</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-eyebrow">Residential · Home Networks</div>
+    <h1>Your Home Network<span>Done Right.</span></h1>
+    <div class="hero-divider"></div>
+    <p>Unifi only. Every time. It's the gear I trust, the gear I install, and the gear I stand behind. No consumer boxes, no band-aids — a real network built to last.</p>
+  </div>
+</div>
+
+<!-- SERVICE 1: UNIFI INSTALLS -->
+<div class="service-block">
+  <div class="service-inner">
+    <div>
+      <div class="service-label">Installation · Unifi</div>
+      <div class="service-title">Unifi Home Installs</div>
+      <p class="service-desc">A proper Unifi install isn't just plugging in access points. It's a site survey, smart AP placement, clean cable runs, and a network that's actually configured — not default. You get full coverage, fast speeds everywhere, and a setup you can hand off to managed support.</p>
+      <ul class="service-list">
+        <li>On-site survey and coverage planning</li>
+        <li>UniFi Dream Machine or Cloud Gateway Max</li>
+        <li>U6 Pro, U6 Mesh, or U6 Lite AP placement</li>
+        <li>Clean cable runs and professional mounting</li>
+        <li>Full configuration — SSIDs, passwords, DNS</li>
+        <li>Walkthrough so you know what you have</li>
+      </ul>
+    </div>
+    <div class="unifi-card">
+      <div class="unifi-card-header">
+        <span class="unifi-card-title">Unifi · Network Console</span>
+        <span class="unifi-card-live">LIVE</span>
+      </div>
+      <div class="unifi-site-bar">
+        <div class="unifi-site-name">Home Network</div>
+        <div class="unifi-site-meta">
+          <div class="unifi-site-stat">
+            <div class="unifi-stat-val">18</div>
+            <div class="unifi-stat-label">Clients</div>
+          </div>
+          <div class="unifi-site-stat">
+            <div class="unifi-stat-val">✓ Healthy</div>
+            <div class="unifi-stat-label">Status</div>
+          </div>
+        </div>
+      </div>
+      <div class="ap-row">
+        <div class="ap-icon">📡</div>
+        <div class="ap-info">
+          <div class="ap-name">Living Room</div>
+          <div class="ap-model">U6 Pro · 2.4 / 5 / 6 GHz</div>
+        </div>
+        <div>
+          <div class="ap-clients">8</div>
+          <div class="ap-clients-label">clients</div>
+        </div>
+      </div>
+      <div class="ap-row">
+        <div class="ap-icon">📡</div>
+        <div class="ap-info">
+          <div class="ap-name">Backyard</div>
+          <div class="ap-model">U6 Mesh · 2.4 / 5 GHz</div>
+        </div>
+        <div>
+          <div class="ap-clients">4</div>
+          <div class="ap-clients-label">clients</div>
+        </div>
+      </div>
+      <div class="ap-row">
+        <div class="ap-icon">📡</div>
+        <div class="ap-info">
+          <div class="ap-name">Garage</div>
+          <div class="ap-model">U6 Lite · 2.4 / 5 GHz</div>
+        </div>
+        <div>
+          <div class="ap-clients">2</div>
+          <div class="ap-clients-label">clients</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICE 2: VLAN SEGMENTATION -->
+<div class="service-block alt">
+  <div class="service-inner reverse">
+    <div>
+      <div class="service-label">Security · Network Design</div>
+      <div class="service-title">VLAN Segmentation</div>
+      <p class="service-desc">Your smart TV doesn't need to talk to your laptop. VLAN segmentation keeps your devices separated by trust level — main devices on one network, IoT gadgets isolated on another, guests on their own lane with no access to anything that matters.</p>
+      <ul class="service-list">
+        <li>Main network for trusted devices</li>
+        <li>IoT VLAN — cameras, smart home, TVs</li>
+        <li>Guest network — isolated, internet only</li>
+        <li>Firewall rules between VLANs</li>
+        <li>Device assignment and labeling</li>
+        <li>Documented network map on handoff</li>
+      </ul>
+    </div>
+    <div class="vlan-card">
+      <div class="vlan-card-header">
+        <span class="vlan-card-title">Unifi · Network Segments</span>
+        <span style="font-family:var(--mono);font-size:9px;color:var(--maroon);border:1px solid var(--maroon);padding:2px 8px;border-radius:2px;opacity:.7;">CONFIGURED</span>
+      </div>
+      <div class="vlan-row">
+        <span class="vlan-tag">VLAN 1</span>
+        <div class="vlan-info">
+          <div class="vlan-name">Default — Main Network</div>
+          <div class="vlan-desc">Trusted devices · Laptops, phones, desktops</div>
+        </div>
+      </div>
+      <div class="vlan-row">
+        <span class="vlan-tag">VLAN 20</span>
+        <div class="vlan-info">
+          <div class="vlan-name">IoT — Smart Devices</div>
+          <div class="vlan-desc">Isolated · Cameras, TVs, smart home</div>
+        </div>
+      </div>
+      <div class="vlan-row">
+        <span class="vlan-tag">VLAN 30</span>
+        <div class="vlan-info">
+          <div class="vlan-name">Guest — Internet Only</div>
+          <div class="vlan-desc">No LAN access · Visitors and contractors</div>
+        </div>
+      </div>
+      <div class="vlan-row">
+        <span class="vlan-tag">VLAN 40</span>
+        <div class="vlan-info">
+          <div class="vlan-name">Work — VPN Protected</div>
+          <div class="vlan-desc">Optional · Home office separation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CARE PLAN PRICING -->
+<div class="pricing-section">
+  <div class="pricing-inner">
+    <div class="section-eyebrow">Managed Services</div>
+    <div class="section-title">The Care Plan</div>
+    <p class="section-sub">One flat rate. No surprises. Cancel anytime. Your network stays healthy so you don't have to think about it.</p>
+    <div class="pricing-card">
+      <div class="pricing-card-header">
+        <div class="pricing-card-name">Care Plan</div>
+        <div class="pricing-card-price">$20<span> / mo</span></div>
+        <div class="pricing-card-sub">Cancel anytime · No contracts</div>
+      </div>
+      <ul class="pricing-features">
+        <li>24/7 remote network monitoring</li>
+        <li>Firmware updates managed for you</li>
+        <li>Remote troubleshooting — no truck roll needed</li>
+        <li>Priority response when something goes down</li>
+        <li>Monthly network health check-in</li>
+        <li>Direct line to Erik — not a help desk</li>
+      </ul>
+      <div class="pricing-card-footer">
+        <a href="contact.html" class="btn-primary" style="width:100%;text-align:center;display:block;">Get Started</a>
+        <p class="pricing-note">Available to Kerchunk Networks install clients only</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA BAND -->
+<div class="band">
+  <div class="band-inner">
+    <h2>Ready for a Network That Just Works?</h2>
+    <p>No more restarting the router. No more dead zones. Let's build something you can forget about.</p>
+    <a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="btn-primary">Schedule a Booking</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="name">Kerchunk Networks</div>
+      <div class="sub">Connecting Fire, Field &amp; Family</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="services-fire.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="privacy-policy.html">Privacy</a></li>
+      <li><a href="terms-of-service.html">Terms</a></li>
+      <li><a href="sms-consent.html">SMS Consent</a></li>
+    </ul>
+  </div>
+  <div class="footer-copy">
+    © 2025 Kerchunk Networks · 415-737-9223 · elohmann@kerchunknetworks.com
+  </div>
+</footer>
+
+</body>
+</html>

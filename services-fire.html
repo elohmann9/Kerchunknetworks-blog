@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fire &amp; Safety Services — Kerchunk Networks</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;500;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --tan: #e8ddd0;
+      --beige: #d4c4b0;
+      --beige-dark: #c0ae96;
+      --maroon: #8b4049;
+      --maroon-dark: #6b3038;
+      --maroon-dim: rgba(139,64,73,.1);
+      --maroon-glow: rgba(139,64,73,.3);
+      --gold: #b8860b;
+      --gold-light: #d4a574;
+      --gold-dim: rgba(184,134,11,.12);
+      --text: #3a2a2a;
+      --text2: #7a5a5a;
+      --text3: #b09080;
+      --border: rgba(139,64,73,.15);
+      --border-hi: rgba(139,64,73,.3);
+      --mono: 'Share Tech Mono', monospace;
+      --ui: 'Barlow Condensed', sans-serif;
+      --body: 'Barlow', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--body); background: var(--tan); color: var(--text); line-height: 1.6; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(139,64,73,.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--maroon-dark);
+      box-shadow: 0 2px 0 0 rgba(184,134,11,.35);
+      padding: 0 40px; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo img { height: 38px; width: auto; filter: brightness(0) invert(1); }
+    .nav-logo-text .name { font-family: var(--ui); font-size: 20px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #fff; line-height: 1; }
+    .nav-logo-text .sub { font-family: var(--mono); font-size: 9px; color: var(--gold-light); letter-spacing: 2px; text-transform: uppercase; }
+
+    .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-links a { font-family: var(--ui); font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.75); text-decoration: none; padding: 8px 16px; transition: color .15s; position: relative; }
+    .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 16px; right: 16px; height: 2px; background: var(--gold-light); transform: scaleX(0); transition: transform .15s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-cta { background: var(--gold) !important; color: #fff !important; border-radius: 3px; padding: 8px 20px !important; font-weight: 700 !important; }
+    .nav-cta:hover { background: var(--gold-light) !important; }
+    .nav-cta::after { display: none !important; }
+
+    /* ── MEGA MENU ── */
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a { display: flex; align-items: center; gap: 5px; }
+    .nav-dropdown > a::after { display: none !important; }
+    .nav-dropdown-arrow { font-family: var(--mono); font-size: 8px; color: var(--gold-light); transition: transform .2s; }
+    .nav-dropdown:hover .nav-dropdown-arrow { transform: rotate(180deg); }
+
+    .mega-menu {
+      position: absolute; top: calc(100% + 12px); left: 50%;
+      transform: translateX(-50%) translateY(-4px);
+      width: 520px;
+      background: rgba(232,221,208,.98); backdrop-filter: blur(16px);
+      border: 1px solid var(--border-hi); border-top: 2px solid var(--maroon);
+      box-shadow: 0 8px 32px rgba(139,64,73,.15);
+      border-radius: 0 0 3px 3px;
+      opacity: 0; pointer-events: none;
+      transition: opacity .15s, transform .15s; z-index: 200;
+    }
+    .nav-dropdown:hover .mega-menu { opacity: 1; pointer-events: all; transform: translateX(-50%) translateY(0); }
+
+    .mega-menu-header { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; background: var(--beige-dark); border-bottom: 1px solid var(--border-hi); }
+    .mega-menu-title { font-family: var(--mono); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--maroon-dark); }
+    .mega-menu-tag { font-family: var(--mono); font-size: 8px; letter-spacing: 1px; color: var(--maroon); border: 1px solid var(--maroon); padding: 1px 6px; border-radius: 2px; opacity: 0.6; }
+    .mega-menu-cols { display: grid; grid-template-columns: 1fr 1fr; }
+    .mega-col { padding: 16px 20px; }
+    .mega-col:first-child { border-right: 1px solid var(--border); }
+    .mega-col-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+    .mega-col-icon { font-size: 14px; }
+    .mega-col-title { font-family: var(--ui); font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text); }
+    .mega-col-items { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+    .mega-col-items li a { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border-radius: 2px; font-family: var(--mono); font-size: 10px; letter-spacing: 0.5px; color: var(--text2) !important; text-decoration: none; transition: background .15s, color .15s; position: static !important; }
+    .mega-col-items li a::before { content: '—'; color: var(--maroon); opacity: 0.5; flex-shrink: 0; font-size: 9px; }
+    .mega-col-items li a:hover { background: var(--maroon-dim); color: var(--maroon) !important; }
+    .mega-col-items li a:hover::before { opacity: 1; }
+    .mega-menu-footer { padding: 10px 16px; background: var(--beige); border-top: 1px solid var(--border); text-align: center; }
+    .mega-menu-footer a { font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold) !important; text-decoration: none; }
+    .mega-menu-footer a:hover { color: var(--maroon) !important; }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+      padding: 72px 80px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+    }
+
+    .page-hero-inner { position: relative; z-index: 1; max-width: 700px; }
+
+    .page-hero-eyebrow {
+      font-family: var(--mono); font-size: 10px; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--gold-light);
+      margin-bottom: 16px;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    .page-hero-eyebrow::before {
+      content: ''; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--gold-light);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: .3; } }
+
+    .page-hero h1 {
+      font-family: var(--ui); font-size: clamp(36px, 5vw, 64px);
+      font-weight: 900; letter-spacing: 3px; text-transform: uppercase;
+      color: #fff; line-height: 1; margin-bottom: 20px;
+    }
+
+    .page-hero h1 span { color: var(--gold-light); display: block; }
+
+    .page-hero p {
+      font-size: 17px; font-weight: 300;
+      color: rgba(255,255,255,.75);
+      max-width: 560px; line-height: 1.8;
+    }
+
+    .hero-divider {
+      width: 80px; height: 3px;
+      background: linear-gradient(90deg, var(--gold-light), transparent);
+      margin: 24px 0; border-radius: 2px;
+    }
+
+    /* ── SERVICE BLOCKS ── */
+    .service-block { padding: 80px 80px; border-bottom: 1px solid var(--border); }
+    .service-block.alt { background: #fff; }
+
+    .service-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px; align-items: start;
+    }
+
+    .service-inner.reverse { direction: rtl; }
+    .service-inner.reverse > * { direction: ltr; }
+
+    .service-label { font-family: var(--mono); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .service-title { font-family: var(--ui); font-size: clamp(26px, 3vw, 40px); font-weight: 900; letter-spacing: 2px; text-transform: uppercase; color: var(--text); line-height: 1.1; margin-bottom: 18px; }
+    .service-desc { font-size: 16px; font-weight: 300; color: var(--text2); line-height: 1.8; margin-bottom: 28px; }
+
+    .service-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .service-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: var(--text2); }
+    .service-list li::before { content: '—'; color: var(--maroon); font-family: var(--mono); flex-shrink: 0; margin-top: 2px; }
+
+    /* ── DETAIL CARD ── */
+    .detail-card { background: var(--tan); border: 1px solid var(--border-hi); border-radius: 3px; overflow: hidden; }
+    .service-block.alt .detail-card { background: var(--beige); }
+
+    .detail-card-header { background: var(--beige-dark); border-bottom: 1px solid var(--border-hi); padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; }
+    .detail-card-title { font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--maroon-dark); }
+    .detail-card-badge { font-family: var(--mono); font-size: 9px; letter-spacing: 1px; color: var(--maroon); border: 1px solid var(--maroon); padding: 2px 8px; border-radius: 2px; opacity: 0.7; }
+
+    .detail-row { display: flex; justify-content: space-between; align-items: center; padding: 11px 16px; border-bottom: 1px solid var(--border); font-family: var(--mono); font-size: 11px; }
+    .detail-row:last-child { border-bottom: none; }
+    .detail-row-label { color: var(--text3); letter-spacing: 1px; }
+    .detail-row-val { color: var(--text); }
+    .detail-row-val.highlight { color: var(--maroon); font-weight: bold; }
+
+    /* ── FLEET CARD ── */
+    .fleet-card { background: var(--tan); border: 1px solid var(--border-hi); border-radius: 3px; overflow: hidden; }
+
+    .fleet-card-header { background: var(--beige-dark); border-bottom: 1px solid var(--border-hi); padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; }
+    .fleet-card-title { font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--maroon-dark); }
+    .fleet-live { font-family: var(--mono); font-size: 9px; color: var(--maroon); border: 1px solid var(--maroon); padding: 1px 6px; border-radius: 2px; opacity: 0.7; }
+
+    .fleet-grid { display: grid; grid-template-columns: 1fr 1fr; }
+    .fleet-device { padding: 12px 14px; border-left: 3px solid transparent; border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .fleet-device:nth-child(even) { border-right: none; }
+    .fleet-device:nth-last-child(-n+2) { border-bottom: none; }
+    .fleet-device.online { border-left-color: var(--gold); }
+    .fleet-device.offline { border-left-color: var(--maroon); }
+
+    .fleet-device-label { font-family: var(--mono); font-size: 8px; color: var(--text3); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+    .fleet-device-name { font-family: var(--ui); font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .fleet-device-row { display: flex; gap: 16px; }
+    .fleet-device-stat-label { font-family: var(--mono); font-size: 8px; color: var(--text3); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 2px; }
+    .fleet-device-stat-val { font-family: var(--mono); font-size: 10px; font-weight: bold; }
+    .online .fleet-device-stat-val.s { color: var(--gold); }
+    .offline .fleet-device-stat-val.s { color: var(--maroon); }
+    .fleet-device-stat-val.t { color: var(--text2); font-size: 9px; }
+
+    /* ── WAN CARD ── */
+    .wan-card { background: var(--beige); border: 1px solid var(--border-hi); border-radius: 3px; overflow: hidden; }
+
+    .wan-header { background: var(--beige-dark); border-bottom: 1px solid var(--border-hi); padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; }
+    .wan-title { font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--maroon-dark); }
+
+    .wan-rows { }
+    .wan-row { padding: 12px 16px; border-bottom: 1px solid var(--border); }
+    .wan-row:last-child { border-bottom: none; }
+    .wan-row-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+    .wan-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); margin-right: 8px; flex-shrink: 0; }
+    .wan-dot.standby { background: var(--text3); }
+    .wan-row-left { display: flex; align-items: center; }
+    .wan-name { font-family: var(--mono); font-size: 10px; color: var(--text); letter-spacing: 0.5px; }
+    .wan-type { font-family: var(--mono); font-size: 8px; color: var(--text3); letter-spacing: 1px; text-transform: uppercase; }
+    .wan-status { font-family: var(--mono); font-size: 9px; color: var(--gold); letter-spacing: 1px; }
+    .wan-status.standby { color: var(--text3); }
+    .wan-bar-wrap { height: 3px; background: var(--border); border-radius: 2px; overflow: hidden; }
+    .wan-bar-fill { height: 100%; background: var(--gold); border-radius: 2px; }
+    .wan-bar-fill.standby { background: var(--text3); width: 100%; opacity: 0.4; }
+
+    /* ── CREDENTIALS STRIP ── */
+    .creds-strip { background: var(--beige); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 40px 80px; }
+    .creds-strip-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 48px; }
+    .creds-strip-text { flex: 1; }
+    .creds-strip-label { font-family: var(--mono); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+    .creds-strip-title { font-family: var(--ui); font-size: 26px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; color: var(--text); margin-bottom: 10px; }
+    .creds-strip-desc { font-size: 15px; font-weight: 300; color: var(--text2); line-height: 1.8; max-width: 480px; }
+    .creds-badges { display: flex; align-items: center; gap: 28px; flex-shrink: 0; }
+    .cred-badge-item { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
+    .cred-badge-item img { height: 72px; width: auto; filter: drop-shadow(0 2px 6px rgba(0,0,0,.12)); }
+    .cred-badge-name { font-family: var(--ui); font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text); }
+    .cred-badge-issuer { font-family: var(--mono); font-size: 9px; color: var(--text3); letter-spacing: 1px; }
+
+    /* ── SECTION SHARED ── */
+    .section-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; text-align: center; }
+    .section-title { font-family: var(--ui); font-size: clamp(30px, 4vw, 48px); font-weight: 900; letter-spacing: 2px; text-transform: uppercase; color: var(--text); margin-bottom: 16px; text-align: center; }
+
+    /* ── CTA BAND ── */
+    .band { background: var(--maroon); padding: 64px 40px; text-align: center; }
+    .band-inner { max-width: 640px; margin: 0 auto; }
+    .band h2 { font-family: var(--ui); font-size: clamp(28px, 3vw, 42px); font-weight: 900; letter-spacing: 2px; text-transform: uppercase; color: #fff; margin-bottom: 14px; }
+    .band p { font-size: 16px; font-weight: 300; color: rgba(255,255,255,.75); margin-bottom: 32px; line-height: 1.8; }
+    .btn-primary { display: inline-block; background: #fff; color: var(--maroon); font-family: var(--ui); font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; padding: 14px 32px; border-radius: 2px; transition: opacity .2s; }
+    .btn-primary:hover { opacity: 0.9; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--beige-dark); border-top: 1px solid var(--border-hi); padding: 40px 40px 24px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto 28px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px; }
+    .footer-logo .name { font-family: var(--ui); font-size: 18px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--text); }
+    .footer-logo .sub { font-family: var(--mono); font-size: 9px; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 6px 20px; list-style: none; }
+    .footer-links a { font-family: var(--mono); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text2); text-decoration: none; }
+    .footer-links a:hover { color: var(--maroon); }
+    .footer-copy { text-align: center; font-family: var(--mono); font-size: 10px; color: var(--text3); letter-spacing: 1px; border-top: 1px solid var(--border); padding-top: 20px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .page-hero { padding: 52px 24px 44px; }
+      .service-block { padding: 60px 24px; }
+      .service-inner { grid-template-columns: 1fr; gap: 32px; }
+      .service-inner.reverse { direction: ltr; }
+      .creds-strip { padding: 40px 24px; }
+      .creds-strip-inner { flex-direction: column; }
+      .band { padding: 52px 24px; }
+      footer { padding: 32px 24px 20px; }
+      .footer-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="/">
+    <img src="assets/images/Kerchunk-radio-transparent-Print.svg" alt="Kerchunk Networks">
+    <div class="nav-logo-text">
+      <div class="name">Kerchunk Networks</div>
+      <div class="sub">Professional Solutions</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/">Home</a></li>
+    <li class="nav-dropdown">
+      <a href="#">Services <span class="nav-dropdown-arrow">▾</span></a>
+      <div class="mega-menu">
+        <div class="mega-menu-header">
+          <span class="mega-menu-title">Services · Select a Category</span>
+          <span class="mega-menu-tag">Kerchunk Networks</span>
+        </div>
+        <div class="mega-menu-cols">
+          <div class="mega-col">
+            <div class="mega-col-header">
+              <span class="mega-col-icon">📡</span>
+              <span class="mega-col-title">Fire &amp; Safety</span>
+            </div>
+            <ul class="mega-col-items">
+              <li><a href="services-fire.html">Cradlepoint Installs</a></li>
+              <li><a href="services-fire.html">NCM Fleet Management</a></li>
+              <li><a href="services-fire.html">Dual SIM Failover</a></li>
+              <li><a href="services-fire.html">Starlink Integration</a></li>
+            </ul>
+          </div>
+          <div class="mega-col">
+            <div class="mega-col-header">
+              <span class="mega-col-icon">🏠</span>
+              <span class="mega-col-title">Residential</span>
+            </div>
+            <ul class="mega-col-items">
+              <li><a href="services-residential.html">Unifi Home Installs</a></li>
+              <li><a href="services-residential.html">Care Plan — $20/mo</a></li>
+              <li><a href="services-residential.html">VLAN Segmentation</a></li>
+              <li><a href="services-residential.html">Support &amp; Monitoring</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="mega-menu-footer">
+          <a href="services-fire.html">View All Services →</a>
+        </div>
+      </div>
+    </li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="nav-cta">Schedule a Booking</a></li>
+  </ul>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-hero-eyebrow">Fire &amp; Public Safety</div>
+    <h1>Built for the<span>Firehouse.</span></h1>
+    <div class="hero-divider"></div>
+    <p>Network solutions designed by an active firefighter. Not a consultant who's read about fire departments — someone who works in one and knows what connectivity failure looks like on scene.</p>
+  </div>
+</div>
+
+<!-- SERVICE 1: CRADLEPOINT INSTALLS -->
+<div class="service-block">
+  <div class="service-inner">
+    <div>
+      <div class="service-label">Mobile Networking · Apparatus</div>
+      <div class="service-title">Cradlepoint Installs</div>
+      <p class="service-desc">The Cradlepoint R1900 and IBR1700 are the standard for fire apparatus networking. Proper install means clean cable runs, antenna placement that actually works, and configuration locked down for public safety use — not a default out-of-the-box setup.</p>
+      <ul class="service-list">
+        <li>R1900 and IBR1700 installation and configuration</li>
+        <li>Antenna placement and RF optimization</li>
+        <li>APN configuration for AT&amp;T FirstNet and Verizon</li>
+        <li>Tablet Command and CAD system integration</li>
+        <li>MDM profile deployment for iPads and iPhones</li>
+        <li>On-site installation — we come to you</li>
+      </ul>
+    </div>
+    <div class="detail-card">
+      <div class="detail-card-header">
+        <span class="detail-card-title">Cradlepoint · R1900</span>
+        <span class="detail-card-badge">CONFIGURED</span>
+      </div>
+      <div class="detail-row"><span class="detail-row-label">Primary Device</span><span class="detail-row-val">IBR1900 / IBR1700</span></div>
+      <div class="detail-row"><span class="detail-row-label">Carrier 1</span><span class="detail-row-val">AT&amp;T FirstNet</span></div>
+      <div class="detail-row"><span class="detail-row-label">Carrier 2</span><span class="detail-row-val">Verizon LTE</span></div>
+      <div class="detail-row"><span class="detail-row-label">Failover</span><span class="detail-row-val highlight">Automatic</span></div>
+      <div class="detail-row"><span class="detail-row-label">MDM</span><span class="detail-row-val">iPad / iPhone</span></div>
+      <div class="detail-row"><span class="detail-row-label">CAD Integration</span><span class="detail-row-val highlight">Tablet Command</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICE 2: NCM FLEET MGMT -->
+<div class="service-block alt">
+  <div class="service-inner reverse">
+    <div>
+      <div class="service-label">Remote Management · NCM</div>
+      <div class="service-title">Fleet Management</div>
+      <p class="service-desc">NetCloud Manager gives you a single pane of glass for every router in your fleet. Know which units are online, which are offline, and why — without sending someone to physically check. Remote config pushes mean you never have to touch a unit to update it.</p>
+      <ul class="service-list">
+        <li>NetCloud Manager setup and group configuration</li>
+        <li>Real-time online/offline status for every unit</li>
+        <li>Remote configuration and firmware pushes</li>
+        <li>Alert routing for offline events</li>
+        <li>Usage monitoring and data plan tracking</li>
+        <li>Monthly fleet health reporting</li>
+      </ul>
+    </div>
+    <div class="fleet-card">
+      <div class="fleet-card-header">
+        <span class="fleet-card-title">NCM · Fleet Status</span>
+        <span class="fleet-live">LIVE</span>
+      </div>
+      <div class="fleet-grid">
+        <div class="fleet-device online">
+          <div class="fleet-device-label">Cradlepoint · NCM</div>
+          <div class="fleet-device-name">R1900 · Engine 1</div>
+          <div class="fleet-device-row">
+            <div><div class="fleet-device-stat-label">Status</div><div class="fleet-device-stat-val s">ONLINE</div></div>
+            <div><div class="fleet-device-stat-label">Last Seen</div><div class="fleet-device-stat-val t">4m ago</div></div>
+          </div>
+        </div>
+        <div class="fleet-device online">
+          <div class="fleet-device-label">Cradlepoint · NCM</div>
+          <div class="fleet-device-name">R1900 · Engine 2</div>
+          <div class="fleet-device-row">
+            <div><div class="fleet-device-stat-label">Status</div><div class="fleet-device-stat-val s">ONLINE</div></div>
+            <div><div class="fleet-device-stat-label">Last Seen</div><div class="fleet-device-stat-val t">1h ago</div></div>
+          </div>
+        </div>
+        <div class="fleet-device online">
+          <div class="fleet-device-label">Cradlepoint · NCM</div>
+          <div class="fleet-device-name">IBR1700 · Truck 1</div>
+          <div class="fleet-device-row">
+            <div><div class="fleet-device-stat-label">Status</div><div class="fleet-device-stat-val s">ONLINE</div></div>
+            <div><div class="fleet-device-stat-label">Last Seen</div><div class="fleet-device-stat-val t">2h ago</div></div>
+          </div>
+        </div>
+        <div class="fleet-device offline">
+          <div class="fleet-device-label">Cradlepoint · NCM</div>
+          <div class="fleet-device-name">IBR1700 · Reserve</div>
+          <div class="fleet-device-row">
+            <div><div class="fleet-device-stat-label">Status</div><div class="fleet-device-stat-val s">OFFLINE</div></div>
+            <div><div class="fleet-device-stat-label">Last Seen</div><div class="fleet-device-stat-val t">14d ago</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICE 3: DUAL SIM + STARLINK -->
+<div class="service-block">
+  <div class="service-inner">
+    <div>
+      <div class="service-label">Redundancy · Failover</div>
+      <div class="service-title">Dual SIM &amp; Starlink Failover</div>
+      <p class="service-desc">A single carrier going down shouldn't take your apparatus dark. Dual SIM keeps you on air when one carrier fails. Add Starlink at the station and you have a third path — critical for rural departments where LTE coverage isn't a guarantee.</p>
+      <ul class="service-list">
+        <li>Dual SIM configuration — AT&amp;T and Verizon simultaneously</li>
+        <li>Automatic failover with zero manual intervention</li>
+        <li>Starlink installation and station integration</li>
+        <li>Load balancing across available connections</li>
+        <li>Failover testing and validation</li>
+        <li>Coverage mapping for your response area</li>
+      </ul>
+    </div>
+    <div class="wan-card">
+      <div class="wan-header">
+        <span class="wan-title">WAN · Connection Status</span>
+        <span style="font-family:var(--mono);font-size:9px;color:var(--gold);letter-spacing:1px;">ALL SYSTEMS GO</span>
+      </div>
+      <div class="wan-rows">
+        <div class="wan-row">
+          <div class="wan-row-top">
+            <div class="wan-row-left"><div class="wan-dot"></div><span class="wan-name">AT&amp;T FirstNet · SIM 1</span></div>
+            <span class="wan-status">PRIMARY</span>
+          </div>
+          <div class="wan-bar-wrap"><div class="wan-bar-fill" style="width:94%"></div></div>
+        </div>
+        <div class="wan-row">
+          <div class="wan-row-top">
+            <div class="wan-row-left"><div class="wan-dot"></div><span class="wan-name">Verizon LTE · SIM 2</span></div>
+            <span class="wan-status">ACTIVE</span>
+          </div>
+          <div class="wan-bar-wrap"><div class="wan-bar-fill" style="width:87%"></div></div>
+        </div>
+        <div class="wan-row">
+          <div class="wan-row-top">
+            <div class="wan-row-left"><div class="wan-dot standby"></div><span class="wan-name">Starlink · Station</span></div>
+            <span class="wan-status standby">STANDBY</span>
+          </div>
+          <div class="wan-bar-wrap"><div class="wan-bar-fill standby"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CREDENTIALS STRIP -->
+<div class="creds-strip">
+  <div class="creds-strip-inner">
+    <div class="creds-strip-text">
+      <div class="creds-strip-label">Why Trust Kerchunk</div>
+      <div class="creds-strip-title">Built by Someone in the Field</div>
+      <p class="creds-strip-desc">Erik Lohmann is an active firefighter with Woodside Fire Protection District and a FEMA-certified Communications Specialist. This isn't consulting from the outside — it's network design from someone who depends on this infrastructure on scene.</p>
+    </div>
+    <div class="creds-badges">
+      <div class="cred-badge-item">
+        <img src="assets/certs/fema-usr-badge.png" alt="FEMA Communications Specialist">
+        <div class="cred-badge-name">Comm Specialist</div>
+        <div class="cred-badge-issuer">FEMA · US&amp;R</div>
+      </div>
+      <div class="cred-badge-item">
+        <img src="assets/certs/ericsson-cna-badge.png" alt="Ericsson Certified Network Associate">
+        <div class="cred-badge-name">Network Associate</div>
+        <div class="cred-badge-issuer">Ericsson · Enterprise</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA BAND -->
+<div class="band">
+  <div class="band-inner">
+    <h2>Let's Talk About Your Department</h2>
+    <p>Every department is different. Let's look at your apparatus, your coverage area, and build something that actually works for your team.</p>
+    <a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="btn-primary">Schedule a Booking</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="name">Kerchunk Networks</div>
+      <div class="sub">Connecting Fire, Field &amp; Family</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="services-fire.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="privacy-policy.html">Privacy</a></li>
+      <li><a href="terms-of-service.html">Terms</a></li>
+      <li><a href="sms-consent.html">SMS Consent</a></li>
+    </ul>
+  </div>
+  <div class="footer-copy">
+    © 2025 Kerchunk Networks · 415-737-9223 · elohmann@kerchunknetworks.com
+  </div>
+</footer>
+
+</body>
+</html>
