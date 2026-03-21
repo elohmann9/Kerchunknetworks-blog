@@ -1309,7 +1309,7 @@
       <span class="tick"></span>
       <span class="tick"></span>
       <canvas id="hero-canvas" class="hero-logo-video"></canvas>
-      <video id="hero-video" autoplay loop muted playsinline style="position:absolute;width:0;height:0;opacity:0;pointer-events:none">
+      <video id="hero-video" autoplay loop muted playsinline style="position:fixed;bottom:0;right:0;width:1px;height:1px;opacity:0.01;pointer-events:none;z-index:-999">
         <source src="assets/images/kerchunk-transparent.webm" type="video/webm">
         <source src="assets/images/kerchunk.mp4" type="video/mp4">
       </video>
@@ -1561,12 +1561,9 @@
   var video = document.getElementById('hero-video');
   var canvas = document.getElementById('hero-canvas');
   if (!canvas || !video) return;
+  var ctx = canvas.getContext('2d', {willReadFrequently: true});
   var rafId = null;
-
-  // Chrome/Firefox support VP9 alpha natively in the webm — just draw, no pixel stripping needed.
-  // Safari does not — we strip the white background manually.
-  var needsBgRemoval = video.canPlayType('video/webm; codecs="vp9"') === '';
-  var ctx = canvas.getContext('2d', needsBgRemoval ? {willReadFrequently: true} : {});
+  var needsBgRemoval = null; // auto-detected on first frame
 
   function renderFrame() {
     var w = video.videoWidth, h = video.videoHeight;
@@ -1580,6 +1577,13 @@
     }
     ctx.clearRect(0, 0, w, h);
     ctx.drawImage(video, 0, 0, w, h);
+
+    // On first frame, sample a corner pixel to detect if video has native alpha.
+    // If the corner is opaque (white bg baked in), we need to strip it ourselves.
+    if (needsBgRemoval === null) {
+      needsBgRemoval = ctx.getImageData(0, 0, 1, 1).data[3] > 200;
+    }
+
     if (needsBgRemoval) {
       var img = ctx.getImageData(0, 0, w, h);
       var d = img.data;
@@ -1589,6 +1593,7 @@
       }
       ctx.putImageData(img, 0, 0);
     }
+
     if (!video.paused) { rafId = requestAnimationFrame(renderFrame); }
   }
 
