@@ -831,9 +831,14 @@
                     <div class="step-header">Step 2: Configure Primary LAN IP</div>
                     <div class="step-content">
                         <p>Edit <strong>Primary LAN</strong> directly — do not create a new network.</p>
+                        <div class="alert alert-danger" style="margin-bottom:12px;">
+                            <strong>⚠️ Enter the router IP, not the network address.</strong><br>
+                            The IPv4 Settings field wants the Cradlepoint's own IP — always ending in <strong>.1</strong> (e.g. <code>10.7.8.1</code>).<br>
+                            Do <strong>not</strong> enter the network address ending in <strong>.0</strong> (e.g. <code>10.7.8.0</code>). If you do, devices will connect to WiFi but have no internet — they receive the .0 address as their gateway, which goes nowhere.
+                        </div>
                         <ul>
                             <li>Go to: <span class="path">Networking → Local Networks → Local IP Networks → Edit Primary LAN</span></li>
-                            <li>IPv4 Settings → change IP to <code>10.7.X.1</code> (use unit's octet)</li>
+                            <li>IPv4 Settings → change IP to <code>10.7.X.1</code> (use unit's octet) — <strong>ends in .1, not .0</strong></li>
                             <li>Subnet: <code>255.255.255.0</code></li>
                         </ul>
                     </div>
@@ -1209,6 +1214,47 @@
                         <p>Both interfaces should be set to <strong>Always On</strong> — the router uses the priority order to decide which to route through, and automatically fails over if the primary loses ping verification.</p>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- Geofencing -->
+        <div id="geofencing" class="content-section">
+            <div class="section-header">📍 Geofencing — Station WiFi Auto-Switch</div>
+            <div class="section-content">
+
+                <div class="alert alert-info">
+                    <strong>Why geofencing instead of static WAN priority?</strong><br>
+                    Setting station WiFi as a static WAN priority means the Cradlepoint will attempt to connect to <em>any</em> visible WiFi — including weak or irrelevant networks in the field. Geofencing limits station WiFi to when the rig is physically at the station, keeping cellular as the reliable primary everywhere else. Zero crew interaction required.
+                </div>
+
+                <div class="step">
+                    <div class="step-header">How It Works</div>
+                    <div class="step-content">
+                        <ul>
+                            <li><strong>Inside geofence (at station):</strong> Station WiFi elevated to WAN priority #2 — saves cellular data during downtime</li>
+                            <li><strong>Outside geofence (en route / on scene):</strong> Station WiFi removed from WAN priority — cellular only, maximum reliability</li>
+                            <li>Transition happens automatically based on GPS location as the rig moves</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">Setup in NetCloud Manager</div>
+                    <div class="step-content">
+                        <p><strong>Path:</strong> <span class="netcloud-path">Policies → Location-Based Policies → Add Policy</span></p>
+                        <ol>
+                            <li>Create a new <strong>Location-Based Policy</strong></li>
+                            <li>Drop a pin on your station address and set a radius of <strong>50–100 ft</strong></li>
+                            <li>Add rule: <strong>Inside geofence</strong> → elevate station WiFi WAN to priority #2</li>
+                            <li>Add rule: <strong>Outside geofence</strong> → remove station WiFi from WAN priority list</li>
+                            <li>Apply policy to your fleet group in NetCloud</li>
+                        </ol>
+                        <div class="alert alert-info" style="margin-top:12px;">
+                            <strong>💡 Pro tip:</strong> Scope firmware updates and large config pushes to only trigger inside the geofence. This prevents data spikes or unexpected reboots while a unit is responding to a call.
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
