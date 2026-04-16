@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kerchunk Networks — DARK MOCK (preview only)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;500;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg0: #0c0808;
+      --bg1: #110a0a;
+      --bg2: #170d0d;
+      --bg3: #1e1212;
+      --border: #2a1a1a;
+      --border-hi: #3a2020;
+      --maroon: #8B1A1A;
+      --maroon-dim: rgba(139,26,26,.15);
+      --maroon-glow: rgba(139,26,26,.4);
+      --gold: #B8860B;
+      --gold-dim: rgba(184,134,11,.12);
+      --gold-hi: #D4A017;
+      --text: #e8ddd0;
+      --text2: #a89080;
+      --text3: #5a3a3a;
+      --green: #2dff8a;
+      --mono: 'Share Tech Mono', monospace;
+      --ui: 'Barlow Condensed', sans-serif;
+      --body: 'Barlow', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--body);
+      background: var(--bg0);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* subtle scanline overlay — very faint, just for depth */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(0,0,0,.015) 3px, rgba(0,0,0,.015) 6px);
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(17,10,10,.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 1px 0 0 rgba(184,134,11,.25);
+      padding: 0 40px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo img {
+      height: 38px;
+      width: auto;
+    }
+
+    .nav-logo-text .name {
+      font-family: var(--ui);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .nav-logo-text .sub {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--gold);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--ui);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text2);
+      text-decoration: none;
+      padding: 8px 16px;
+      transition: color .15s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 16px;
+      right: 16px;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transition: transform .15s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+
+    .nav-cta {
+      background: var(--maroon);
+      color: var(--text) !important;
+      border-radius: 3px;
+      padding: 8px 20px !important;
+      font-weight: 700 !important;
+      letter-spacing: 2px;
+      transition: background .15s !important;
+    }
+
+    .nav-cta:hover { background: #a52020 !important; }
+    .nav-cta::after { display: none !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* grid lines background effect */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(184,134,11,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(184,134,11,.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    /* radial glow behind content */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(139,26,26,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(184,134,11,.3);
+      background: var(--gold-dim);
+      padding: 6px 16px;
+      border-radius: 2px;
+      margin-bottom: 32px;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: pulse-dot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: .3; }
+    }
+
+    .hero h1 {
+      font-family: var(--ui);
+      font-size: clamp(42px, 7vw, 80px);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .hero h1 span {
+      color: var(--maroon);
+      display: block;
+    }
+
+    .hero-divider {
+      width: 80px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 24px auto;
+    }
+
+    .hero p {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--text2);
+      max-width: 540px;
+      margin: 0 auto 40px;
+      line-height: 1.8;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      font-family: var(--ui);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      background: var(--maroon);
+      color: var(--text);
+      border: none;
+      padding: 14px 32px;
+      border-radius: 3px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background .15s, box-shadow .15s;
+    }
+
+    .btn-primary:hover {
+      background: #a52020;
+      box-shadow: 0 0 20px var(--maroon-glow);
+    }
+
+    .btn-secondary {
+      font-family: var(--ui);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid rgba(184,134,11,.4);
+      padding: 14px 32px;
+      border-radius: 3px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: all .15s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--gold);
+      background: var(--gold-dim);
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--bg1);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .stat {
+      padding: 24px 20px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+      position: relative;
+    }
+
+    .stat:last-child { border-right: none; }
+
+    .stat::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: .4;
+    }
+
+    .stat-val {
+      font-family: var(--ui);
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--maroon);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text2);
+    }
+
+    /* ── SECTION ── */
+    section {
+      padding: 80px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: var(--ui);
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--text2);
+      max-width: 540px;
+      margin-bottom: 52px;
+      line-height: 1.8;
+    }
+
+    /* ── SERVICE CARDS ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--bg1);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 32px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .2s, transform .2s;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--maroon), var(--gold));
+    }
+
+    .card:hover {
+      border-color: var(--border-hi);
+      transform: translateY(-3px);
+    }
+
+    .card-icon {
+      font-size: 28px;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .card-title {
+      font-family: var(--ui);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .card-body {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text2);
+      line-height: 1.8;
+    }
+
+    .card-list {
+      list-style: none;
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .card-list li {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text2);
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-list li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ── FULL WIDTH BAND ── */
+    .band {
+      background: var(--bg1);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 60px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .band::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 100% at 50% 50%, rgba(139,26,26,.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .band-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .band h2 {
+      font-family: var(--ui);
+      font-size: clamp(26px, 3.5vw, 42px);
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+
+    .band p {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--text2);
+      margin-bottom: 32px;
+      line-height: 1.8;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--bg1);
+      border-top: 1px solid var(--border);
+      box-shadow: 0 -1px 0 0 rgba(184,134,11,.2);
+      padding: 40px;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-logo .name {
+      font-family: var(--ui);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .footer-logo .sub {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--gold);
+      letter-spacing: 2px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text2);
+      text-decoration: none;
+      transition: color .15s;
+    }
+
+    .footer-links a:hover { color: var(--gold); }
+
+    .footer-copy {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text3);
+      letter-spacing: 1px;
+      margin-top: 24px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+      max-width: 1100px;
+      margin: 24px auto 0;
+    }
+
+    /* ── MOCK BANNER ── */
+    .mock-banner {
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      background: var(--gold);
+      color: #000;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 2px;
+      z-index: 9999;
+      font-weight: bold;
+    }
+
+
+    /* ── MONITOR SECTION ── */
+    .monitor-section {
+      background: var(--bg0);
+      padding: 80px 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .monitor-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    .monitor-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .monitor-panels {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .monitor-panel {
+      background: var(--bg1);
+      border: 1px solid var(--border-hi);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .panel-topbar {
+      background: var(--bg3);
+      border-bottom: 1px solid var(--border-hi);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .panel-title {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .panel-live {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 1px;
+      color: var(--gold-hi);
+      border: 1px solid var(--gold);
+      padding: 1px 6px;
+      border-radius: 2px;
+      opacity: 0.7;
+    }
+
+    /* ── CRADLEPOINT CARDS ── */
+    .cp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .cp-card {
+      background: var(--bg1);
+      padding: 14px 16px;
+      border-left: 3px solid transparent;
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+    }
+
+    .cp-card:nth-child(even) { border-right: none; }
+    .cp-card:nth-last-child(-n+2) { border-bottom: none; }
+    .cp-card.cp-online  { border-left-color: var(--gold-hi); }
+    .cp-card.cp-offline { border-left-color: var(--maroon); }
+
+    .cp-tag {
+      font-family: var(--mono);
+      font-size: 8px;
+      color: var(--text3);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .cp-name {
+      font-family: var(--ui);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.5px;
+      margin-bottom: 3px;
+    }
+
+    .cp-serial {
+      font-family: var(--mono);
+      font-size: 8px;
+      color: var(--text3);
+      margin-bottom: 10px;
+    }
+
+    .cp-row {
+      display: flex;
+      gap: 20px;
+    }
+
+    .cp-col-label {
+      font-family: var(--mono);
+      font-size: 8px;
+      color: var(--text3);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+
+    .cp-col-val {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+
+    .cp-online .cp-col-val.status-val  { color: var(--gold-hi); }
+    .cp-offline .cp-col-val.status-val { color: var(--maroon); opacity: 0.9; }
+    .cp-col-val.time-val               { color: var(--text2); font-size: 10px; }
+
+    /* ── UNIFI PANEL ── */
+    .unifi-site-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 16px;
+      background: var(--bg2);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .unifi-site-name {
+      font-family: var(--ui);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: var(--text);
+    }
+
+    .unifi-site-meta {
+      display: flex;
+      gap: 16px;
+    }
+
+    .unifi-site-stat {
+      text-align: right;
+    }
+
+    .unifi-stat-val {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--gold-hi);
+      font-weight: bold;
+    }
+
+    .unifi-stat-label {
+      font-family: var(--mono);
+      font-size: 8px;
+      color: var(--text3);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .unifi-aps {
+      padding: 0;
+    }
+
+    .ap-card {
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .ap-card:last-child { border-bottom: none; }
+
+    .ap-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--maroon-dim);
+      border: 1px solid var(--border-hi);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .ap-info { flex: 1; }
+
+    .ap-name {
+      font-family: var(--ui);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .ap-model {
+      font-family: var(--mono);
+      font-size: 8px;
+      color: var(--text3);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .ap-right {
+      text-align: right;
+    }
+
+    .ap-clients {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--gold-hi);
+      font-weight: bold;
+      margin-bottom: 2px;
+    }
+
+    .ap-clients-label {
+      font-family: var(--mono);
+      font-size: 8px;
+      color: var(--text3);
+      letter-spacing: 1px;
+    }
+
+    .ap-signal-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+      height: 14px;
+    }
+
+    .bar {
+      width: 4px;
+      background: var(--border-hi);
+      border-radius: 1px;
+    }
+
+    .bar.active { background: var(--gold); }
+    .bar:nth-child(1) { height: 4px; }
+    .bar:nth-child(2) { height: 7px; }
+    .bar:nth-child(3) { height: 10px; }
+    .bar:nth-child(4) { height: 14px; }
+
+    .unifi-networks {
+      border-top: 1px solid var(--border-hi);
+    }
+
+    .network-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 9px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .network-row:last-child { border-bottom: none; }
+
+    .network-name {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text2);
+      letter-spacing: 1px;
+    }
+
+    .network-vlan {
+      font-family: var(--mono);
+      font-size: 8px;
+      color: var(--text3);
+      letter-spacing: 1px;
+      background: var(--maroon-dim);
+      border: 1px solid var(--border-hi);
+      padding: 1px 6px;
+      border-radius: 2px;
+    }
+
+    @media (max-width: 900px) {
+      .monitor-section { padding: 60px 20px; }
+      .monitor-panels { grid-template-columns: 1fr; }
+    }
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 60px 24px; }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+      .stat:nth-child(2) { border-right: none; }
+      .stat:nth-child(3) { border-top: 1px solid var(--border); }
+      .cards { grid-template-columns: 1fr; }
+      section { padding: 60px 24px; }
+      .footer-inner { flex-direction: column; }
+    }
+
+    /* ── CREDENTIALS ── */
+    .creds {
+      background: var(--bg1);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 40px 24px;
+      text-align: center;
+    }
+
+    .creds-eyebrow {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+
+    .creds-list {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 60px;
+      flex-wrap: wrap;
+    }
+
+    .cred-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .cred-item img {
+      height: 80px;
+      width: auto;
+      opacity: 0.92;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,.5));
+      transition: opacity .2s;
+    }
+
+    .cred-item img:hover { opacity: 1; }
+
+    .cred-name {
+      font-family: var(--ui);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .cred-issuer {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text2);
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 600px) {
+      .creds-list { gap: 36px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="mock-banner">⚠ MOCK — Not Live</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <img src="../assets/images/Kerchunk-radio-transparent-Print.svg" alt="Kerchunk Networks" onerror="this.style.display='none'">
+    <div class="nav-logo-text">
+      <div class="name">Kerchunk Networks</div>
+      <div class="sub">Professional Solutions</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+    <li><a href="#" class="nav-cta">Schedule a Booking</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">Firefighter Owned &amp; Operated</div>
+    <h1>
+      Built to Keep You Connected
+      <span>From Field to Family</span>
+    </h1>
+    <div class="hero-divider"></div>
+    <p>Network solutions designed by a public safety communications professional.</p>
+    <div class="hero-btns">
+      <a href="#" class="btn-primary">Get Started</a>
+      <a href="#" class="btn-secondary">View Services</a>
+    </div>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="stat-val">Unifi</div>
+    <div class="stat-label">Residential Gear</div>
+  </div>
+  <div class="stat">
+    <div class="stat-val">99.9%</div>
+    <div class="stat-label">Uptime Target</div>
+  </div>
+  <div class="stat">
+    <div class="stat-val">24/7</div>
+    <div class="stat-label">Support Available</div>
+  </div>
+  <div class="stat">
+    <div class="stat-val">🔥</div>
+    <div class="stat-label">Firefighter Owned</div>
+  </div>
+</div>
+
+
+<!-- CREDENTIALS -->
+<div class="creds">
+  <div class="creds-eyebrow">Training &amp; Credentials</div>
+  <div class="creds-list">
+    <div class="cred-item">
+      <img src="../assets/certs/fema-usr-badge.png" alt="FEMA National US&R Communications Specialist">
+      <div class="cred-name">Communications Specialist</div>
+      <div class="cred-issuer">FEMA · National US&amp;R Response System</div>
+    </div>
+    <div class="cred-item">
+      <img src="../assets/certs/ericsson-cna-badge.png" alt="Ericsson Enterprise Wireless Certified Network Associate">
+      <div class="cred-name">Certified Network Associate</div>
+      <div class="cred-issuer">Ericsson · Enterprise Wireless</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section>
+  <div class="section-eyebrow">What We Do</div>
+  <div class="section-title">Connecting Fire, Field &amp; Family</div>
+  <p class="section-sub">From apparatus networks to home installs — we build infrastructure you can count on.</p>
+
+  <div class="cards">
+    <div class="card">
+      <span class="card-icon">📡</span>
+      <div class="card-title">Fire Dept Networking</div>
+      <div class="card-body">Enterprise-grade connectivity for apparatus and stations. Built for the demands of emergency services.</div>
+      <ul class="card-list">
+        <li>Cradlepoint R1900 / IBR1700</li>
+        <li>Dual SIM failover</li>
+        <li>Starlink integration</li>
+        <li>NCM remote management</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">🏠</span>
+      <div class="card-title">Residential Unifi</div>
+      <div class="card-body">Clean, fast, reliable home networks. Unifi only — because it's what we trust and what we stand behind.</div>
+      <ul class="card-list">
+        <li>Full home coverage</li>
+        <li>VLAN segmentation</li>
+        <li>Remote management</li>
+        <li>Care Plan $20/mo</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="card-icon">🔧</span>
+      <div class="card-title">Managed Services</div>
+      <div class="card-body">Ongoing support and monitoring so your network stays up and you stay focused on the job.</div>
+      <ul class="card-list">
+        <li>24/7 monitoring</li>
+        <li>Remote troubleshooting</li>
+        <li>Firmware management</li>
+        <li>Priority response</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+
+<!-- MONITOR SECTION -->
+<section class="monitor-section">
+  <div class="monitor-inner">
+    <div class="monitor-header">
+      <div class="section-eyebrow">What We Manage</div>
+      <div class="section-title">Real Infrastructure. Real Clients.</div>
+      <p class="section-sub">From fire apparatus to family homes — here's what managed connectivity looks like.</p>
+    </div>
+
+    <div class="monitor-panels">
+
+      <!-- CRADLEPOINT PANEL -->
+      <div class="monitor-panel">
+        <div class="panel-topbar">
+          <span class="panel-title">Cradlepoint · NCM Fleet</span>
+          <span class="panel-live">LIVE</span>
+        </div>
+        <div class="cp-grid">
+          <div class="cp-card cp-online">
+            <div class="cp-tag">Cradlepoint · NCM</div>
+            <div class="cp-name">R1900-702</div>
+            <div class="cp-serial">KN0001TA000001</div>
+            <div class="cp-row">
+              <div>
+                <div class="cp-col-label">Status</div>
+                <div class="cp-col-val status-val">ONLINE</div>
+              </div>
+              <div>
+                <div class="cp-col-label">Last Seen</div>
+                <div class="cp-col-val time-val">2m ago</div>
+              </div>
+            </div>
+          </div>
+          <div class="cp-card cp-online">
+            <div class="cp-tag">Cradlepoint · NCM</div>
+            <div class="cp-name">TC3304-WOD</div>
+            <div class="cp-serial">KN0002TA000002</div>
+            <div class="cp-row">
+              <div>
+                <div class="cp-col-label">Status</div>
+                <div class="cp-col-val status-val">ONLINE</div>
+              </div>
+              <div>
+                <div class="cp-col-label">Last Seen</div>
+                <div class="cp-col-val time-val">1h ago</div>
+              </div>
+            </div>
+          </div>
+          <div class="cp-card cp-offline">
+            <div class="cp-tag">Cradlepoint · NCM</div>
+            <div class="cp-name">IBR1700-BC</div>
+            <div class="cp-serial">KN0003TA000003</div>
+            <div class="cp-row">
+              <div>
+                <div class="cp-col-label">Status</div>
+                <div class="cp-col-val status-val">OFFLINE</div>
+              </div>
+              <div>
+                <div class="cp-col-label">Last Seen</div>
+                <div class="cp-col-val time-val">46d ago</div>
+              </div>
+            </div>
+          </div>
+          <div class="cp-card cp-online">
+            <div class="cp-tag">Cradlepoint · NCM</div>
+            <div class="cp-name">WF307</div>
+            <div class="cp-serial">KN0004TA000004</div>
+            <div class="cp-row">
+              <div>
+                <div class="cp-col-label">Status</div>
+                <div class="cp-col-val status-val">ONLINE</div>
+              </div>
+              <div>
+                <div class="cp-col-label">Last Seen</div>
+                <div class="cp-col-val time-val">8d ago</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- UNIFI PANEL -->
+      <div class="monitor-panel">
+        <div class="panel-topbar">
+          <span class="panel-title">Unifi · Network Console</span>
+          <span class="panel-live">LIVE</span>
+        </div>
+        <div class="unifi-site-bar">
+          <div class="unifi-site-name">Lohmann Residence</div>
+          <div class="unifi-site-meta">
+            <div class="unifi-site-stat">
+              <div class="unifi-stat-val">14</div>
+              <div class="unifi-stat-label">Clients</div>
+            </div>
+            <div class="unifi-site-stat">
+              <div class="unifi-stat-val">99.9%</div>
+              <div class="unifi-stat-label">Uptime</div>
+            </div>
+          </div>
+        </div>
+        <div class="unifi-aps">
+          <div class="ap-card">
+            <div class="ap-icon">📡</div>
+            <div class="ap-info">
+              <div class="ap-name">Living Room</div>
+              <div class="ap-model">U6 Pro · 2.4 / 5 / 6 GHz</div>
+            </div>
+            <div class="ap-right">
+              <div class="ap-signal-bars">
+                <div class="bar active"></div>
+                <div class="bar active"></div>
+                <div class="bar active"></div>
+                <div class="bar active"></div>
+              </div>
+            </div>
+            <div class="ap-right">
+              <div class="ap-clients">8</div>
+              <div class="ap-clients-label">clients</div>
+            </div>
+          </div>
+          <div class="ap-card">
+            <div class="ap-icon">📡</div>
+            <div class="ap-info">
+              <div class="ap-name">Backyard</div>
+              <div class="ap-model">U6 Mesh · 2.4 / 5 GHz</div>
+            </div>
+            <div class="ap-right">
+              <div class="ap-signal-bars">
+                <div class="bar active"></div>
+                <div class="bar active"></div>
+                <div class="bar active"></div>
+                <div class="bar"></div>
+              </div>
+            </div>
+            <div class="ap-right">
+              <div class="ap-clients">4</div>
+              <div class="ap-clients-label">clients</div>
+            </div>
+          </div>
+          <div class="ap-card">
+            <div class="ap-icon">📡</div>
+            <div class="ap-info">
+              <div class="ap-name">Garage</div>
+              <div class="ap-model">U6 Lite · 2.4 / 5 GHz</div>
+            </div>
+            <div class="ap-right">
+              <div class="ap-signal-bars">
+                <div class="bar active"></div>
+                <div class="bar active"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+              </div>
+            </div>
+            <div class="ap-right">
+              <div class="ap-clients">2</div>
+              <div class="ap-clients-label">clients</div>
+            </div>
+          </div>
+        </div>
+        <div class="unifi-networks">
+          <div class="network-row">
+            <span class="network-name">Default — Main Network</span>
+            <span class="network-vlan">VLAN 1</span>
+          </div>
+          <div class="network-row">
+            <span class="network-name">IoT — Smart Devices</span>
+            <span class="network-vlan">VLAN 20</span>
+          </div>
+          <div class="network-row">
+            <span class="network-name">Guest — Isolated</span>
+            <span class="network-vlan">VLAN 30</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="band">
+  <div class="band-inner">
+    <h2>Ready to Build Something Reliable?</h2>
+    <p>Whether it's a fire station, an apparatus, or your home — let's talk about what your network needs.</p>
+    <a href="#" class="btn-primary">Schedule a Booking</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <div class="name">Kerchunk Networks</div>
+      <div class="sub">Connecting Fire, Field &amp; Family</div>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Support</a></li>
+      <li><a href="#">Privacy</a></li>
+      <li><a href="#">Terms</a></li>
+    </ul>
+  </div>
+  <div class="footer-copy">
+    © 2025 Kerchunk Networks · 415-737-9223 · elohmann@kerchunknetworks.com
+  </div>
+</footer>
+
+</body>
+</html>

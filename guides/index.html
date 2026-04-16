@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documentation Portal - Kerchunk Networks</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;500;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --tan: #e8ddd0;
+      --beige: #d4c4b0;
+      --maroon: #8b4049;
+      --maroon-dark: #6b3038;
+      --gold: #b8860b;
+      --gold-light: #d4a574;
+      --text: #3a2a2a;
+      --text2: #7a5a5a;
+      --text3: #b09080;
+      --border: rgba(139,64,73,.15);
+      --mono: 'Share Tech Mono', monospace;
+      --ui: 'Barlow Condensed', sans-serif;
+      --body: 'Barlow', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--body); background: var(--tan); color: var(--text); min-height: 100vh; }
+
+    /* PIN GATE */
+    #pin-gate {
+      position: fixed; inset: 0; background: var(--tan);
+      display: flex; align-items: center; justify-content: center;
+      z-index: 9999;
+    }
+    #pin-gate.unlocked { display: none; }
+    .pin-box {
+      background: #fff; border-radius: 16px; padding: 48px 40px;
+      box-shadow: 0 8px 40px rgba(139,64,73,.15);
+      text-align: center; max-width: 360px; width: 90%;
+    }
+    .pin-box .lock { font-size: 48px; margin-bottom: 16px; }
+    .pin-box h2 { font-family: var(--ui); color: var(--maroon); font-size: 26px; font-weight: 700; margin-bottom: 8px; }
+    .pin-box p { font-family: var(--body); color: var(--text2); font-size: 14px; margin-bottom: 24px; }
+    .pin-box input {
+      width: 100%; padding: 14px; border: 2px solid var(--border);
+      border-radius: 50px; font-size: 20px; text-align: center;
+      letter-spacing: 8px; outline: none; font-family: var(--mono);
+      margin-bottom: 16px; background: var(--tan);
+    }
+    .pin-box input:focus { border-color: var(--maroon); background: #fff; }
+    .pin-box button {
+      width: 100%; padding: 14px; background: var(--maroon); color: #fff;
+      border: none; border-radius: 50px; font-family: var(--ui);
+      font-size: 14px; letter-spacing: 2px; text-transform: uppercase;
+      cursor: pointer; font-weight: 600;
+    }
+    .pin-box button:hover { background: var(--maroon-dark); }
+    .pin-error { color: #c0392b; font-size: 13px; margin-top: 12px; display: none; font-family: var(--body); }
+
+    /* NAV */
+    nav {
+      background: rgba(139,64,73,.97);
+      border-bottom: 1px solid var(--maroon-dark);
+      box-shadow: 0 2px 0 0 rgba(184,134,11,.35);
+      padding: 0 40px; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo img { height: 32px; }
+    .nav-logo span { font-family: var(--ui); color: #fff; font-size: 18px; font-weight: 600; letter-spacing: 1px; }
+    .nav-back { font-family: var(--mono); color: rgba(255,255,255,.7); font-size: 12px; text-decoration: none; }
+    .nav-back:hover { color: var(--gold-light); }
+
+    /* CONTENT */
+    .page-wrap { max-width: 900px; margin: 0 auto; padding: 60px 24px; }
+    .page-header { margin-bottom: 48px; }
+    .page-eyebrow { font-family: var(--mono); font-size: 11px; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; }
+    .page-title { font-family: var(--ui); font-size: 42px; font-weight: 900; color: var(--text); text-transform: uppercase; letter-spacing: 1px; line-height: 1; margin-bottom: 12px; }
+    .page-sub { font-family: var(--body); color: var(--text2); font-size: 16px; }
+
+    /* GUIDE CARDS */
+    .guides-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 24px; }
+    .guide-card {
+      background: #fff; border-radius: 12px; padding: 28px;
+      border: 1px solid var(--border); text-decoration: none;
+      display: block; transition: box-shadow .2s, transform .2s;
+    }
+    .guide-card:hover { box-shadow: 0 8px 32px rgba(139,64,73,.12); transform: translateY(-2px); }
+    .guide-icon { font-size: 32px; margin-bottom: 16px; }
+    .guide-tag { font-family: var(--mono); font-size: 10px; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+    .guide-title { font-family: var(--ui); font-size: 20px; font-weight: 700; color: var(--maroon); margin-bottom: 8px; }
+    .guide-desc { font-family: var(--body); font-size: 14px; color: var(--text2); line-height: 1.5; }
+    .guide-arrow { font-family: var(--mono); font-size: 12px; color: var(--gold); margin-top: 16px; }
+  </style>
+</head>
+<body>
+
+<div id="pin-gate">
+  <div class="pin-box">
+    <div class="lock">🔒</div>
+    <h2>Documentation Portal</h2>
+    <p>Enter PIN to access internal documentation</p>
+    <input type="password" id="pinInput" placeholder="· · · ·" maxlength="10" autofocus>
+    <button onclick="checkPIN()">Access Documentation</button>
+    <div class="pin-error" id="pinError">Incorrect PIN. Please try again.</div>
+  </div>
+</div>
+
+<script>
+  (function(){
+    if (sessionStorage.getItem('kn-doc-auth') === '1') {
+      document.getElementById('pin-gate').classList.add('unlocked');
+    }
+    document.getElementById('pinInput').addEventListener('keydown', function(e){
+      if (e.key === 'Enter') checkPIN();
+    });
+  })();
+  function checkPIN() {
+    var pin = document.getElementById('pinInput').value;
+    if (pin === '2276') {
+      sessionStorage.setItem('kn-doc-auth', '1');
+      document.getElementById('pin-gate').classList.add('unlocked');
+    } else {
+      document.getElementById('pinError').style.display = 'block';
+      document.getElementById('pinInput').value = '';
+      document.getElementById('pinInput').focus();
+    }
+  }
+</script>
+
+<nav>
+  <a class="nav-logo" href="../index.html">
+    <img src="../assets/images/Kerchunk-radio-transparent-Print.svg" alt="Kerchunk Networks">
+    <span>Kerchunk Networks</span>
+  </a>
+  <a class="nav-back" href="../index.html">← Back to Home</a>
+</nav>
+
+<div class="page-wrap">
+  <div class="page-header">
+    <div class="page-eyebrow">Internal Docs</div>
+    <div class="page-title">Documentation Portal</div>
+    <p class="page-sub">Setup guides and reference documentation for Kerchunk Networks clients and installations.</p>
+  </div>
+
+  <div class="guides-grid">
+
+    <a class="guide-card" href="r1900-setup.html">
+      <div class="guide-icon">🚒</div>
+      <div class="guide-tag">Fire Dept · Hardware</div>
+      <div class="guide-title">R1900 Fire Engine Setup</div>
+      <div class="guide-desc">Full configuration guide for the Cradlepoint R1900 — IP scheme, SSIDs, WAN failover, scene mesh, and Starlink integration.</div>
+      <div class="guide-arrow">View Guide →</div>
+    </a>
+
+    <a class="guide-card" href="kids-network-setup.html">
+      <div class="guide-icon">🏠</div>
+      <div class="guide-tag">Residential · Unifi</div>
+      <div class="guide-title">Kids Network Setup</div>
+      <div class="guide-desc">How to create and configure a kids network in Unifi — traffic rules, device assignment, content filtering, and best practices.</div>
+      <div class="guide-arrow">View Guide →</div>
+    </a>
+
+  </div>
+</div>
+
+</body>
+</html>

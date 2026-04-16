@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WHNXTSVL');</script>
-<!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fire &amp; Safety Services — Kerchunk Networks</title>
@@ -281,74 +274,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       footer { padding: 32px 24px 20px; }
       .footer-inner { flex-direction: column; }
     }
-  
-    /* ── MOBILE NAV ── */
-    .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 8px;
-      margin-left: auto;
-    }
-    .nav-hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: #fff;
-      border-radius: 2px;
-      transition: all 0.3s;
-    }
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      top: 64px;
-      left: 0;
-      right: 0;
-      background: var(--maroon);
-      border-top: 1px solid rgba(184,134,11,0.3);
-      z-index: 998;
-      padding: 8px 0 16px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-    }
-    .mobile-nav.open { display: block; }
-    .mobile-nav a {
-      display: block;
-      padding: 13px 24px;
-      color: rgba(255,255,255,0.9);
-      font-family: var(--ui);
-      font-size: 15px;
-      font-weight: 500;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-      letter-spacing: 0.3px;
-    }
-    .mobile-nav a:hover { color: #fff; background: rgba(255,255,255,0.06); }
-    .mobile-nav .mobile-cta {
-      display: block;
-      margin: 12px 24px 0;
-      text-align: center;
-      background: var(--gold);
-      color: #1a1a1a !important;
-      padding: 12px 24px !important;
-      border-radius: 2px;
-      font-weight: 700;
-      border-bottom: none !important;
-      letter-spacing: 0.5px;
-    }
-    @media (max-width: 900px) {
-      .nav-hamburger { display: flex; }
-    }
-
   </style>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WHNXTSVL"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 
 <!-- NAV -->
 <nav>
@@ -403,17 +331,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="contact.html">Contact</a></li>
     <li><a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="nav-cta">Schedule a Booking</a></li>
   </ul>
-  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
 </nav>
-<div class="mobile-nav" id="mobile-nav">
-  <a href="/">Home</a>
-  <a href="services-fire.html">Fire &amp; Safety</a>
-  <a href="services-residential.html">Residential</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-  <a href="equipment.html">Equipment</a>
-  <a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="mobile-cta">Schedule a Booking</a>
-</div>
 
 <!-- PAGE HERO -->
 <div class="page-hero">
@@ -617,17 +535,5 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 
-<script>
-(function(){
-  var btn = document.getElementById('nav-hamburger');
-  var menu = document.getElementById('mobile-nav');
-  if(btn && menu){
-    btn.addEventListener('click', function(){ menu.classList.toggle('open'); });
-    document.addEventListener('click', function(e){
-      if(!btn.contains(e.target) && !menu.contains(e.target)) menu.classList.remove('open');
-    });
-  }
-})();
-</script>
 </body>
 </html>

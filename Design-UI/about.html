@@ -1,16 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-WHNXTSVL');</script>
-<!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact — Kerchunk Networks</title>
+  <title>About — Kerchunk Networks</title>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;500;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -73,43 +66,52 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .page-hero-inner { position: relative; z-index: 1; max-width: 700px; }
     .page-hero-eyebrow { font-family: var(--mono); font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
     .page-hero h1 { font-family: var(--ui); font-size: clamp(36px, 5vw, 64px); font-weight: 900; letter-spacing: 3px; text-transform: uppercase; color: var(--text); line-height: 1; margin-bottom: 20px; }
+    .page-hero h1 span { color: var(--maroon); display: block; }
     .hero-divider { width: 80px; height: 3px; background: linear-gradient(90deg, var(--maroon), var(--gold)); margin: 24px 0; border-radius: 2px; }
     .page-hero p { font-size: 17px; font-weight: 300; color: var(--text2); max-width: 560px; line-height: 1.8; }
 
-    /* MAIN CONTENT */
-    .contact-section { padding: 80px 80px; }
-    .contact-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.4fr; gap: 48px; align-items: start; }
+    /* ABOUT SECTION */
+    .about-section { padding: 80px 80px; border-bottom: 1px solid var(--border); }
+    .about-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    .about-label { font-family: var(--mono); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .about-title { font-family: var(--ui); font-size: clamp(32px, 4vw, 52px); font-weight: 900; letter-spacing: 2px; text-transform: uppercase; color: var(--text); line-height: 1; margin-bottom: 20px; }
+    .about-desc { font-size: 16px; font-weight: 300; color: var(--text2); line-height: 1.8; margin-bottom: 28px; }
+    .about-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .about-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: var(--text2); }
+    .about-list li::before { content: '—'; color: var(--maroon); font-family: var(--mono); flex-shrink: 0; margin-top: 2px; }
 
-    /* INFO CARDS */
-    .info-cards { display: flex; flex-direction: column; gap: 16px; }
-    .info-card { background: #fff; border: 1px solid var(--border-hi); border-radius: 3px; overflow: hidden; }
-    .info-card-header { background: var(--beige-dark); border-bottom: 1px solid var(--border-hi); padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; }
-    .info-card-title { font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--maroon-dark); }
-    .info-card-badge { font-family: var(--mono); font-size: 9px; color: var(--maroon); border: 1px solid var(--maroon); padding: 2px 8px; border-radius: 2px; opacity: 0.7; }
-    .info-row { display: flex; justify-content: space-between; align-items: center; padding: 11px 16px; border-bottom: 1px solid var(--border); font-family: var(--mono); font-size: 11px; }
-    .info-row:last-child { border-bottom: none; }
-    .info-row-label { color: var(--text3); letter-spacing: 1px; }
-    .info-row-val { color: var(--text); }
-    .info-row-val.highlight { color: var(--maroon); font-weight: bold; }
-    .info-card-body { padding: 14px 16px; }
-    .info-card-body p { font-size: 14px; font-weight: 300; color: var(--text2); line-height: 1.7; margin-bottom: 14px; }
-    .btn-book { display: block; width: 100%; text-align: center; background: var(--maroon); color: #fff; font-family: var(--mono); font-size: 10px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; padding: 12px; border-radius: 2px; transition: background .15s; }
-    .btn-book:hover { background: var(--maroon-dark); }
+    /* DETAIL CARD */
+    .detail-card { background: var(--beige); border: 1px solid var(--border-hi); border-radius: 3px; overflow: hidden; }
+    .detail-card-header { background: var(--beige-dark); border-bottom: 1px solid var(--border-hi); padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; }
+    .detail-card-title { font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--maroon-dark); }
+    .detail-card-badge { font-family: var(--mono); font-size: 9px; color: var(--maroon); border: 1px solid var(--maroon); padding: 2px 8px; border-radius: 2px; opacity: 0.7; }
+    .detail-row { display: flex; justify-content: space-between; align-items: center; padding: 11px 16px; border-bottom: 1px solid var(--border); font-family: var(--mono); font-size: 11px; }
+    .detail-row:last-child { border-bottom: none; }
+    .detail-row-label { color: var(--text3); letter-spacing: 1px; }
+    .detail-row-val { color: var(--text); }
+    .detail-row-val.highlight { color: var(--maroon); font-weight: bold; }
 
-    /* FORM CARD */
-    .form-card { background: #fff; border: 1px solid var(--border-hi); border-radius: 3px; overflow: hidden; }
-    .form-card-header { background: var(--beige-dark); border-bottom: 1px solid var(--border-hi); padding: 12px 16px; }
-    .form-card-title { font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--maroon-dark); }
-    .form-body { padding: 24px; display: flex; flex-direction: column; gap: 20px; }
-    .form-group { display: flex; flex-direction: column; gap: 6px; }
-    .form-label { font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--text3); }
-    .form-label span { color: var(--text3); font-size: 8px; }
-    .form-input, .form-select, .form-textarea { background: var(--tan); border: 1px solid var(--border-hi); border-radius: 2px; padding: 10px 14px; font-family: var(--body); font-size: 15px; color: var(--text); transition: border-color .15s; width: 100%; }
-    .form-input:focus, .form-select:focus, .form-textarea:focus { outline: none; border-color: var(--maroon); background: #fff; }
-    .form-textarea { resize: vertical; min-height: 120px; }
-    .form-select { cursor: pointer; }
-    .btn-submit { background: var(--maroon); color: #fff; font-family: var(--ui); font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; border: none; padding: 14px; border-radius: 2px; cursor: pointer; transition: background .15s, box-shadow .15s; width: 100%; }
-    .btn-submit:hover { background: var(--maroon-dark); box-shadow: 0 4px 20px var(--maroon-glow); }
+    /* CREDENTIALS */
+    .creds-section { padding: 72px 40px; background: var(--beige); border-bottom: 1px solid var(--border); text-align: center; }
+    .section-eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; text-align: center; }
+    .section-title { font-family: var(--ui); font-size: clamp(30px, 4vw, 48px); font-weight: 900; letter-spacing: 2px; text-transform: uppercase; color: var(--text); margin-bottom: 40px; text-align: center; }
+    .creds-list { display: flex; justify-content: center; align-items: flex-start; gap: 60px; flex-wrap: wrap; }
+    .cred-item { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+    .cred-item img { height: 88px; width: auto; filter: drop-shadow(0 2px 8px rgba(0,0,0,.12)); }
+    .cred-name { font-family: var(--ui); font-size: 13px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text); }
+    .cred-issuer { font-family: var(--mono); font-size: 10px; color: var(--text3); letter-spacing: 1px; }
+    .cred-placeholder { width: 88px; height: 88px; border: 2px solid var(--maroon); border-radius: 4px; background: var(--maroon-dim); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+    .cred-placeholder-org { font-family: var(--ui); font-size: 22px; font-weight: 900; letter-spacing: 2px; color: var(--maroon); }
+    .cred-placeholder-sub { font-family: var(--mono); font-size: 9px; letter-spacing: 2px; color: var(--maroon); opacity: 0.7; }
+
+    /* PHILOSOPHY */
+    .philosophy-section { padding: 80px 80px; background: #fff; border-bottom: 1px solid var(--border); }
+    .philosophy-inner { max-width: 1100px; margin: 0 auto; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 0; }
+    .card { background: var(--tan); border: 1px solid var(--border-hi); border-radius: 3px; padding: 28px 24px; border-left: 3px solid transparent; transition: border-left-color .2s, box-shadow .2s; }
+    .card:hover { border-left-color: var(--maroon); box-shadow: 0 4px 20px var(--maroon-dim); }
+    .card-title { font-family: var(--ui); font-size: 18px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text); margin-bottom: 12px; }
+    .card-body { font-size: 15px; font-weight: 300; color: var(--text2); line-height: 1.8; }
 
     /* CTA BAND */
     .band { background: var(--maroon); padding: 64px 40px; text-align: center; }
@@ -133,81 +135,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     @media (max-width: 900px) {
       nav { padding: 0 20px; }
       .nav-links { display: none; }
-      .page-hero { padding: 52px 24px 44px; }
-      .contact-section { padding: 60px 24px; }
-      .contact-inner { grid-template-columns: 1fr; }
+      .page-hero, .about-section, .philosophy-section { padding: 52px 24px; }
+      .about-inner { grid-template-columns: 1fr; gap: 32px; }
+      .cards { grid-template-columns: 1fr; }
+      .creds-list { gap: 36px; }
       .band { padding: 52px 24px; }
       footer { padding: 32px 24px 20px; }
       .footer-inner { flex-direction: column; }
     }
-  
-    /* ── MOBILE NAV ── */
-    .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 8px;
-      margin-left: auto;
-    }
-    .nav-hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: #fff;
-      border-radius: 2px;
-      transition: all 0.3s;
-    }
-    .mobile-nav {
-      display: none;
-      position: fixed;
-      top: 64px;
-      left: 0;
-      right: 0;
-      background: var(--maroon);
-      border-top: 1px solid rgba(184,134,11,0.3);
-      z-index: 998;
-      padding: 8px 0 16px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-    }
-    .mobile-nav.open { display: block; }
-    .mobile-nav a {
-      display: block;
-      padding: 13px 24px;
-      color: rgba(255,255,255,0.9);
-      font-family: var(--ui);
-      font-size: 15px;
-      font-weight: 500;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
-      letter-spacing: 0.3px;
-    }
-    .mobile-nav a:hover { color: #fff; background: rgba(255,255,255,0.06); }
-    .mobile-nav .mobile-cta {
-      display: block;
-      margin: 12px 24px 0;
-      text-align: center;
-      background: var(--gold);
-      color: #1a1a1a !important;
-      padding: 12px 24px !important;
-      border-radius: 2px;
-      font-weight: 700;
-      border-bottom: none !important;
-      letter-spacing: 0.5px;
-    }
-    @media (max-width: 900px) {
-      .nav-hamburger { display: flex; }
-    }
-
   </style>
 </head>
 <body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WHNXTSVL"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 
 <nav>
   <a class="nav-logo" href="/">
@@ -249,114 +187,109 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="mega-menu-footer"><a href="services-fire.html">View All Services →</a></div>
       </div>
     </li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html" class="active">Contact</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
     <li><a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="nav-cta">Schedule a Booking</a></li>
   </ul>
-  <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
 </nav>
-<div class="mobile-nav" id="mobile-nav">
-  <a href="/">Home</a>
-  <a href="services-fire.html">Fire &amp; Safety</a>
-  <a href="services-residential.html">Residential</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-  <a href="equipment.html">Equipment</a>
-  <a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="mobile-cta">Schedule a Booking</a>
-</div>
 
+<!-- PAGE HERO -->
 <div class="page-hero">
   <div class="page-hero-inner">
-    <div class="page-hero-eyebrow">Get In Touch</div>
-    <h1>Contact Us</h1>
+    <div class="page-hero-eyebrow">Founder · Kerchunk Networks</div>
+    <h1>Built from<span>the firehouse.</span></h1>
     <div class="hero-divider"></div>
-    <p>Whether it's a fire department project or a home network — reach out and let's talk about what you need.</p>
+    <p>Kerchunk Networks isn't a consulting firm or a reseller. It's one guy with a radio on his hip and a router in his truck — building networks for the people who need them to work.</p>
   </div>
 </div>
 
-<div class="contact-section">
-  <div class="contact-inner">
-
-    <div class="info-cards">
-      <div class="info-card">
-        <div class="info-card-header">
-          <span class="info-card-title">Direct · Reach Erik</span>
-          <span class="info-card-badge">PREFERRED</span>
-        </div>
-        <div class="info-row"><span class="info-row-label">Email</span><span class="info-row-val highlight">elohmann@kerchunknetworks.com</span></div>
-        <div class="info-row"><span class="info-row-label">Phone</span><span class="info-row-val">415-737-9223</span></div>
-        <div class="info-row"><span class="info-row-label">Response Time</span><span class="info-row-val">Within 24 hours</span></div>
-        <div class="info-row"><span class="info-row-label">Preferred</span><span class="info-row-val">Email or phone</span></div>
-      </div>
-
-      <div class="info-card">
-        <div class="info-card-header">
-          <span class="info-card-title">Cal.com · Booking</span>
-          <span class="info-card-badge">AVAILABLE</span>
-        </div>
-        <div class="info-card-body">
-          <p>Book a time directly on the calendar — no back and forth.</p>
-          <a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="btn-book">Schedule a Booking →</a>
-        </div>
-      </div>
-
-      <div class="info-card">
-        <div class="info-card-header">
-          <span class="info-card-title">Coverage · Service Area</span>
-        </div>
-        <div class="info-row"><span class="info-row-label">Primary</span><span class="info-row-val">SF Bay Area</span></div>
-        <div class="info-row"><span class="info-row-label">Fire Depts</span><span class="info-row-val">California statewide</span></div>
-        <div class="info-row"><span class="info-row-label">Residential</span><span class="info-row-val">Peninsula + South Bay</span></div>
-        <div class="info-row"><span class="info-row-label">Remote Support</span><span class="info-row-val highlight">Nationwide</span></div>
-      </div>
+<!-- ABOUT ERIK -->
+<div class="about-section">
+  <div class="about-inner">
+    <div>
+      <div class="about-label">Founder · Kerchunk Networks</div>
+      <div class="about-title">Erik Lohmann</div>
+      <p class="about-desc">Active firefighter with Woodside Fire Protection District in California. Self-taught in networking and IT. Started Kerchunk Networks to bring real-world public safety networking experience to fire departments and residential clients who deserve better than a big-box install. IT Lead at Woodside — manages iPads, iPhones, Cradlepoint R1900s, and Tablet Command.</p>
+      <ul class="about-list">
+        <li>Active Firefighter — Woodside Fire Protection District</li>
+        <li>IT Lead — apparatus networking and MDM</li>
+        <li>Public safety communications professional</li>
+        <li>Self-taught networking and IT</li>
+        <li>Serving fire departments and residential clients</li>
+      </ul>
     </div>
-
-    <div class="form-card">
-      <div class="form-card-header">
-        <div class="form-card-title">Send a Message · Kerchunk Networks</div>
+    <div class="detail-card">
+      <div class="detail-card-header">
+        <span class="detail-card-title">Profile · Erik Lohmann</span>
+        <span class="detail-card-badge">FOUNDER</span>
       </div>
-      <div class="form-body">
-        <div class="form-group">
-          <label class="form-label">Name</label>
-          <input type="text" class="form-input" placeholder="Your name">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Email</label>
-          <input type="email" class="form-input" placeholder="your@email.com">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Phone <span>(optional)</span></label>
-          <input type="tel" class="form-input" placeholder="415-000-0000">
-        </div>
-        <div class="form-group">
-          <label class="form-label">Service Type</label>
-          <select class="form-select">
-            <option value="">Select a service...</option>
-            <option>Fire Department Networking</option>
-            <option>Residential Unifi Install</option>
-            <option>Care Plan</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Message</label>
-          <textarea class="form-textarea" placeholder="Tell me about your project..."></textarea>
-        </div>
-        <button class="btn-submit">Send Message →</button>
-      </div>
+      <div class="detail-row"><span class="detail-row-label">Role</span><span class="detail-row-val highlight">Active Firefighter</span></div>
+      <div class="detail-row"><span class="detail-row-label">Department</span><span class="detail-row-val">Woodside Fire Protection District</span></div>
+      <div class="detail-row"><span class="detail-row-label">Location</span><span class="detail-row-val">California</span></div>
+      <div class="detail-row"><span class="detail-row-label">Specialization</span><span class="detail-row-val">Fire &amp; Residential Networking</span></div>
+      <div class="detail-row"><span class="detail-row-label">Founded</span><span class="detail-row-val highlight">Kerchunk Networks 2024</span></div>
     </div>
-
   </div>
 </div>
 
+<!-- CREDENTIALS -->
+<div class="creds-section">
+  <div class="section-eyebrow">Training &amp; Credentials</div>
+  <div class="section-title">Certifications</div>
+  <div class="creds-list">
+    <div class="cred-item">
+      <img src="assets/certs/fema-usr-badge.png" alt="FEMA Communications Specialist">
+      <div class="cred-name">Comm Specialist</div>
+      <div class="cred-issuer">FEMA · National US&amp;R</div>
+    </div>
+    <div class="cred-item">
+      <img src="assets/certs/ericsson-cna-badge.png" alt="Ericsson Certified Network Associate">
+      <div class="cred-name">Network Associate</div>
+      <div class="cred-issuer">Ericsson · Enterprise</div>
+    </div>
+    <div class="cred-item">
+      <div class="cred-placeholder">
+        <div class="cred-placeholder-org">NWCG</div>
+        <div class="cred-placeholder-sub">CTE</div>
+      </div>
+      <div class="cred-name">Comm Tech</div>
+      <div class="cred-issuer">NWCG · Wildland Fire</div>
+    </div>
+  </div>
+</div>
+
+<!-- PHILOSOPHY -->
+<div class="philosophy-section">
+  <div class="philosophy-inner">
+    <div class="section-eyebrow" style="margin-bottom:12px;">The Kerchunk Way</div>
+    <div class="section-title" style="margin-bottom:40px;">Why We Do It This Way</div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-title">Unifi Only</div>
+        <p class="card-body">We don't sell a dozen brands. Unifi is what we trust, what we install, and what we support. One platform, done right.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">No Upselling</div>
+        <p class="card-body">You get what you need, not what has the best margin. The right gear for your situation, sized correctly, installed properly.</p>
+      </div>
+      <div class="card">
+        <div class="card-title">Built for the Field</div>
+        <p class="card-body">Every recommendation comes from someone who has used this infrastructure in an emergency. Not a showroom, not a catalog.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA BAND -->
 <div class="band">
   <div class="band-inner">
-    <h2>Prefer to Book Directly?</h2>
-    <p>Skip the form and grab a time on the calendar.</p>
+    <h2>Want to Work Together?</h2>
+    <p>Fire department or family home — let's build something you can count on.</p>
     <a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="btn-primary">Schedule a Booking</a>
   </div>
 </div>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-inner">
     <div class="footer-logo">
@@ -376,17 +309,5 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="footer-copy">© 2025 Kerchunk Networks · 415-737-9223 · elohmann@kerchunknetworks.com</div>
 </footer>
 
-<script>
-(function(){
-  var btn = document.getElementById('nav-hamburger');
-  var menu = document.getElementById('mobile-nav');
-  if(btn && menu){
-    btn.addEventListener('click', function(){ menu.classList.toggle('open'); });
-    document.addEventListener('click', function(e){
-      if(!btn.contains(e.target) && !menu.contains(e.target)) menu.classList.remove('open');
-    });
-  }
-})();
-</script>
 </body>
 </html>
