@@ -525,18 +525,18 @@
           <div class="stat-card"><div class="stat-card-val">11</div><div class="stat-card-label">Fleet Units</div></div>
           <div class="stat-card"><div class="stat-card-val">2</div><div class="stat-card-label">GPS Clients</div></div>
           <div class="stat-card"><div class="stat-card-val">4</div><div class="stat-card-label">WAN Priority</div></div>
-          <div class="stat-card"><div class="stat-card-val">12</div><div class="stat-card-label">Config Steps</div></div>
+          <div class="stat-card"><div class="stat-card-val">13</div><div class="stat-card-label">Config Steps</div></div>
         </div>
 
         <!-- Table of Contents -->
         <div class="toc">
             <h2>📋 Quick Navigation</h2>
             <div class="card-grid" style="grid-template-columns: repeat(4, 1fr);">
-              <a href="#hardware" class="detail-card" style="text-decoration:none;">
+              <a href="#start-here" class="detail-card" style="text-decoration:none;">
                 <div class="detail-card-header"><span class="detail-card-title">01</span></div>
                 <div style="padding:12px 16px;"><div class="vlan-name" style="font-size:13px;">Hardware Setup</div><div class="vlan-desc" style="margin-top:4px;">Antennas, SIM, connections</div></div>
               </a>
-              <a href="#reset" class="detail-card" style="text-decoration:none;">
+              <a href="#factory-reset" class="detail-card" style="text-decoration:none;">
                 <div class="detail-card-header"><span class="detail-card-title">02</span></div>
                 <div style="padding:12px 16px;"><div class="vlan-name" style="font-size:13px;">Factory Reset</div><div class="vlan-desc" style="margin-top:4px;">Default credentials</div></div>
               </a>
@@ -552,16 +552,20 @@
                 <div class="detail-card-header"><span class="detail-card-title">04</span></div>
                 <div style="padding:12px 16px;"><div class="vlan-name" style="font-size:13px;">Config Order</div><div class="vlan-desc" style="margin-top:4px;">Follow exactly</div></div>
               </a>
-              <a href="#wifi" class="detail-card" style="text-decoration:none;">
+              <a href="#wifi-config" class="detail-card" style="text-decoration:none;">
                 <div class="detail-card-header"><span class="detail-card-title">05</span></div>
                 <div style="padding:12px 16px;"><div class="vlan-name" style="font-size:13px;">WiFi / SSIDs</div><div class="vlan-desc" style="margin-top:4px;">WFPD naming</div></div>
               </a>
-              <a href="#wan" class="detail-card" style="text-decoration:none;">
+              <a href="#wan-failover" class="detail-card" style="text-decoration:none;">
                 <div class="detail-card-header"><span class="detail-card-title">06</span></div>
                 <div style="padding:12px 16px;"><div class="vlan-name" style="font-size:13px;">WAN Failover</div><div class="vlan-desc" style="margin-top:4px;">Active Ping settings</div></div>
               </a>
-              <a href="#gps" class="detail-card" style="text-decoration:none;">
+              <a href="#netcloud" class="detail-card" style="text-decoration:none;">
                 <div class="detail-card-header"><span class="detail-card-title">07</span></div>
+                <div style="padding:12px 16px;"><div class="vlan-name" style="font-size:13px;">NetCloud Manager</div><div class="vlan-desc" style="margin-top:4px;">Register &amp; apply policy</div></div>
+              </a>
+              <a href="#dual-gps" class="detail-card" style="text-decoration:none;">
+                <div class="detail-card-header"><span class="detail-card-title">08</span></div>
                 <div style="padding:12px 16px;"><div class="vlan-name" style="font-size:13px;">GPS Setup</div><div class="vlan-desc" style="margin-top:4px;">Versaterm + Tablet Command</div></div>
               </a>
             </div>
@@ -1214,6 +1218,108 @@
                         <p>Both interfaces should be set to <strong>Always On</strong> — the router uses the priority order to decide which to route through, and automatically fails over if the primary loses ping verification.</p>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- NetCloud Manager -->
+        <div id="netcloud" class="content-section">
+            <div class="section-header">☁️ NetCloud Manager — Registration &amp; Policy</div>
+            <div class="section-content">
+
+                <div class="alert alert-warning">
+                    <strong>Timing matters.</strong> Complete all local configuration (Steps 1–12 in the Config Order section) <em>before</em> inserting the SIM card. With the SIM inserted, the unit phones home to NetCloud and the local UI becomes sluggish and unreliable.
+                </div>
+
+                <div class="step">
+                    <div class="step-header">Step 1: Insert SIM &amp; Verify Cellular</div>
+                    <div class="step-content">
+                        <p>Once local config is complete and verified:</p>
+                        <ol>
+                            <li>Power down the unit</li>
+                            <li>Insert the provisioned SIM card into the <strong>SIM slot</strong></li>
+                            <li>Power back on — LED will show amber while it acquires signal, then solid green</li>
+                            <li>Confirm cellular WAN is active: <span class="path">Status → WAN → Interfaces</span> — should show carrier name and signal strength</li>
+                        </ol>
+                        <div class="alert alert-info">
+                            <strong>Signal bars:</strong> 3+ bars is healthy for field operations. Check signal at the station before sending the unit out — a weak signal at station usually means it was worse elsewhere.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">Step 2: Confirm Auto-Registration in NetCloud</div>
+                    <div class="step-content">
+                        <p>Once the SIM is live, the router automatically registers to the Kerchunk Networks NetCloud account (the API key is pre-burned into firmware on provisioned units).</p>
+                        <ol>
+                            <li>Log into <a href="https://www.cradlepointecm.com" target="_blank" rel="noopener">netcloud.cradlepoint.com</a> → <strong>Routers</strong></li>
+                            <li>Look for the router by serial number (printed on the barcode label on the unit)</li>
+                            <li>Status should show <strong>Online</strong> within 1–2 minutes of SIM insertion</li>
+                        </ol>
+                        <div class="alert alert-info">
+                            <strong>Not showing up?</strong> Check that the API key was provisioned correctly — go to <span class="path">System → Administration → NetCloud Manager</span> on the router's local UI and verify the account key matches the WFPD account.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">Step 3: Assign to Fleet Group</div>
+                    <div class="step-content">
+                        <p>In NetCloud Manager:</p>
+                        <ol>
+                            <li>Navigate to <strong>Groups</strong> → <strong>WFPD Fleet</strong> (or create the group if this is a first-time account setup)</li>
+                            <li>Move the newly registered router into the <strong>WFPD Fleet</strong> group</li>
+                            <li>This automatically applies the group's shared policy template, firmware channel, and alert rules</li>
+                        </ol>
+                        <div class="alert alert-success">
+                            <strong>Group policy push:</strong> Assigning to the group will push any pending config templates. Monitor the router's status in NCM for 2–3 minutes after assignment — it should stay Online throughout. If it reboots, that's normal (config push applied).
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">Step 4: Verify NetCloud Connection on Router</div>
+                    <div class="step-content">
+                        <p>Confirm the connection from the router's local UI:</p>
+                        <p><strong>Path:</strong> <span class="path">System → Administration → NetCloud Manager</span></p>
+                        <table class="info-table">
+                            <tr><th>Field</th><th>Expected Value</th></tr>
+                            <tr><td>Connection Status</td><td><strong>Connected</strong></td></tr>
+                            <tr><td>Last Check-in</td><td>Within the last 60 seconds</td></tr>
+                            <tr><td>Account</td><td>WFPD account name / Kerchunk Networks</td></tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">Step 5: Set Unit Name &amp; Tags in NCM</div>
+                    <div class="step-content">
+                        <p>In NetCloud Manager → <strong>Routers</strong> → click the unit → <strong>Edit</strong>:</p>
+                        <ul>
+                            <li><strong>Name:</strong> <code>WFPD-[UNIT]</code> (e.g., <code>WFPD-E7</code>) — matches SSID naming convention</li>
+                            <li><strong>Description:</strong> Apparatus type and home station (e.g., "Engine 7 — Station 7")</li>
+                            <li><strong>Tags:</strong> Add <code>woodside-fire</code> and the unit type (e.g., <code>engine</code>, <code>rescue</code>, <code>water-tender</code>)</li>
+                        </ul>
+                        <div class="alert alert-info">
+                            <strong>Why tags matter:</strong> Tags enable bulk operations — push a firmware update to all engines at once, or scope alerts to water tenders only. Tagging correctly at registration saves a lot of manual work later.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-header">Step 6: Configure Alerts</div>
+                    <div class="step-content">
+                        <p>In NCM → <strong>Alerts</strong> → verify these are active for the WFPD group:</p>
+                        <ul>
+                            <li>Router offline &gt; 5 minutes → email <code>elohmann@woodsidefire.org</code></li>
+                            <li>WAN failover event triggered</li>
+                            <li>Firmware update available</li>
+                        </ul>
+                        <div class="alert alert-warning">
+                            <strong>Do not enable data usage alerts</strong> on field units — response calls trigger high usage and the noise makes the alert useless. Enable data alerts only on station-based or stationary units.
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
