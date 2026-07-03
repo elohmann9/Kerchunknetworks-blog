@@ -10,7 +10,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact — Kerchunk Networks</title>
+  <title>Contact Kerchunk Networks — Fire Department &amp; Home Network Support, SF Bay Area</title>
+  <meta name="description" content="Reach Erik Lohmann directly — firefighter-owned network installs and monitoring for California fire departments and Bay Area homes. Email, phone, or book online. Response within 24 hours.">
+  <link rel="canonical" href="https://kerchunknetworks.com/contact.html">
+  <meta property="og:title" content="Contact Kerchunk Networks">
+  <meta property="og:description" content="Firefighter-owned networking for fire departments and homes. Direct line to Erik — response within 24 hours.">
+  <meta property="og:url" content="https://kerchunknetworks.com/contact.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;500;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -102,9 +109,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .form-card-title { font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--maroon-dark); }
     .form-body { padding: 24px; display: flex; flex-direction: column; gap: 20px; }
     .form-group { display: flex; flex-direction: column; gap: 6px; }
-    .form-label { font-family: var(--mono); font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: var(--text3); }
-    .form-label span { color: var(--text3); font-size: 8px; }
-    .form-input, .form-select, .form-textarea { background: var(--tan); border: 1px solid var(--border-hi); border-radius: 2px; padding: 10px 14px; font-family: var(--body); font-size: 15px; color: var(--text); transition: border-color .15s; width: 100%; }
+    .form-label { font-family: var(--mono); font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #6b4f4f; }
+    .form-label span { color: #6b4f4f; font-size: 11px; }
+    .form-success { background: rgba(139,64,73,.08); border: 1px solid var(--maroon); border-radius: 2px; padding: 14px 16px; font-family: var(--body); font-size: 15px; color: var(--maroon-dark); }
+    .form-input, .form-select, .form-textarea { background: var(--tan); border: 1px solid var(--border-hi); border-radius: 2px; padding: 10px 14px; font-family: var(--body); font-size: 16px; color: var(--text); transition: border-color .15s; width: 100%; }
     .form-input:focus, .form-select:focus, .form-textarea:focus { outline: none; border-color: var(--maroon); background: #fff; }
     .form-textarea { resize: vertical; min-height: 120px; }
     .form-select { cursor: pointer; }
@@ -127,7 +135,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .footer-links { display: flex; flex-wrap: wrap; gap: 6px 20px; list-style: none; }
     .footer-links a { font-family: var(--mono); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text2); text-decoration: none; }
     .footer-links a:hover { color: var(--maroon); }
-    .footer-copy { text-align: center; font-family: var(--mono); font-size: 10px; color: var(--text3); letter-spacing: 1px; border-top: 1px solid var(--border); padding-top: 20px; }
+    .footer-copy { text-align: center; font-family: var(--mono); font-size: 12px; color: var(--text2); letter-spacing: 1px; border-top: 1px solid var(--border); padding-top: 20px; }
 
     /* RESPONSIVE */
     @media (max-width: 900px) {
@@ -201,6 +209,90 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .nav-hamburger { display: flex; }
     }
 
+  
+    .has-panel.open .nav-dropdown-arrow {
+      transform: rotate(180deg);
+    }
+
+    /* ── MORPHING NAV FLYOUT ──
+       One shared panel that slides between headers and
+       resizes to fit each header's contents. */
+    .nav-flyout {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 520px;
+      height: 200px;
+      background: rgba(232,221,208,.98);
+      border: 1px solid var(--border-hi);
+      border-top: 2px solid var(--maroon);
+      box-shadow: 0 8px 32px rgba(139,64,73,.15);
+      border-radius: 0 0 3px 3px;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(0) translateY(-6px);
+      transition:
+        width .28s cubic-bezier(.4,0,.2,1),
+        height .28s cubic-bezier(.4,0,.2,1),
+        transform .28s cubic-bezier(.4,0,.2,1),
+        opacity .16s ease;
+      z-index: 200;
+    }
+    .nav-flyout.visible {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .nav-panel {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: max-content;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .16s ease;
+    }
+    .nav-panel.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .nav-panel[data-panel="services"] { width: 520px; }
+    .nav-panel-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 12px 14px 14px;
+      min-width: 250px;
+    }
+    .nav-panel-list li a {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      padding: 9px 10px;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: background .15s;
+    }
+    .nav-panel-list li a:hover { background: var(--maroon-dim); }
+    .nav-panel-list .item-title {
+      font-family: var(--ui);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+    .nav-panel-list li a:hover .item-title { color: var(--maroon); }
+    .nav-panel-list .item-sub {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      color: var(--text2);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .nav-flyout, .nav-panel { transition: none; }
+    }
   </style>
 </head>
 <body>
@@ -219,41 +311,94 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </a>
   <ul class="nav-links">
     <li><a href="/">Home</a></li>
-    <li class="nav-dropdown">
-      <a href="#">Services <span class="nav-dropdown-arrow">▾</span></a>
-      <div class="mega-menu">
-        <div class="mega-menu-header">
-          <span class="mega-menu-title">Services · Select a Category</span>
-          <span class="mega-menu-tag">Kerchunk Networks</span>
-        </div>
-        <div class="mega-menu-cols">
-          <div class="mega-col">
-            <div class="mega-col-header"><span class="mega-col-icon">📡</span><span class="mega-col-title">Fire &amp; Safety</span></div>
-            <ul class="mega-col-items">
-              <li><a href="services-fire.html">Cradlepoint Installs</a></li>
-              <li><a href="services-fire.html">NCM Fleet Management</a></li>
-              <li><a href="services-fire.html">Dual SIM Failover</a></li>
-              <li><a href="services-fire.html">Starlink Integration</a></li>
-            </ul>
-          </div>
-          <div class="mega-col">
-            <div class="mega-col-header"><span class="mega-col-icon">🏠</span><span class="mega-col-title">Residential</span></div>
-            <ul class="mega-col-items">
-              <li><a href="services-residential.html">Unifi Home Installs</a></li>
-              <li><a href="services-residential.html">Care Plan — $20/mo</a></li>
-              <li><a href="services-residential.html">VLAN Segmentation</a></li>
-              <li><a href="services-residential.html">Support &amp; Monitoring</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="mega-menu-footer"><a href="services-fire.html">View All Services →</a></div>
-      </div>
-    </li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html" class="active">Contact</a></li>
+    <li><a href="services-fire.html" class="has-panel" data-panel="services" aria-haspopup="true" aria-expanded="false">Services <span class="nav-dropdown-arrow">▾</span></a></li>
+    <li><a href="about.html" class="has-panel" data-panel="about" aria-haspopup="true" aria-expanded="false">About <span class="nav-dropdown-arrow">▾</span></a></li>
+    <li><a href="contact.html" class="has-panel active" data-panel="contact" aria-haspopup="true" aria-expanded="false">Contact <span class="nav-dropdown-arrow">▾</span></a></li>
     <li><a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="nav-cta">Schedule a Booking</a></li>
   </ul>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+
+  <div class="nav-flyout" id="nav-flyout">
+    <div class="nav-panel" data-panel="services">
+      <div class="mega-menu-header">
+        <span class="mega-menu-title">Services · Select a Category</span>
+        <span class="mega-menu-tag">Kerchunk Networks</span>
+      </div>
+      <div class="mega-menu-cols">
+        <div class="mega-col">
+          <div class="mega-col-header">
+            <span class="mega-col-icon">📡</span>
+            <span class="mega-col-title">Fire &amp; Safety</span>
+          </div>
+          <ul class="mega-col-items">
+            <li><a href="services-fire.html">Cradlepoint Installs</a></li>
+            <li><a href="services-fire.html">NCM Fleet Management</a></li>
+            <li><a href="services-fire.html">Dual SIM Failover</a></li>
+            <li><a href="services-fire.html">Starlink Integration</a></li>
+          </ul>
+        </div>
+        <div class="mega-col">
+          <div class="mega-col-header">
+            <span class="mega-col-icon">🏠</span>
+            <span class="mega-col-title">Residential</span>
+          </div>
+          <ul class="mega-col-items">
+            <li><a href="services-residential.html">Unifi Home Installs</a></li>
+            <li><a href="services-residential.html">Care Plan — $20/mo</a></li>
+            <li><a href="services-residential.html">VLAN Segmentation</a></li>
+            <li><a href="services-residential.html">Support &amp; Monitoring</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mega-menu-footer">
+        <a href="equipment.html">View All Equipment →</a>
+      </div>
+    </div>
+
+    <div class="nav-panel" data-panel="about">
+      <div class="mega-menu-header">
+        <span class="mega-menu-title">About · The Operator</span>
+      </div>
+      <ul class="nav-panel-list">
+        <li><a href="about.html">
+          <span class="item-title">Meet Erik</span>
+          <span class="item-sub">Firefighter owned &amp; operated</span>
+        </a></li>
+        <li><a href="about.html">
+          <span class="item-title">Certifications</span>
+          <span class="item-sub">FEMA · NWCG · Ericsson</span>
+        </a></li>
+        <li><a href="about.html">
+          <span class="item-title">Why Kerchunk</span>
+          <span class="item-sub">Field-tested, not just book-learned</span>
+        </a></li>
+      </ul>
+    </div>
+
+    <div class="nav-panel" data-panel="contact">
+      <div class="mega-menu-header">
+        <span class="mega-menu-title">Contact · Direct Line</span>
+      </div>
+      <ul class="nav-panel-list">
+        <li><a href="mailto:elohmann@kerchunknetworks.com">
+          <span class="item-title">Email</span>
+          <span class="item-sub">elohmann@kerchunknetworks.com</span>
+        </a></li>
+        <li><a href="tel:+14157379223">
+          <span class="item-title">Call or Text</span>
+          <span class="item-sub">415-737-9223</span>
+        </a></li>
+        <li><a href="contact.html">
+          <span class="item-title">Send a Message</span>
+          <span class="item-sub">Response within 24 hours</span>
+        </a></li>
+        <li><a href="https://cal.kerchunknetworks.com/erik" target="_blank">
+          <span class="item-title">Book a Time</span>
+          <span class="item-sub">No back and forth — pick a slot</span>
+        </a></li>
+      </ul>
+    </div>
+  </div>
 </nav>
 <div class="mobile-nav" id="mobile-nav">
   <a href="/">Home</a>
@@ -315,22 +460,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="form-card-header">
         <div class="form-card-title">Send a Message · Kerchunk Networks</div>
       </div>
-      <div class="form-body">
-        <div class="form-group">
-          <label class="form-label">Name</label>
-          <input type="text" class="form-input" placeholder="Your name">
+      <form class="form-body" action="https://formsubmit.co/elohmann@kerchunknetworks.com" method="POST">
+        <input type="hidden" name="_subject" value="New message from kerchunknetworks.com">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://kerchunknetworks.com/contact.html?sent=1">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="form-success" id="form-success" hidden>
+          <strong>Message sent.</strong> You&rsquo;ll hear back within 24 hours.
         </div>
         <div class="form-group">
-          <label class="form-label">Email</label>
-          <input type="email" class="form-input" placeholder="your@email.com">
+          <label class="form-label" for="cf-name">Name</label>
+          <input type="text" class="form-input" id="cf-name" name="name" placeholder="Your name" required autocomplete="name">
         </div>
         <div class="form-group">
-          <label class="form-label">Phone <span>(optional)</span></label>
-          <input type="tel" class="form-input" placeholder="415-000-0000">
+          <label class="form-label" for="cf-email">Email</label>
+          <input type="email" class="form-input" id="cf-email" name="email" placeholder="your@email.com" required autocomplete="email">
         </div>
         <div class="form-group">
-          <label class="form-label">Service Type</label>
-          <select class="form-select">
+          <label class="form-label" for="cf-phone">Phone <span>(optional)</span></label>
+          <input type="tel" class="form-input" id="cf-phone" name="phone" placeholder="415-000-0000" autocomplete="tel">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="cf-service">Service Type</label>
+          <select class="form-select" id="cf-service" name="service">
             <option value="">Select a service...</option>
             <option>Fire Department Networking</option>
             <option>Residential Unifi Install</option>
@@ -339,11 +491,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </select>
         </div>
         <div class="form-group">
-          <label class="form-label">Message</label>
-          <textarea class="form-textarea" placeholder="Tell me about your project..."></textarea>
+          <label class="form-label" for="cf-message">Message</label>
+          <textarea class="form-textarea" id="cf-message" name="message" placeholder="Tell me about your project..." required></textarea>
         </div>
-        <button class="btn-submit">Send Message →</button>
-      </div>
+        <button class="btn-submit" type="submit">Send Message →</button>
+      </form>
     </div>
 
   </div>
@@ -373,11 +525,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <li><a href="sms-consent.html">SMS Consent</a></li>
     </ul>
   </div>
-  <div class="footer-copy">© 2025 Kerchunk Networks · 415-737-9223 · elohmann@kerchunknetworks.com</div>
+  <div class="footer-copy">© 2024–2026 Kerchunk Networks · 415-737-9223 · elohmann@kerchunknetworks.com</div>
 </footer>
 
 <script>
 (function(){
+  if (new URLSearchParams(location.search).get('sent') === '1') {
+    var ok = document.getElementById('form-success');
+    if (ok) { ok.hidden = false; ok.scrollIntoView({ block: 'center' }); }
+  }
   var btn = document.getElementById('nav-hamburger');
   var menu = document.getElementById('mobile-nav');
   if(btn && menu){
@@ -386,6 +542,93 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       if(!btn.contains(e.target) && !menu.contains(e.target)) menu.classList.remove('open');
     });
   }
+})();
+</script>
+<script>
+/* Morphing nav flyout — one panel follows the hovered header and
+   resizes to fit that header's contents. */
+(function(){
+  var nav = document.querySelector('nav');
+  var flyout = document.getElementById('nav-flyout');
+  if (!nav || !flyout) return;
+
+  var triggers = nav.querySelectorAll('a.has-panel');
+  var panels = flyout.querySelectorAll('.nav-panel');
+  var closeTimer = null;
+  var isOpen = false;
+
+  function panelFor(key){
+    for (var i = 0; i < panels.length; i++) {
+      if (panels[i].getAttribute('data-panel') === key) return panels[i];
+    }
+    return null;
+  }
+
+  function open(trigger){
+    clearTimeout(closeTimer);
+    var panel = panelFor(trigger.getAttribute('data-panel'));
+    if (!panel) return;
+
+    panels.forEach(function(p){ p.classList.remove('active'); });
+    panel.classList.add('active');
+    triggers.forEach(function(t){
+      var on = t === trigger;
+      t.classList.toggle('open', on);
+      t.setAttribute('aria-expanded', on ? 'true' : 'false');
+    });
+
+    // Measure the active panel and morph the shared container to it
+    var w = panel.offsetWidth;
+    var h = panel.offsetHeight;
+    var navRect = nav.getBoundingClientRect();
+    var tRect = trigger.getBoundingClientRect();
+    var x = (tRect.left - navRect.left) + tRect.width / 2 - w / 2;
+    x = Math.max(8, Math.min(x, navRect.width - w - 8));
+
+    if (!isOpen) {
+      // First open: appear in place (no morph from stale geometry)
+      flyout.style.transition = 'none';
+      flyout.style.width = w + 'px';
+      flyout.style.height = h + 'px';
+      flyout.style.transform = 'translateX(' + x + 'px) translateY(-6px)';
+      void flyout.offsetHeight; // flush styles so the entrance animates from here
+      flyout.style.transition = '';
+      flyout.classList.add('visible');
+      flyout.style.transform = 'translateX(' + x + 'px) translateY(0)';
+    } else {
+      flyout.style.width = w + 'px';
+      flyout.style.height = h + 'px';
+      flyout.style.transform = 'translateX(' + x + 'px) translateY(0)';
+    }
+    isOpen = true;
+  }
+
+  function scheduleClose(){
+    clearTimeout(closeTimer);
+    closeTimer = setTimeout(close, 160);
+  }
+
+  function close(){
+    isOpen = false;
+    flyout.classList.remove('visible');
+    flyout.style.transform = flyout.style.transform.replace('translateY(0)', 'translateY(-6px)');
+    panels.forEach(function(p){ p.classList.remove('active'); });
+    triggers.forEach(function(t){
+      t.classList.remove('open');
+      t.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  triggers.forEach(function(t){
+    t.addEventListener('mouseenter', function(){ open(t); });
+    t.addEventListener('focus', function(){ open(t); });
+    t.parentElement.addEventListener('mouseleave', scheduleClose);
+  });
+  flyout.addEventListener('mouseenter', function(){ clearTimeout(closeTimer); });
+  flyout.addEventListener('mouseleave', scheduleClose);
+  nav.addEventListener('mouseleave', scheduleClose);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+  window.addEventListener('resize', close);
 })();
 </script>
 </body>

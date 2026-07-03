@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found — Kerchunk Networks</title>
+  <meta name="robots" content="noindex">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;500;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --tan: #e8ddd0; --maroon: #8b4049; --maroon-dark: #6b3038;
+      --maroon-glow: rgba(139,64,73,.3); --gold: #b8860b;
+      --text: #3a2a2a; --text2: #7a5a5a;
+      --mono: 'Share Tech Mono', monospace; --ui: 'Barlow Condensed', sans-serif; --body: 'Barlow', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: var(--body); background: var(--tan); color: var(--text); min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px; }
+    .wrap { max-width: 560px; text-align: center; }
+    .code { font-family: var(--mono); font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: #8a5a00; margin-bottom: 16px; }
+    h1 { font-family: var(--ui); font-size: clamp(40px, 8vw, 72px); font-weight: 900; letter-spacing: 3px; text-transform: uppercase; line-height: 1; margin-bottom: 20px; }
+    p { font-size: 17px; line-height: 1.7; color: var(--text2); margin-bottom: 32px; }
+    .actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .btn { display: inline-block; font-family: var(--ui); font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; padding: 14px 28px; border-radius: 2px; transition: background .15s, box-shadow .15s; }
+    .btn-primary { background: var(--maroon); color: #fff; }
+    .btn-primary:hover { background: var(--maroon-dark); box-shadow: 0 4px 20px var(--maroon-glow); }
+    .btn-ghost { border: 1px solid var(--maroon); color: var(--maroon); }
+    .btn-ghost:hover { background: rgba(139,64,73,.08); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="code">404 · Signal Lost</div>
+    <h1>Page Not Found</h1>
+    <p>This page doesn&rsquo;t exist — it may have moved, or the link had a typo. The rest of the network is up.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="/">Back to Home</a>
+      <a class="btn btn-ghost" href="/contact.html">Contact Erik</a>
+    </div>
+  </div>
+</body>
+</html>
