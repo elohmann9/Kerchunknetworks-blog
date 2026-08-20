@@ -212,11 +212,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .footer-links a:hover { color: var(--maroon); }
     .footer-copy { text-align: center; font-family: var(--mono); font-size: 12px; color: var(--text2); letter-spacing: 1px; border-top: 1px solid var(--border); padding-top: 20px; }
 
+    /* ── DESIGN REEL ── */
+    .design-reel { padding: 8px 80px 72px; max-width: 1180px; margin: 0 auto; }
+    .design-reel-frame { background: #1c1c1e; border: 1px solid var(--border-hi); overflow: hidden; }
+    .design-reel video { width: 100%; display: block; aspect-ratio: 1600 / 890; background: #1c1c1e; }
+    .design-caption { margin-top: 14px; font-family: var(--mono); font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--text2); line-height: 1.6; max-width: 70ch; }
+    .design-notice { margin: 0 0 16px; padding: 14px 16px; border-left: 3px solid var(--maroon); background: var(--maroon-dim); font-size: 15px; color: var(--text); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       nav { padding: 0 20px; }
       .nav-links { display: none; }
       .page-hero { padding: 52px 24px 44px; }
+      .design-reel { padding: 8px 24px 48px; }
       .service-block { padding: 60px 24px; }
       .service-inner { grid-template-columns: 1fr; gap: 32px; }
       .service-inner.reverse { direction: ltr; }
@@ -498,6 +506,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="hero-divider"></div>
     <p>UniFi only. San Mateo County when I am on shift at Woodside. El Dorado County when I am home. No consumer mesh kits.</p>
   </div>
+</div>
+
+<div class="design-reel" id="design">
+  <div class="design-notice">My house in El Dorado County, planned in UniFi Design Center. This is how an install gets designed. It is not a client project.</div>
+  <div class="design-reel-frame">
+    <video autoplay muted loop playsinline preload="metadata" poster="assets/videos/unifi-design-house.jpg" aria-label="UniFi Design Center walkthrough of Lohmann house Wi-Fi and cameras">
+      <source src="assets/videos/unifi-design-house.mp4" type="video/mp4">
+    </video>
+  </div>
+  <p class="design-caption">Lohmann house · UniFi Design Center. Heat map, U7 Pro APs, G6 cameras. Safari chrome cropped. Department and home photos on this site are the work I live in, not a portfolio of paid jobs.</p>
 </div>
 
 <!-- SERVICE 1: UNIFI INSTALLS -->
