@@ -10,30 +10,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kerchunk Networks — Fire Department &amp; Home Networking, SF Bay Area | Firefighter Owned</title>
-  <meta name="description" content="Firefighter-owned network solutions: Cradlepoint fleet connectivity and 24/7 monitoring for California fire departments, UniFi installs and $20/mo care plans for Bay Area homes. Built by an active firefighter.">
+  <title>Kerchunk Networks — Home UniFi in San Mateo &amp; El Dorado Counties | Firefighter Owned</title>
+  <meta name="description" content="Firefighter-owned UniFi home installs in San Mateo County and El Dorado County. On the Peninsula when I am on shift, in El Dorado County when I am home.">
   <link rel="canonical" href="https://kerchunknetworks.com/">
   <meta property="og:title" content="Kerchunk Networks — Built to Keep You Connected">
-  <meta property="og:description" content="Firefighter owned &amp; operated. Fire department fleet connectivity and home networking, from field to family.">
+  <meta property="og:description" content="Firefighter owned. Home Wi-Fi in San Mateo County and El Dorado County. The apparatus is the job, not a client install.">
   <meta property="og:url" content="https://kerchunknetworks.com/">
   <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://kerchunknetworks.com/assets/images/Kerchunk-radio.png">
+  <meta name="twitter:image" content="https://kerchunknetworks.com/assets/images/Kerchunk-radio.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/images/Kerchunk-radio.png">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Kerchunk Networks",
-    "description": "Firefighter-owned networking: Cradlepoint fleet connectivity for fire departments, UniFi home network installs and monitoring.",
+    "description": "Firefighter-owned UniFi home network installs in San Mateo County and El Dorado County.",
     "url": "https://kerchunknetworks.com",
     "telephone": "+1-415-737-9223",
     "email": "elohmann@kerchunknetworks.com",
     "founder": { "@type": "Person", "name": "Erik Lohmann" },
     "foundingDate": "2024",
+    "image": "https://kerchunknetworks.com/assets/images/Kerchunk-radio.png",
+    "priceRange": "$$",
     "areaServed": [
       { "@type": "State", "name": "California" },
-      { "@type": "Place", "name": "San Francisco Bay Area" }
+      { "@type": "AdministrativeArea", "name": "San Mateo County, California" },
+      { "@type": "AdministrativeArea", "name": "El Dorado County, California" }
     ],
-    "knowsAbout": ["Cradlepoint routers", "Fire department mobile connectivity", "UniFi networks", "Starlink integration", "Network monitoring"]
+    "knowsAbout": ["Cradlepoint routers", "Fire department mobile connectivity", "UniFi networks", "Starlink integration", "Network monitoring"],
+    "sameAs": []
   }
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;500;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -160,6 +168,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     .nav-cta:hover { background: var(--gold-light) !important; }
     .nav-cta::after { display: none !important; }
+
+    .nav-phone {
+      font-family: var(--mono) !important;
+      font-size: 11px !important;
+      letter-spacing: 1px !important;
+      color: var(--gold-light) !important;
+      white-space: nowrap;
+    }
+    .nav-phone::after { display: none !important; }
+    .nav-phone:hover { color: #fff !important; }
+
+    .cards a.card { text-decoration: none; color: inherit; display: block; }
 
     /* ── HERO ── */
     .hero {
@@ -1301,7 +1321,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     @media (max-width: 900px) {
       .nav-hamburger { display: flex; }
+      .nav-flyout { display: none !important; width: 0 !important; height: 0 !important; overflow: hidden; }
     }
+    html, body { overflow-x: hidden; }
 
   </style>
 </head>
@@ -1326,7 +1348,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="services-fire.html" class="has-panel" data-panel="services" aria-haspopup="true" aria-expanded="false">Services <span class="nav-dropdown-arrow">▾</span></a></li>
     <li><a href="about.html" class="has-panel" data-panel="about" aria-haspopup="true" aria-expanded="false">About <span class="nav-dropdown-arrow">▾</span></a></li>
     <li><a href="contact.html" class="has-panel" data-panel="contact" aria-haspopup="true" aria-expanded="false">Contact <span class="nav-dropdown-arrow">▾</span></a></li>
-    <li><a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="nav-cta">Schedule a Booking</a></li>
+    <li><a href="tel:+14157379223" class="nav-phone">415-737-9223</a></li>
+    <li><a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="nav-cta">Book a Consult</a></li>
   </ul>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
 
@@ -1343,7 +1366,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span class="mega-col-title">Fire &amp; Safety</span>
           </div>
           <ul class="mega-col-items">
-            <li><a href="services-fire.html">Cradlepoint Installs</a></li>
+            <li><a href="about.html#on-the-job">On the job</a></li>
             <li><a href="services-fire.html">NCM Fleet Management</a></li>
             <li><a href="services-fire.html">Dual SIM Failover</a></li>
             <li><a href="services-fire.html">Starlink Integration</a></li>
@@ -1419,7 +1442,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <a href="about.html">About</a>
   <a href="contact.html">Contact</a>
   <a href="equipment.html">Equipment</a>
-  <a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="mobile-cta">Schedule a Booking</a>
+  <a href="tel:+14157379223">Call 415-737-9223</a>
+  <a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="mobile-cta">Book a Consult</a>
 </div>
 
 <!-- HERO -->
@@ -1427,14 +1451,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="hero-content">
     <div class="hero-badge">Firefighter Owned &amp; Operated</div>
     <h1>
-      Built to Keep You Connected
-      <span>From Field to Family</span>
+      Networks that work
+      <span>On scene and at home</span>
     </h1>
     <div class="hero-divider"></div>
-    <p>Network solutions designed by a public safety communications professional.</p>
+    <p>Home Wi-Fi in San Mateo County and El Dorado County. Peninsula when I am on shift. El Dorado County when I am home.</p>
     <div class="hero-btns">
-      <a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="btn-primary">Get Started</a>
-      <a href="services-fire.html" class="btn-secondary">View Services</a>
+      <a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="btn-primary">Book a 30-min consult</a>
+      <a href="tel:+14157379223" class="btn-secondary">Call 415-737-9223</a>
     </div>
   </div>
 
@@ -1456,16 +1480,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stat">
-    <div class="stat-val">Unifi</div>
-    <div class="stat-label">Residential Gear</div>
+    <div class="stat-val">Woodside Fire</div>
+    <div class="stat-label">The job — not a client install</div>
   </div>
   <div class="stat">
-    <div class="stat-val">99.9%</div>
-    <div class="stat-label">Uptime Target</div>
+    <div class="stat-val">UniFi</div>
+    <div class="stat-label">Home installs</div>
   </div>
   <div class="stat">
-    <div class="stat-val">24/7</div>
-    <div class="stat-label">Support Available</div>
+    <div class="stat-val">$20/mo</div>
+    <div class="stat-label">Home Care Plan</div>
   </div>
   <div class="stat">
     <div class="stat-val">🔥</div>
@@ -1473,38 +1497,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-
+<div class="creds">
+  <div class="creds-eyebrow">Credentials</div>
   <div class="creds-list">
     <div class="cred-item">
       <img src="assets/certs/ericsson-cna-badge.png" alt="Ericsson Enterprise Wireless Certified Network Associate">
-      <div class="cred-name">Certified Network Associate</div>
-      <div class="cred-issuer">Ericsson · Enterprise Wireless</div>
+      <div class="cred-name">Ericsson Enterprise Wireless CNA</div>
+      <div class="cred-issuer">Not Cisco CCNA — Ericsson public-safety wireless</div>
     </div>
   </div>
 </div>
 
 <!-- SERVICES -->
 <section>
-  <div class="section-eyebrow">What We Do</div>
-  <div class="section-title">Connecting Fire, Field &amp; Family</div>
-  <p class="section-sub">From apparatus networks to home installs — we build infrastructure you can count on.</p>
+  <div class="section-eyebrow">What I do</div>
+  <div class="section-title">Home Wi-Fi. The firehouse is the job.</div>
+  <p class="section-sub">Kerchunk Networks installs UniFi in houses. The apparatus photos are Woodside Fire — where I work. I&rsquo;m not booking department upfits yet.</p>
 
   <div class="cards">
-    <div class="card">
+    <a class="card" href="about.html#on-the-job" style="text-decoration:none;color:inherit;">
       <span class="card-icon">📡</span>
-      <div class="card-title">Fire Dept Networking</div>
-      <div class="card-body">Enterprise-grade connectivity for apparatus and stations. Built for the demands of emergency services.</div>
+      <div class="card-title">On the job</div>
+      <div class="card-body">Woodside Fire apparatus: Starlink Mini, cellular, the radios I ride with. That&rsquo;s the work. It is not a client portfolio.</div>
       <ul class="card-list">
-        <li>Cradlepoint R1900 / IBR1700</li>
-        <li>Dual SIM failover</li>
-        <li>Starlink integration</li>
-        <li>NCM remote management</li>
+        <li>Active firefighter, Woodside FPD</li>
+        <li>Starlink + cellular on the cab</li>
+        <li>Not taking apparatus installs yet</li>
+        <li>Chiefs who want to talk shop: call</li>
       </ul>
-    </div>
+    </a>
     <div class="card">
       <span class="card-icon">🏠</span>
-      <div class="card-title">Residential Unifi</div>
-      <div class="card-body">Clean, fast, reliable home networks. Unifi only — because it's what we trust and what we stand behind.</div>
+      <div class="card-title">Home UniFi</div>
+      <div class="card-body">This is the install I&rsquo;ll take. Whole-house coverage, clean rack, a walkthrough. Optional $20/mo Care Plan after.</div>
       <ul class="card-list">
         <li>Full home coverage</li>
         <li>VLAN segmentation</li>
@@ -1532,8 +1557,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="monitor-inner">
     <div class="monitor-header">
       <div class="section-eyebrow">What We Manage</div>
-      <div class="section-title">Real Infrastructure. Real Clients.</div>
-      <p class="section-sub" style="margin-left:auto;margin-right:auto;text-align:center;">From fire apparatus to family homes — here's what managed connectivity looks like.</p>
+      <div class="section-title">What managed connectivity looks like</div>
+      <p class="section-sub" style="margin-left:auto;margin-right:auto;text-align:center;">Example consoles — labeled DEMO — so you can see the kind of visibility you get after an install.</p>
     </div>
 
     <div class="monitor-panels">
@@ -1569,16 +1594,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="cp-serial">KN0004TA000004</div>
             <div class="cp-row">
               <div><div class="cp-col-label">Status</div><div class="cp-col-val status-val">ONLINE</div></div>
-              <div><div class="cp-col-label">Last Seen</div><div class="cp-col-val time-val">8d ago</div></div>
+              <div><div class="cp-col-label">Last Seen</div><div class="cp-col-val time-val">8m ago</div></div>
             </div>
           </div>
-          <div class="cp-card cp-offline">
+          <div class="cp-card cp-online">
             <div class="cp-tag">Cradlepoint · NCM</div>
             <div class="cp-name">BATT-CHIEF</div>
             <div class="cp-serial">KN0003TA000003</div>
             <div class="cp-row">
-              <div><div class="cp-col-label">Status</div><div class="cp-col-val status-val">OFFLINE</div></div>
-              <div><div class="cp-col-label">Last Seen</div><div class="cp-col-val time-val">46d ago</div></div>
+              <div><div class="cp-col-label">Status</div><div class="cp-col-val status-val">ONLINE</div></div>
+              <div><div class="cp-col-label">Last Seen</div><div class="cp-col-val time-val">3m ago</div></div>
             </div>
           </div>
         </div>
@@ -1652,9 +1677,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- CTA BAND -->
 <div class="band">
   <div class="band-inner">
-    <h2>Ready to Build Something Reliable?</h2>
-    <p>Whether it's a fire station, an apparatus, or your home — let's talk about what your network needs.</p>
-    <a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="btn-primary-inverted">Schedule a Booking</a>
+    <h2>Ready to build something reliable?</h2>
+    <p>Fire department or home Wi-Fi — pick a time or call. You&rsquo;ll talk to Erik, not a ticket queue.</p>
+    <a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="btn-primary-inverted">Book a 30-min consult</a>
   </div>
 </div>
 
@@ -1667,7 +1692,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <ul class="footer-links">
       <li><a href="about.html">About</a></li>
-      <li><a href="services-fire.html">Services</a></li>
+      <li><a href="services.html">Services</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="support.html">Support</a></li>
       <li><a href="privacy-policy.html">Privacy</a></li>

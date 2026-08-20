@@ -14,7 +14,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta name="description" content="Kerchunk Networks is owned and operated by Erik Lohmann — an active firefighter with Woodside Fire Protection District, FEMA- and NWCG-certified in emergency communications. Not a consultant who's read about fire departments; someone who works in one.">
   <link rel="canonical" href="https://kerchunknetworks.com/about">
   <meta property="og:title" content="About Erik Lohmann — Kerchunk Networks">
-  <meta property="og:description" content="Firefighter owned &amp; operated. FEMA- and NWCG-certified communications, serving fire departments and Bay Area homes.">
+  <meta property="og:description" content="Firefighter owned &amp; operated. FEMA- and NWCG-certified communications, serving home networks in San Mateo County and El Dorado County.">
   <meta property="og:url" content="https://kerchunknetworks.com/about">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
@@ -145,6 +145,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .footer-links a:hover { color: var(--maroon); }
     .footer-copy { text-align: center; font-family: var(--mono); font-size: 10px; color: var(--text3); letter-spacing: 1px; border-top: 1px solid var(--border); padding-top: 20px; }
 
+
+    .job-photos { padding: 0 80px 72px; max-width: 1180px; margin: 0 auto; }
+    .job-photos-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+    .job-photos-grid img { width: 100%; height: 200px; object-fit: cover; display: block; background: #3a2a2a; }
+    .job-photos-grid img:nth-child(1),
+    .job-photos-grid img:nth-child(2) { grid-column: span 3; height: 300px; }
+    .job-photos-grid img:nth-child(n+3) { grid-column: span 2; }
+    .job-caption { margin-top: 14px; font-family: var(--mono); font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--text2); line-height: 1.6; max-width: 62ch; }
+    .job-notice { margin: 0 0 20px; padding: 14px 16px; border-left: 3px solid var(--maroon); background: var(--maroon-dim); font-size: 15px; color: var(--text); }
+    @media (max-width: 900px) {
+      .job-photos { padding: 0 24px 48px; }
+      .job-photos-grid { grid-template-columns: 1fr; }
+      .job-photos-grid img,
+      .job-photos-grid img:nth-child(1),
+      .job-photos-grid img:nth-child(2) { height: 220px; grid-column: auto; }
+    }
+
     /* RESPONSIVE */
     @media (max-width: 900px) {
       nav { padding: 0 20px; }
@@ -216,7 +233,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     @media (max-width: 900px) {
       .nav-hamburger { display: flex; }
+      .nav-flyout { display: none !important; width: 0 !important; height: 0 !important; overflow: hidden; }
     }
+    html, body { overflow-x: hidden; }
 
   
     .has-panel.open .nav-dropdown-arrow {
@@ -340,7 +359,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span class="mega-col-title">Fire &amp; Safety</span>
           </div>
           <ul class="mega-col-items">
-            <li><a href="services-fire.html">Cradlepoint Installs</a></li>
+            <li><a href="services-fire.html">On the job</a></li>
             <li><a href="services-fire.html">NCM Fleet Management</a></li>
             <li><a href="services-fire.html">Dual SIM Failover</a></li>
             <li><a href="services-fire.html">Starlink Integration</a></li>
@@ -435,13 +454,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div>
       <div class="about-label">Founder · Kerchunk Networks</div>
       <div class="about-title">Erik Lohmann</div>
-      <p class="about-desc">Active firefighter with Woodside Fire Protection District in California. Self-taught in networking and IT. Started Kerchunk Networks to bring real-world public safety networking experience to fire departments and residential clients who deserve better than a big-box install. IT Lead at Woodside — manages iPads, iPhones, Cradlepoint R1900s, and Tablet Command.</p>
+      <p class="about-desc">Active firefighter with Woodside Fire Protection District. FEMA-certified Communications Specialist (US&R) and Ericsson Enterprise Wireless CNA. IT Lead at Woodside — iPads, iPhones, Cradlepoint R1900s, and Tablet Command. Started Kerchunk Networks in 2024 to bring that field experience to home networks that deserve better than a big-box mesh kit. Apparatus work is the job. It is not the product yet.</p>
       <ul class="about-list">
         <li>Active Firefighter — Woodside Fire Protection District</li>
         <li>IT Lead — apparatus networking and MDM</li>
-        <li>Public safety communications professional</li>
-        <li>Self-taught networking and IT</li>
-        <li>Serving fire departments and residential clients</li>
+        <li>FEMA US&R Communications Specialist</li>
+        <li>Ericsson Enterprise Wireless CNA</li>
+        <li>On-site now: San Mateo County and El Dorado County home UniFi</li>
       </ul>
     </div>
     <div class="detail-card">
@@ -458,6 +477,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
+
+<!-- ON THE JOB -->
+<div class="job-photos" id="on-the-job">
+  <div class="job-notice">These are Woodside Fire Protection District apparatus — the job I work. They are not Kerchunk client installs. I am not booking department upfits yet. Home UniFi is what I take.</div>
+  <div class="job-photos-grid">
+    <img src="assets/images/job/engine-0107.jpg" alt="Starlink Mini on a Woodside Fire engine cab roof">
+    <img src="assets/images/job/cab-5807.jpg" alt="Cradlepoint router with labeled antenna leads in a fire apparatus cab">
+    <img src="assets/images/job/engine-0904.jpg" alt="Antenna farm and HSM Starlink mount on a Woodside Fire apparatus roof">
+    <img src="assets/images/job/engine-0108.jpg" alt="Starlink mount and cellular puck on a Woodside Fire engine">
+    <img src="assets/images/job/engine-0109.jpg" alt="HSM High Street Mounts Starlink mount on apparatus">
+  </div>
+  <p class="job-caption">Woodside Fire · roof and cab. Starlink Mini, HSM mount, labeled Cradlepoint. Department setup, not a client project.</p>
+</div>
+
 <!-- CREDENTIALS -->
 <div class="creds-section">
   <div class="section-eyebrow">Training &amp; Credentials</div>
@@ -470,8 +503,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="cred-item">
       <img src="assets/certs/ericsson-cna-badge.png" alt="Ericsson Certified Network Associate">
-      <div class="cred-name">Network Associate</div>
-      <div class="cred-issuer">Ericsson · Enterprise</div>
+      <div class="cred-name">Ericsson Enterprise Wireless CNA</div>
+      <div class="cred-issuer">Ericsson · Public-safety wireless</div>
     </div>
     <div class="cred-item">
       <div class="cred-placeholder">
@@ -491,8 +524,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="section-title" style="margin-bottom:40px;">Why We Do It This Way</div>
     <div class="cards">
       <div class="card">
-        <div class="card-title">Unifi Only</div>
-        <p class="card-body">We don't sell a dozen brands. Unifi is what we trust, what we install, and what we support. One platform, done right.</p>
+        <div class="card-title">The stack we stand behind</div>
+        <p class="card-body">UniFi is what I install in houses. Cradlepoint and Starlink on the engine are what I ride with. I don&rsquo;t sell a dozen brands, and I&rsquo;m not booking apparatus upfits yet.</p>
       </div>
       <div class="card">
         <div class="card-title">No Upselling</div>
@@ -510,7 +543,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="band">
   <div class="band-inner">
     <h2>Want to Work Together?</h2>
-    <p>Fire department or family home — let's build something you can count on.</p>
+    <p>Home Wi-Fi — pick a time or call.</p>
     <a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="btn-primary">Schedule a Booking</a>
   </div>
 </div>
