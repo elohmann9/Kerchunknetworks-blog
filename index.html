@@ -17,7 +17,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta property="og:description" content="Firefighter owned &amp; operated. Fire department fleet connectivity and home networking, from field to family.">
   <meta property="og:url" content="https://kerchunknetworks.com/">
   <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:image" content="https://kerchunknetworks.com/assets/images/Kerchunk-radio.png">
+  <meta name="twitter:image" content="https://kerchunknetworks.com/assets/images/Kerchunk-radio.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="assets/images/Kerchunk-radio.png">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -29,11 +33,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     "email": "elohmann@kerchunknetworks.com",
     "founder": { "@type": "Person", "name": "Erik Lohmann" },
     "foundingDate": "2024",
+    "image": "https://kerchunknetworks.com/assets/images/Kerchunk-radio.png",
+    "priceRange": "$$",
     "areaServed": [
       { "@type": "State", "name": "California" },
-      { "@type": "Place", "name": "San Francisco Bay Area" }
+      { "@type": "Place", "name": "San Francisco Peninsula" },
+      { "@type": "Place", "name": "South Bay" }
     ],
-    "knowsAbout": ["Cradlepoint routers", "Fire department mobile connectivity", "UniFi networks", "Starlink integration", "Network monitoring"]
+    "knowsAbout": ["Cradlepoint routers", "Fire department mobile connectivity", "UniFi networks", "Starlink integration", "Network monitoring"],
+    "sameAs": []
   }
   </script>
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;500;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -160,6 +168,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     .nav-cta:hover { background: var(--gold-light) !important; }
     .nav-cta::after { display: none !important; }
+
+    .nav-phone {
+      font-family: var(--mono) !important;
+      font-size: 11px !important;
+      letter-spacing: 1px !important;
+      color: var(--gold-light) !important;
+      white-space: nowrap;
+    }
+    .nav-phone::after { display: none !important; }
+    .nav-phone:hover { color: #fff !important; }
+
+    .cards a.card { text-decoration: none; color: inherit; display: block; }
 
     /* ── HERO ── */
     .hero {
@@ -1301,7 +1321,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     }
     @media (max-width: 900px) {
       .nav-hamburger { display: flex; }
+      .nav-flyout { display: none !important; width: 0 !important; height: 0 !important; overflow: hidden; }
     }
+    html, body { overflow-x: hidden; }
 
   </style>
 </head>
@@ -1326,7 +1348,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <li><a href="services-fire.html" class="has-panel" data-panel="services" aria-haspopup="true" aria-expanded="false">Services <span class="nav-dropdown-arrow">▾</span></a></li>
     <li><a href="about.html" class="has-panel" data-panel="about" aria-haspopup="true" aria-expanded="false">About <span class="nav-dropdown-arrow">▾</span></a></li>
     <li><a href="contact.html" class="has-panel" data-panel="contact" aria-haspopup="true" aria-expanded="false">Contact <span class="nav-dropdown-arrow">▾</span></a></li>
-    <li><a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="nav-cta">Schedule a Booking</a></li>
+    <li><a href="tel:+14157379223" class="nav-phone">415-737-9223</a></li>
+    <li><a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="nav-cta">Book a Consult</a></li>
   </ul>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
 
@@ -1419,7 +1442,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <a href="about.html">About</a>
   <a href="contact.html">Contact</a>
   <a href="equipment.html">Equipment</a>
-  <a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="mobile-cta">Schedule a Booking</a>
+  <a href="tel:+14157379223">Call 415-737-9223</a>
+  <a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="mobile-cta">Book a Consult</a>
 </div>
 
 <!-- HERO -->
@@ -1427,14 +1451,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="hero-content">
     <div class="hero-badge">Firefighter Owned &amp; Operated</div>
     <h1>
-      Built to Keep You Connected
-      <span>From Field to Family</span>
+      Networks that work
+      <span>On scene and at home</span>
     </h1>
     <div class="hero-divider"></div>
-    <p>Network solutions designed by a public safety communications professional.</p>
+    <p>Cradlepoint for California fire departments. UniFi for Peninsula & South Bay homes. Installed by an active firefighter who uses this gear on the job.</p>
     <div class="hero-btns">
-      <a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="btn-primary">Get Started</a>
-      <a href="services-fire.html" class="btn-secondary">View Services</a>
+      <a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="btn-primary">Book a 30-min consult</a>
+      <a href="tel:+14157379223" class="btn-secondary">Call 415-737-9223</a>
     </div>
   </div>
 
@@ -1456,16 +1480,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stat">
-    <div class="stat-val">Unifi</div>
-    <div class="stat-label">Residential Gear</div>
+    <div class="stat-val">Cradlepoint</div>
+    <div class="stat-label">Apparatus Networks</div>
   </div>
   <div class="stat">
-    <div class="stat-val">99.9%</div>
-    <div class="stat-label">Uptime Target</div>
+    <div class="stat-val">UniFi</div>
+    <div class="stat-label">Homes & Stations</div>
   </div>
   <div class="stat">
     <div class="stat-val">24/7</div>
-    <div class="stat-label">Support Available</div>
+    <div class="stat-label">Fleet Monitoring</div>
   </div>
   <div class="stat">
     <div class="stat-val">🔥</div>
@@ -1473,12 +1497,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-
+<div class="creds">
+  <div class="creds-eyebrow">Credentials</div>
   <div class="creds-list">
     <div class="cred-item">
       <img src="assets/certs/ericsson-cna-badge.png" alt="Ericsson Enterprise Wireless Certified Network Associate">
-      <div class="cred-name">Certified Network Associate</div>
-      <div class="cred-issuer">Ericsson · Enterprise Wireless</div>
+      <div class="cred-name">Ericsson Enterprise Wireless CNA</div>
+      <div class="cred-issuer">Not Cisco CCNA — Ericsson public-safety wireless</div>
     </div>
   </div>
 </div>
@@ -1532,8 +1557,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="monitor-inner">
     <div class="monitor-header">
       <div class="section-eyebrow">What We Manage</div>
-      <div class="section-title">Real Infrastructure. Real Clients.</div>
-      <p class="section-sub" style="margin-left:auto;margin-right:auto;text-align:center;">From fire apparatus to family homes — here's what managed connectivity looks like.</p>
+      <div class="section-title">What managed connectivity looks like</div>
+      <p class="section-sub" style="margin-left:auto;margin-right:auto;text-align:center;">Example consoles — labeled DEMO — so you can see the kind of visibility you get after an install.</p>
     </div>
 
     <div class="monitor-panels">
@@ -1569,16 +1594,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <div class="cp-serial">KN0004TA000004</div>
             <div class="cp-row">
               <div><div class="cp-col-label">Status</div><div class="cp-col-val status-val">ONLINE</div></div>
-              <div><div class="cp-col-label">Last Seen</div><div class="cp-col-val time-val">8d ago</div></div>
+              <div><div class="cp-col-label">Last Seen</div><div class="cp-col-val time-val">8m ago</div></div>
             </div>
           </div>
-          <div class="cp-card cp-offline">
+          <div class="cp-card cp-online">
             <div class="cp-tag">Cradlepoint · NCM</div>
             <div class="cp-name">BATT-CHIEF</div>
             <div class="cp-serial">KN0003TA000003</div>
             <div class="cp-row">
-              <div><div class="cp-col-label">Status</div><div class="cp-col-val status-val">OFFLINE</div></div>
-              <div><div class="cp-col-label">Last Seen</div><div class="cp-col-val time-val">46d ago</div></div>
+              <div><div class="cp-col-label">Status</div><div class="cp-col-val status-val">ONLINE</div></div>
+              <div><div class="cp-col-label">Last Seen</div><div class="cp-col-val time-val">3m ago</div></div>
             </div>
           </div>
         </div>
@@ -1652,9 +1677,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- CTA BAND -->
 <div class="band">
   <div class="band-inner">
-    <h2>Ready to Build Something Reliable?</h2>
-    <p>Whether it's a fire station, an apparatus, or your home — let's talk about what your network needs.</p>
-    <a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="btn-primary-inverted">Schedule a Booking</a>
+    <h2>Ready to build something reliable?</h2>
+    <p>Fire department or Peninsula home — pick a time or call. You&rsquo;ll talk to Erik, not a ticket queue.</p>
+    <a href="https://cal.kerchunknetworks.com/erik" target="_blank" class="btn-primary-inverted">Book a 30-min consult</a>
   </div>
 </div>
 
@@ -1667,7 +1692,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <ul class="footer-links">
       <li><a href="about.html">About</a></li>
-      <li><a href="services-fire.html">Services</a></li>
+      <li><a href="services.html">Services</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="support.html">Support</a></li>
       <li><a href="privacy-policy.html">Privacy</a></li>

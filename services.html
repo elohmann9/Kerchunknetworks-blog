@@ -1,59 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Services - Kerchunk Networks</title>
-    <link rel="stylesheet" href="assets/css/shared-styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services — Fire Department & Home Networking | Kerchunk Networks</title>
+  <meta name="description" content="Cradlepoint fleet networking for California fire departments, and UniFi home installs on the Peninsula and South Bay. Firefighter owned.">
+  <link rel="canonical" href="https://kerchunknetworks.com/services">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;500;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --tan: #e8ddd0; --beige: #d4c4b0; --maroon: #8b4049; --maroon-dark: #6b3038;
+      --maroon-dim: rgba(139,64,73,.1); --maroon-glow: rgba(139,64,73,.3);
+      --gold: #b8860b; --gold-light: #d4a574; --text: #3a2a2a; --text2: #7a5a5a;
+      --border: rgba(139,64,73,.15); --border-hi: rgba(139,64,73,.3);
+      --mono: 'Share Tech Mono', monospace; --ui: 'Barlow Condensed', sans-serif; --body: 'Barlow', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { overflow-x: hidden; }
+    body { font-family: var(--body); background: var(--tan); color: var(--text); line-height: 1.6; }
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(139,64,73,.97); height: 64px; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--maroon-dark); box-shadow: 0 2px 0 0 rgba(184,134,11,.35);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo img { height: 38px; filter: brightness(0) invert(1); }
+    .nav-logo .name { font-family: var(--ui); font-size: 18px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
+    .nav-links { display: flex; gap: 8px; list-style: none; align-items: center; }
+    .nav-links a { font-family: var(--ui); font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.8); text-decoration: none; padding: 8px 12px; }
+    .nav-cta { background: var(--gold); color: #fff !important; border-radius: 3px; padding: 8px 18px !important; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 72px 24px 40px; }
+    .eyebrow { font-family: var(--mono); font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    h1 { font-family: var(--ui); font-size: clamp(36px, 6vw, 56px); font-weight: 900; letter-spacing: 2px; text-transform: uppercase; line-height: 1; margin-bottom: 16px; }
+    .lead { font-size: 18px; font-weight: 300; color: var(--text2); max-width: 640px; margin-bottom: 48px; line-height: 1.8; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .card { background: #fff; border: 1px solid var(--border); border-radius: 4px; padding: 32px 28px; text-decoration: none; color: inherit; display: block; position: relative; overflow: hidden; transition: box-shadow .2s, transform .2s; }
+    .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--maroon), var(--gold)); }
+    .card:hover { box-shadow: 0 8px 30px rgba(139,64,73,.15); transform: translateY(-3px); }
+    .card h2 { font-family: var(--ui); font-size: 22px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--maroon); margin: 8px 0 12px; }
+    .card p { font-size: 15px; color: var(--text2); margin-bottom: 16px; }
+    .card ul { list-style: none; font-family: var(--mono); font-size: 12px; color: var(--text2); display: flex; flex-direction: column; gap: 6px; }
+    .card ul li::before { content: '— '; color: var(--maroon); }
+    .go { display: inline-block; margin-top: 20px; font-family: var(--ui); font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--maroon); }
+    footer { background: var(--maroon-dark); border-top: 3px solid var(--gold); padding: 28px 24px; color: rgba(255,255,255,.6); font-family: var(--mono); font-size: 11px; letter-spacing: 1px; text-align: center; }
+    footer a { color: var(--gold-light); }
+    @media (max-width: 800px) {
+      .nav-links { display: none; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <div class="background-wrapper">
-        <div class="background-overlay"></div>
+  <nav>
+    <a class="nav-logo" href="/">
+      <img src="assets/images/Kerchunk-radio-transparent-Print.svg" alt="Kerchunk Networks">
+      <span class="name">Kerchunk Networks</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="services-fire.html">Fire</a></li>
+      <li><a href="services-residential.html">Homes</a></li>
+      <li><a href="tel:+14157379223">415-737-9223</a></li>
+      <li><a class="nav-cta" href="https://cal.kerchunknetworks.com/erik" target="_blank">Book a Consult</a></li>
+    </ul>
+  </nav>
+  <main class="wrap">
+    <div class="eyebrow">Services</div>
+    <h1>Pick the job.<br>Not a catalog.</h1>
+    <p class="lead">Kerchunk Networks is one operator with two stacks: Cradlepoint for fire apparatus, UniFi for buildings. Choose the path that matches what you need.</p>
+    <div class="grid">
+      <a class="card" href="services-fire.html">
+        <div class="eyebrow">Public safety</div>
+        <h2>Fire department networking</h2>
+        <p>Cradlepoint R1900 / IBR1700 installs, dual-SIM and Starlink failover, Tablet Command, and NCM fleet monitoring. On-site anywhere in California.</p>
+        <ul>
+          <li>Apparatus and station connectivity</li>
+          <li>AT&T FirstNet + Verizon failover</li>
+          <li>24/7 fleet status, not a $20 home plan</li>
+        </ul>
+        <span class="go">View fire services →</span>
+      </a>
+      <a class="card" href="services-residential.html">
+        <div class="eyebrow">Peninsula + South Bay</div>
+        <h2>UniFi home installs</h2>
+        <p>Site survey, clean cable runs, whole-home coverage, VLANs, and a walkthrough. Optional $20/mo Care Plan for remote support after the install.</p>
+        <ul>
+          <li>UniFi for buildings — that’s the home stack</li>
+          <li>No consumer mesh kits</li>
+          <li>Direct line to Erik</li>
+        </ul>
+        <span class="go">View home installs →</span>
+      </a>
     </div>
-
-    <nav class="nav-header">
-        <div class="nav-container">
-            <div class="logo-section">
-                <a href="index.html" class="logo-link">
-                    <span class="logo-icon">📻</span>
-                    <div class="logo-text">
-                        <span class="logo-title">Kerchunk Networks</span>
-                        <span class="logo-subtitle">Professional Solutions</span>
-                    </div>
-                </a>
-            </div>
-
-            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()" aria-label="Toggle menu">☰</button>
-
-            <ul class="nav-menu" id="navMenu">
-                <li class="nav-item"><a href="networking.html" class="nav-link">Networking</a></li>
-                <li class="nav-item"><a href="products.html" class="nav-link">Products</a></li>
-                <li class="nav-item"><a href="services.html" class="nav-link active">Services</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <main class="page-content">
-        <section class="page-hero">
-            <h1>Our Services</h1>
-            <p>Complete installation, monitoring, and maintenance support</p>
-        </section>
-
-        <section class="content-section">
-            <div class="container">
-                <h2>Coming Soon</h2>
-                <p>Detailed services information will be available here.</p>
-                <a href="index.html" class="btn btn-primary">Back to Home</a>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 Kerchunk Networks - Connecting Fire, Field, and Family</p>
-        </div>
-    </footer>
-
-    <script src="assets/js/navigation.js"></script>
+  </main>
+  <footer>
+    © 2024–2026 Kerchunk Networks · <a href="tel:+14157379223">415-737-9223</a> · <a href="mailto:elohmann@kerchunknetworks.com">elohmann@kerchunknetworks.com</a>
+  </footer>
 </body>
 </html>
