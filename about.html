@@ -147,14 +147,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
     .job-photos { padding: 0 80px 72px; max-width: 1180px; margin: 0 auto; }
-    .job-photos-grid { display: grid; grid-template-columns: 1.3fr 1fr 0.9fr; gap: 8px; }
-    .job-photos-grid img { width: 100%; height: 260px; object-fit: cover; display: block; background: #3a2a2a; }
+    .job-photos-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; }
+    .job-photos-grid img { width: 100%; height: 200px; object-fit: cover; display: block; background: #3a2a2a; }
+    .job-photos-grid img:nth-child(1),
+    .job-photos-grid img:nth-child(2) { grid-column: span 3; height: 300px; }
+    .job-photos-grid img:nth-child(n+3) { grid-column: span 2; }
     .job-caption { margin-top: 14px; font-family: var(--mono); font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--text2); line-height: 1.6; max-width: 62ch; }
     .job-notice { margin: 0 0 20px; padding: 14px 16px; border-left: 3px solid var(--maroon); background: var(--maroon-dim); font-size: 15px; color: var(--text); }
     @media (max-width: 900px) {
       .job-photos { padding: 0 24px 48px; }
       .job-photos-grid { grid-template-columns: 1fr; }
-      .job-photos-grid img { height: 220px; }
+      .job-photos-grid img,
+      .job-photos-grid img:nth-child(1),
+      .job-photos-grid img:nth-child(2) { height: 220px; grid-column: auto; }
     }
 
     /* RESPONSIVE */
@@ -478,10 +483,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="job-notice">These are Woodside Fire Protection District apparatus — the job I work. They are not Kerchunk client installs. I am not booking department upfits yet. Home UniFi is what I take.</div>
   <div class="job-photos-grid">
     <img src="assets/images/job/engine-0107.jpg" alt="Starlink Mini on a Woodside Fire engine cab roof">
+    <img src="assets/images/job/cab-5807.jpg" alt="Cradlepoint router with labeled antenna leads in a fire apparatus cab">
+    <img src="assets/images/job/engine-0904.jpg" alt="Antenna farm and HSM Starlink mount on a Woodside Fire apparatus roof">
     <img src="assets/images/job/engine-0108.jpg" alt="Starlink mount and cellular puck on a Woodside Fire engine">
     <img src="assets/images/job/engine-0109.jpg" alt="HSM High Street Mounts Starlink mount on apparatus">
   </div>
-  <p class="job-caption">Woodside Fire · cab roof. Starlink Mini, cellular puck, HSM mount, Motorola whip. Department setup, not a client project.</p>
+  <p class="job-caption">Woodside Fire · roof and cab. Starlink Mini, HSM mount, labeled Cradlepoint. Department setup, not a client project.</p>
 </div>
 
 <!-- CREDENTIALS -->
