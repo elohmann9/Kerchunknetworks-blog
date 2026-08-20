@@ -212,19 +212,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .footer-links a:hover { color: var(--maroon); }
     .footer-copy { text-align: center; font-family: var(--mono); font-size: 12px; color: var(--text2); letter-spacing: 1px; border-top: 1px solid var(--border); padding-top: 20px; }
 
-    /* ── DESIGN REEL ── */
-    .design-reel { padding: 8px 80px 72px; max-width: 1180px; margin: 0 auto; }
-    .design-reel-frame { background: #1c1c1e; border: 1px solid var(--border-hi); overflow: hidden; }
-    .design-reel video { width: 100%; display: block; aspect-ratio: 1600 / 890; background: #1c1c1e; }
+    /* ── DESIGN REEL (scroll-scrub) ── */
+    .scrub { position: relative; height: 280vh; background: var(--tan); border-bottom: 1px solid var(--border); }
+    .scrub-pin { position: sticky; top: 64px; min-height: calc(100vh - 64px); padding: 20px 80px 28px; max-width: 1180px; margin: 0 auto; box-sizing: border-box; background: var(--tan); display: flex; flex-direction: column; justify-content: center; }
+    .design-reel-frame { position: relative; background: #1c1c1e; border: 1px solid var(--border-hi); overflow: hidden; }
+    .design-reel-frame video { width: 100%; display: block; aspect-ratio: 1600 / 890; background: #1c1c1e; max-height: calc(100vh - 220px); object-fit: cover; }
+    .scrub-hud { position: absolute; left: 12px; bottom: 18px; z-index: 2; display: flex; flex-direction: column; gap: 4px; pointer-events: none; }
+    .scrub-step { font-family: var(--mono); font-size: 10px; letter-spacing: 1.6px; text-transform: uppercase; color: rgba(255,255,255,.4); background: rgba(20,20,22,.72); padding: 6px 10px; width: fit-content; }
+    .scrub-step.is-on { color: #fff; border-left: 3px solid var(--gold); padding-left: 8px; }
+    .scrub-bar { position: absolute; left: 0; right: 0; bottom: 0; height: 3px; background: rgba(255,255,255,.12); }
+    .scrub-bar > i { display: block; height: 100%; width: 0; background: var(--gold); }
     .design-caption { margin-top: 14px; font-family: var(--mono); font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--text2); line-height: 1.6; max-width: 70ch; }
     .design-notice { margin: 0 0 16px; padding: 14px 16px; border-left: 3px solid var(--maroon); background: var(--maroon-dim); font-size: 15px; color: var(--text); }
+    @media (prefers-reduced-motion: reduce) {
+      .scrub { height: auto; }
+      .scrub-pin { position: relative; top: auto; }
+    }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       nav { padding: 0 20px; }
       .nav-links { display: none; }
       .page-hero { padding: 52px 24px 44px; }
-      .design-reel { padding: 8px 24px 48px; }
+      .scrub-pin { padding: 12px 20px 20px; top: 56px; }
+      .scrub-hud { display: none; }
       .service-block { padding: 60px 24px; }
       .service-inner { grid-template-columns: 1fr; gap: 32px; }
       .service-inner.reverse { direction: ltr; }
@@ -508,15 +519,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-<div class="design-reel" id="design">
-  <div class="design-notice">My house in El Dorado County, planned in UniFi Design Center. This is how an install gets designed. It is not a client project.</div>
-  <div class="design-reel-frame">
-    <video autoplay muted loop playsinline preload="metadata" poster="assets/videos/unifi-design-house.jpg" aria-label="UniFi Design Center walkthrough of Lohmann house Wi-Fi and cameras">
-      <source src="assets/videos/unifi-design-house.mp4" type="video/mp4">
-    </video>
+<section class="scrub" id="design">
+  <div class="scrub-pin">
+    <div class="design-notice">My house in El Dorado County. Scroll to walk the UniFi Design Center plan. Not a client project.</div>
+    <div class="design-reel-frame">
+      <video id="design-vid" muted playsinline preload="auto" poster="assets/videos/unifi-design-house.jpg" aria-label="Scroll-driven UniFi Design Center walkthrough of Lohmann house Wi-Fi and cameras">
+        <source src="assets/videos/unifi-design-house.mp4" type="video/mp4">
+      </video>
+      <div class="scrub-hud" aria-hidden="true">
+        <div class="scrub-step is-on">01 · Heat map the house</div>
+        <div class="scrub-step">02 · Place the APs</div>
+        <div class="scrub-step">03 · Cover the garage</div>
+        <div class="scrub-step">04 · Aim the cameras</div>
+      </div>
+      <div class="scrub-bar"><i id="scrub-bar-fill"></i></div>
+    </div>
+    <p class="design-caption">Lohmann house · UniFi Design Center. Scroll scrubs the recording. Heat map, U7 Pro APs, G6 cameras. The work I live in, not a paid job.</p>
   </div>
-  <p class="design-caption">Lohmann house · UniFi Design Center. Heat map, U7 Pro APs, G6 cameras. Safari chrome cropped. Department and home photos on this site are the work I live in, not a portfolio of paid jobs.</p>
-</div>
+</section>
 
 <!-- SERVICE 1: UNIFI INSTALLS -->
 <div class="service-block">
@@ -798,6 +818,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   nav.addEventListener('mouseleave', scheduleClose);
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
   window.addEventListener('resize', close);
+})();
+</script>
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var vid = document.getElementById('design-vid');
+  var track = document.getElementById('design');
+  var bar = document.getElementById('scrub-bar-fill');
+  if (!vid || !track) return;
+  var steps = track.querySelectorAll('.scrub-step');
+
+  if (reduce) {
+    vid.setAttribute('autoplay', '');
+    vid.loop = true;
+    vid.play().catch(function(){});
+    return;
+  }
+
+  vid.pause();
+  var last = -1;
+  function progress(){
+    var rect = track.getBoundingClientRect();
+    var run = rect.height - window.innerHeight;
+    if (run <= 1) return 0;
+    return Math.max(0, Math.min(1, -rect.top / run));
+  }
+  function paint(){
+    var p = progress();
+    if (Math.abs(p - last) < 0.0015) return;
+    last = p;
+    if (vid.duration) {
+      try { vid.currentTime = p * (vid.duration - 0.04); } catch (e) {}
+    }
+    if (bar) bar.style.width = (p * 100) + '%';
+    var idx = p < 0.28 ? 0 : p < 0.55 ? 1 : p < 0.78 ? 2 : 3;
+    for (var i = 0; i < steps.length; i++) steps[i].classList.toggle('is-on', i === idx);
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function(){ paint(); ticking = false; });
+  }, { passive: true });
+  vid.addEventListener('loadedmetadata', paint);
+  paint();
 })();
 </script>
 </body>
