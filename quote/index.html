@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get a Quote — Kerchunk Networks</title>
+  <meta name="description" content="Tell Kerchunk Networks about your home or fire/public-safety network project. Takes about 5–10 minutes. Accurate quote, no sales call required first.">
+  <link rel="canonical" href="https://kerchunknetworks.com/quote/">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --tan: #e8ddd0;
+      --beige: #d4c4b0;
+      --maroon: #8b4049;
+      --maroon-dark: #6b3038;
+      --maroon-dim: rgba(139,64,73,.1);
+      --maroon-glow: rgba(139,64,73,.3);
+      --gold: #b8860b;
+      --gold-light: #d4a574;
+      --text: #3a2a2a;
+      --text2: #7a5a5a;
+      --text3: #b09080;
+      --border: rgba(139,64,73,.18);
+      --cream: #f5f0e8;
+      --white: #ffffff;
+      --mono: 'Share Tech Mono', monospace;
+      --ui: 'Barlow Condensed', sans-serif;
+      --body: 'Barlow', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: var(--body);
+      background: var(--tan);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.55;
+    }
+    a { color: var(--maroon); }
+    .topbar {
+      background: var(--maroon);
+      border-bottom: 2px solid var(--gold);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .topbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+    }
+    .topbar-brand img {
+      height: 36px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+    .topbar-brand .name {
+      font-family: var(--ui);
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 16px;
+    }
+    .topbar-brand .sub {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: var(--gold-light);
+      text-transform: uppercase;
+    }
+    .topbar-link {
+      font-family: var(--ui);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.85);
+      text-decoration: none;
+    }
+    .topbar-link:hover { color: #fff; }
+
+    .shell {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 28px 20px 60px;
+    }
+    .hero-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      box-shadow: 0 12px 40px rgba(58,42,42,.08);
+      overflow: hidden;
+    }
+    .hero-head {
+      background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+      color: #fff;
+      padding: 28px 28px 24px;
+      border-bottom: 3px solid var(--gold);
+    }
+    .hero-head .eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+    .hero-head h1 {
+      font-family: var(--ui);
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin-bottom: 10px;
+    }
+    .hero-head p {
+      color: rgba(255,255,255,.82);
+      font-weight: 300;
+      font-size: 15px;
+      max-width: 52ch;
+    }
+
+    .progress-wrap {
+      padding: 18px 28px 0;
+      background: var(--white);
+    }
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+      gap: 12px;
+    }
+    .progress-label {
+      font-family: var(--ui);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--maroon);
+    }
+    .progress-count {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text3);
+      letter-spacing: 1px;
+    }
+    .progress-track {
+      height: 4px;
+      background: var(--maroon-dim);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--maroon), var(--gold));
+      transition: width .25s ease;
+    }
+
+    form { padding: 8px 28px 28px; }
+    .step { display: none; }
+    .step.active { display: block; animation: fadeIn .2s ease; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: none; }
+    }
+    .step-title {
+      font-family: var(--ui);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--maroon);
+      border-left: 4px solid var(--maroon);
+      padding-left: 12px;
+      margin: 22px 0 8px;
+    }
+    .step-desc {
+      color: var(--text2);
+      font-size: 14px;
+      margin: 0 0 20px;
+      padding-left: 16px;
+    }
+
+    .path-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 8px;
+    }
+    @media (max-width: 640px) {
+      .path-grid { grid-template-columns: 1fr; }
+      form, .progress-wrap, .hero-head { padding-left: 18px; padding-right: 18px; }
+    }
+    .path-card {
+      position: relative;
+      border: 2px solid var(--border);
+      border-radius: 4px;
+      padding: 20px 18px;
+      cursor: pointer;
+      background: var(--cream);
+      transition: border-color .15s, box-shadow .15s, background .15s;
+    }
+    .path-card:hover {
+      border-color: var(--maroon);
+      box-shadow: 0 4px 18px var(--maroon-glow);
+    }
+    .path-card.selected {
+      border-color: var(--maroon);
+      background: #fff;
+      box-shadow: 0 0 0 3px var(--maroon-dim);
+    }
+    .path-card input { position: absolute; opacity: 0; pointer-events: none; }
+    .path-card .tag {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+    .path-card h3 {
+      font-family: var(--ui);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--maroon);
+      margin-bottom: 6px;
+    }
+    .path-card p {
+      font-size: 13px;
+      color: var(--text2);
+      line-height: 1.5;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    @media (max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
+
+    .form-group { margin-bottom: 16px; }
+    label {
+      display: block;
+      font-family: var(--ui);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .8px;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .hint {
+      display: block;
+      font-family: var(--body);
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--text3);
+      margin-top: 4px;
+      font-style: italic;
+    }
+    .required { color: #a85252; }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 11px 12px;
+      border: 1.5px solid var(--beige);
+      border-radius: 3px;
+      font-family: var(--body);
+      font-size: 15px;
+      color: var(--text);
+      background: #fff;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    textarea { min-height: 96px; resize: vertical; }
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--maroon);
+      box-shadow: 0 0 0 3px var(--maroon-dim);
+    }
+
+    .choice-list { display: grid; gap: 8px; }
+    .choice {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 12px;
+      background: var(--cream);
+      border: 1px solid transparent;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: background .15s, border-color .15s;
+    }
+    .choice:hover { background: #efe6d8; }
+    .choice:has(input:checked) {
+      border-color: var(--maroon);
+      background: #fff;
+    }
+    .choice input {
+      width: 18px;
+      height: 18px;
+      margin-top: 2px;
+      accent-color: var(--maroon);
+      flex-shrink: 0;
+    }
+    .choice span {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .callout {
+      background: var(--cream);
+      border-left: 4px solid var(--gold);
+      padding: 14px 16px;
+      margin: 8px 0 18px;
+      border-radius: 0 3px 3px 0;
+    }
+    .callout strong {
+      font-family: var(--ui);
+      letter-spacing: .5px;
+      text-transform: uppercase;
+      color: var(--maroon);
+      font-size: 13px;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .callout p {
+      font-size: 13px;
+      color: var(--text2);
+      margin: 0;
+    }
+
+    .nav-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border);
+    }
+    .btn {
+      font-family: var(--ui);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 3px;
+      padding: 14px 22px;
+      cursor: pointer;
+      transition: background .15s, box-shadow .15s, opacity .15s;
+    }
+    .btn-back {
+      background: transparent;
+      color: var(--maroon);
+      border: 1.5px solid var(--maroon);
+    }
+    .btn-back:hover { background: var(--maroon-dim); }
+    .btn-next, .btn-submit {
+      background: var(--maroon);
+      color: #fff;
+      flex: 1;
+    }
+    .btn-next:hover, .btn-submit:hover {
+      background: var(--maroon-dark);
+      box-shadow: 0 4px 18px var(--maroon-glow);
+    }
+    .btn:disabled { opacity: .45; cursor: not-allowed; box-shadow: none; }
+
+    .error-banner {
+      display: none;
+      background: #fceaea;
+      border: 1px solid #e8b4b4;
+      color: #7a3030;
+      padding: 10px 12px;
+      border-radius: 3px;
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+    .error-banner.show { display: block; }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 18px;
+      font-size: 12px;
+      color: var(--text3);
+    }
+    .footer-note a { color: var(--maroon); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <a class="topbar-brand" href="/">
+      <img src="../assets/images/kerchunk-logo.svg" alt="Kerchunk Networks">
+      <div>
+        <div class="name">Kerchunk Networks</div>
+        <div class="sub">Connecting Fire, Field &amp; Family</div>
+      </div>
+    </a>
+    <a class="topbar-link" href="https://cal.kerchunknetworks.com/erik" target="_blank" rel="noopener">Prefer to book? →</a>
+  </div>
+
+  <div class="shell">
+    <div class="hero-card">
+      <div class="hero-head">
+        <div class="eyebrow">Free consultation intake</div>
+        <h1>Get an Accurate Quote</h1>
+        <p>Pick your path, answer a few focused questions, and we’ll come back with a clear plan. About 5–10 minutes — more detail means a better quote.</p>
+      </div>
+
+      <div class="progress-wrap" id="progressWrap" hidden>
+        <div class="progress-meta">
+          <div class="progress-label" id="progressLabel">Getting started</div>
+          <div class="progress-count" id="progressCount"></div>
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+      </div>
+
+      <form id="quoteForm" action="https://api.web3forms.com/submit" method="POST" novalidate>
+        <input type="hidden" name="access_key" value="1c07640f-5b18-4895-8c3b-5fbc899e6e48">
+        <input type="hidden" name="redirect" value="https://kerchunknetworks.com/?quote=thanks">
+        <input type="hidden" name="subject" id="formSubject" value="Kerchunk Quote Request">
+        <input type="hidden" name="from_name" value="Kerchunk Quote Wizard">
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="projectPath" id="projectPathField" value="">
+
+        <div class="error-banner" id="errorBanner">Please complete the required fields on this step.</div>
+
+        <!-- STEP: path -->
+        <div class="step active" data-step="path">
+          <div class="step-title">What are we quoting?</div>
+          <p class="step-desc">One form, two paths. We’ll only ask the questions that fit your project.</p>
+          <div class="path-grid">
+            <label class="path-card" id="pathHomeCard">
+              <input type="radio" name="pathChoice" value="residential" required>
+              <div class="tag">Homes · UniFi</div>
+              <h3>Residential</h3>
+              <p>Home Wi‑Fi, cabling, cameras, Airbnb/guest networks, Care Plan.</p>
+            </label>
+            <label class="path-card" id="pathFireCard">
+              <input type="radio" name="pathChoice" value="fire">
+              <div class="tag">Departments · Fleet</div>
+              <h3>Fire / Public Safety</h3>
+              <p>Apparatus routers, station networks, FirstNet, Tablet Command, AVL.</p>
+            </label>
+          </div>
+        </div>
+
+        <!-- SHARED: contact -->
+        <div class="step" data-step="contact" data-paths="residential,fire">
+          <div class="step-title">Contact</div>
+          <p class="step-desc">So we can send the quote and follow up the way you prefer.</p>
+          <div class="grid-2">
+            <div class="form-group">
+              <label for="fullName">Full name <span class="required">*</span></label>
+              <input type="text" id="fullName" name="fullName" required autocomplete="name">
+            </div>
+            <div class="form-group">
+              <label for="email">Email <span class="required">*</span></label>
+              <input type="email" id="email" name="email" required autocomplete="email">
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="form-group">
+              <label for="phone">Phone <span class="required">*</span></label>
+              <input type="tel" id="phone" name="phone" required autocomplete="tel">
+            </div>
+            <div class="form-group">
+              <label for="preferredContact">Preferred contact</label>
+              <select id="preferredContact" name="preferredContact">
+                <option value="email">Email</option>
+                <option value="phone">Phone</option>
+                <option value="text">Text</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group path-only" data-show="fire">
+            <label for="agencyName">Agency / department <span class="required">*</span></label>
+            <input type="text" id="agencyName" name="agencyName" placeholder="e.g., Woodside Fire Protection District">
+          </div>
+          <div class="grid-2 path-only" data-show="fire">
+            <div class="form-group">
+              <label for="roleTitle">Your role</label>
+              <input type="text" id="roleTitle" name="roleTitle" placeholder="e.g., IT Lead, Captain, Chief">
+            </div>
+            <div class="form-group">
+              <label for="serviceArea">Primary response / coverage area</label>
+              <input type="text" id="serviceArea" name="serviceArea" placeholder="City, district, or county">
+            </div>
+          </div>
+          <div class="form-group path-only" data-show="residential">
+            <label for="propertyAddress">Property address <span class="required">*</span></label>
+            <input type="text" id="propertyAddress" name="propertyAddress" autocomplete="street-address" placeholder="Full street address for the install">
+          </div>
+        </div>
+
+        <!-- RESIDENTIAL: property -->
+        <div class="step" data-step="home-property" data-paths="residential">
+          <div class="step-title">Property</div>
+          <p class="step-desc">Layout basics so we can size the network correctly.</p>
+          <div class="grid-2">
+            <div class="form-group">
+              <label for="propertyType">Property type <span class="required">*</span></label>
+              <select id="propertyType" name="propertyType">
+                <option value="">Select…</option>
+                <option value="single-family">Single family home</option>
+                <option value="multi-family">Multi-family / duplex</option>
+                <option value="apartment">Apartment / condo</option>
+                <option value="airbnb">Airbnb / vacation rental</option>
+                <option value="commercial">Commercial office</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="squareFootage">Approx. square footage</label>
+              <input type="number" id="squareFootage" name="squareFootage" placeholder="e.g., 2500" min="0">
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="form-group">
+              <label for="numFloors">Floors</label>
+              <select id="numFloors" name="numFloors">
+                <option value="1">1</option>
+                <option value="2" selected>2</option>
+                <option value="3">3</option>
+                <option value="4+">4+</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="constructionType">Wall construction</label>
+              <select id="constructionType" name="constructionType">
+                <option value="drywall">Drywall</option>
+                <option value="plaster">Plaster</option>
+                <option value="concrete">Concrete block</option>
+                <option value="brick">Brick</option>
+                <option value="mixed">Mixed</option>
+                <option value="unknown">Not sure</option>
+              </select>
+              <span class="hint">Affects Wi‑Fi penetration</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RESIDENTIAL: internet + current -->
+        <div class="step" data-step="home-internet" data-paths="residential">
+          <div class="step-title">Internet &amp; current setup</div>
+          <p class="step-desc">What you have today — and what’s broken.</p>
+          <div class="grid-2">
+            <div class="form-group">
+              <label for="ispProvider">ISP</label>
+              <input type="text" id="ispProvider" name="ispProvider" placeholder="Comcast, AT&amp;T, Wave…">
+            </div>
+            <div class="form-group">
+              <label for="internetSpeed">Speed plan</label>
+              <input type="text" id="internetSpeed" name="internetSpeed" placeholder="e.g., 500 Mbps, 1 Gig">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="modemLocation">Modem / ONT location</label>
+            <input type="text" id="modemLocation" name="modemLocation" placeholder="Basement utility, garage, closet…">
+          </div>
+          <div class="form-group">
+            <label>Modem location access</label>
+            <div class="choice-list">
+              <label class="choice"><input type="radio" name="modemAccess" value="yes"><span>Easy access</span></label>
+              <label class="choice"><input type="radio" name="modemAccess" value="limited"><span>Limited (tight space / ladder)</span></label>
+              <label class="choice"><input type="radio" name="modemAccess" value="no"><span>Difficult to access</span></label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="currentRouter">Current router / gear</label>
+            <input type="text" id="currentRouter" name="currentRouter" placeholder="ISP gateway, mesh kit, etc.">
+          </div>
+          <div class="form-group">
+            <label>Already in place? (check all that apply)</label>
+            <div class="choice-list">
+              <label class="choice"><input type="checkbox" name="currentSetup" value="wired"><span>Ethernet runs to rooms</span></label>
+              <label class="choice"><input type="checkbox" name="currentSetup" value="wallplates"><span>Ethernet wall plates</span></label>
+              <label class="choice"><input type="checkbox" name="currentSetup" value="patchpanel"><span>Patch panel / network closet</span></label>
+              <label class="choice"><input type="checkbox" name="currentSetup" value="switch"><span>Network switch</span></label>
+              <label class="choice"><input type="checkbox" name="currentSetup" value="accesspoints"><span>Multiple APs / mesh</span></label>
+              <label class="choice"><input type="checkbox" name="currentSetup" value="none" id="hasNone"><span>None — just ISP gear</span></label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="currentIssues">What’s wrong today?</label>
+            <textarea id="currentIssues" name="currentIssues" placeholder="Dead zones, drops, slow streaming, cameras offline…"></textarea>
+          </div>
+        </div>
+
+        <!-- RESIDENTIAL: coverage -->
+        <div class="step" data-step="home-coverage" data-paths="residential">
+          <div class="step-title">Coverage &amp; wiring</div>
+          <p class="step-desc">Where Wi‑Fi and hardwired drops matter most.</p>
+          <div class="form-group">
+            <label>Wi‑Fi coverage needed</label>
+            <div class="choice-list">
+              <label class="choice"><input type="checkbox" name="wifiAreas" value="living"><span>Living areas</span></label>
+              <label class="choice"><input type="checkbox" name="wifiAreas" value="kitchen"><span>Kitchen</span></label>
+              <label class="choice"><input type="checkbox" name="wifiAreas" value="bedrooms"><span>Bedrooms</span></label>
+              <label class="choice"><input type="checkbox" name="wifiAreas" value="office"><span>Home office</span></label>
+              <label class="choice"><input type="checkbox" name="wifiAreas" value="basement"><span>Basement</span></label>
+              <label class="choice"><input type="checkbox" name="wifiAreas" value="garage"><span>Garage</span></label>
+              <label class="choice"><input type="checkbox" name="wifiAreas" value="outdoor"><span>Outdoor / patio / yard</span></label>
+              <label class="choice"><input type="checkbox" name="wifiAreas" value="detached"><span>Detached building</span></label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="problemAreas">Known dead zones</label>
+            <textarea id="problemAreas" name="problemAreas" placeholder="Master bedroom, backyard patio…"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Hardwired Ethernet needed</label>
+            <div class="choice-list">
+              <label class="choice"><input type="checkbox" name="cat6Locations" value="office"><span>Office / desk</span></label>
+              <label class="choice"><input type="checkbox" name="cat6Locations" value="living"><span>Living room (TV / console)</span></label>
+              <label class="choice"><input type="checkbox" name="cat6Locations" value="bedrooms"><span>Bedrooms</span></label>
+              <label class="choice"><input type="checkbox" name="cat6Locations" value="accesspoints"><span>AP mount locations</span></label>
+              <label class="choice"><input type="checkbox" name="cat6Locations" value="none" id="cat6None"><span>Wi‑Fi only — no drops</span></label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Attic / basement access for cable runs?</label>
+            <div class="choice-list">
+              <label class="choice"><input type="radio" name="cableAccess" value="both"><span>Both attic and basement/crawl</span></label>
+              <label class="choice"><input type="radio" name="cableAccess" value="attic"><span>Attic only</span></label>
+              <label class="choice"><input type="radio" name="cableAccess" value="basement"><span>Basement/crawl only</span></label>
+              <label class="choice"><input type="radio" name="cableAccess" value="none"><span>No accessible spaces</span></label>
+              <label class="choice"><input type="radio" name="cableAccess" value="unknown"><span>Not sure</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- RESIDENTIAL: extras -->
+        <div class="step" data-step="home-extras" data-paths="residential">
+          <div class="step-title">Devices &amp; add-ons</div>
+          <p class="step-desc">Cameras, outdoor, smart home — only what matters.</p>
+          <div class="form-group">
+            <label for="deviceCount">Approx. device count</label>
+            <select id="deviceCount" name="deviceCount">
+              <option value="1-10">1–10</option>
+              <option value="11-20" selected>11–20</option>
+              <option value="21-30">21–30</option>
+              <option value="31-50">31–50</option>
+              <option value="50+">50+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Network usage</label>
+            <div class="choice-list">
+              <label class="choice"><input type="checkbox" name="networkUsage" value="work"><span>Work from home / video calls</span></label>
+              <label class="choice"><input type="checkbox" name="networkUsage" value="streaming"><span>4K / HD streaming</span></label>
+              <label class="choice"><input type="checkbox" name="networkUsage" value="gaming"><span>Online gaming</span></label>
+              <label class="choice"><input type="checkbox" name="networkUsage" value="smarthome"><span>Smart home / IoT</span></label>
+              <label class="choice"><input type="checkbox" name="networkUsage" value="cameras"><span>Security cameras</span></label>
+              <label class="choice"><input type="checkbox" name="networkUsage" value="guests"><span>Guest / Airbnb Wi‑Fi</span></label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>UniFi Protect cameras?</label>
+            <div class="choice-list">
+              <label class="choice"><input type="radio" name="camerasInterest" value="yes"><span>Yes</span></label>
+              <label class="choice"><input type="radio" name="camerasInterest" value="maybe"><span>Maybe — send info</span></label>
+              <label class="choice"><input type="radio" name="camerasInterest" value="no"><span>Not now</span></label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="cameraLocations">Camera locations (if interested)</label>
+            <input type="text" id="cameraLocations" name="cameraLocations" placeholder="Front door, driveway, backyard…">
+          </div>
+          <div class="form-group">
+            <label>Outdoor / detached coverage needed?</label>
+            <div class="choice-list">
+              <label class="choice"><input type="checkbox" name="outdoorAreas" value="patio"><span>Patio / deck</span></label>
+              <label class="choice"><input type="checkbox" name="outdoorAreas" value="yard"><span>Yard</span></label>
+              <label class="choice"><input type="checkbox" name="outdoorAreas" value="garage"><span>Detached garage / shop</span></label>
+              <label class="choice"><input type="checkbox" name="outdoorAreas" value="guesthouse"><span>Guest house / ADU</span></label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="specialNotesHome">Anything else we should know?</label>
+            <textarea id="specialNotesHome" name="specialNotes" placeholder="HOA limits, Airbnb guest isolation, aesthetic preferences…"></textarea>
+          </div>
+          <div class="callout">
+            <strong>Partner gear available</strong>
+            <p>Need Cradlepoint, Peplink, Starlink, or other branded kit for a home office / backup WAN? Kerchunk can quote through our authorized sales rep — partner pricing and proper support, not gray-market boxes.</p>
+          </div>
+          <div class="form-group">
+            <label class="choice"><input type="checkbox" name="wantPartnerQuote" value="yes"><span>Yes — include partner-channel gear options in my quote</span></label>
+          </div>
+        </div>
+
+        <!-- FIRE: scope -->
+        <div class="step" data-step="fire-scope" data-paths="fire">
+          <div class="step-title">Project scope</div>
+          <p class="step-desc">What are we solving for the department?</p>
+          <div class="form-group">
+            <label>What do you need help with? <span class="required">*</span></label>
+            <div class="choice-list">
+              <label class="choice"><input type="checkbox" name="fireScope" value="apparatus"><span>Apparatus / fleet mobile routers</span></label>
+              <label class="choice"><input type="checkbox" name="fireScope" value="station"><span>Station / facility networking</span></label>
+              <label class="choice"><input type="checkbox" name="fireScope" value="command"><span>Command / MCI / portable kits</span></label>
+              <label class="choice"><input type="checkbox" name="fireScope" value="monitoring"><span>Monitoring / managed services</span></label>
+              <label class="choice"><input type="checkbox" name="fireScope" value="assessment"><span>Assessment / redesign only</span></label>
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="form-group">
+              <label for="apparatusCount">Approx. apparatus needing connectivity</label>
+              <input type="number" id="apparatusCount" name="apparatusCount" min="0" placeholder="e.g., 6">
+            </div>
+            <div class="form-group">
+              <label for="stationCount">Number of stations / facilities</label>
+              <input type="number" id="stationCount" name="stationCount" min="0" placeholder="e.g., 3">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="firePain">Biggest pain points today</label>
+            <textarea id="firePain" name="firePain" placeholder="CAD drops on scene, weak FirstNet in canyons, station Wi‑Fi dead zones, no failover…"></textarea>
+          </div>
+        </div>
+
+        <!-- FIRE: existing gear + partner -->
+        <div class="step" data-step="fire-gear" data-paths="fire">
+          <div class="step-title">Existing gear &amp; carriers</div>
+          <p class="step-desc">What you run today — and how you want new kit sourced.</p>
+          <div class="form-group">
+            <label>Routers / gateways in use</label>
+            <div class="choice-list">
+              <label class="choice"><input type="checkbox" name="existingRouters" value="cradlepoint"><span>Cradlepoint (R1900 / IBR1700 / other)</span></label>
+              <label class="choice"><input type="checkbox" name="existingRouters" value="peplink"><span>Peplink / SpeedFusion</span></label>
+              <label class="choice"><input type="checkbox" name="existingRouters" value="sierra"><span>Sierra Wireless / AirLink</span></label>
+              <label class="choice"><input type="checkbox" name="existingRouters" value="unifi"><span>UniFi (station / campus)</span></label>
+              <label class="choice"><input type="checkbox" name="existingRouters" value="starlink"><span>Starlink</span></label>
+              <label class="choice"><input type="checkbox" name="existingRouters" value="other"><span>Other / mixed</span></label>
+              <label class="choice"><input type="checkbox" name="existingRouters" value="none"><span>None yet — greenfield</span></label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="existingRouterNotes">Model / NetCloud / InControl notes</label>
+            <input type="text" id="existingRouterNotes" name="existingRouterNotes" placeholder="e.g., 4× R1900 on NetCloud Essentials">
+          </div>
+          <div class="form-group">
+            <label>Carriers / WAN paths</label>
+            <div class="choice-list">
+              <label class="choice"><input type="checkbox" name="carriers" value="firstnet"><span>AT&amp;T FirstNet</span></label>
+              <label class="choice"><input type="checkbox" name="carriers" value="verizon"><span>Verizon</span></label>
+              <label class="choice"><input type="checkbox" name="carriers" value="tmobile"><span>T-Mobile</span></label>
+              <label class="choice"><input type="checkbox" name="carriers" value="starlink"><span>Starlink</span></label>
+              <label class="choice"><input type="checkbox" name="carriers" value="fiber"><span>Station fiber / wired ISP</span></label>
+              <label class="choice"><input type="checkbox" name="carriers" value="unsure"><span>Not sure / need guidance</span></label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Dual-SIM / multi-WAN failover interest</label>
+            <div class="choice-list">
+              <label class="choice"><input type="radio" name="dualSim" value="have"><span>Already running dual-SIM / multi-WAN</span></label>
+              <label class="choice"><input type="radio" name="dualSim" value="want"><span>Want it — not there yet</span></label>
+              <label class="choice"><input type="radio" name="dualSim" value="unsure"><span>Not sure what’s needed</span></label>
+            </div>
+          </div>
+
+          <div class="callout">
+            <strong>Authorized sales partner — use this path</strong>
+            <p>Kerchunk is set up with a Cradlepoint, Peplink, and multi-brand sales rep. When you buy through us, you get partner pricing and legitimate support — and the commission stays with Kerchunk so we can keep supporting your fleet after the install. Skip gray-market “deals.”</p>
+          </div>
+          <div class="form-group">
+            <label>How should we source hardware? <span class="required">*</span></label>
+            <div class="choice-list">
+              <label class="choice"><input type="radio" name="hardwareSource" value="partner" required><span>Quote through Kerchunk’s authorized sales rep (recommended)</span></label>
+              <label class="choice"><input type="radio" name="hardwareSource" value="customer-supplied"><span>We’ll supply our own hardware — install/config only</span></label>
+              <label class="choice"><input type="radio" name="hardwareSource" value="unsure"><span>Not sure yet — advise us</span></label>
+            </div>
+          </div>
+        </div>
+
+        <!-- FIRE: apps / use -->
+        <div class="step" data-step="fire-apps" data-paths="fire">
+          <div class="step-title">Apps &amp; use cases</div>
+          <p class="step-desc">What has to stay up on the apparatus and in the house.</p>
+          <div class="form-group">
+            <label>Critical applications</label>
+            <div class="choice-list">
+              <label class="choice"><input type="checkbox" name="fireApps" value="tablet-command"><span>Tablet Command</span></label>
+              <label class="choice"><input type="checkbox" name="fireApps" value="cad"><span>CAD / MDT</span></label>
+              <label class="choice"><input type="checkbox" name="fireApps" value="avl"><span>AVL / GPS tracking</span></label>
+              <label class="choice"><input type="checkbox" name="fireApps" value="radio"><span>Radio console / IP radio</span></label>
+              <label class="choice"><input type="checkbox" name="fireApps" value="cameras"><span>On-board / station cameras</span></label>
+              <label class="choice"><input type="checkbox" name="fireApps" value="alerting"><span>Station alerting / printers</span></label>
+              <label class="choice"><input type="checkbox" name="fireApps" value="mdm"><span>iPad / iPhone MDM</span></label>
+              <label class="choice"><input type="checkbox" name="fireApps" value="guest"><span>Guest / training Wi‑Fi</span></label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="antennaNeeds">Antenna / RF notes</label>
+            <textarea id="antennaNeeds" name="antennaNeeds" placeholder="MIMO antennas already installed? Roof vs. lightbar? Known RF trouble spots?"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="complianceNotes">Compliance / policy constraints</label>
+            <textarea id="complianceNotes" name="complianceNotes" placeholder="CJIS, county IT standards, approved vendors only…"></textarea>
+          </div>
+        </div>
+
+        <!-- SHARED: timeline -->
+        <div class="step" data-step="timeline" data-paths="residential,fire">
+          <div class="step-title">Timeline &amp; next step</div>
+          <p class="step-desc">Last step — how fast you need this and how you want to move.</p>
+          <div class="form-group">
+            <label>Desired timeline</label>
+            <div class="choice-list">
+              <label class="choice"><input type="radio" name="timeline" value="asap"><span>As soon as possible</span></label>
+              <label class="choice"><input type="radio" name="timeline" value="1month"><span>Within 1 month</span></label>
+              <label class="choice"><input type="radio" name="timeline" value="3months"><span>1–3 months</span></label>
+              <label class="choice"><input type="radio" name="timeline" value="flexible"><span>Flexible / exploring</span></label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="budgetRange">Budget range (optional)</label>
+            <select id="budgetRange" name="budgetRange">
+              <option value="">Select…</option>
+              <option value="under-2000">Under $2,000</option>
+              <option value="2000-5000">$2,000 – $5,000</option>
+              <option value="5000-10000">$5,000 – $10,000</option>
+              <option value="10000-25000">$10,000 – $25,000</option>
+              <option value="25000-plus">$25,000+</option>
+              <option value="not-sure">Not sure yet</option>
+            </select>
+          </div>
+          <div class="form-group path-only" data-show="residential">
+            <label>Interested in the $20/mo Care Plan?</label>
+            <div class="choice-list">
+              <label class="choice"><input type="radio" name="managedServices" value="yes"><span>Yes — monitoring &amp; support</span></label>
+              <label class="choice"><input type="radio" name="managedServices" value="maybe"><span>Maybe — tell me more</span></label>
+              <label class="choice"><input type="radio" name="managedServices" value="no"><span>Install only</span></label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Site visit / walkthrough?</label>
+            <div class="choice-list">
+              <label class="choice"><input type="radio" name="siteVisit" value="yes"><span>Yes — contact me to schedule</span></label>
+              <label class="choice"><input type="radio" name="siteVisit" value="maybe"><span>Maybe after you review this</span></label>
+              <label class="choice"><input type="radio" name="siteVisit" value="no"><span>Remote consult is fine</span></label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="howHeard">How did you hear about Kerchunk?</label>
+            <select id="howHeard" name="howHeard">
+              <option value="">Select…</option>
+              <option value="google">Google</option>
+              <option value="social">Social / Nextdoor / IG</option>
+              <option value="referral">Referral</option>
+              <option value="fire-service">Fire service connection</option>
+              <option value="airbnb-group">Airbnb host group</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="additionalComments">Anything else?</label>
+            <textarea id="additionalComments" name="additionalComments" placeholder="Questions, constraints, preferred install windows…"></textarea>
+          </div>
+        </div>
+
+        <div class="nav-row">
+          <button type="button" class="btn btn-back" id="btnBack" hidden>Back</button>
+          <button type="button" class="btn btn-next" id="btnNext">Continue</button>
+          <button type="submit" class="btn btn-submit" id="btnSubmit" hidden>Submit quote request</button>
+        </div>
+      </form>
+    </div>
+    <p class="footer-note">
+      Prefer a live conversation first?
+      <a href="https://cal.kerchunknetworks.com/erik" target="_blank" rel="noopener">Book a free consult</a>
+      · <a href="/">kerchunknetworks.com</a>
+    </p>
+  </div>
+
+  <script>
+  (function () {
+    var form = document.getElementById('quoteForm');
+    var steps = Array.prototype.slice.call(form.querySelectorAll('.step'));
+    var btnBack = document.getElementById('btnBack');
+    var btnNext = document.getElementById('btnNext');
+    var btnSubmit = document.getElementById('btnSubmit');
+    var errorBanner = document.getElementById('errorBanner');
+    var progressWrap = document.getElementById('progressWrap');
+    var progressFill = document.getElementById('progressFill');
+    var progressLabel = document.getElementById('progressLabel');
+    var progressCount = document.getElementById('progressCount');
+    var pathField = document.getElementById('projectPathField');
+    var subjectField = document.getElementById('formSubject');
+    var path = '';
+    var idx = 0;
+
+    var labels = {
+      path: 'Choose path',
+      contact: 'Contact',
+      'home-property': 'Property',
+      'home-internet': 'Internet',
+      'home-coverage': 'Coverage',
+      'home-extras': 'Add-ons',
+      'fire-scope': 'Scope',
+      'fire-gear': 'Gear',
+      'fire-apps': 'Apps',
+      timeline: 'Timeline'
+    };
+
+    function activeSteps() {
+      return steps.filter(function (s) {
+        var key = s.getAttribute('data-step');
+        if (key === 'path') return true;
+        var paths = (s.getAttribute('data-paths') || '').split(',');
+        return path && paths.indexOf(path) !== -1;
+      });
+    }
+
+    function syncPathCards() {
+      var home = document.querySelector('input[name="pathChoice"][value="residential"]');
+      var fire = document.querySelector('input[name="pathChoice"][value="fire"]');
+      document.getElementById('pathHomeCard').classList.toggle('selected', home.checked);
+      document.getElementById('pathFireCard').classList.toggle('selected', fire.checked);
+      path = home.checked ? 'residential' : (fire.checked ? 'fire' : '');
+      pathField.value = path;
+      if (path === 'residential') {
+        subjectField.value = 'Kerchunk Quote — Residential';
+      } else if (path === 'fire') {
+        subjectField.value = 'Kerchunk Quote — Fire / Public Safety';
+      }
+      document.querySelectorAll('.path-only').forEach(function (el) {
+        var show = el.getAttribute('data-show');
+        el.style.display = (!show || show === path) ? '' : 'none';
+        if (el.style.display === 'none') {
+          el.querySelectorAll('[required]').forEach(function (r) { r.removeAttribute('required'); });
+        }
+      });
+      // Required toggles by path
+      var addr = document.getElementById('propertyAddress');
+      var agency = document.getElementById('agencyName');
+      var ptype = document.getElementById('propertyType');
+      if (addr) {
+        if (path === 'residential') addr.setAttribute('required', 'required');
+        else addr.removeAttribute('required');
+      }
+      if (agency) {
+        if (path === 'fire') agency.setAttribute('required', 'required');
+        else agency.removeAttribute('required');
+      }
+      if (ptype) {
+        if (path === 'residential') ptype.setAttribute('required', 'required');
+        else ptype.removeAttribute('required');
+      }
+    }
+
+    function render() {
+      var list = activeSteps();
+      if (idx >= list.length) idx = list.length - 1;
+      if (idx < 0) idx = 0;
+      steps.forEach(function (s) { s.classList.remove('active'); });
+      list[idx].classList.add('active');
+
+      var atStart = idx === 0;
+      // Path-only (before a branch is chosen) is never the submit step
+      var atEnd = !!path && idx === list.length - 1;
+      btnBack.hidden = atStart;
+      btnNext.hidden = atEnd;
+      btnSubmit.hidden = !atEnd;
+      progressWrap.hidden = atStart;
+
+      var key = list[idx].getAttribute('data-step');
+      progressLabel.textContent = labels[key] || 'Step';
+      progressCount.textContent = (idx + 1) + ' / ' + list.length;
+      var pct = list.length <= 1 ? 0 : (idx / (list.length - 1)) * 100;
+      progressFill.style.width = pct + '%';
+      errorBanner.classList.remove('show');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function validateCurrent() {
+      var list = activeSteps();
+      var current = list[idx];
+      var ok = true;
+
+      if (current.getAttribute('data-step') === 'path' && !path) ok = false;
+
+      current.querySelectorAll('[required]').forEach(function (el) {
+        if (el.closest('.path-only') && el.closest('.path-only').style.display === 'none') return;
+        if (el.type === 'radio') {
+          var name = el.name;
+          if (!current.querySelector('input[name="' + name + '"]:checked')) ok = false;
+        } else if (el.type === 'checkbox') {
+          /* skip */
+        } else if (!String(el.value || '').trim()) {
+          ok = false;
+          el.focus();
+        }
+      });
+
+      // Fire scope: at least one checkbox if on that step
+      if (current.getAttribute('data-step') === 'fire-scope') {
+        if (!current.querySelector('input[name="fireScope"]:checked')) ok = false;
+      }
+
+      // Hardware source on fire-gear
+      if (current.getAttribute('data-step') === 'fire-gear') {
+        if (!current.querySelector('input[name="hardwareSource"]:checked')) ok = false;
+      }
+
+      errorBanner.classList.toggle('show', !ok);
+      return ok;
+    }
+
+    document.querySelectorAll('input[name="pathChoice"]').forEach(function (r) {
+      r.addEventListener('change', function () {
+        syncPathCards();
+      });
+    });
+    document.getElementById('pathHomeCard').addEventListener('click', syncPathCards);
+    document.getElementById('pathFireCard').addEventListener('click', syncPathCards);
+
+    // Mutual exclusive "none" checkboxes
+    function wireNone(groupName, noneId) {
+      var none = document.getElementById(noneId);
+      if (!none) return;
+      none.addEventListener('change', function () {
+        if (none.checked) {
+          document.querySelectorAll('input[name="' + groupName + '"]:not(#' + noneId + ')').forEach(function (cb) { cb.checked = false; });
+        }
+      });
+      document.querySelectorAll('input[name="' + groupName + '"]:not(#' + noneId + ')').forEach(function (cb) {
+        cb.addEventListener('change', function () {
+          if (cb.checked) none.checked = false;
+        });
+      });
+    }
+    wireNone('currentSetup', 'hasNone');
+    wireNone('cat6Locations', 'cat6None');
+
+    btnNext.addEventListener('click', function () {
+      syncPathCards();
+      if (!validateCurrent()) return;
+      idx += 1;
+      render();
+    });
+    btnBack.addEventListener('click', function () {
+      idx -= 1;
+      render();
+    });
+
+    form.addEventListener('submit', function (e) {
+      syncPathCards();
+      if (!validateCurrent()) {
+        e.preventDefault();
+        return;
+      }
+      // Disable fields not in the chosen path so they aren't submitted as noise
+      steps.forEach(function (s) {
+        var key = s.getAttribute('data-step');
+        if (key === 'path') return;
+        var paths = (s.getAttribute('data-paths') || '').split(',');
+        var include = paths.indexOf(path) !== -1;
+        s.querySelectorAll('input, select, textarea').forEach(function (el) {
+          if (!include) el.disabled = true;
+        });
+      });
+      // Re-enable path field
+      pathField.disabled = false;
+    });
+
+    syncPathCards();
+    render();
+  })();
+  </script>
+</body>
+</html>
