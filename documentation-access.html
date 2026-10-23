@@ -5,14 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Documentation Access - Kerchunk Networks</title>
     <style>
-        :root {
-            --primary-tan: #e8ddd0;
-            --maroon: #8b4049;
-            --dark-maroon: #6b3038;
-            --accent-gold: #d4a574;
-            --text-dark: #3a2a2a;
-            --text-light: #ffffff;
-        }
+        :root {}
 
         * {
             margin: 0;
@@ -79,7 +72,7 @@
 
         .pin-input:focus {
             border-color: var(--maroon);
-            box-shadow: 0 0 0 3px rgba(139, 64, 73, 0.1);
+            box-shadow: 0 0 0 3px rgba(var(--maroon-rgb), 0.1);
         }
 
         .submit-btn {
@@ -101,7 +94,7 @@
         .submit-btn:hover {
             background: var(--dark-maroon);
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(139, 64, 73, 0.3);
+            box-shadow: 0 6px 20px rgba(var(--maroon-rgb), 0.3);
         }
 
         .submit-btn:active {
@@ -149,6 +142,8 @@
             }
         }
     </style>
+
+  <link rel="stylesheet" href="assets/css/brand.css">
 </head>
 <body>
     <div class="access-container">
@@ -229,6 +224,5 @@
         document.getElementById('pinInput').addEventListener('input', function(e) {
             this.value = this.value.replace(/[^0-9]/g, '');
         });
-    </script>
-</body>
+    </script></body>
 </html>

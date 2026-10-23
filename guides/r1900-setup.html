@@ -8,30 +8,11 @@
     <meta name="description"
         content="Complete setup guide for Cradlepoint IBR1900 router in fire engine applications — WFPD configuration with GPS services, cellular, and Starlink backup">
 
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;500;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             /* Kerchunk Networks Palette — matches index-light-mock */
-            --tan: #e8ddd0;
-            --beige: #d4c4b0;
-            --beige-dark: #c0ae96;
-            --maroon: #8b4049;
-            --maroon-dark: #6b3038;
-            --maroon-dim: rgba(139,64,73,.1);
-            --maroon-glow: rgba(139,64,73,.3);
-            --gold: #b8860b;
-            --gold-light: #d4a574;
-            --gold-dim: rgba(184,134,11,.12);
-            --text: #3a2a2a;
-            --text2: #7a5a5a;
-            --text3: #b09080;
-            --border: rgba(139,64,73,.15);
-            --border-hi: rgba(139,64,73,.3);
-            --mono: 'Share Tech Mono', monospace;
-            --ui: 'Barlow Condensed', sans-serif;
-            --body: 'Barlow', sans-serif;
-
-            /* Status Colors */
+/* Status Colors */
             --success-green: #28a745;
             --warning-yellow: #ffc107;
             --danger-red: #dc3545;
@@ -65,9 +46,9 @@
         }
 
         /* NAV — matches index-light-mock exactly */
-        nav { position: sticky; top: 0; z-index: 100; background: rgba(139,64,73,.97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--maroon-dark); box-shadow: 0 2px 0 0 rgba(184,134,11,.35); padding: 0 40px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+        nav { position: sticky; top: 0; z-index: 100; background: rgba(var(--maroon-rgb), .97); backdrop-filter: blur(12px); border-bottom: 1px solid var(--maroon-dark); box-shadow: 0 2px 0 0 rgba(var(--gold-rgb), .35); padding: 0 40px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
         .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-        .nav-logo img { height: 38px; width: auto; filter: brightness(0) invert(1); }
+        .nav-logo img { height: 38px; width: auto; filter: none; }
         .nav-logo-text .name { font-family: var(--ui); font-size: 20px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: #fff; line-height: 1; }
         .nav-logo-text .sub { font-family: var(--mono); font-size: 9px; color: var(--gold-light); letter-spacing: 2px; text-transform: uppercase; }
         .nav-links { display: flex; align-items: center; gap: 4px; list-style: none; }
@@ -85,7 +66,7 @@
 
         /* Header */
         .guide-header {
-            background: rgba(139, 64, 73, 0.95);
+            background: rgba(var(--maroon-rgb), 0.95);
             backdrop-filter: blur(15px);
             border-bottom: 3px solid var(--gold);
             color: white;
@@ -116,7 +97,7 @@
             border-radius: 4px;
             margin-bottom: 20px;
             border: 1px solid var(--border);
-            box-shadow: 0 2px 8px rgba(139,64,73,.06);
+            box-shadow: 0 2px 8px rgba(var(--maroon-rgb), .06);
         }
 
         .nav-breadcrumb a {
@@ -136,7 +117,7 @@
             border-radius: 4px;
             margin-bottom: 24px;
             border: 1px solid var(--border);
-            box-shadow: 0 2px 8px rgba(139,64,73,.06);
+            box-shadow: 0 2px 8px rgba(var(--maroon-rgb), .06);
         }
 
         .toc h2 {
@@ -182,7 +163,7 @@
             border-radius: 4px;
             overflow: hidden;
             border: 1px solid var(--border);
-            box-shadow: 0 2px 8px rgba(139,64,73,.06);
+            box-shadow: 0 2px 8px rgba(var(--maroon-rgb), .06);
             position: relative;
         }
 
@@ -435,7 +416,7 @@
     #pin-gate.unlocked { display: none; }
     .pin-box {
       background: #fff; border-radius: 16px; padding: 48px 40px;
-      box-shadow: 0 8px 40px rgba(139,64,73,.15);
+      box-shadow: 0 8px 40px rgba(var(--maroon-rgb), .15);
       text-align: center; max-width: 360px; width: 90%;
     }
     .pin-box .lock { font-size: 48px; margin-bottom: 16px; }
@@ -457,6 +438,8 @@
     .pin-box button:hover { background: var(--maroon-dark); }
     .pin-error { color: #c0392b; font-size: 13px; margin-top: 12px; display: none; font-family: var(--body); }
   </style>
+
+  <link rel="stylesheet" href="../assets/css/brand.css">
 </head>
 
 <body>
@@ -495,10 +478,10 @@
 
 <nav>
   <a class="nav-logo" href="../index.html">
-    <img src="../assets/images/Kerchunk-radio-transparent-Print.svg" alt="Kerchunk Networks">
+    <img src="../assets/images/logo-gold.png" alt="Kerchunk Networks">
     <div class="nav-logo-text">
       <div class="name">Kerchunk Networks</div>
-      <div class="sub">Professional Solutions</div>
+      <div class="sub">Connecting Fire, Field &amp; Family</div>
     </div>
   </a>
   <ul class="nav-links">
@@ -1806,7 +1789,6 @@ ping avl.smc911.org
             printBtn.onclick = printGuide;
             header.appendChild(printBtn);
         });
-    </script>
-</body>
+    </script></body>
 
 </html>

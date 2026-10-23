@@ -12,8 +12,9 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #1a1a2e;
+            background: var(--paper);
+            color: var(--ink);
+            font-family: var(--font-body);
             min-height: 100vh;
             padding: 20px;
         }
@@ -22,14 +23,16 @@
             max-width: 500px;
             margin: 0 auto;
             background: white;
-            border-radius: 16px;
+            border-radius: 0;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border: 1px solid var(--rule);
+            box-shadow: none;
         }
 
         .header {
-            background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%);
-            color: white;
+            background: var(--maroon-deep);
+            color: var(--cream);
+            border-top: 2px solid var(--gold);
             padding: 24px;
             text-align: center;
         }
@@ -69,9 +72,10 @@
             width: 44px;
             height: 44px;
             min-width: 44px;
-            background: linear-gradient(135deg, #c41e3a 0%, #8b0000 100%);
-            color: white;
-            border-radius: 50%;
+            background: var(--maroon-deep);
+            color: var(--cream);
+            border-radius: 0;
+            font-family: var(--font-mono);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -86,27 +90,27 @@
 
         .step-title {
             font-weight: 700;
-            color: #1a1a2e;
+            color: var(--ink);
             font-size: 1.1em;
             margin-bottom: 6px;
         }
 
         .step-desc {
-            color: #555;
+            color: var(--ink-2);
             font-size: 0.95em;
             line-height: 1.5;
         }
 
         .contact-box {
-            background: #f0f4f8;
-            border-radius: 10px;
+            background: var(--cream);
+            border-radius: 0;
             padding: 12px 14px;
             margin-top: 10px;
-            border-left: 4px solid #c41e3a;
+            border-left: 3px solid var(--gold);
         }
 
         .contact-box strong {
-            color: #1a1a2e;
+            color: var(--ink);
         }
 
         .contact-row {
@@ -118,42 +122,43 @@
 
         .contact-card {
             flex: 1;
-            background: #f0f4f8;
-            border-radius: 10px;
+            background: var(--cream);
+            border-radius: 0;
             padding: 12px;
-            border-left: 4px solid #c41e3a;
+            border-left: 3px solid var(--gold);
         }
 
         .contact-card .name {
             font-weight: 700;
-            color: #1a1a2e;
+            color: var(--ink);
             font-size: 0.95em;
         }
 
         .contact-card .phone {
-            color: #c41e3a;
+            color: var(--maroon);
             font-weight: 600;
             font-size: 1em;
             margin-top: 4px;
         }
 
         .highlight {
-            background: #fff3cd;
-            border-radius: 8px;
+            background: var(--cream);
+            border-radius: 0;
             padding: 14px;
             margin-top: 10px;
-            border: 1px solid #ffc107;
+            border: none;
+            border-left: 3px solid var(--gold);
         }
 
         .highlight-title {
             font-weight: 700;
-            color: #856404;
+            color: var(--maroon-deep);
             margin-bottom: 4px;
             font-size: 0.9em;
         }
 
         .highlight p {
-            color: #856404;
+            color: var(--maroon-deep);
             font-size: 0.9em;
         }
 
@@ -176,12 +181,12 @@
         }
 
         .footer strong {
-            color: #1a1a2e;
+            color: var(--ink);
         }
 
         .arrow {
             text-align: center;
-            color: #c41e3a;
+            color: var(--maroon);
             font-size: 1.5em;
             margin: -8px 0 12px 60px;
         }
@@ -217,6 +222,8 @@
             }
         }
     </style>
+
+  <link rel="stylesheet" href="../assets/css/brand.css">
 </head>
 <body>
     <div class="container">
@@ -237,7 +244,7 @@
                     <div class="contact-row">
                         <div class="contact-card">
                             <div class="name">Erik</div>
-                            <div class="phone">(415) 328-4176</div>
+                            <div class="phone">415-737-9223</div>
                         </div>
                         <div class="contact-card">
                             <div class="name">BC2C</div>
@@ -301,6 +308,5 @@
         <div class="footer">
             <p><strong>IT Support</strong> • elohmann@woodsidefire.gov</p>
         </div>
-    </div>
-</body>
+    </div></body>
 </html>
