@@ -622,15 +622,28 @@ a.ptt.ptt-nav,
 
 .hero .ptt-key { gap: 18px; }
 
+@property --led {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgba(212, 164, 65, 0.35);
+}
+
 .hero .ptt-key::before {
   width: 52px;
   height: 128px;
   border: 1px solid var(--gold);
   border-radius: 999px;
+  --led: rgba(212, 164, 65, 0.35);
   background:
-    radial-gradient(circle at 50% 28px, #8a6a32 0 3.5px, transparent 4.2px),
+    radial-gradient(circle at 50% 28px, var(--led) 0 3.5px, transparent 8px),
     var(--maroon-deep);
   box-shadow: none;
+  animation: ptt-led-idle 2.8s ease-in-out infinite;
+}
+
+@keyframes ptt-led-idle {
+  0%, 100% { --led: rgba(212, 164, 65, 0.28); }
+  50% { --led: #e8c877; }
 }
 
 .hero .ptt-label {
@@ -649,8 +662,10 @@ a.ptt.ptt-nav,
 
 .hero a.ptt:hover .ptt-key::before,
 .hero a.ptt:focus-visible .ptt-key::before {
+  --led: #d4a441;
+  animation: none;
   background:
-    radial-gradient(circle at 50% 28px, #f4ecdd 0 2px, var(--gold) 3px, transparent 8px),
+    radial-gradient(circle at 50% 28px, #f4ecdd 0 2px, var(--led) 3.2px, transparent 8px),
     var(--maroon-deep);
   box-shadow: none;
   transform: none;
@@ -658,8 +673,9 @@ a.ptt.ptt-nav,
 
 .hero a.ptt:active .ptt-key::before,
 .hero a.ptt.is-pressed .ptt-key::before {
+  --led: #d4a441;
   background:
-    radial-gradient(circle at 50% 28px, #f4ecdd 0 2px, var(--gold) 3px, transparent 8px),
+    radial-gradient(circle at 50% 28px, #f4ecdd 0 2px, var(--led) 3.2px, transparent 8px),
     #2A0B0F;
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.28);
   transform: translateY(2px);
@@ -773,6 +789,7 @@ a.ptt.ptt-nav,
   .hero .ptt-key::before {
     animation: none !important;
     transition: none !important;
+    --led: #d4a441;
   }
   a.ptt:active,
   a.ptt.is-pressed,
