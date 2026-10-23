@@ -443,7 +443,7 @@ footer:not(:has(.footer-logo))::before {
 }
 
 /* ── Booking button ──
-   Flat maroon, gold hairline, one small LED. */
+   Horizontal capsule by default. The hero uses a tall upright key. */
 a.ptt,
 .nav-links a.ptt,
 .nav-menu a.ptt,
@@ -453,9 +453,9 @@ a.ptt,
   align-items: center;
   justify-content: center;
   margin: 0;
-  padding: 14px 22px !important;
+  padding: 12px 22px !important;
   border: 1px solid var(--gold) !important;
-  border-radius: 2px !important;
+  border-radius: 999px !important;
   background: var(--maroon-deep) !important;
   background-image: none !important;
   color: var(--cream) !important;
@@ -507,7 +507,7 @@ a.ptt,
   border: none;
   background: #8a6a32;
   box-shadow: none;
-  transition: background-color 0.15s ease, box-shadow 0.15s ease;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
 }
 
 .ptt-key::after,
@@ -593,8 +593,8 @@ a.ptt:focus-visible::before {
 a.ptt.ptt-nav,
 .nav-links a.ptt.ptt-nav,
 .nav-menu a.ptt.ptt-nav {
-  padding: 8px 12px !important;
-  border-radius: 2px !important;
+  padding: 7px 14px !important;
+  border-radius: 999px !important;
 }
 
 .ptt-nav .ptt-key,
@@ -606,6 +606,77 @@ a.ptt.ptt-nav,
 .ptt-nav .ptt-key::before {
   width: 6px;
   height: 6px;
+}
+
+/* Hero: upright capsule key, label beside it. */
+.hero .hero-btns { align-items: center; }
+
+.hero a.ptt,
+.hero .nav-links a.ptt {
+  padding: 8px 4px !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.hero .ptt-key { gap: 18px; }
+
+.hero .ptt-key::before {
+  width: 52px;
+  height: 128px;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 50% 28px, #8a6a32 0 3.5px, transparent 4.2px),
+    var(--maroon-deep);
+  box-shadow: none;
+}
+
+.hero .ptt-label {
+  color: var(--maroon-deep);
+  font-size: 22px;
+}
+
+.hero a.ptt:hover,
+.hero a.ptt:focus-visible,
+.hero a.ptt:active,
+.hero a.ptt.is-pressed {
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none;
+}
+
+.hero a.ptt:hover .ptt-key::before,
+.hero a.ptt:focus-visible .ptt-key::before {
+  background:
+    radial-gradient(circle at 50% 28px, #f4ecdd 0 2px, var(--gold) 3px, transparent 8px),
+    var(--maroon-deep);
+  box-shadow: none;
+  transform: none;
+}
+
+.hero a.ptt:active .ptt-key::before,
+.hero a.ptt.is-pressed .ptt-key::before {
+  background:
+    radial-gradient(circle at 50% 28px, #f4ecdd 0 2px, var(--gold) 3px, transparent 8px),
+    #2A0B0F;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.28);
+  transform: translateY(2px);
+  animation: ptt-capsule-pulse 0.9s ease-out;
+}
+
+.hero a.ptt::before,
+.hero a.ptt:active::before,
+.hero a.ptt.is-pressed::before,
+.hero a.ptt:focus-visible::before {
+  content: none;
+  animation: none;
+}
+
+@keyframes ptt-capsule-pulse {
+  0% { box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.28), 0 0 0 0 rgba(212, 164, 65, 0.4); }
+  100% { box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.28), 0 0 0 12px rgba(212, 164, 65, 0); }
 }
 
 .ptt-alt {
@@ -698,12 +769,15 @@ a.ptt.ptt-nav,
   a.ptt::before,
   a.ptt::after,
   .ptt-key,
-  .ptt-key::before {
+  .ptt-key::before,
+  .hero .ptt-key::before {
     animation: none !important;
     transition: none !important;
   }
   a.ptt:active,
   a.ptt.is-pressed,
+  .hero a.ptt:active .ptt-key::before,
+  .hero a.ptt.is-pressed .ptt-key::before,
   a.ptt:hover .ptt-key::before,
   a.ptt:focus-visible .ptt-key::before,
   a.ptt:active .ptt-key::before,
