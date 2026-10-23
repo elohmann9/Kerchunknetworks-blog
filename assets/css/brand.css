@@ -441,3 +441,430 @@ footer:not(:has(.footer-logo))::before {
     gap: 12px 16px;
   }
 }
+
+/* ── Booking button ──
+   Horizontal capsule by default. The hero uses a tall upright key. */
+a.ptt,
+.nav-links a.ptt,
+.nav-menu a.ptt,
+.mobile-nav a.ptt {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 12px 22px !important;
+  border: 1px solid var(--gold) !important;
+  border-radius: 999px !important;
+  background: var(--maroon-deep) !important;
+  background-image: none !important;
+  color: var(--cream) !important;
+  text-decoration: none !important;
+  letter-spacing: normal !important;
+  text-transform: none !important;
+  line-height: 1 !important;
+  font-weight: 500 !important;
+  box-shadow: none !important;
+  vertical-align: middle;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.nav-links a.ptt:hover,
+.nav-menu a.ptt:hover,
+.mobile-nav a.ptt:hover {
+  color: var(--cream) !important;
+  background: var(--maroon-deep) !important;
+}
+
+.ptt-key {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 0;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  color: var(--cream);
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+
+/* Quiet LED at rest. Lights on hover and press. */
+.ptt-key::before {
+  content: "";
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  border: none;
+  background: #8a6a32;
+  box-shadow: none;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.ptt-key::after,
+.ptt-nav .ptt-key::after {
+  content: none !important;
+  display: none !important;
+  width: 0;
+  height: 0;
+  margin: 0;
+  background: none;
+  box-shadow: none;
+}
+
+.ptt-label {
+  position: relative;
+  z-index: 1;
+  color: var(--cream);
+  font-family: var(--font-display);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  text-shadow: none;
+  white-space: nowrap;
+}
+
+/* Hide the nav underline. The pulse lives on ::before. */
+.nav-links a.ptt::after,
+.nav-menu a.ptt::after,
+.mobile-nav a.ptt::after,
+a.ptt::after,
+.nav-links a.ptt:hover::after,
+.nav-menu a.ptt:hover::after,
+a.ptt:hover::after,
+a.ptt:focus-visible::after,
+a.ptt:active::after,
+a.ptt.is-pressed::after {
+  content: none !important;
+  display: none !important;
+  transform: none !important;
+  animation: none !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+a.ptt::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--gold);
+  border-radius: inherit;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+a.ptt:hover .ptt-key::before,
+a.ptt:focus-visible .ptt-key::before,
+a.ptt:active .ptt-key::before,
+a.ptt.is-pressed .ptt-key::before {
+  background: var(--gold);
+  box-shadow: 0 0 6px rgba(212, 164, 65, 0.85);
+  transform: none;
+}
+
+a.ptt:active,
+a.ptt.is-pressed {
+  transform: translateY(1px);
+  background: #2A0B0F !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.35) !important;
+}
+
+a.ptt:active::before,
+a.ptt.is-pressed::before,
+a.ptt:focus-visible::before {
+  animation: ptt-pulse 0.9s ease-out;
+}
+
+@keyframes ptt-pulse {
+  0% { opacity: 0.45; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.045); }
+}
+
+a.ptt.ptt-nav,
+.nav-links a.ptt.ptt-nav,
+.nav-menu a.ptt.ptt-nav {
+  padding: 7px 14px !important;
+  border-radius: 999px !important;
+}
+
+.ptt-nav .ptt-key,
+.ptt-nav .ptt-label {
+  font-size: 14px;
+  gap: 8px;
+}
+
+.ptt-nav .ptt-key::before {
+  width: 6px;
+  height: 6px;
+}
+
+/* Hero: upright capsule key, label beside it. */
+.hero .hero-btns { align-items: center; }
+
+.hero a.ptt,
+.hero .nav-links a.ptt {
+  padding: 8px 4px !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.hero .ptt-key { gap: 18px; }
+
+@property --led {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: rgba(212, 164, 65, 0.35);
+}
+
+.hero .ptt-key::before {
+  width: 52px;
+  height: 128px;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  --led: rgba(212, 164, 65, 0.35);
+  background:
+    radial-gradient(circle at 50% 28px, var(--led) 0 3.5px, transparent 8px),
+    var(--maroon-deep);
+  box-shadow: none;
+  animation: ptt-led-idle 2.8s ease-in-out infinite;
+}
+
+@keyframes ptt-led-idle {
+  0%, 100% { --led: rgba(212, 164, 65, 0.28); }
+  50% { --led: #e8c877; }
+}
+
+.hero .ptt-label {
+  color: var(--maroon-deep);
+  font-size: 22px;
+}
+
+.hero a.ptt:hover,
+.hero a.ptt:focus-visible,
+.hero a.ptt:active,
+.hero a.ptt.is-pressed {
+  background: transparent !important;
+  box-shadow: none !important;
+  transform: none;
+}
+
+.hero a.ptt:hover .ptt-key::before,
+.hero a.ptt:focus-visible .ptt-key::before {
+  --led: #d4a441;
+  animation: none;
+  background:
+    radial-gradient(circle at 50% 28px, #f4ecdd 0 2px, var(--led) 3.2px, transparent 8px),
+    var(--maroon-deep);
+  box-shadow: none;
+  transform: none;
+}
+
+.hero a.ptt:active .ptt-key::before,
+.hero a.ptt.is-pressed .ptt-key::before {
+  --led: #d4a441;
+  background:
+    radial-gradient(circle at 50% 28px, #f4ecdd 0 2px, var(--led) 3.2px, transparent 8px),
+    #2A0B0F;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.28);
+  transform: translateY(2px);
+  animation: ptt-capsule-pulse 0.9s ease-out;
+}
+
+.hero a.ptt::before,
+.hero a.ptt:active::before,
+.hero a.ptt.is-pressed::before,
+.hero a.ptt:focus-visible::before {
+  content: none;
+  animation: none;
+}
+
+@keyframes ptt-capsule-pulse {
+  0% { box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.28), 0 0 0 0 rgba(212, 164, 65, 0.4); }
+  100% { box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.28), 0 0 0 12px rgba(212, 164, 65, 0); }
+}
+
+.ptt-alt {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--maroon);
+  text-decoration: none;
+}
+
+.ptt-alt:hover { color: var(--maroon-deep); }
+
+.band .ptt-alt,
+.band a.ptt-alt {
+  color: var(--gold-light) !important;
+}
+
+.cta-row {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.band .cta-row { justify-content: center; }
+
+.ptt-sticky { display: none; }
+
+@media (max-width: 1180px) {
+  .ptt-nav .ptt-label { letter-spacing: 0.03em; }
+}
+
+@media (max-width: 900px) {
+  .hero-btns,
+  .cta-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-btns .ptt,
+  .cta-row .ptt,
+  .band .ptt,
+  .mobile-nav a.ptt,
+  .ptt-sticky .ptt {
+    width: 100%;
+  }
+
+  .hero-btns .ptt-key,
+  .cta-row .ptt-key,
+  .band .ptt-key,
+  .mobile-nav .ptt-key,
+  .ptt-sticky .ptt-key {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .mobile-nav a.ptt {
+    border-bottom: none !important;
+    margin: 12px 16px 4px;
+    width: calc(100% - 32px);
+  }
+
+  .ptt-alt { justify-content: center; min-height: 44px; }
+
+  .ptt-sticky {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 140;
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+    background: var(--maroon-deep);
+    border-top: 1px solid var(--gold);
+  }
+
+  .ptt-sticky .ptt { display: flex; }
+
+  body:has(.ptt-sticky) { padding-bottom: calc(84px + env(safe-area-inset-bottom)); }
+  body.nav-open .ptt-sticky { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  a.ptt,
+  a.ptt::before,
+  a.ptt::after,
+  .ptt-key,
+  .ptt-key::before,
+  .hero .ptt-key::before {
+    animation: none !important;
+    transition: none !important;
+    --led: #d4a441;
+  }
+  a.ptt:active,
+  a.ptt.is-pressed,
+  .hero a.ptt:active .ptt-key::before,
+  .hero a.ptt.is-pressed .ptt-key::before,
+  a.ptt:hover .ptt-key::before,
+  a.ptt:focus-visible .ptt-key::before,
+  a.ptt:active .ptt-key::before,
+  a.ptt.is-pressed .ptt-key::before {
+    transform: none;
+  }
+}
+
+/* Scroll reveal. Content stays visible unless JS opts in. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.js .reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+.card:hover,
+.detail-card:hover {
+  background: #fbf6ec;
+  border-left-color: var(--maroon);
+}
+
+/* Home FAQ */
+.faq {
+  max-width: 720px;
+  margin: 8px auto 0;
+  text-align: left;
+}
+
+.faq details {
+  border-bottom: 1px solid var(--rule);
+  padding: 18px 0;
+}
+
+.faq summary {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq summary::-webkit-details-marker { display: none; }
+
+.faq summary::after {
+  content: "+";
+  float: right;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  color: var(--maroon);
+}
+
+.faq details[open] summary::after { content: "–"; }
+
+.faq details p {
+  margin-top: 10px;
+  color: var(--ink-2);
+  max-width: 58ch;
+}

@@ -4,7 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Get a Quote — Kerchunk Networks</title>
-  <meta name="description" content="Tell Kerchunk Networks about your home or fire/public-safety network project. Takes about 5–10 minutes. Accurate quote, no sales call required first.">
+  <meta name="description" content="A short quote for home and shop Wi-Fi, or Cradlepoint on a fire engine.">
+  <meta property="og:site_name" content="Kerchunk Networks">
+  <meta property="og:title" content="Get a Quote — Kerchunk Networks">
+  <meta property="og:description" content="Home, shop, or fire engine. About five minutes.">
+  <meta property="og:url" content="https://kerchunknetworks.com/quote/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://kerchunknetworks.com/assets/images/logo-og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Get a Quote — Kerchunk Networks">
+  <meta name="twitter:description" content="Home, shop, or fire engine. About five minutes.">
+  <meta name="twitter:image" content="https://kerchunknetworks.com/assets/images/logo-og.png">
   <link rel="canonical" href="https://kerchunknetworks.com/quote/">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -394,15 +404,15 @@
         <div class="sub">Connecting Fire, Field &amp; Family</div>
       </div>
     </a>
-    <a class="topbar-link" href="https://cal.kerchunknetworks.com/erik" target="_blank" rel="noopener">Prefer to book? →</a>
+    <a class="topbar-link" href="https://cal.kerchunknetworks.com/erik/1hour" target="_blank" rel="noopener">Book an onsite visit →</a>
   </div>
 
   <div class="shell">
     <div class="hero-card">
       <div class="hero-head">
-        <div class="eyebrow">Free consultation intake</div>
-        <h1>Get an Accurate Quote</h1>
-        <p>Pick your path, answer a few focused questions, and we’ll come back with a clear plan. About 5–10 minutes — more detail means a better quote.</p>
+        <div class="eyebrow">Quote</div>
+        <h1>Tell us the site.</h1>
+        <p>Home, shop, or fire engine. About five minutes.</p>
       </div>
 
       <div class="progress-wrap" id="progressWrap" hidden>
@@ -430,15 +440,15 @@
           <div class="path-grid">
             <label class="path-card" id="pathHomeCard">
               <input type="radio" name="pathChoice" value="residential" required>
-              <div class="tag">Homes · UniFi</div>
-              <h3>Residential</h3>
-              <p>Home Wi‑Fi, cabling, cameras, Airbnb/guest networks, Care Plan.</p>
+              <div class="tag">Home · Shop</div>
+              <h3>The building</h3>
+              <p>UniFi Wi-Fi, cabling, racks, cameras.</p>
             </label>
             <label class="path-card" id="pathFireCard">
               <input type="radio" name="pathChoice" value="fire">
-              <div class="tag">Departments · Fleet</div>
-              <h3>Fire / Public Safety</h3>
-              <p>Apparatus routers, station networks, FirstNet, Tablet Command, AVL.</p>
+              <div class="tag">Fire engines</div>
+              <h3>The engine</h3>
+              <p>Cradlepoint, dual-SIM, Starlink, NetCloud.</p>
             </label>
           </div>
         </div>
@@ -781,7 +791,6 @@
               <label class="choice"><input type="checkbox" name="fireApps" value="tablet-command"><span>Tablet Command</span></label>
               <label class="choice"><input type="checkbox" name="fireApps" value="cad"><span>CAD / MDT</span></label>
               <label class="choice"><input type="checkbox" name="fireApps" value="avl"><span>AVL / GPS tracking</span></label>
-              <label class="choice"><input type="checkbox" name="fireApps" value="radio"><span>Radio console / IP radio</span></label>
               <label class="choice"><input type="checkbox" name="fireApps" value="cameras"><span>On-board / station cameras</span></label>
               <label class="choice"><input type="checkbox" name="fireApps" value="alerting"><span>Station alerting / printers</span></label>
               <label class="choice"><input type="checkbox" name="fireApps" value="mdm"><span>iPad / iPhone MDM</span></label>
@@ -866,7 +875,8 @@
     </div>
     <p class="footer-note">
       Prefer a live conversation first?
-      <a href="https://cal.kerchunknetworks.com/erik" target="_blank" rel="noopener">Book a free consult</a>
+      <a href="https://cal.kerchunknetworks.com/erik/1hour" target="_blank" rel="noopener">Book an onsite visit</a>
+      · <a href="https://cal.kerchunknetworks.com/erik" target="_blank" rel="noopener">30-minute call</a>
       · <a href="/">kerchunknetworks.com</a>
     </p>
   </div>
@@ -1065,5 +1075,9 @@
     syncPathCards();
     render();
   })();
-  </script></body>
+  </script><div class="ptt-sticky">
+  <a class="ptt" href="https://cal.kerchunknetworks.com/erik/1hour" target="_blank" rel="noopener"><span class="ptt-key"><span class="ptt-label">Book an onsite visit</span></span></a>
+</div>
+<script src="../assets/js/motion.js"></script>
+</body>
 </html>
