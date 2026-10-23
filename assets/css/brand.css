@@ -1,0 +1,443 @@
+/* Kerchunk Networks — phase 1 brand tokens.
+   Change colors and type here; pages alias the legacy variable names. */
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+:root {
+  --maroon-deep: #3E1116;
+  --maroon: #5B1A22;
+  --maroon-ink: #2A0B0F;
+  --gold: #D4A441;
+  --gold-light: #E8C877;
+  --gold-soft: #E8C877;
+  /* Gold is a rule and a dark-background text color. On cream, labels use maroon. */
+  --gold-ink: var(--maroon);
+  --cream: #F4ECDD;
+  --cream-2: #F4ECDD;
+  --paper: #FFFDF8;
+  --ink: #1C1A18;
+  --ink-2: #3C332D;
+  --ink-3: #5A4F47;
+  --rule: #E4D9C4;
+  --rule-2: #D4C8B2;
+
+  --maroon-rgb: 91, 26, 34;
+  --maroon-deep-rgb: 62, 17, 22;
+  --gold-rgb: 212, 164, 65;
+
+  --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Legacy names used across the static pages */
+  --tan: var(--paper);
+  --beige: var(--cream);
+  --beige-dark: var(--cream);
+  --maroon-dark: var(--maroon-deep);
+  --maroon-dim: rgba(var(--maroon-rgb), 0.08);
+  --maroon-glow: rgba(var(--maroon-deep-rgb), 0.22);
+  --gold-dim: rgba(var(--gold-rgb), 0.16);
+  --text: var(--ink);
+  --text2: var(--ink-2);
+  --text3: var(--ink-3);
+  --border: var(--rule);
+  --border-hi: var(--rule-2);
+  --white: var(--paper);
+  --mono: var(--font-mono);
+  --ui: var(--font-display);
+  --body: var(--font-body);
+
+  --primary-tan: var(--paper);
+  --secondary-beige: var(--cream);
+  --dark-maroon: var(--maroon-deep);
+  --accent-gold: var(--gold);
+  --text-dark: var(--ink);
+  --text-light: var(--cream);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4,
+.hero h1,
+.page-hero h1,
+.section-title,
+.about-title,
+.page-title,
+.band h2,
+.card-title,
+.card h2,
+.logo-title,
+.nav-logo-text .name,
+.footer-logo .name,
+.topbar-brand .name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  line-height: 1.12;
+}
+
+.nav-logo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.nav-logo-text .name,
+.logo-title,
+.topbar-brand .name,
+.nav-logo span {
+  font-family: var(--font-display) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.015em !important;
+  text-transform: none !important;
+  color: var(--cream) !important;
+  line-height: 1.05 !important;
+}
+
+.section-eyebrow,
+.page-hero-eyebrow,
+.page-eyebrow,
+.about-label,
+.creds-eyebrow,
+.hero-badge,
+.stat-label,
+.mega-menu-title,
+.mega-menu-tag,
+.nav-logo-text .sub,
+.logo-subtitle,
+.topbar-brand .sub,
+.footer-logo .sub,
+.footer-copy,
+.footer-links a,
+.nav-phone,
+main .eyebrow,
+.wrap > .eyebrow {
+  font-family: var(--font-mono) !important;
+  letter-spacing: 0.16em !important;
+  text-transform: uppercase !important;
+}
+
+/* Gold text only on dark surfaces. Kickers on cream/paper are maroon. */
+.section-eyebrow,
+.page-hero-eyebrow,
+.page-eyebrow,
+.about-label,
+.creds-eyebrow,
+main .eyebrow,
+.wrap > .eyebrow,
+.mega-menu-footer a {
+  color: var(--maroon) !important;
+}
+
+.nav-logo-text .sub,
+.logo-subtitle,
+.topbar-brand .sub,
+.footer-logo .sub,
+.stat-label {
+  color: var(--gold-light) !important;
+}
+
+/* Dark bands */
+nav,
+.nav-header,
+.topbar {
+  background: var(--maroon-deep) !important;
+  border-bottom: 2px solid var(--gold) !important;
+  box-shadow: none !important;
+}
+
+.nav-links a,
+.nav-header .nav-link,
+.mobile-nav a,
+.topbar-link {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.nav-links a,
+.mobile-nav a {
+  color: rgba(244, 236, 221, 0.88);
+}
+
+.nav-links a:hover,
+.mobile-nav a:hover {
+  color: var(--paper);
+}
+
+.nav-links a.nav-phone,
+a.nav-phone {
+  color: var(--gold-light) !important;
+  font-family: var(--font-mono) !important;
+}
+
+a.nav-cta,
+.nav-links a.nav-cta,
+.nav-link.nav-cta,
+.mobile-nav .mobile-cta,
+.mobile-nav a.mobile-cta {
+  background: transparent !important;
+  color: var(--gold-light) !important;
+  border: 1px solid var(--gold) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  font-family: var(--font-mono) !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+}
+
+.nav-links a.nav-cta:hover,
+a.nav-cta:hover,
+.nav-link.nav-cta:hover,
+.mobile-nav a.mobile-cta:hover {
+  background: var(--gold-light) !important;
+  color: var(--maroon-deep) !important;
+}
+
+.nav-logo img,
+.logo-icon,
+.logo-link img,
+.topbar-brand img {
+  filter: none !important;
+  height: 48px;
+  width: auto;
+  max-height: 48px;
+}
+
+.nav-flyout,
+.mega-menu,
+.dropdown-menu {
+  background: var(--paper) !important;
+  border: 1px solid var(--rule) !important;
+  border-top: 2px solid var(--gold) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.mobile-nav {
+  background: var(--maroon-deep) !important;
+  border-top: 1px solid var(--gold) !important;
+  box-shadow: none !important;
+}
+
+.hero-divider {
+  height: 1px !important;
+  background: var(--gold) !important;
+  border-radius: 0 !important;
+}
+
+.hero-logo-img,
+.hero-logo-video {
+  filter: none !important;
+}
+
+.stats-bar,
+.band,
+.care-plan-header {
+  background: var(--maroon-deep) !important;
+  box-shadow: none !important;
+}
+
+.band,
+.stats-bar {
+  border-top: 2px solid var(--gold);
+  border-bottom: 2px solid var(--gold);
+}
+
+.band h2,
+.stat-val,
+.care-plan-header h2 {
+  color: var(--cream);
+}
+
+.band p {
+  color: rgba(244, 236, 221, 0.86);
+}
+
+footer {
+  background: var(--maroon-deep) !important;
+  color: var(--cream) !important;
+  border-top: 2px solid var(--gold) !important;
+  box-shadow: none !important;
+}
+
+footer .footer-logo {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 12px;
+  align-items: center;
+}
+
+footer .footer-logo::before {
+  content: "";
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  width: 26px;
+  height: 58px;
+  background: url("../images/logo-gold.png") center / contain no-repeat;
+}
+
+footer .footer-logo .name { grid-column: 2; grid-row: 1; color: var(--cream) !important; }
+footer .footer-logo .sub { grid-column: 2; grid-row: 2; }
+
+footer a,
+.footer-links a,
+.footer-link {
+  color: var(--gold-light) !important;
+}
+
+footer a:hover,
+.footer-links a:hover,
+.footer-link:hover {
+  color: var(--paper) !important;
+}
+
+.footer-copy,
+.footer-text {
+  color: rgba(244, 236, 221, 0.82) !important;
+}
+
+.card,
+.detail-card,
+.form-card,
+.info-card,
+.care-plan-card,
+.pin-box,
+.monitor-panel {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.card,
+.detail-card,
+.form-card,
+.info-card {
+  background: var(--cream);
+  border: none;
+  border-left: 3px solid var(--gold);
+  box-shadow: none;
+}
+
+/* Retire the old gradient cap. Dark panels use a gold top rule instead. */
+.card::before {
+  height: 0;
+  background: transparent;
+}
+
+.feature-group li::before {
+  color: var(--maroon) !important;
+}
+
+.cards .card:hover,
+.grid .card:hover,
+.card:hover {
+  box-shadow: none;
+  transform: none;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn-primary-inverted,
+.cta-button {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.btn-primary,
+.cta-button {
+  background: var(--maroon-deep);
+  color: var(--cream);
+}
+
+.btn-primary:hover,
+.cta-button:hover {
+  background: var(--maroon);
+  box-shadow: none;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--maroon);
+  border-color: var(--maroon);
+}
+
+.btn-primary-inverted {
+  background: var(--cream);
+  color: var(--maroon-deep);
+}
+
+.btn-primary-inverted:hover {
+  background: var(--paper);
+  box-shadow: none;
+}
+
+.pin-box input,
+.pin-box button {
+  border-radius: 0 !important;
+}
+
+input,
+select,
+textarea,
+button {
+  border-radius: 0;
+}
+
+footer:not(:has(.footer-logo))::before {
+  content: "";
+  display: block;
+  width: 22px;
+  height: 50px;
+  margin: 0 auto 14px;
+  background: url("../images/logo-gold.png") center / contain no-repeat;
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 2px;
+}
+
+@media (max-width: 1100px) {
+  .nav-logo-text .sub,
+  .logo-subtitle,
+  .topbar-brand .sub {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 720px) {
+  nav,
+  .nav-header .nav-container,
+  .topbar {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-links {
+    gap: 12px 16px;
+  }
+}

@@ -4,28 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kerchunk Networks — LIGHT MOCK (preview only)</title>
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;500;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --tan: #e8ddd0;
-      --beige: #d4c4b0;
-      --beige-dark: #c0ae96;
-      --maroon: #8b4049;
-      --maroon-dark: #6b3038;
-      --maroon-dim: rgba(139,64,73,.1);
-      --maroon-glow: rgba(139,64,73,.3);
-      --gold: #b8860b;
-      --gold-light: #d4a574;
-      --gold-dim: rgba(184,134,11,.12);
-      --text: #3a2a2a;
-      --text2: #7a5a5a;
-      --text3: #b09080;
-      --border: rgba(139,64,73,.15);
-      --border-hi: rgba(139,64,73,.3);
-      --mono: 'Share Tech Mono', monospace;
-      --ui: 'Barlow Condensed', sans-serif;
-      --body: 'Barlow', sans-serif;
-    }
+    :root {}
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -41,10 +22,10 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(139,64,73,.97);
+      background: rgba(var(--maroon-rgb), .97);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--maroon-dark);
-      box-shadow: 0 2px 0 0 rgba(184,134,11,.35);
+      box-shadow: 0 2px 0 0 rgba(var(--gold-rgb), .35);
       padding: 0 40px;
       height: 64px;
       display: flex;
@@ -62,7 +43,7 @@
     .nav-logo img {
       height: 38px;
       width: auto;
-      filter: brightness(0) invert(1);
+      filter: none;
     }
 
     .nav-logo-text .name {
@@ -148,8 +129,8 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(139,64,73,.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(139,64,73,.05) 1px, transparent 1px);
+        linear-gradient(rgba(var(--maroon-rgb), .05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(var(--maroon-rgb), .05) 1px, transparent 1px);
       background-size: 50px 50px;
       pointer-events: none;
     }
@@ -305,7 +286,7 @@
       position: absolute;
       inset: 20px;
       border-radius: 50%;
-      border: 1px dashed rgba(139,64,73,.2);
+      border: 1px dashed rgba(var(--maroon-rgb), .2);
     }
 
     @keyframes spin-slow {
@@ -317,7 +298,7 @@
       width: 280px;
       height: 280px;
       object-fit: contain;
-      filter: drop-shadow(0 8px 40px rgba(139,64,73,.25));
+      filter: none;
       animation: float 6s ease-in-out infinite;
     }
 
@@ -325,7 +306,7 @@
       width: 320px;
       height: 320px;
       object-fit: contain;
-      filter: drop-shadow(0 8px 40px rgba(139,64,73,.3));
+      filter: none;
       animation: float 6s ease-in-out infinite;
     }
 
@@ -351,7 +332,7 @@
       background: var(--maroon);
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      box-shadow: 0 3px 0 0 rgba(184,134,11,.4);
+      box-shadow: 0 3px 0 0 rgba(var(--gold-rgb), .4);
     }
 
     .stat {
@@ -432,7 +413,7 @@
       position: relative;
       overflow: hidden;
       transition: box-shadow .2s, transform .2s;
-      box-shadow: 0 2px 8px rgba(139,64,73,.06);
+      box-shadow: 0 2px 8px rgba(var(--maroon-rgb), .06);
     }
 
     .card::before {
@@ -446,7 +427,7 @@
     }
 
     .card:hover {
-      box-shadow: 0 8px 30px rgba(139,64,73,.15);
+      box-shadow: 0 8px 30px rgba(var(--maroon-rgb), .15);
       transform: translateY(-3px);
     }
 
@@ -507,7 +488,7 @@
       text-align: center;
       position: relative;
       overflow: hidden;
-      box-shadow: 0 3px 0 0 rgba(184,134,11,.4), 0 -3px 0 0 rgba(184,134,11,.4);
+      box-shadow: 0 3px 0 0 rgba(var(--gold-rgb), .4), 0 -3px 0 0 rgba(var(--gold-rgb), .4);
     }
 
     .band::before {
@@ -680,7 +661,7 @@
       border: 1px solid var(--border-hi);
       border-radius: 3px;
       overflow: hidden;
-      box-shadow: 0 2px 12px rgba(139,64,73,.08);
+      box-shadow: 0 2px 12px rgba(var(--maroon-rgb), .08);
     }
 
     .panel-topbar {
@@ -936,7 +917,7 @@
 
     /* ── CREDENTIALS ── */
     .creds {
-      background: #f5ede4;
+      background: var(--cream);
       border-top: 1px solid var(--border);
       border-bottom: 1px solid var(--border);
       padding: 40px 24px;
@@ -971,7 +952,7 @@
       height: 80px;
       width: auto;
       opacity: 0.9;
-      filter: drop-shadow(0 2px 6px rgba(0,0,0,.15));
+      filter: none;
       transition: opacity .2s;
     }
 
@@ -1029,11 +1010,11 @@
       left: 50%;
       transform: translateX(-50%);
       width: 520px;
-      background: rgba(232,221,208,.98);
+      background: rgba(255,253,248, .98);
       backdrop-filter: blur(16px);
       border: 1px solid var(--border-hi);
       border-top: 2px solid var(--maroon);
-      box-shadow: 0 8px 32px rgba(139,64,73,.15);
+      box-shadow: 0 8px 32px rgba(var(--maroon-rgb), .15);
       border-radius: 0 0 3px 3px;
       opacity: 0;
       pointer-events: none;
@@ -1170,6 +1151,8 @@
       color: var(--maroon) !important;
     }
   </style>
+
+  <link rel="stylesheet" href="../assets/css/brand.css">
 </head>
 <body>
 
@@ -1178,10 +1161,10 @@
 <!-- NAV -->
 <nav>
   <a href="/" class="nav-logo">
-    <img src="assets/images/Kerchunk-radio-transparent-Print.svg" alt="Kerchunk Networks">
+    <img src="assets/images/logo-gold.png" alt="Kerchunk Networks">
     <div class="nav-logo-text">
       <div class="name">Kerchunk Networks</div>
-      <div class="sub">Professional Solutions</div>
+      <div class="sub">Connecting Fire, Field &amp; Family</div>
     </div>
   </a>
   <ul class="nav-links">
@@ -1254,7 +1237,7 @@
       <span class="tick"></span>
       <video class="hero-logo-video"
              autoplay loop muted playsinline
-             poster="assets/images/Kerchunk-radio-transparent-Print.svg">
+             poster="assets/images/logo-maroon.png">
         <source src="assets/images/kerchunk-transparent.webm" type="video/webm">
         <source src="assets/images/kerchunk.mp4" type="video/mp4">
       </video>
@@ -1493,6 +1476,5 @@
     © 2025 Kerchunk Networks · 415-737-9223 · elohmann@kerchunknetworks.com
   </div>
 </footer>
-
 </body>
 </html>

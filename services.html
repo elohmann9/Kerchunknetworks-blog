@@ -7,26 +7,20 @@
   <meta name="description" content="UniFi home installs in San Mateo County and El Dorado County. Firefighter owned. Apparatus photos are the job, not a client portfolio.">
   <link rel="canonical" href="https://kerchunknetworks.com/services">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;500;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --tan: #e8ddd0; --beige: #d4c4b0; --maroon: #8b4049; --maroon-dark: #6b3038;
-      --maroon-dim: rgba(139,64,73,.1); --maroon-glow: rgba(139,64,73,.3);
-      --gold: #b8860b; --gold-light: #d4a574; --text: #3a2a2a; --text2: #7a5a5a;
-      --border: rgba(139,64,73,.15); --border-hi: rgba(139,64,73,.3);
-      --mono: 'Share Tech Mono', monospace; --ui: 'Barlow Condensed', sans-serif; --body: 'Barlow', sans-serif;
-    }
+    :root {}
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { overflow-x: hidden; }
     body { font-family: var(--body); background: var(--tan); color: var(--text); line-height: 1.6; }
     nav {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(139,64,73,.97); height: 64px; padding: 0 24px;
+      background: rgba(var(--maroon-rgb), .97); height: 64px; padding: 0 24px;
       display: flex; align-items: center; justify-content: space-between;
-      border-bottom: 1px solid var(--maroon-dark); box-shadow: 0 2px 0 0 rgba(184,134,11,.35);
+      border-bottom: 1px solid var(--maroon-dark); box-shadow: 0 2px 0 0 rgba(var(--gold-rgb), .35);
     }
     .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-    .nav-logo img { height: 38px; filter: brightness(0) invert(1); }
+    .nav-logo img { height: 38px; filter: none; }
     .nav-logo .name { font-family: var(--ui); font-size: 18px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #fff; }
     .nav-links { display: flex; gap: 8px; list-style: none; align-items: center; }
     .nav-links a { font-family: var(--ui); font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.8); text-decoration: none; padding: 8px 12px; }
@@ -38,7 +32,7 @@
     .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     .card { background: #fff; border: 1px solid var(--border); border-radius: 4px; padding: 32px 28px; text-decoration: none; color: inherit; display: block; position: relative; overflow: hidden; transition: box-shadow .2s, transform .2s; }
     .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--maroon), var(--gold)); }
-    .card:hover { box-shadow: 0 8px 30px rgba(139,64,73,.15); transform: translateY(-3px); }
+    .card:hover { box-shadow: 0 8px 30px rgba(var(--maroon-rgb), .15); transform: translateY(-3px); }
     .card h2 { font-family: var(--ui); font-size: 22px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--maroon); margin: 8px 0 12px; }
     .card p { font-size: 15px; color: var(--text2); margin-bottom: 16px; }
     .card ul { list-style: none; font-family: var(--mono); font-size: 12px; color: var(--text2); display: flex; flex-direction: column; gap: 6px; }
@@ -47,16 +41,22 @@
     footer { background: var(--maroon-dark); border-top: 3px solid var(--gold); padding: 28px 24px; color: rgba(255,255,255,.6); font-family: var(--mono); font-size: 11px; letter-spacing: 1px; text-align: center; }
     footer a { color: var(--gold-light); }
     @media (max-width: 800px) {
-      .nav-links { display: none; }
+      nav { height: auto; flex-wrap: wrap; padding: 12px 16px; gap: 8px; }
+      .nav-links { display: flex; flex-wrap: wrap; width: 100%; }
       .grid { grid-template-columns: 1fr; }
     }
   </style>
+
+  <link rel="stylesheet" href="assets/css/brand.css">
 </head>
 <body>
   <nav>
     <a class="nav-logo" href="/">
-      <img src="assets/images/Kerchunk-radio-transparent-Print.svg" alt="Kerchunk Networks">
-      <span class="name">Kerchunk Networks</span>
+      <img src="assets/images/logo-gold.png" alt="Kerchunk Networks">
+      <span class="nav-logo-text">
+        <span class="name">Kerchunk Networks</span>
+        <span class="sub">Connecting Fire, Field &amp; Family</span>
+      </span>
     </a>
     <ul class="nav-links">
       <li><a href="/">Home</a></li>
@@ -97,6 +97,5 @@
   </main>
   <footer>
     © 2024–2026 Kerchunk Networks · <a href="tel:+14157379223">415-737-9223</a> · <a href="mailto:elohmann@kerchunknetworks.com">elohmann@kerchunknetworks.com</a>
-  </footer>
-</body>
+  </footer></body>
 </html>

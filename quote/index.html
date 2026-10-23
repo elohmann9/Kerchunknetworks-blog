@@ -6,27 +6,9 @@
   <title>Get a Quote — Kerchunk Networks</title>
   <meta name="description" content="Tell Kerchunk Networks about your home or fire/public-safety network project. Takes about 5–10 minutes. Accurate quote, no sales call required first.">
   <link rel="canonical" href="https://kerchunknetworks.com/quote/">
-  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --tan: #e8ddd0;
-      --beige: #d4c4b0;
-      --maroon: #8b4049;
-      --maroon-dark: #6b3038;
-      --maroon-dim: rgba(139,64,73,.1);
-      --maroon-glow: rgba(139,64,73,.3);
-      --gold: #b8860b;
-      --gold-light: #d4a574;
-      --text: #3a2a2a;
-      --text2: #7a5a5a;
-      --text3: #b09080;
-      --border: rgba(139,64,73,.18);
-      --cream: #f5f0e8;
-      --white: #ffffff;
-      --mono: 'Share Tech Mono', monospace;
-      --ui: 'Barlow Condensed', sans-serif;
-      --body: 'Barlow', sans-serif;
-    }
+    :root {}
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: var(--body);
@@ -55,7 +37,7 @@
     .topbar-brand img {
       height: 36px;
       width: auto;
-      filter: brightness(0) invert(1);
+      filter: none;
     }
     .topbar-brand .name {
       font-family: var(--ui);
@@ -268,7 +250,7 @@
       margin-top: 4px;
       font-style: italic;
     }
-    .required { color: #a85252; }
+    .required { color: var(--maroon); }
     input[type="text"],
     input[type="email"],
     input[type="tel"],
@@ -400,11 +382,13 @@
     }
     .footer-note a { color: var(--maroon); text-decoration: none; }
   </style>
+
+  <link rel="stylesheet" href="../assets/css/brand.css">
 </head>
 <body>
   <div class="topbar">
     <a class="topbar-brand" href="/">
-      <img src="../assets/images/kerchunk-logo.svg" alt="Kerchunk Networks">
+      <img src="../assets/images/logo-gold.png" alt="Kerchunk Networks">
       <div>
         <div class="name">Kerchunk Networks</div>
         <div class="sub">Connecting Fire, Field &amp; Family</div>
@@ -1081,6 +1065,5 @@
     syncPathCards();
     render();
   })();
-  </script>
-</body>
+  </script></body>
 </html>

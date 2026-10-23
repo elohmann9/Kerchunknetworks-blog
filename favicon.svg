@@ -12,23 +12,23 @@
       }
 
       .st2 {
-        fill: #6f2931;
+        fill: #5B1A22;
       }
 
       .st3 {
-        fill: #702b33;
+        fill: #5B1A22;
       }
 
       .st4 {
-        fill: #6e2831;
+        fill: #3E1116;
       }
 
       .st5 {
-        fill: #702c35;
+        fill: #5B1A22;
       }
 
       .st6 {
-        fill: #6e2932;
+        fill: #5B1A22;
       }
 
       .st7 {
@@ -36,11 +36,11 @@
       }
 
       .st8 {
-        fill: #6e2a32;
+        fill: #5B1A22;
       }
 
       .st9 {
-        fill: #3d454a;
+        fill: #3E1116;
       }
     </style>
   </defs>
