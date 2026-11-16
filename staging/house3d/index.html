@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>The Kerchunk house — Whole-home Wi-Fi, mapped.</title>
+<link rel="stylesheet" href="./fonts/local.css">
+<style>
+:root{
+  --md:#3E1116; --g:#D4A441; --gl:#E8C877; --c:#F4ECDD; --bg:#0A0708;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--c);
+  font-family:"JetBrains Mono",monospace;-webkit-font-smoothing:antialiased}
+canvas{display:block;width:100%;height:100%;touch-action:none}
+.hairline{position:fixed;top:0;left:0;right:0;height:2px;background:var(--g);z-index:20}
+.vignette{position:fixed;inset:0;pointer-events:none;z-index:5;
+  background:radial-gradient(ellipse at 50% 48%,transparent 42%,rgba(8,5,6,.7) 100%)}
+.brand{position:fixed;top:32px;left:40px;z-index:10;pointer-events:none}
+.brand h1{font-family:"Playfair Display",serif;font-weight:600;font-size:34px;
+  letter-spacing:-.02em;line-height:1.05;color:var(--c);font-style:normal}
+.brand p{margin-top:8px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--g)}
+.brand .note{margin-top:8px;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(244,236,221,.38)}
+.hud-tr{position:fixed;top:36px;right:40px;z-index:10;text-align:right;font-size:11px;
+  letter-spacing:.16em;line-height:1.85;pointer-events:none}
+.hud-tr .k{color:rgba(244,236,221,.38);margin-right:12px}
+.hud-tr .v{color:var(--gl)}
+.hint{position:fixed;bottom:36px;left:50%;transform:translateX(-50%);z-index:10;
+  font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:rgba(244,236,221,.55);
+  pointer-events:none;white-space:nowrap}
+.hint b{color:var(--g);font-weight:500}
+.legend{position:fixed;bottom:36px;right:40px;z-index:10;font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:rgba(244,236,221,.48);line-height:1.9;pointer-events:none;text-align:right}
+.legend i{display:inline-block;width:16px;height:8px;margin-right:8px;vertical-align:middle}
+.legend i.ap{border-radius:50%;width:8px;height:8px;background:var(--g);
+  box-shadow:0 0 8px var(--g)}
+.legend i.cable{height:1px;background:var(--g);width:16px;position:relative;top:-3px}
+.legend .cov{display:flex;align-items:center;justify-content:flex-end;gap:8px;margin-bottom:6px}
+.legend .cov .bar{display:inline-block;width:56px;height:4px;border-radius:2px;
+  background:linear-gradient(90deg,#5B1A22 0%,#8A3A28 32%,#D4A441 68%,#E8C877 100%);
+  box-shadow:0 0 8px rgba(212,164,65,.25)}
+#labels{position:fixed;inset:0;z-index:8;pointer-events:none}
+.label{position:absolute;transform:translate(-50%,-120%);white-space:nowrap;
+  font-family:"JetBrains Mono",monospace;letter-spacing:.08em}
+.label-ap{font-size:11px;color:var(--gl);display:flex;align-items:center;gap:8px;
+  background:rgba(10,7,8,.55);border:1px solid rgba(212,164,65,.35);padding:6px 10px 6px 8px;
+  backdrop-filter:blur(6px)}
+.label-ap .led{width:7px;height:7px;border-radius:50%;background:var(--gl);
+  box-shadow:0 0 8px var(--g);flex:none;animation:led 2.4s ease-in-out infinite}
+.label-room{font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(244,236,221,.78);opacity:0;transition:opacity .25s ease;padding:2px 0}
+.label-room.on{opacity:1}
+.label-cable{font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:var(--g);
+  opacity:.75}
+@keyframes led{0%,100%{opacity:.45;box-shadow:0 0 4px var(--g)}50%{opacity:1;box-shadow:0 0 10px var(--gl)}}
+.reduced .label-ap .led,.reduced .legend i.ap{animation:none;opacity:1}
+@media (max-width:700px){
+  .brand{top:22px;left:18px}
+  .brand h1{font-size:24px}
+  .brand p{font-size:9px;letter-spacing:.14em}
+  .brand .note{display:none}
+  .hud-tr{top:22px;right:16px;font-size:9px}
+  .hint{bottom:22px;font-size:9px;letter-spacing:.18em}
+  .legend{bottom:52px;right:16px;font-size:8px}
+  .label-ap{font-size:9px;padding:5px 8px}
+}
+</style>
+<script type="importmap">
+{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/jsm/"}}
+</script>
+</head>
+<body>
+<div class="hairline"></div>
+<canvas id="c"></canvas>
+<div class="vignette"></div>
+<header class="brand">
+  <h1>The Kerchunk house</h1>
+  <p>Whole-home Wi-Fi, mapped.</p>
+  <div class="note">Preview · Plan A-Reversed</div>
+</header>
+<aside class="hud-tr">
+  <div><span class="k">YAW</span><span class="v" id="yaw">000.0°</span></div>
+  <div><span class="k">PITCH</span><span class="v" id="pitch">00.0°</span></div>
+  <div><span class="k">SCAN</span><span class="v" id="scan">LIVE</span></div>
+</aside>
+<div class="hint"><b>DRAG</b> TO ORBIT</div>
+<aside class="legend">
+  <div class="cov"><span class="bar"></span>Weak → Strong</div>
+  <div><i class="ap"></i>U7 access point</div>
+  <div><i class="cable"></i>Cat6A run</div>
+</aside>
+<div id="labels"></div>
+<script type="module" src="./main.js"></script>
+</body>
+</html>
