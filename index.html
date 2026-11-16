@@ -18,17 +18,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta property="og:description" content="Wi-Fi, cabling, and racks for home and shop. Cradlepoint on the fire engine.">
   <meta property="og:url" content="https://kerchunknetworks.com/">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://kerchunknetworks.com/assets/phase3/rack-closeup-hero-16x9.jpg">
-  <meta property="og:image:width" content="1320">
-  <meta property="og:image:height" content="740">
-  <meta property="og:image:alt" content="UniFi switch and patch panel in a Kerchunk Networks wall rack, purple and blue link lights on the cable run.">
+  <meta property="og:image" content="https://kerchunknetworks.com/assets/house3d/poster.jpg">
+  <meta property="og:image:width" content="1425">
+  <meta property="og:image:height" content="792">
+  <meta property="og:image:alt" content="Gold-dot map of a house floor plan with Wi-Fi coverage, the Kerchunk house.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Kerchunk Networks — Connecting Fire, Field &amp; Family">
   <meta name="twitter:description" content="Wi-Fi, cabling, and racks for home and shop. Cradlepoint on the fire engine.">
-  <meta name="twitter:image" content="https://kerchunknetworks.com/assets/phase3/rack-closeup-hero-16x9.jpg">
-  <meta name="twitter:image:alt" content="UniFi switch and patch panel in a Kerchunk Networks wall rack, purple and blue link lights on the cable run.">
-  <link rel="preload" as="image" href="assets/phase3/rack-closeup-hero-16x9.webp" type="image/webp" media="(min-width: 901px)" fetchpriority="high">
-  <link rel="preload" as="image" href="assets/phase3/video-still-rack.webp" type="image/webp" media="(max-width: 900px)" fetchpriority="high">
+  <meta name="twitter:image" content="https://kerchunknetworks.com/assets/house3d/poster.jpg">
+  <meta name="twitter:image:alt" content="Gold-dot map of a house floor plan with Wi-Fi coverage, the Kerchunk house.">
+  <link rel="preload" as="image" href="assets/house3d/poster.webp" type="image/webp" fetchpriority="high">
+  <script type="importmap">
+  {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}
+  </script>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" href="assets/images/logo-og.png">
   <script type="application/ld+json">
@@ -212,21 +214,87 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     .hero-video.is-ready { opacity: 1; }
 
+    .hero-stage {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      background: #0A0708;
+    }
+    .hero-poster,
+    .hero-stage canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .hero-poster { object-fit: cover; object-position: 62% center; }
+    .hero-stage canvas { pointer-events: none; opacity: 0; }
+    .hero-stage.is-live canvas { opacity: 1; }
+    .hero-stage.is-still canvas { display: none; }
+    #house-labels { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+    #house-labels .label { position: absolute; transform: translate(-50%, -130%); white-space: nowrap; }
+    #house-labels .label-ap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: #E8C877;
+      background: rgba(10, 7, 8, 0.42);
+      border: 1px solid rgba(212, 164, 65, 0.32);
+      border-radius: 999px;
+      padding: 4px 8px 4px 6px;
+    }
+    #house-labels .label-ap .led {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #E8C877; box-shadow: 0 0 6px #D4A441;
+    }
+    #house-labels .label-room,
+    #house-labels .label-cable { display: none !important; }
+    .house-legend {
+      position: absolute;
+      top: 92px;
+      right: 28px;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      pointer-events: none;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(244, 236, 221, 0.62);
+    }
+    .house-legend-bar {
+      width: 48px; height: 4px; border-radius: 2px;
+      background: linear-gradient(90deg, #5B1A22 0%, #8A3A28 32%, #D4A441 68%, #E8C877 100%);
+    }
+    .work-frame video {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
     .hero-scrim {
       position: absolute;
       inset: 0;
       z-index: 1;
       pointer-events: none;
       background: linear-gradient(90deg,
-        rgba(42, 11, 15, 0.94) 0%,
-        rgba(62, 17, 22, 0.88) 32%,
-        rgba(62, 17, 22, 0.48) 60%,
-        rgba(62, 17, 22, 0.16) 100%);
+        rgba(42, 11, 15, 0.9) 0%,
+        rgba(62, 17, 22, 0.72) 26%,
+        rgba(42, 11, 15, 0.28) 52%,
+        rgba(10, 7, 8, 0.04) 100%);
     }
 
     .hero-content {
       position: relative;
-      z-index: 2;
+      z-index: 3;
       max-width: 640px;
     }
 
@@ -990,6 +1058,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           #2A0B0F 100%);
       }
       .hero p { margin: 0 0 32px; }
+      .house-legend { display: none; }
       .hero-btns { justify-content: flex-start; }
       .work-grid,
       .proof-grid { grid-template-columns: 1fr; }
@@ -1367,22 +1436,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 <!-- NAV -->
-<nav>
-  <a href="/" class="nav-logo">
-    <img src="assets/images/logo-gold.png" alt="Kerchunk Networks">
-    <div class="nav-logo-text">
-      <div class="name">Kerchunk Networks</div>
-      <div class="sub">Connecting Fire, Field &amp; Family</div>
-    </div>
-  </a>
-  <ul class="nav-links">
-    <li><a href="/">Home</a></li>
-    <li><a href="services-fire.html" class="has-panel" data-panel="services" aria-haspopup="true" aria-expanded="false">Services <span class="nav-dropdown-arrow">▾</span></a></li>
-    <li><a href="about.html" class="has-panel" data-panel="about" aria-haspopup="true" aria-expanded="false">About <span class="nav-dropdown-arrow">▾</span></a></li>
-    <li><a href="contact.html" class="has-panel" data-panel="contact" aria-haspopup="true" aria-expanded="false">Contact <span class="nav-dropdown-arrow">▾</span></a></li>
-    <li><a href="tel:+14157379223" class="nav-phone">415-737-9223</a></li>
-    <li><a class="ptt ptt-nav" href="https://cal.kerchunknetworks.com/erik/1hour" target="_blank" rel="noopener"><span class="ptt-key"><span class="ptt-label">Book an onsite visit</span></span></a></li>
-  </ul>
+<nav class="nav-glass" aria-label="Primary">
+  <div class="nav-glass-bar">
+    <a href="#hero" class="nav-logo">
+      <img src="assets/images/logo-gold.png" alt="Kerchunk Networks">
+      <div class="nav-logo-text">
+        <div class="name">Kerchunk Networks</div>
+      </div>
+    </a>
+    <span class="nav-pill" aria-hidden="true"></span>
+    <a class="nav-item" data-spy="hero" href="#hero">Home</a>
+    <a class="nav-item" data-spy="services" href="#services">Services</a>
+    <a class="nav-item" data-spy="work" href="#work">Projects</a>
+    <a class="nav-item" data-spy="faq" href="#faq">FAQ</a>
+    <a class="ptt ptt-nav" href="https://cal.kerchunknetworks.com/erik/1hour" target="_blank" rel="noopener"><span class="ptt-key"><span class="ptt-label">Book an onsite visit</span></span></a>
+  </div>
   <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
 
   <div class="nav-flyout" id="nav-flyout">
@@ -1483,17 +1551,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="hero-media">
-    <picture>
-      <source media="(max-width: 900px)" srcset="assets/phase3/video-still-rack.webp" type="image/webp">
-      <source media="(max-width: 900px)" srcset="assets/phase3/video-still-rack.jpg" type="image/jpeg">
-      <source srcset="assets/phase3/rack-closeup-hero-16x9.webp" type="image/webp">
-      <img src="assets/phase3/rack-closeup-hero-16x9.jpg" alt="UniFi switch and patch panel in a wall rack, purple and blue link lights along the cable run." width="1320" height="740" fetchpriority="high">
-    </picture>
-    <video class="hero-video hero-video-mobile" muted loop playsinline preload="none" poster="assets/phase3/video-still-rack.webp" aria-hidden="true" data-webm="assets/phase3/rack-loop-vertical.webm" data-mp4="assets/phase3/rack-loop-vertical.mp4"></video>
+<div class="hero" id="hero">
+  <div class="hero-stage">
+    <img class="hero-poster" src="assets/house3d/poster.webp" alt="" width="1440" height="900" fetchpriority="high">
+    <canvas id="house-canvas" aria-hidden="true"></canvas>
   </div>
   <div class="hero-scrim" aria-hidden="true"></div>
+  <div id="house-labels"></div>
+  <aside class="house-legend" aria-hidden="true">
+    <span class="house-legend-bar"></span>
+    <span>Weak → Strong</span>
+  </aside>
   <div class="hero-content">
     <div class="hero-badge">Connecting Fire, Field &amp; Family</div>
     <h1>
@@ -1505,13 +1573,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="hero-btns">
       <a class="glass-cta" href="https://cal.kerchunknetworks.com/erik/1hour" target="_blank" rel="noopener">
         <span class="glass-led" aria-hidden="true"></span>
-        <span class="glass-label">Book an onsite visit</span>
-        <span class="glass-arrow" aria-hidden="true"></span>
+        <span class="glass-copy">
+          <span class="glass-label">Book an onsite visit</span>
+          <span class="glass-detail">Onsite visit · 1 hour · Bay Area</span>
+        </span>
+        <span class="glass-go" aria-hidden="true"><span class="glass-arrow"></span></span>
       </a>
-      <p class="hero-cta-meta">
-        <span>Onsite visit · 1 hour</span>
-        <a href="tel:+14157379223">Call 415-737-9223</a>
-      </p>
     </div>
   </div>
 </div>
@@ -1548,7 +1615,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </div>
 
 <!-- SERVICES -->
-<section class="reveal">
+<section class="reveal" id="services">
   <div class="section-eyebrow">The work</div>
   <div class="section-title">Two places. One standard.</div>
   <p class="section-sub">Homes and shops on UniFi. Fire engines on Cradlepoint.</p>
@@ -1590,7 +1657,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<section class="work reveal" aria-labelledby="work-title">
+<section class="work reveal" id="work" aria-labelledby="work-title">
   <div class="section-eyebrow">Recent work</div>
   <h2 class="section-title" id="work-title">The Kerchunk house.</h2>
   <p class="section-sub">A labeled rack. Cable dressed. Wi-Fi where you stand.</p>
@@ -1621,6 +1688,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </picture>
       </div>
       <figcaption>U7 Pro XG · hallway ceiling</figcaption>
+    </figure>
+    <figure>
+      <div class="work-frame">
+        <picture>
+          <source srcset="assets/phase3/rack-closeup-hero-16x9.webp" type="image/webp">
+          <img src="assets/phase3/rack-closeup-hero-16x9.jpg" alt="Close view of the UniFi switch and patch panel, purple and blue link lights on the cable run." width="1320" height="740" loading="lazy">
+        </picture>
+      </div>
+      <figcaption>Switch · patch panel</figcaption>
+    </figure>
+    <figure>
+      <div class="work-frame">
+        <video class="work-loop" muted loop playsinline preload="metadata" poster="assets/phase3/video-still-rack-16x9.webp" width="960" height="540" aria-label="Rack link lights pulsing in a short loop">
+          <source src="assets/phase3/rack-loop-desktop-16x9.webm" type="video/webm">
+          <source src="assets/phase3/rack-loop-desktop-16x9.mp4" type="video/mp4">
+        </video>
+      </div>
+      <figcaption>Rack · link lights</figcaption>
     </figure>
   </div>
 </section>
@@ -1773,7 +1858,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<section class="reveal" aria-labelledby="faq-title" style="padding-top:72px;padding-bottom:40px;">
+<section class="reveal" id="faq" aria-labelledby="faq-title" style="padding-top:72px;padding-bottom:40px;">
   <div class="section-eyebrow">Questions</div>
   <h2 class="section-title" id="faq-title">Short answers.</h2>
   <div class="faq">
@@ -1838,6 +1923,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <a class="ptt" href="https://cal.kerchunknetworks.com/erik/1hour" target="_blank" rel="noopener"><span class="ptt-key"><span class="ptt-label">Book an onsite visit</span></span></a>
 </div>
 <script src="assets/js/motion.js"></script>
+<script type="module">
+(function () {
+  var stage = document.querySelector(".hero-stage");
+  if (!stage) return;
+  var conn = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  var save = conn && (conn.saveData || conn.effectiveType === "slow-2g" || conn.effectiveType === "2g");
+  var mobile = window.matchMedia("(max-width: 900px)").matches;
+  var gl = false;
+  try {
+    var test = document.createElement("canvas");
+    gl = !!(test.getContext("webgl2") || test.getContext("webgl"));
+  } catch (e) {}
+  if (save || mobile || !gl) {
+    stage.classList.add("is-still");
+    return;
+  }
+  var boot = function () { import("./assets/house3d/main.js"); };
+  var later = function () {
+    if (window.requestIdleCallback) requestIdleCallback(boot, { timeout: 900 });
+    else setTimeout(boot, 280);
+  };
+  requestAnimationFrame(function () { requestAnimationFrame(later); });
+})();
+</script>
 <script>
 (function(){
   var btn = document.getElementById('nav-hamburger');

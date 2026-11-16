@@ -36,6 +36,56 @@
 })();
 
 (function () {
+  var bar = document.querySelector(".nav-glass-bar");
+  var pill = bar && bar.querySelector(".nav-pill");
+  if (!bar || !pill) return;
+  var links = Array.prototype.slice.call(bar.querySelectorAll("a[data-spy]"));
+  if (!links.length) return;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) pill.style.transition = "none";
+  var current = links[0];
+  function place(el) {
+    if (!el) return;
+    var b = bar.getBoundingClientRect();
+    var r = el.getBoundingClientRect();
+    pill.style.width = r.width + "px";
+    pill.style.height = r.height + "px";
+    pill.style.transform = "translate(" + (r.left - b.left) + "px," + (r.top - b.top) + "px)";
+  }
+  links.forEach(function (a) {
+    a.addEventListener("mouseenter", function () { place(a); });
+    a.addEventListener("focus", function () { place(a); });
+  });
+  bar.addEventListener("mouseleave", function () { place(current); });
+  function setCurrent(id) {
+    var next = null;
+    for (var i = 0; i < links.length; i++) {
+      if (links[i].getAttribute("data-spy") === id) next = links[i];
+    }
+    if (!next) return;
+    links.forEach(function (a) { a.classList.toggle("is-current", a === next); });
+    current = next;
+    if (!bar.matches(":hover")) place(current);
+  }
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      var best = null;
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        if (!best || entry.intersectionRatio > best.intersectionRatio) best = entry;
+      });
+      if (best) setCurrent(best.target.id);
+    }, { rootMargin: "-28% 0px -48% 0px", threshold: [0.15, 0.4, 0.7] });
+    ["hero", "services", "work", "faq"].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+  }
+  window.addEventListener("resize", function () { place(current); });
+  requestAnimationFrame(function () { place(current); });
+})();
+
+(function () {
   var videos = document.querySelectorAll(".hero-video");
   if (!videos.length) return;
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
