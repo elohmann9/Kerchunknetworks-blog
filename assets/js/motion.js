@@ -44,50 +44,76 @@
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (reduce) pill.style.transition = "none";
   var current = links[0];
-  var placed = null;
+  var hovering = null;
   var leaveTimer = 0;
-  var resizeRaf = 0;
-  function place(el) {
-    if (!el || el === placed) return;
-    placed = el;
+  var raf = 0;
+  current.classList.add("is-current");
+
+  function shown() { return hovering || current; }
+
+  // Absolute left/top are relative to the bar's padding edge. Rects are border boxes.
+  function apply(el) {
+    if (!el) return;
     var b = bar.getBoundingClientRect();
     var r = el.getBoundingClientRect();
-    var x = Math.round(r.left - b.left);
-    var y = Math.round(r.top - b.top);
+    var x = Math.round(r.left - b.left - bar.clientLeft);
+    var y = Math.round(r.top - b.top - bar.clientTop);
     var w = Math.round(r.width);
     var h = Math.round(r.height);
+    pill.style.left = x + "px";
+    pill.style.top = y + "px";
     pill.style.width = w + "px";
     pill.style.height = h + "px";
-    pill.style.transform = "translate3d(" + x + "px," + y + "px,0)";
   }
+
+  function remeasure() {
+    if (raf) return;
+    raf = requestAnimationFrame(function () {
+      raf = 0;
+      apply(shown());
+    });
+  }
+
+  function reveal() {
+    apply(shown());
+    pill.classList.add("is-ready");
+  }
+
   links.forEach(function (a) {
     a.addEventListener("mouseenter", function () {
       clearTimeout(leaveTimer);
-      place(a);
+      hovering = a;
+      apply(a);
     });
-    a.addEventListener("focus", function () { place(a); });
+    a.addEventListener("focus", function () {
+      hovering = a;
+      apply(a);
+    });
+    a.addEventListener("blur", function () {
+      if (hovering === a) hovering = null;
+      apply(shown());
+    });
   });
   bar.addEventListener("mouseleave", function () {
     clearTimeout(leaveTimer);
     leaveTimer = setTimeout(function () {
-      placed = null;
-      place(current);
+      hovering = null;
+      apply(current);
     }, 120);
   });
+
   function setCurrent(id) {
     var next = null;
     for (var i = 0; i < links.length; i++) {
       if (links[i].getAttribute("data-spy") === id) next = links[i];
     }
     if (!next || next === current) return;
-    if (current) current.classList.remove("is-current");
+    current.classList.remove("is-current");
     next.classList.add("is-current");
     current = next;
-    if (!bar.matches(":hover")) {
-      placed = null;
-      place(current);
-    }
+    if (!hovering) apply(current);
   }
+
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(function (entries) {
       var best = null;
@@ -114,18 +140,16 @@
       }, { threshold: 0 }).observe(cta);
     }
   }
-  window.addEventListener("resize", function () {
-    if (resizeRaf) return;
-    resizeRaf = requestAnimationFrame(function () {
-      resizeRaf = 0;
-      placed = null;
-      place(bar.matches(":hover") ? placed : current);
-      var hover = null;
-      links.forEach(function (a) { if (a.matches(":hover")) hover = a; });
-      placed = null;
-      place(hover || current);
-    });
-  });
+
+  if (window.ResizeObserver) {
+    new ResizeObserver(remeasure).observe(bar);
+  }
+  window.addEventListener("resize", remeasure);
+  window.addEventListener("orientationchange", remeasure);
+
+  var fontsReady = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+  fontsReady.then(function () { requestAnimationFrame(reveal); });
+
   var zone = document.querySelector(".glass-zone");
   if (zone) {
     var openTimer = 0;
@@ -140,10 +164,6 @@
     zone.addEventListener("focus", function () { zone.classList.add("is-open"); });
     zone.addEventListener("blur", function () { zone.classList.remove("is-open"); });
   }
-  requestAnimationFrame(function () {
-    current.classList.add("is-current");
-    place(current);
-  });
 })();
 
 (function () {
