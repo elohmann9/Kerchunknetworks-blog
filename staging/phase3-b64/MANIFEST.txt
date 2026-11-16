@@ -1,0 +1,26 @@
+phase3 assets base64 staging
+source: /workspace/phase3-photos
+encoding: base64 -w 76
+
+filename                                        bytes  sha256
+--------                                        -----  ------
+rack-closeup-hero-16x9.jpg                     152527  a58cb78522ae77a67a9b434fe58fb17bba0434f306a0423b0f23c71fab2ff448
+rack-closeup-hero-16x9.webp                     40600  79e4cb17f7cfc03d877164c329a24a0772a563d64df7cb354d0a13b0b250964e
+rack-closeup-gallery-4x3.jpg                   142677  552e1a86ed521232257fa230f2217c6be32fb4ac7ad8958e4a6b5413ccf6f6b0
+rack-closeup-gallery-4x3.webp                   38596  80b3790cc82cd1158b506e166e67ef66c60457eee0fcdc229d3514cbfe6f556b
+night-rack.jpg                                  87654  62846825f21e041f42d9b6efb36c59c65b71c6efc2fd1fc4ab8fc4198f6841a2
+night-rack.webp                                 25922  afb997b6b3fde472a8d47a70bdfe49dbd5ba80839ed14231acb4c79ac3a5da87
+hallway-ap.jpg                                 345771  554ee4bd287a825fa5491a46ba1a8ce5f9e88ab33e08ec3cc673d6718b7a85db
+hallway-ap.webp                                 29934  5a7ca2a4dd53daf3639905fce03592f2cf90bc419d733f46d8f7132cceec72a8
+tester-poe.jpg                                1095391  f1b70e7a8e666165e8d3a0fa9ae54748508d8daaeda321839f794713cdf62edc
+tester-poe.webp                                212002  4d975f071b0179d6677ccae2c7c94bd6a4d61138e5e0ed58b4c71a6546792d51
+tester-t568b.jpg                               874537  b36efb6a1779f29bb22a4265a8f06e19afa8e84602163702a8c35802265ce68c
+tester-t568b.webp                              153768  6f4ca4571d7ea31b44b2b339e6da0ceaa3d83860f45ac82bde16f02086679c71
+video-still-rack.jpg                           164650  4e476ce0e77d0330ad0fbc8502f7498bb08bfc7939f42145ffa6a1a795ac0d10
+video-still-rack.webp                           35866  0c3dad19b87bf4689f93022d08bb8987503c1ed1f72e1a5334cadd117ec4f44a
+video-still-rack-16x9.jpg                       69972  d3e9ee5ad2039aa5ebb620b229335c75174bdd36aae3091542406a9648cec809
+video-still-rack-16x9.webp                      17804  8c85d3a8cebe82520e57fefcf2787674ece2b9e8011abf4da8e846d3e8fc8768
+rack-loop-vertical.mp4                        1947869  54e2312df71929c9145cf0bcdb2cce5c016e61a51d0eed3b56b4b70780d6e2dc
+rack-loop-vertical.webm                        656655  65a19b4f51c752653ba4cc8ec14dadcd14b4663b7fdb8791ad920b969af8d699
+rack-loop-desktop-16x9.mp4                     963096  26913a8bc55bea99866a56a1134524efa66fc8972d92702693618ece7396dcdb
+rack-loop-desktop-16x9.webm                    385563  cac2fb5b4da24d170d92acd54e373e9b996eded8791dd10837963378821c8dbb
