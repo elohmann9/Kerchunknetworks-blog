@@ -443,7 +443,7 @@ footer:not(:has(.footer-logo))::before {
 }
 
 /* ── Booking button ──
-   Horizontal capsule by default. The hero uses a tall upright key. */
+   Bands keep the maroon capsule. The hero and header use liquid glass. */
 a.ptt,
 .nav-links a.ptt,
 .nav-menu a.ptt,
@@ -608,98 +608,217 @@ a.ptt.ptt-nav,
   height: 6px;
 }
 
-/* Hero: upright capsule key, label beside it. */
-.hero .hero-btns { align-items: center; }
+/* Liquid glass booking control: hero, header, and the mobile bar. */
+.glass-cta,
+a.ptt.ptt-nav,
+.nav-links a.ptt.ptt-nav,
+.nav-menu a.ptt.ptt-nav,
+.mobile-nav a.ptt,
+.ptt-sticky a.ptt {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 52px;
+  padding: 0 22px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(232, 200, 119, 0.4) !important;
+  background: linear-gradient(180deg, rgba(255, 253, 248, 0.22), rgba(232, 200, 119, 0.1)) !important;
+  background-image: linear-gradient(180deg, rgba(255, 253, 248, 0.22), rgba(232, 200, 119, 0.1)) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  backdrop-filter: blur(20px) saturate(180%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 253, 248, 0.55),
+    0 10px 28px rgba(42, 11, 15, 0.22),
+    0 0 18px rgba(212, 164, 65, 0.16) !important;
+  color: #FFFDF8 !important;
+  text-decoration: none !important;
+  transform: scale(1);
+  transition: transform 0.5s cubic-bezier(0.34, 1.45, 0.64, 1), background 0.35s ease, box-shadow 0.35s ease;
+}
 
-.hero a.ptt,
-.hero .nav-links a.ptt {
-  padding: 8px 4px !important;
+a.ptt.ptt-nav,
+.nav-links a.ptt.ptt-nav,
+.nav-menu a.ptt.ptt-nav {
+  height: 40px;
+  padding: 0 16px !important;
+  gap: 8px;
+}
+
+.glass-cta:hover,
+a.ptt.ptt-nav:hover,
+.mobile-nav a.ptt:hover,
+.ptt-sticky a.ptt:hover {
+  transform: scale(1.03);
+  background: linear-gradient(180deg, rgba(255, 253, 248, 0.34), rgba(232, 200, 119, 0.18)) !important;
+  background-image: linear-gradient(180deg, rgba(255, 253, 248, 0.34), rgba(232, 200, 119, 0.18)) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 253, 248, 0.7),
+    0 12px 32px rgba(42, 11, 15, 0.28),
+    0 0 22px rgba(232, 200, 119, 0.28) !important;
+  color: #FFFDF8 !important;
+}
+
+.glass-cta:active,
+a.ptt.ptt-nav:active,
+.mobile-nav a.ptt:active,
+.ptt-sticky a.ptt:active {
+  transform: scale(0.98);
+  background: linear-gradient(180deg, rgba(255, 253, 248, 0.16), rgba(232, 200, 119, 0.08)) !important;
+  background-image: linear-gradient(180deg, rgba(255, 253, 248, 0.16), rgba(232, 200, 119, 0.08)) !important;
+}
+
+.glass-cta:focus-visible,
+a.ptt.ptt-nav:focus-visible,
+.mobile-nav a.ptt:focus-visible,
+.ptt-sticky a.ptt:focus-visible {
+  outline: 2px solid #D4A441;
+  outline-offset: 3px;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .glass-cta,
+  a.ptt.ptt-nav,
+  .nav-links a.ptt.ptt-nav,
+  .mobile-nav a.ptt,
+  .ptt-sticky a.ptt {
+    background: rgba(91, 26, 34, 0.85) !important;
+    background-image: none !important;
+    border-color: #D4A441 !important;
+  }
+}
+
+.glass-led,
+a.ptt.ptt-nav .ptt-key::before,
+.mobile-nav a.ptt .ptt-key::before,
+.ptt-sticky a.ptt .ptt-key::before {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #E8C877;
+  box-shadow: 0 0 8px rgba(232, 200, 119, 0.85);
+  animation: glass-led 2.6s ease-in-out infinite;
+}
+
+@keyframes glass-led {
+  0%, 100% { opacity: 0.4; box-shadow: 0 0 0 rgba(232, 200, 119, 0); }
+  50% { opacity: 1; box-shadow: 0 0 8px rgba(232, 200, 119, 0.9); }
+}
+
+.glass-label,
+a.ptt.ptt-nav .ptt-label,
+.mobile-nav a.ptt .ptt-label,
+.ptt-sticky a.ptt .ptt-label {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: -0.01em;
+  color: #FFFDF8;
+  text-transform: none;
+}
+
+a.ptt.ptt-nav .ptt-label { font-size: 14px; }
+
+.glass-arrow {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='black' d='M3 7.25h7.2L8.1 5.15 9.15 4.1 13 8l-3.85 3.9-1.05-1.05 2.1-2.1H3z'/></svg>") center / contain no-repeat;
+  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='black' d='M3 7.25h7.2L8.1 5.15 9.15 4.1 13 8l-3.85 3.9-1.05-1.05 2.1-2.1H3z'/></svg>") center / contain no-repeat;
+  transition: transform 0.5s cubic-bezier(0.34, 1.45, 0.64, 1);
+}
+
+.glass-cta:hover .glass-arrow { transform: translateX(4px); }
+
+a.ptt.ptt-nav .ptt-label::after,
+.mobile-nav a.ptt .ptt-label::after,
+.ptt-sticky a.ptt .ptt-label::after {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-left: 8px;
+  vertical-align: -2px;
+  background: currentColor;
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='black' d='M3 7.25h7.2L8.1 5.15 9.15 4.1 13 8l-3.85 3.9-1.05-1.05 2.1-2.1H3z'/></svg>") center / contain no-repeat;
+  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><path fill='black' d='M3 7.25h7.2L8.1 5.15 9.15 4.1 13 8l-3.85 3.9-1.05-1.05 2.1-2.1H3z'/></svg>") center / contain no-repeat;
+  transition: transform 0.5s cubic-bezier(0.34, 1.45, 0.64, 1);
+}
+
+a.ptt.ptt-nav:hover .ptt-label::after,
+.mobile-nav a.ptt:hover .ptt-label::after,
+.ptt-sticky a.ptt:hover .ptt-label::after {
+  transform: translateX(4px);
+}
+
+.glass-cta::after,
+a.ptt.ptt-nav::before,
+.mobile-nav a.ptt::before,
+.ptt-sticky a.ptt::before {
+  content: "";
+  position: absolute;
+  inset: 0;
   border: none !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  box-shadow: none !important;
+  border-radius: inherit;
+  background: linear-gradient(105deg, transparent 32%, rgba(255, 253, 248, 0.55) 50%, transparent 68%);
+  transform: translateX(-130%);
+  pointer-events: none;
+  opacity: 1;
+  animation: none;
 }
 
-.hero .ptt-key { gap: 18px; }
-
-@property --led {
-  syntax: "<color>";
-  inherits: false;
-  initial-value: rgba(212, 164, 65, 0.35);
+.glass-cta:hover::after,
+a.ptt.ptt-nav:hover::before,
+.mobile-nav a.ptt:hover::before,
+.ptt-sticky a.ptt:hover::before {
+  animation: glass-sheen 0.75s ease;
 }
 
-.hero .ptt-key::before {
-  width: 52px;
-  height: 128px;
-  border: 1px solid var(--gold);
-  border-radius: 999px;
-  --led: rgba(212, 164, 65, 0.35);
-  background:
-    radial-gradient(circle at 50% 28px, var(--led) 0 3.5px, transparent 8px),
-    var(--maroon-deep);
-  box-shadow: none;
-  animation: ptt-led-idle 2.8s ease-in-out infinite;
+@keyframes glass-sheen {
+  from { transform: translateX(-130%); }
+  to { transform: translateX(130%); }
 }
 
-@keyframes ptt-led-idle {
-  0%, 100% { --led: rgba(212, 164, 65, 0.28); }
-  50% { --led: #e8c877; }
+.hero .hero-btns {
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.hero .ptt-label {
-  color: var(--cream);
-  font-size: 22px;
+.hero .hero-cta-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 8px 16px;
+  margin: 0;
+  max-width: none;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 253, 248, 0.72);
 }
 
-.hero .ptt-alt,
-.hero a.ptt-alt {
+.hero .hero-cta-meta a {
   color: var(--gold-light);
+  text-decoration: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
 }
 
-.hero a.ptt-alt:hover { color: var(--cream); }
+.hero .hero-cta-meta a:hover { color: #FFFDF8; }
 
-.hero a.ptt:hover,
-.hero a.ptt:focus-visible,
-.hero a.ptt:active,
-.hero a.ptt.is-pressed {
-  background: transparent !important;
-  box-shadow: none !important;
-  transform: none;
-}
-
-.hero a.ptt:hover .ptt-key::before,
-.hero a.ptt:focus-visible .ptt-key::before {
-  --led: #d4a441;
-  animation: none;
-  background:
-    radial-gradient(circle at 50% 28px, #f4ecdd 0 2px, var(--led) 3.2px, transparent 8px),
-    var(--maroon-deep);
-  box-shadow: none;
-  transform: none;
-}
-
-.hero a.ptt:active .ptt-key::before,
-.hero a.ptt.is-pressed .ptt-key::before {
-  --led: #d4a441;
-  background:
-    radial-gradient(circle at 50% 28px, #f4ecdd 0 2px, var(--led) 3.2px, transparent 8px),
-    #2A0B0F;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.28);
-  transform: translateY(2px);
-  animation: ptt-capsule-pulse 0.9s ease-out;
-}
-
-.hero a.ptt::before,
-.hero a.ptt:active::before,
-.hero a.ptt.is-pressed::before,
-.hero a.ptt:focus-visible::before {
-  content: none;
-  animation: none;
-}
-
-@keyframes ptt-capsule-pulse {
-  0% { box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.28), 0 0 0 0 rgba(212, 164, 65, 0.4); }
-  100% { box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.28), 0 0 0 12px rgba(212, 164, 65, 0); }
+@media (max-width: 900px) {
+  .hero .hero-cta-meta { flex-wrap: wrap; }
 }
 
 .ptt-alt {
@@ -737,6 +856,14 @@ a.ptt.ptt-nav,
 }
 
 @media (max-width: 900px) {
+  .hero .glass-cta {
+    width: min(100%, 360px);
+    align-self: flex-start;
+    height: 52px;
+  }
+
+  .hero .hero-btns { align-items: flex-start; }
+
   .hero-btns,
   .cta-row {
     flex-direction: column;
@@ -793,19 +920,40 @@ a.ptt.ptt-nav,
   a.ptt::after,
   .ptt-key,
   .ptt-key::before,
-  .hero .ptt-key::before {
+  .glass-cta,
+  .glass-cta::after,
+  .glass-led,
+  .glass-arrow,
+  a.ptt.ptt-nav .ptt-label::after,
+  .mobile-nav a.ptt .ptt-label::after,
+  .ptt-sticky a.ptt .ptt-label::after {
     animation: none !important;
     transition: none !important;
-    --led: #d4a441;
   }
+  .glass-led,
+  a.ptt.ptt-nav .ptt-key::before,
+  .mobile-nav a.ptt .ptt-key::before,
+  .ptt-sticky a.ptt .ptt-key::before {
+    opacity: 1;
+    background: #E8C877;
+    box-shadow: 0 0 6px rgba(232, 200, 119, 0.7);
+  }
+  .glass-cta:hover,
+  .glass-cta:active,
+  a.ptt.ptt-nav:hover,
+  a.ptt.ptt-nav:active,
+  .mobile-nav a.ptt:hover,
+  .mobile-nav a.ptt:active,
+  .ptt-sticky a.ptt:hover,
+  .ptt-sticky a.ptt:active,
+  .glass-cta:hover .glass-arrow,
   a.ptt:active,
   a.ptt.is-pressed,
-  .hero a.ptt:active .ptt-key::before,
-  .hero a.ptt.is-pressed .ptt-key::before,
   a.ptt:hover .ptt-key::before,
   a.ptt:focus-visible .ptt-key::before,
   a.ptt:active .ptt-key::before,
-  a.ptt.is-pressed .ptt-key::before {
+  a.ptt.is-pressed .ptt-key::before,
+  a.ptt.ptt-nav:hover .ptt-label::after {
     transform: none;
   }
 }

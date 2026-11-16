@@ -46,23 +46,21 @@
     return;
   }
   function start() {
-    var mobile = window.matchMedia("(max-width: 900px)").matches;
-    videos.forEach(function (video) {
-      var on = mobile ? video.classList.contains("hero-video-mobile") : video.classList.contains("hero-video-desktop");
-      if (!on) return;
-      var webm = document.createElement("source");
-      webm.src = video.getAttribute("data-webm");
-      webm.type = "video/webm";
-      var mp4 = document.createElement("source");
-      mp4.src = video.getAttribute("data-mp4");
-      mp4.type = "video/mp4";
-      video.appendChild(webm);
-      video.appendChild(mp4);
-      video.preload = "metadata";
-      video.addEventListener("playing", function () { video.classList.add("is-ready"); });
-      var play = video.play();
-      if (play && play.catch) play.catch(function () {});
-    });
+    if (!window.matchMedia("(max-width: 900px)").matches) return;
+    var video = document.querySelector(".hero-video-mobile");
+    if (!video || video.querySelector("source")) return;
+    var webm = document.createElement("source");
+    webm.src = video.getAttribute("data-webm");
+    webm.type = "video/webm";
+    var mp4 = document.createElement("source");
+    mp4.src = video.getAttribute("data-mp4");
+    mp4.type = "video/mp4";
+    video.appendChild(webm);
+    video.appendChild(mp4);
+    video.preload = "metadata";
+    video.addEventListener("playing", function () { video.classList.add("is-ready"); });
+    var play = video.play();
+    if (play && play.catch) play.catch(function () {});
   }
   if (document.readyState === "complete") start();
   else window.addEventListener("load", start);

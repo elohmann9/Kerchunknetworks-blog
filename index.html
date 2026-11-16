@@ -212,19 +212,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     .hero-video.is-ready { opacity: 1; }
 
-    .hero-video-desktop {
-      inset: auto;
-      right: 72px;
-      bottom: 56px;
-      width: 360px;
-      height: 202px;
-      z-index: 2;
-      border-radius: 16px;
-      border: 1px solid rgba(212, 164, 65, 0.5);
-      object-fit: cover;
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
-    }
-
     .hero-scrim {
       position: absolute;
       inset: 0;
@@ -991,11 +978,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       .hero {
         min-height: 100svh;
         align-items: flex-end;
-        padding: 48px 24px 128px;
+        padding: 48px 24px 176px;
         text-align: left;
       }
       .hero-media img { object-position: center 28%; }
-      .hero-video-desktop { display: none; }
       .hero-scrim {
         background: linear-gradient(180deg,
           rgba(42, 11, 15, 0.12) 0%,
@@ -1508,7 +1494,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <video class="hero-video hero-video-mobile" muted loop playsinline preload="none" poster="assets/phase3/video-still-rack.webp" aria-hidden="true" data-webm="assets/phase3/rack-loop-vertical.webm" data-mp4="assets/phase3/rack-loop-vertical.mp4"></video>
   </div>
   <div class="hero-scrim" aria-hidden="true"></div>
-  <video class="hero-video hero-video-desktop" muted loop playsinline preload="none" poster="assets/phase3/video-still-rack-16x9.webp" aria-hidden="true" data-webm="assets/phase3/rack-loop-desktop-16x9.webm" data-mp4="assets/phase3/rack-loop-desktop-16x9.mp4"></video>
   <div class="hero-content">
     <div class="hero-badge">Connecting Fire, Field &amp; Family</div>
     <h1>
@@ -1518,8 +1503,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="hero-divider"></div>
     <p>UniFi, cabling, and racks. Cradlepoint on the fire engine.</p>
     <div class="hero-btns">
-      <a class="ptt" href="https://cal.kerchunknetworks.com/erik/1hour" target="_blank" rel="noopener"><span class="ptt-key"><span class="ptt-label">Book an onsite visit</span></span></a>
-      <a class="ptt-alt" href="https://cal.kerchunknetworks.com/erik" target="_blank" rel="noopener">30-minute call</a>
+      <a class="glass-cta" href="https://cal.kerchunknetworks.com/erik/1hour" target="_blank" rel="noopener">
+        <span class="glass-led" aria-hidden="true"></span>
+        <span class="glass-label">Book an onsite visit</span>
+        <span class="glass-arrow" aria-hidden="true"></span>
+      </a>
+      <p class="hero-cta-meta">
+        <span>Onsite visit · 1 hour</span>
+        <a href="tel:+14157379223">Call 415-737-9223</a>
+      </p>
     </div>
   </div>
 </div>
