@@ -18,13 +18,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta property="og:description" content="Wi-Fi, cabling, and racks for home and shop. Cradlepoint on the fire engine.">
   <meta property="og:url" content="https://kerchunknetworks.com/">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://kerchunknetworks.com/assets/images/logo-og.png">
-  <meta property="og:image:alt" content="Kerchunk Networks">
+  <meta property="og:image" content="https://kerchunknetworks.com/assets/phase3/rack-closeup-hero-16x9.jpg">
+  <meta property="og:image:width" content="1320">
+  <meta property="og:image:height" content="740">
+  <meta property="og:image:alt" content="UniFi switch and patch panel in a Kerchunk Networks wall rack, purple and blue link lights on the cable run.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Kerchunk Networks — Connecting Fire, Field &amp; Family">
   <meta name="twitter:description" content="Wi-Fi, cabling, and racks for home and shop. Cradlepoint on the fire engine.">
-  <meta name="twitter:image" content="https://kerchunknetworks.com/assets/images/logo-og.png">
-  <meta name="twitter:image:alt" content="Kerchunk Networks">
+  <meta name="twitter:image" content="https://kerchunknetworks.com/assets/phase3/rack-closeup-hero-16x9.jpg">
+  <meta name="twitter:image:alt" content="UniFi switch and patch panel in a Kerchunk Networks wall rack, purple and blue link lights on the cable run.">
+  <link rel="preload" as="image" href="assets/phase3/rack-closeup-hero-16x9.webp" type="image/webp" media="(min-width: 901px)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/phase3/video-still-rack.webp" type="image/webp" media="(max-width: 900px)" fetchpriority="high">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="apple-touch-icon" href="assets/images/logo-og.png">
   <script type="application/ld+json">
@@ -38,7 +42,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     "email": "elohmann@kerchunknetworks.com",
     "founder": { "@type": "Person", "name": "Erik Lohmann" },
     "foundingDate": "2024",
-    "image": "https://kerchunknetworks.com/assets/images/logo-og.png",
+    "image": "https://kerchunknetworks.com/assets/phase3/rack-closeup-hero-16x9.jpg",
     "priceRange": "$$",
     "areaServed": [
       { "@type": "State", "name": "California" },
@@ -170,31 +174,73 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     /* ── HERO ── */
     .hero {
       min-height: 88vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
       align-items: center;
-      gap: 60px;
-      padding: 80px 80px 80px 80px;
+      padding: 96px 80px;
       position: relative;
       overflow: hidden;
-      background: linear-gradient(135deg, var(--tan) 0%, var(--beige) 100%);
+      background: #2A0B0F;
     }
 
-    /* faint grid overlay */
-    .hero::before {
-      content: '';
+    .hero-media {
       position: absolute;
       inset: 0;
-      background-image:
-        linear-gradient(rgba(var(--maroon-rgb), .05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(var(--maroon-rgb), .05) 1px, transparent 1px);
-      background-size: 50px 50px;
+      z-index: 0;
+    }
+
+    .hero-media picture {
+      position: absolute;
+      inset: 0;
+      display: block;
+    }
+
+    .hero-media img,
+    .hero-media video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-media img { object-position: 68% center; }
+
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+    }
+
+    .hero-video.is-ready { opacity: 1; }
+
+    .hero-video-desktop {
+      inset: auto;
+      right: 72px;
+      bottom: 56px;
+      width: 360px;
+      height: 202px;
+      z-index: 2;
+      border-radius: 16px;
+      border: 1px solid rgba(212, 164, 65, 0.5);
+      object-fit: cover;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+    }
+
+    .hero-scrim {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
       pointer-events: none;
+      background: linear-gradient(90deg,
+        rgba(42, 11, 15, 0.94) 0%,
+        rgba(62, 17, 22, 0.88) 32%,
+        rgba(62, 17, 22, 0.48) 60%,
+        rgba(62, 17, 22, 0.16) 100%);
     }
 
     .hero-content {
       position: relative;
-      z-index: 1;
+      z-index: 2;
+      max-width: 640px;
     }
 
     .hero-badge {
@@ -205,9 +251,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       font-size: 11px;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--maroon);
-      border: 1px solid var(--border-hi);
-      background: var(--maroon-dim);
+      color: var(--cream);
+      border: 1px solid rgba(212, 164, 65, 0.55);
+      background: rgba(42, 11, 15, 0.28);
       padding: 6px 16px;
       border-radius: 2px;
       margin-bottom: 32px;
@@ -234,12 +280,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       line-height: 1.0;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--text);
+      color: var(--cream);
       margin-bottom: 12px;
     }
 
     .hero h1 span {
-      color: var(--maroon);
+      color: var(--gold-light);
       display: block;
     }
 
@@ -254,7 +300,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .hero p {
       font-size: 17px;
       font-weight: 300;
-      color: var(--text2);
+      color: rgba(244, 236, 221, 0.84);
       max-width: 480px;
       margin-bottom: 40px;
       line-height: 1.8;
@@ -310,79 +356,74 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       background: var(--maroon-dim);
     }
 
-    /* hero visual */
-    .hero-visual {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    /* recent work + cable proof */
+    .work-grid {
+      display: grid;
+      grid-template-columns: 0.92fr 1.16fr 0.92fr;
+      gap: 36px 28px;
+      align-items: start;
+      text-align: left;
     }
 
-    .hero-visual-ring {
-      position: relative;
-      width: 420px;
-      height: 420px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .work-grid figure,
+    .proof-grid figure { margin: 0; }
+
+    .work-frame,
+    .proof-frame {
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--cream);
+      transition: transform .35s ease, box-shadow .35s ease;
     }
 
-    /* decorative ring */
-    .hero-visual-ring::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      border: 1px solid var(--border);
-      animation: spin-slow 30s linear infinite;
+    .work-frame img,
+    .proof-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
     }
 
-    .hero-visual-ring::after {
-      content: '';
-      position: absolute;
-      inset: 20px;
-      border-radius: 50%;
-      border: 1px dashed rgba(var(--maroon-rgb), .2);
+    .work-frame:hover,
+    .proof-frame:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(62, 17, 22, 0.12);
     }
 
-    @keyframes spin-slow {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
+    .work-grid figcaption,
+    .proof-grid figcaption {
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: 0.04em;
+      color: var(--ink-3);
+      margin-top: 14px;
+      line-height: 1.45;
     }
 
-    .hero-logo-img {
-      width: 280px;
-      height: 280px;
-      object-fit: contain;
-      filter: none;
-      animation: float 6s ease-in-out infinite;
+    .proof { padding-top: 24px; }
+    .proof-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      max-width: 880px;
+      margin: 0 auto;
+      text-align: left;
     }
 
-    .hero-logo-video {
-      width: 320px;
-      height: 320px;
-      object-fit: contain;
-      filter: none;
-      animation: float 6s ease-in-out infinite;
+    .proof-grid img {
+      height: 480px;
+      object-fit: cover;
+      object-position: center 32%;
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
+    html.hero-still .hero-video { display: none !important; }
 
-    /* corner tick marks on ring */
-    .tick {
-      position: absolute;
-      width: 8px;
-      height: 2px;
-      background: var(--gold);
+    @media (prefers-reduced-motion: reduce) {
+      .hero-video { display: none !important; }
+      .work-frame,
+      .proof-frame { transition: none; }
+      .work-frame:hover,
+      .proof-frame:hover { transform: none; box-shadow: none; }
     }
-    .tick:nth-child(1) { top: 50%; left: 0; transform: translateY(-50%); }
-    .tick:nth-child(2) { top: 50%; right: 0; transform: translateY(-50%); }
-    .tick:nth-child(3) { left: 50%; top: 0; transform: translateX(-50%) rotate(90deg); }
-    .tick:nth-child(4) { left: 50%; bottom: 0; transform: translateX(-50%) rotate(90deg); }
 
     /* ── STATS BAR ── */
     .stats-bar {
@@ -936,6 +977,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       border-radius: 2px;
     }
 
+    @media (min-width: 901px) {
+      .hero-video-mobile { display: none; }
+    }
     @media (max-width: 900px) {
       .monitor-section { padding: 60px 20px; }
       .monitor-panels { grid-template-columns: 1fr; }
@@ -944,13 +988,26 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     @media (max-width: 900px) {
       nav { padding: 0 20px; }
       .nav-links { display: none; }
-      .hero { grid-template-columns: 1fr; padding: 60px 24px; text-align: center; }
-      .hero-visual { justify-content: center; margin-top: 40px; }
-      .hero-visual-ring { width: 260px; height: 260px; }
-      .hero-logo-video { width: 200px; height: 200px; mix-blend-mode: multiply; }
-      .hero-logo-img { width: 180px; height: 180px; }
-      .hero p { margin: 0 auto 40px; }
-      .hero-btns { justify-content: center; }
+      .hero {
+        min-height: 100svh;
+        align-items: flex-end;
+        padding: 48px 24px 128px;
+        text-align: left;
+      }
+      .hero-media img { object-position: center 28%; }
+      .hero-video-desktop { display: none; }
+      .hero-scrim {
+        background: linear-gradient(180deg,
+          rgba(42, 11, 15, 0.12) 0%,
+          rgba(42, 11, 15, 0.28) 36%,
+          rgba(42, 11, 15, 0.88) 70%,
+          #2A0B0F 100%);
+      }
+      .hero p { margin: 0 0 32px; }
+      .hero-btns { justify-content: flex-start; }
+      .work-grid,
+      .proof-grid { grid-template-columns: 1fr; }
+      .proof-grid img { height: auto; aspect-ratio: auto; object-position: center; }
       .stats-bar { grid-template-columns: repeat(2, 1fr); }
       .stat:nth-child(2) { border-right: none; }
       .stat:nth-child(3) { border-top: 1px solid rgba(255,255,255,.1); }
@@ -1441,6 +1498,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- HERO -->
 <div class="hero">
+  <div class="hero-media">
+    <picture>
+      <source media="(max-width: 900px)" srcset="assets/phase3/video-still-rack.webp" type="image/webp">
+      <source media="(max-width: 900px)" srcset="assets/phase3/video-still-rack.jpg" type="image/jpeg">
+      <source srcset="assets/phase3/rack-closeup-hero-16x9.webp" type="image/webp">
+      <img src="assets/phase3/rack-closeup-hero-16x9.jpg" alt="UniFi switch and patch panel in a wall rack, purple and blue link lights along the cable run." width="1320" height="740" fetchpriority="high">
+    </picture>
+    <video class="hero-video hero-video-mobile" muted loop playsinline preload="none" poster="assets/phase3/video-still-rack.webp" aria-hidden="true" data-webm="assets/phase3/rack-loop-vertical.webm" data-mp4="assets/phase3/rack-loop-vertical.mp4"></video>
+  </div>
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <video class="hero-video hero-video-desktop" muted loop playsinline preload="none" poster="assets/phase3/video-still-rack-16x9.webp" aria-hidden="true" data-webm="assets/phase3/rack-loop-desktop-16x9.webm" data-mp4="assets/phase3/rack-loop-desktop-16x9.mp4"></video>
   <div class="hero-content">
     <div class="hero-badge">Connecting Fire, Field &amp; Family</div>
     <h1>
@@ -1452,20 +1520,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="hero-btns">
       <a class="ptt" href="https://cal.kerchunknetworks.com/erik/1hour" target="_blank" rel="noopener"><span class="ptt-key"><span class="ptt-label">Book an onsite visit</span></span></a>
       <a class="ptt-alt" href="https://cal.kerchunknetworks.com/erik" target="_blank" rel="noopener">30-minute call</a>
-    </div>
-  </div>
-
-  <div class="hero-visual">
-    <div class="hero-visual-ring">
-      <span class="tick"></span>
-      <span class="tick"></span>
-      <span class="tick"></span>
-      <span class="tick"></span>
-      <canvas id="hero-canvas" class="hero-logo-video"></canvas>
-      <video id="hero-video" autoplay loop muted playsinline style="position:fixed;bottom:0;right:0;width:1px;height:1px;opacity:0.01;pointer-events:none;z-index:-999">
-        <source src="assets/images/kerchunk-transparent.webm" type="video/webm">
-        <source src="assets/images/kerchunk.mp4" type="video/mp4">
-      </video>
     </div>
   </div>
 </div>
@@ -1544,6 +1598,66 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<section class="work reveal" aria-labelledby="work-title">
+  <div class="section-eyebrow">Recent work</div>
+  <h2 class="section-title" id="work-title">The Kerchunk house.</h2>
+  <p class="section-sub">A labeled rack. Cable dressed. Wi-Fi where you stand.</p>
+  <div class="work-grid">
+    <figure>
+      <div class="work-frame">
+        <picture>
+          <source srcset="assets/phase3/night-rack.webp" type="image/webp">
+          <img src="assets/phase3/night-rack.jpg" alt="White 12U wall cabinet at night, UniFi gear glowing blue behind the glass door." width="640" height="800" loading="lazy">
+        </picture>
+      </div>
+      <figcaption>UniFi 12U wall rack · USW Pro Max 24 PoE</figcaption>
+    </figure>
+    <figure>
+      <div class="work-frame">
+        <picture>
+          <source srcset="assets/phase3/rack-closeup-gallery-4x3.webp" type="image/webp">
+          <img src="assets/phase3/rack-closeup-gallery-4x3.jpg" alt="Close view of a UniFi switch and patch panel with purple and blue link lights on dressed cable." width="1073" height="805" loading="lazy">
+        </picture>
+      </div>
+      <figcaption>Patch panel · dressed runs</figcaption>
+    </figure>
+    <figure>
+      <div class="work-frame">
+        <picture>
+          <source srcset="assets/phase3/hallway-ap.webp" type="image/webp">
+          <img src="assets/phase3/hallway-ap.jpg" alt="Ceiling-mounted UniFi U7 Pro XG in a hallway, its status ring glowing blue." width="1280" height="1600" loading="lazy">
+        </picture>
+      </div>
+      <figcaption>U7 Pro XG · hallway ceiling</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="proof reveal" aria-labelledby="proof-title">
+  <div class="section-eyebrow">Cabling</div>
+  <h2 class="section-title" id="proof-title">Every run tested and certified before we leave.</h2>
+  <p class="section-sub">Hand-terminated. Pinout confirmed. PoE checked at the jack.</p>
+  <div class="proof-grid">
+    <figure>
+      <div class="proof-frame">
+        <picture>
+          <source srcset="assets/phase3/tester-poe.webp" type="image/webp">
+          <img src="assets/phase3/tester-poe.jpg" alt="Cable tester screen showing IEEE 802.3bt Class 6 PoE at 53.8 volts." width="1280" height="1600" loading="lazy">
+        </picture>
+      </div>
+      <figcaption>802.3bt Class 6 · 53.8V</figcaption>
+    </figure>
+    <figure>
+      <div class="proof-frame">
+        <picture>
+          <source srcset="assets/phase3/tester-t568b.webp" type="image/webp">
+          <img src="assets/phase3/tester-t568b.jpg" alt="Cable tester showing a T568B pass beside a crimper and a hand-terminated plug." width="1600" height="1200" loading="lazy">
+        </picture>
+      </div>
+      <figcaption>T568B · hand-terminated</figcaption>
+    </figure>
+  </div>
+</section>
 
 <!-- MONITOR SECTION -->
 <section class="monitor-section reveal">
@@ -1831,67 +1945,5 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   window.addEventListener('resize', close);
 })();
 </script>
-<script>
-(function(){
-  var video = document.getElementById('hero-video');
-  var canvas = document.getElementById('hero-canvas');
-  if (!canvas || !video) return;
-  var ctx = canvas.getContext('2d', {willReadFrequently: true});
-  var rafId = null;
-  var needsBgRemoval = null; // auto-detected on first frame
-
-  function renderFrame() {
-    var w = video.videoWidth, h = video.videoHeight;
-    if (!w || !h || video.readyState < 2) {
-      rafId = requestAnimationFrame(renderFrame);
-      return;
-    }
-    if (canvas.width !== w || canvas.height !== h) {
-      canvas.width = w;
-      canvas.height = h;
-    }
-    ctx.clearRect(0, 0, w, h);
-    ctx.drawImage(video, 0, 0, w, h);
-
-    // On first frame, sample a corner pixel to detect if video has native alpha.
-    // If the corner is opaque (white bg baked in), we need to strip it ourselves.
-    if (needsBgRemoval === null) {
-      needsBgRemoval = ctx.getImageData(0, 0, 1, 1).data[3] > 200;
-    }
-
-    if (needsBgRemoval) {
-      var img = ctx.getImageData(0, 0, w, h);
-      var d = img.data;
-      for (var i = 0; i < d.length; i += 4) {
-        var r = d[i], g = d[i+1], b = d[i+2];
-        if (r > 195 && g > 182 && b > 170) { d[i+3] = 0; }
-      }
-      ctx.putImageData(img, 0, 0);
-    }
-
-    if (!video.paused) { rafId = requestAnimationFrame(renderFrame); }
-  }
-
-  function startLoop() {
-    if (rafId) cancelAnimationFrame(rafId);
-    rafId = requestAnimationFrame(renderFrame);
-  }
-
-  video.addEventListener('playing', startLoop);
-  video.addEventListener('play', startLoop);
-
-  var p = video.play();
-  if (p && p.catch) {
-    p.catch(function() {
-      function tryPlay() {
-        video.play().catch(function(){});
-        document.removeEventListener('touchstart', tryPlay);
-        document.removeEventListener('click', tryPlay);
-      }
-      document.addEventListener('touchstart', tryPlay, {once: true, passive: true});
-      document.addEventListener('click', tryPlay, {once: true});
-    });
-  }
-})();
-</script></body>
+</body>
 </html>
