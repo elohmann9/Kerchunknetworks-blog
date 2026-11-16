@@ -44,28 +44,49 @@
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (reduce) pill.style.transition = "none";
   var current = links[0];
+  var placed = null;
+  var leaveTimer = 0;
+  var resizeRaf = 0;
   function place(el) {
-    if (!el) return;
+    if (!el || el === placed) return;
+    placed = el;
     var b = bar.getBoundingClientRect();
     var r = el.getBoundingClientRect();
-    pill.style.width = r.width + "px";
-    pill.style.height = r.height + "px";
-    pill.style.transform = "translate(" + (r.left - b.left) + "px," + (r.top - b.top) + "px)";
+    var x = Math.round(r.left - b.left);
+    var y = Math.round(r.top - b.top);
+    var w = Math.round(r.width);
+    var h = Math.round(r.height);
+    pill.style.width = w + "px";
+    pill.style.height = h + "px";
+    pill.style.transform = "translate3d(" + x + "px," + y + "px,0)";
   }
   links.forEach(function (a) {
-    a.addEventListener("mouseenter", function () { place(a); });
+    a.addEventListener("mouseenter", function () {
+      clearTimeout(leaveTimer);
+      place(a);
+    });
     a.addEventListener("focus", function () { place(a); });
   });
-  bar.addEventListener("mouseleave", function () { place(current); });
+  bar.addEventListener("mouseleave", function () {
+    clearTimeout(leaveTimer);
+    leaveTimer = setTimeout(function () {
+      placed = null;
+      place(current);
+    }, 120);
+  });
   function setCurrent(id) {
     var next = null;
     for (var i = 0; i < links.length; i++) {
       if (links[i].getAttribute("data-spy") === id) next = links[i];
     }
-    if (!next) return;
-    links.forEach(function (a) { a.classList.toggle("is-current", a === next); });
+    if (!next || next === current) return;
+    if (current) current.classList.remove("is-current");
+    next.classList.add("is-current");
     current = next;
-    if (!bar.matches(":hover")) place(current);
+    if (!bar.matches(":hover")) {
+      placed = null;
+      place(current);
+    }
   }
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(function (entries) {
@@ -75,14 +96,54 @@
         if (!best || entry.intersectionRatio > best.intersectionRatio) best = entry;
       });
       if (best) setCurrent(best.target.id);
-    }, { rootMargin: "-28% 0px -48% 0px", threshold: [0.15, 0.4, 0.7] });
+    }, { rootMargin: "-30% 0px -50% 0px", threshold: [0.2] });
     ["hero", "services", "work", "faq"].forEach(function (id) {
       var el = document.getElementById(id);
       if (el) io.observe(el);
     });
+    var hero = document.getElementById("hero");
+    if (hero) {
+      new IntersectionObserver(function (entries) {
+        document.body.classList.toggle("nav-over-scene", entries[0].isIntersecting);
+      }, { threshold: 0 }).observe(hero);
+    }
+    var cta = document.querySelector(".hero .glass-zone");
+    if (cta) {
+      new IntersectionObserver(function (entries) {
+        document.body.classList.toggle("hero-cta-away", !entries[0].isIntersecting);
+      }, { threshold: 0 }).observe(cta);
+    }
   }
-  window.addEventListener("resize", function () { place(current); });
-  requestAnimationFrame(function () { place(current); });
+  window.addEventListener("resize", function () {
+    if (resizeRaf) return;
+    resizeRaf = requestAnimationFrame(function () {
+      resizeRaf = 0;
+      placed = null;
+      place(bar.matches(":hover") ? placed : current);
+      var hover = null;
+      links.forEach(function (a) { if (a.matches(":hover")) hover = a; });
+      placed = null;
+      place(hover || current);
+    });
+  });
+  var zone = document.querySelector(".glass-zone");
+  if (zone) {
+    var openTimer = 0;
+    zone.addEventListener("mouseenter", function () {
+      clearTimeout(openTimer);
+      zone.classList.add("is-open");
+    });
+    zone.addEventListener("mouseleave", function () {
+      clearTimeout(openTimer);
+      openTimer = setTimeout(function () { zone.classList.remove("is-open"); }, 120);
+    });
+    zone.addEventListener("focus", function () { zone.classList.add("is-open"); });
+    zone.addEventListener("blur", function () { zone.classList.remove("is-open"); });
+  }
+  requestAnimationFrame(function () {
+    current.classList.add("is-current");
+    place(current);
+  });
 })();
 
 (function () {

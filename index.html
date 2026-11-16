@@ -27,7 +27,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <meta name="twitter:description" content="Wi-Fi, cabling, and racks for home and shop. Cradlepoint on the fire engine.">
   <meta name="twitter:image" content="https://kerchunknetworks.com/assets/house3d/poster.jpg">
   <meta name="twitter:image:alt" content="Gold-dot map of a house floor plan with Wi-Fi coverage, the Kerchunk house.">
-  <link rel="preload" as="image" href="assets/house3d/poster.webp" type="image/webp" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/house3d/poster.webp" type="image/webp" media="(min-width: 901px)" fetchpriority="high">
+  <link rel="preload" as="image" href="assets/house3d/poster-mobile.webp" type="image/webp" media="(max-width: 900px)" fetchpriority="high">
   <script type="importmap">
   {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}
   </script>
@@ -221,6 +222,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       background: #0A0708;
     }
     .hero-poster,
+    .hero-poster img,
     .hero-stage canvas {
       position: absolute;
       inset: 0;
@@ -228,7 +230,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       height: 100%;
       display: block;
     }
-    .hero-poster { object-fit: cover; object-position: 62% center; }
+    .hero-poster { pointer-events: none; }
+    .hero-poster img { object-fit: cover; object-position: 62% center; }
     .hero-stage canvas { pointer-events: none; opacity: 0; }
     .hero-stage.is-live canvas { opacity: 1; }
     .hero-stage.is-still canvas { display: none; }
@@ -1059,6 +1062,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       }
       .hero p { margin: 0 0 32px; }
       .house-legend { display: none; }
+      .hero-poster img { object-position: center 70%; }
       .hero-btns { justify-content: flex-start; }
       .work-grid,
       .proof-grid { grid-template-columns: 1fr; }
@@ -1553,7 +1557,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- HERO -->
 <div class="hero" id="hero">
   <div class="hero-stage">
-    <img class="hero-poster" src="assets/house3d/poster.webp" alt="" width="1440" height="900" fetchpriority="high">
+    <picture class="hero-poster">
+      <source media="(max-width: 900px)" srcset="assets/house3d/poster-mobile.webp" type="image/webp">
+      <img src="assets/house3d/poster.webp" alt="" width="1440" height="900" fetchpriority="high">
+    </picture>
     <canvas id="house-canvas" aria-hidden="true"></canvas>
   </div>
   <div class="hero-scrim" aria-hidden="true"></div>
@@ -1571,13 +1578,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="hero-divider"></div>
     <p>UniFi, cabling, and racks. Cradlepoint on the fire engine.</p>
     <div class="hero-btns">
-      <a class="glass-cta" href="https://cal.kerchunknetworks.com/erik/1hour" target="_blank" rel="noopener">
-        <span class="glass-led" aria-hidden="true"></span>
-        <span class="glass-copy">
-          <span class="glass-label">Book an onsite visit</span>
-          <span class="glass-detail">Onsite visit · 1 hour · Bay Area</span>
+      <a class="glass-zone" href="https://cal.kerchunknetworks.com/erik/1hour" target="_blank" rel="noopener">
+        <span class="glass-cta">
+          <span class="glass-led" aria-hidden="true"></span>
+          <span class="glass-copy">
+            <span class="glass-label">Book an onsite visit</span>
+            <span class="glass-detail">Onsite visit · 1 hour · Bay Area</span>
+          </span>
+          <span class="glass-go" aria-hidden="true"><span class="glass-arrow"></span></span>
         </span>
-        <span class="glass-go" aria-hidden="true"><span class="glass-arrow"></span></span>
       </a>
     </div>
   </div>
