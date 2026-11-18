@@ -114,6 +114,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     .service-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: var(--text2); }
     .service-list li::before { content: '—'; color: var(--maroon); font-family: var(--mono); flex-shrink: 0; margin-top: 2px; }
 
+    .cert .service-title { text-transform: none; letter-spacing: -0.02em; font-weight: 600; line-height: 1.15; }
+    .cert-shots { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .cert-shots figure { margin: 0; }
+    .cert-shots picture { display: block; border-radius: 16px; overflow: hidden; background: var(--cream); }
+    .cert-shots img { display: block; width: 100%; height: 280px; object-fit: cover; object-position: center 34%; }
+    @media (max-width: 700px) {
+      .cert-shots { grid-template-columns: 1fr; }
+      .cert-shots img { height: auto; }
+    }
+    .cert-shots figcaption { font-family: var(--mono); font-size: 11px; letter-spacing: 0.04em; color: var(--text3); margin-top: 10px; line-height: 1.45; }
+
     /* ── DETAIL CARD ── */
     .detail-card { background: var(--tan); border: 1px solid var(--border-hi); border-radius: 3px; overflow: hidden; }
     .service-block.alt .detail-card { background: var(--beige); }
@@ -582,8 +593,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
+<div class="service-block alt cert">
+  <div class="service-inner">
+    <div>
+      <div class="service-label">Cabling</div>
+      <div class="service-title">Every run tested and certified before we leave.</div>
+      <p class="service-desc">Hand-terminated. Pinout confirmed. PoE checked at the jack.</p>
+    </div>
+    <div class="cert-shots">
+      <figure>
+        <picture>
+          <source srcset="assets/phase3/tester-poe.webp" type="image/webp">
+          <img src="assets/phase3/tester-poe.jpg" alt="Cable tester screen showing IEEE 802.3bt Class 6 PoE at 53.8 volts." width="1280" height="1600" loading="lazy">
+        </picture>
+        <figcaption>802.3bt Class 6 · 53.8V</figcaption>
+      </figure>
+      <figure>
+        <picture>
+          <source srcset="assets/phase3/tester-t568b.webp" type="image/webp">
+          <img src="assets/phase3/tester-t568b.jpg" alt="Cable tester showing a T568B pass beside a crimper and a hand-terminated plug." width="1600" height="1200" loading="lazy">
+        </picture>
+        <figcaption>T568B · hand-terminated</figcaption>
+      </figure>
+    </div>
+  </div>
+</div>
+
 <!-- SERVICE 2: VLAN SEGMENTATION -->
-<div class="service-block alt">
+<div class="service-block">
   <div class="service-inner reverse">
     <div>
       <div class="service-label">Security · Network Design</div>
